@@ -428,13 +428,13 @@ Aqui, $E^epsilon (r)$ é o módulo de elasticidade e $nu^epsilon (r)$ é o coefi
 Para reduzir o problema tridimensional a um caso estritamente unidimensional na direção radial, invoca-se a hipótese do #strong[Estado Plano de Deformação Generalizado] (ou Estado Plano de Deformação para cilindros longos com extremidades restritas). 
 
 Fisicamente, assume-se que a geometria do cilindro e o carregamento de pressão interna são uniformes ao longo de seu eixo longitudinal $z$. Consequentemente, o campo de deslocamento radial independe da cota axial, de modo que:
-$ (diff u_r) / (diff z) = 0 $
+$ (partial u_r) / (partial z) = 0 $
 
 Adicionalmente, postula-se que as seções transversais perpendiculares ao eixo $z$ permanecem planas após a deformação. Isso implica que o deslocamento axial $u_z$ varia no máximo linearmente com $z$ ($u_z = epsilon_0 z$, onde $epsilon_0$ é a deformação axial constante), o que anula sua variação na direção radial:
-$ (diff u_z) / (diff r) = 0 $
+$ (partial u_z) / (partial r) = 0 $
 
 Com essas considerações cinemáticas, a componente de deformação por cisalhamento $gamma_(r z)$ no plano radial-axial é identicamente nula:
-$ gamma_(r z) = (diff u_r) / (diff z) + (diff u_z) / (diff r) = 0 + 0 = 0 $
+$ gamma_(r z) = (partial u_r) / (partial z) + (partial u_z) / (partial r) = 0 + 0 = 0 $
 
 Pela relação constitutiva isotrópica, conclui-se que a tensão de cisalhamento transversal também se anula ($tau_(r z) = 0$). Esse resultado justifica a redução do tensor de deformações e de tensões àqueles que dependem exclusivamente das variáveis normais $r$ e $theta$, viabilizando a aplicação unidimensional do Método de Homogeneização Assintótica (MHA)
 

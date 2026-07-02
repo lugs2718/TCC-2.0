@@ -1,7 +1,7 @@
 #import "../../imports.typ": *
 
 // Definição de funções auxiliares
-#let partial(num, den) = $((diff #num) / (diff #den))$
+#let pd(num, den) = $((partial #num) / (partial #den))$
 #let avg(it) = $chevron.l #it chevron.r$
 #let stress0r = $sigma_r^(0)$
 #let stress0theta = $sigma_theta^(0)$
@@ -18,9 +18,9 @@
 
 #let deformacao-simplificada = $
      vec(
-            diff_r (u_r^0 + epsilon u_r^1),
+            partial_r (u_r^0 + epsilon u_r^1),
             (u_r^0 + epsilon u_r^1) / r,
-            (diff_z (u_r^0 + epsilon u_r^1) + diff_r u_z) / 2
+            (partial_z (u_r^0 + epsilon u_r^1) + partial_r u_z) / 2
          )
            $
 
@@ -91,8 +91,8 @@ $ <eq:EquilibriumWithStressSAFs>
 Assume-se que a função de deslocamento de primeira ordem possui a forma separável $u_r^(1) = chi^("(1)") (y) partial(u0, r) + chi^("(2)") (y) u0 / r$. A substituição desta forma na equação de equilíbrio de ordem $epsilon^(-1)$ define os *problemas locais*:
 
 $
-  diff / (diff y) (cal(C)_11 partial(chi^("(1)") (y), y) + cal(C)_11) = 0, \
-  diff / (diff y) (cal(C)_11 partial(chi^("(2)") (y), y) + cal(C)_12) = 0.
+  partial / (partial y) (cal(C)_11 pd(chi^("(1)") (y), y) + cal(C)_11) = 0, \
+  partial / (partial y) (cal(C)_11 pd(chi^("(2)") (y), y) + cal(C)_12) = 0.
 $ <eq:LocalProblems>
 
 Para garantir a existência e unicidade dessas soluções, impõe-se a condição de #text(blue)[contato perfeito] na interface entre as camadas:

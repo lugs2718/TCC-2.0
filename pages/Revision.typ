@@ -8,7 +8,7 @@
 
 
 == Meios com Estrutura Periódica e Células Recorrentes
-Um meio com estrutura periódica é definido matematicamente como aquele composto por elementos ou células unitárias que se repetem ao longo de sua estrutura [Bak89]. Na engenharia de materiais, essa repetição geométrica é a característica definidora de diversos compósitos, como os reforçados por fibras unidirecionais ou sistemas granulados tridimensionais [Bak89]. 
+Um meio com estrutura periódica é definido matematicamente como aquele composto por elementos ou células unitárias que se repetem ao longo de sua estrutura [Bak89]. Na engenharia de materiais, essa repetição geométrica é a característica definidora de diversos compósitos, como os reforçados por fibras unidirecionais ou sistemas granulados tridimensionais [Bak89].
 
 #image("/images/composito_periodico_bakhvalov.png")
 
@@ -16,7 +16,7 @@ A análise desses meios fundamenta-se na eystência de dois comprimentos caracte
 
 $ epsilon = l / L << 1 $
 
-De acordo com [Bak89], essa separação de escalas permite que as propriedades físicas, que oscilam rapidamente na microescala, sejam investigadas assintoticamente quando $epsilon -> 0$. 
+De acordo com [Bak89], essa separação de escalas permite que as propriedades físicas, que oscilam rapidamente na microescala, sejam investigadas assintoticamente quando $epsilon -> 0$.
 
 == Evolução Histórica da Homogeneização
 O problema de determinar propriedades efetivas para meios heterogêneos remonta a trabalhos clássicos de Poisson, Maxwell, Rayleigh, Voigt e Reuss [Bak89]. Historicamente, duas abordagens limitantes tornaram-se fundamentais:
@@ -39,7 +39,7 @@ Nesta formulação, as variáveis lentas descrevem a estrutura global do campo, 
 
 //=====================================================
 
-Para a aplicação do método dos elementos finitos, deve-se antes encontrar a forma fraca da @eq:OriginalPDE. Priomeiro multiplica-se ambos os lados da equação por uma função vetorial de teste $bold(v)$, com o mesmo formato que o campo de deslocamentos.
+Para a aplicação do método dos elementos finitos, deve-se antes encontrar a forma fraca da //@eq:OriginalPDE. Priomeiro multiplica-se ambos os lados da equação por uma função vetorial de teste $bold(v)$, com o mesmo formato que o campo de deslocamentos.
 
 $
   -(nabla dot sigma)^T bold(v) = bold(f)^T bold(v).
@@ -94,7 +94,7 @@ com $epsilon(bold(v))$ indicando a parte simétrica do gradiente do campo $bold(
 *Fonte*: #link("https://www.youtube.com/watch?v=Z-FnP2myvKw")[Vídeo: Elasticidade e Forma Fraca]
 
 #task[
-  - Chegar até as matrizes de rigidez. 
+  - Chegar até as matrizes de rigidez.
     - *Pegar no gemini*
 ]
 
@@ -116,11 +116,15 @@ $ bold(sigma) (bold(u)) = bold(cal(C)) bold(epsilon.alt) (bold(u)) = bold(cal(C)
 
 Substituindo as aproximações de tensão e deformação na integral do lado esquerdo da forma fraca, e utilizando a notação matricial para o produto interno duplo ($bold(sigma) : bold(epsilon.alt) = bold(epsilon.alt)^T bold(sigma)$), o trabalho virtual interno torna-se:
 
-$ integral_Omega bold(sigma)(bold(u)) : bold(epsilon.alt)(bold(v)) d Omega = integral_Omega (bold(B) bold(c))^T (bold(cal(C)) bold(B) bold(d)) d Omega $
+$
+  integral_Omega bold(sigma)(bold(u)) : bold(epsilon.alt)(bold(v)) d Omega = integral_Omega (bold(B) bold(c))^T (bold(cal(C)) bold(B) bold(d)) d Omega
+$
 
 Pelas propriedades de transposição matricial, $(bold(B) bold(c))^T = bold(c)^T bold(B)^T$. Como os vetores nodais $bold(c)$ e $bold(d)$ independem das coordenadas espaciais de integração, eles podem ser isolados fora da integral:
 
-$ integral_Omega bold(sigma)(bold(u)) : bold(epsilon.alt)(bold(v)) d Omega = bold(c)^T [ integral_Omega bold(B)^T bold(cal(C)) bold(B) d Omega ] bold(d) $
+$
+  integral_Omega bold(sigma)(bold(u)) : bold(epsilon.alt)(bold(v)) d Omega = bold(c)^T [ integral_Omega bold(B)^T bold(cal(C)) bold(B) d Omega ] bold(d)
+$
 
 O termo entre colchetes representa a contribuição puramente geométrica e constitutiva do domínio à resistência contra deformações. A este termo dá-se o nome de matriz de rigidez global do sistema, denotada por $bold(K)$:
 
@@ -128,7 +132,9 @@ $ bold(K) = integral_Omega bold(B)^T bold(cal(C)) bold(B) d Omega $
 
 De modo análogo, o lado direito da forma fraca é discretizado para formar o vetor de forças globais $bold(F)$, englobando as forças de corpo e as trações de contorno:
 
-$ integral_Omega bold(f)^T (bold(N) bold(c)) d Omega + integral_(partial Omega) bold(t)^T (bold(N) bold(c)) d S = bold(c)^T [ integral_Omega bold(N)^T bold(f) d Omega + integral_(partial Omega) bold(N)^T bold(t) d S ] $
+$
+  integral_Omega bold(f)^T (bold(N) bold(c)) d Omega + integral_(partial Omega) bold(t)^T (bold(N) bold(c)) d S = bold(c)^T [ integral_Omega bold(N)^T bold(f) d Omega + integral_(partial Omega) bold(N)^T bold(t) d S ]
+$
 $ L(bold(v)) = bold(c)^T bold(F) $
 
 Igualando o trabalho interno ao externo ($bold(c)^T bold(K) bold(d) = bold(c)^T bold(F)$) e considerando que o vetor virtual $bold(c)$ é arbitrário e não nulo, chega-se ao sistema de equações algébricas lineares fundamental do Método dos Elementos Finitos:

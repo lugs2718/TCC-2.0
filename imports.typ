@@ -1,10 +1,10 @@
 //#import "@preview/pinit:0.2.2": *
-#import "@preview/gentle-clues:1.3.1": *
-#import "@preview/drafting:0.2.2": margin-note, inline-note, set-margin-note-defaults, note-outline
-#import "@preview/fletcher:0.5.8" as fletcher: diagram, node, edge
+#import "@preview/gentle-clues:1.2.0": *
+#import "@preview/drafting:0.2.2": inline-note, margin-note, set-margin-note-defaults//,note-outline
+#import "@preview/fletcher:0.5.2" as fletcher: diagram, edge, node
 
-#import "@preview/codly:1.3.0": *
-#import "@preview/codly-languages:0.1.1": *
+#import "@preview/codly:0.2.0": *
+#import "@preview/codly-languages:0.1.0": *
 
 // Inicialização obrigatória do codly no documento
 #show: codly-init.with()
@@ -15,12 +15,14 @@
   languages: (
     py: (name: "Python", color: rgb("#2b5b84"), icon: "🐍"),
   ),
-  zebra-fill: luma(245),
-  stroke: 0.5pt + luma(200), // <-- Correção aqui!
+  //zebra-fill: luma(245),
+  fill: none, // <-- Adicione isso!
+  stroke-width: 0.5pt,
+  stroke-color: luma(200),
   radius: 2pt,
 )
 
- ```py
+```py
 # =======================================================
     # 1. PARÂMETROS GEOMÉTRICOS E FÍSICOS
     # =======================================================
@@ -72,13 +74,17 @@
 
 // https://xkcd.com/1195/
 #import fletcher.shapes: diamond
-#set text(font: "Comic Neue", weight: 600) // testing: omit
+// #set text(font: "Comic Neue", weight: 600) // testing: omit
 #diagram(
-	node-stroke: 1pt,
-	node((0,0), [Start], corner-radius: 2pt, extrude: (0, 3)),
-	edge("-|>"),
-	node((0,1), align(center)[
-		Hey, wait,\ this flowchart\ is a trap!
-	], shape: diamond),
-	edge("d,r,u,l", "-|>", [Yes], label-pos: 0.1)
+  node-stroke: 1pt,
+  node((0, 0), [Start], corner-radius: 2pt, extrude: (0, 3)),
+  edge("-|>"),
+  node(
+    (0, 1),
+    align(center)[
+      Hey, wait,\ this flowchart\ is a trap!
+    ],
+    shape: diamond,
+  ),
+  edge("d,r,u,l", "-|>", [Yes], label-pos: 0.1),
 )

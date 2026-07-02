@@ -7,7 +7,9 @@
 //==========================
 //Configurações do documento
 //==========================
-#set document(title: "Desenvolvimento das equações de elasticidade")
+#set document(
+  title: "Análise de um tubo cilíndrico multicamadas por meio da homogêneização assintótica numérica e método dos elementos finitos",
+)
 
 #set heading(numbering: "1.")
 #set text(size: 12pt)
@@ -30,7 +32,7 @@
   }
 }
 #outline(
-  title: "Sumário"
+  title: "Sumário",
 )
 
 #pagebreak()
@@ -40,30 +42,30 @@
 
 = Resumo
 
-  #include "pages/Summary.typ"
-  #note-outline()
+#include "pages/Summary.typ"
+//#note-outline()
 
 = Introdução
-  #include "pages/Introduction.typ"
+#include "pages/Introduction.typ"
 
 = Revisão bibliográfica
-  #include "pages/Revision.typ"
-  
+#include "pages/Revision.typ"
+
 = Materiais e métodos
 
-#margin-note[Incluir fluxograma do que foi feito no TCC.]
+//#margin-note[Incluir fluxograma do que foi feito no TCC.]
 
 #warning[
- Essa seção não está casando muito bem com a de baixo.
- - Nas 2 foram definidas matrizes de elasticidade, mas com parâmetros diferentes, uma com $lambda$ e $mu$ e na outra apenas com $C_(i j)$.
- - Preciso unificar essas definições.
+  Essa seção não está casando muito bem com a de baixo.
+  - Nas 2 foram definidas matrizes de elasticidade, mas com parâmetros diferentes, uma com $lambda$ e $mu$ e na outra apenas com $C_(i j)$.
+  - Preciso unificar essas definições.
 ]
- 
- #include "pages/materials&methods/Equilibrum.typ"
 
- #include "pages/materials&methods/Homogenization.typ"
+#include "pages/materials&methods/Equilibrum.typ"
 
- #include "pages/materials&methods/FEM.typ"
+#include "pages/materials&methods/Homogenization.typ"
+
+#include "pages/materials&methods/FEM.typ"
 
 = Resultados e discussões
 

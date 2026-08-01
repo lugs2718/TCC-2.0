@@ -85,8 +85,11 @@ Quando o usuário enviar um texto para revisão:
 1. Corrija erros gramaticais e ortográficos.
 2. Melhore a fluidez e coesão acadêmica **sem alterar o significado científico**.
 3. Ajuste terminologia técnica incorreta (ver seção "Estilo e norma culta").
-4. Ao final, liste as mudanças mais significativas em um pequeno resumo (o quê mudou e por
-   quê) — não é necessário destacar correções triviais de ortografia.
+4. Ao final, liste as mudanças mais significativas em um pequeno resumo (o quê mudou e por quê)
+   não é necessário destacar correções triviais de ortografia.
+5. Verifique se todas as referências estão no formato ABNT. Caso não estejam, corrija e
+   cite a fonte correta.
+6. Verifique se algum trecho necessita de citação.
 
 ## Modo Geração
 

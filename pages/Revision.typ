@@ -6,40 +6,124 @@
 
 // #pinit-point-from(1)[It is simple.]
 
+== Uso de vasos de pressão na engenharia
+Vasos de pressão são equipamentos amplamente utilizados em diversas aplicações industriais, como na geração de energia, processamento de petróleo e alimentos, armazenamento de fluidos, entre outros. Sua função é conter fluidos sob pressão elevada, garantindo a segurança e eficiência dos processos. [ref]
+
+#figure(
+  caption: [Valores de pressão operacionais e de ensaio em vasos de pressão e cilindros compósitos.],
+  table(
+    columns: (1.2fr, 2.2fr, 1.4fr, 1.6fr),
+    align: left + horizon,
+    stroke: 0.5pt + luma(150),
+    fill: (x, y) => if y == 0 { rgb("e6edf5") } else if calc.even(y) { rgb("f8fafc") } else { none },
+
+    // Cabeçalho
+    [*Pressão*], [*Aplicação / Contexto*], [*Ramo da Engenharia*], [*Fonte*],
+
+    // Linha 1
+    [*0,101 MPa* \ _(1,01 bar)_],
+    [Limite inferior normativo para enquadramento de recipientes como vasos de pressão.],
+    [Engenharia de Segurança e Processos],
+    [ASME Sec. VIII Div. 1 / NR-13],
+
+    // Linha 2
+    [*0,5 a 8,0 MPa* \ _(5 a 80 bar)_],
+    [Faixa de operação industrial convencional (armazenamento de ar comprimido, água quente, propano e H₂ industrial).],
+    [Engenharia de Processos / Química],
+    [NR-13],
+
+    // Linha 3
+    [*1,83 a 22,19 MPa* \ _(18,3 a 221,9 bar)_],
+    [Ensaios de expansão radial e pressão interna em cilindros compósitos de CFRP com extremidades abertas.],
+    [Mecânica dos Materiais / Compósitos],
+    [Madrid et al. (2024) /*@Madrid2024*/ / de Menezes et al. (2025) /*@Menezes2025*/],
+
+    // Linha 4
+    [*20,0 a 68,9 MPa* \ _(200 a 689 bar)_],
+    [Escopo de projeto para vasos de pressão metálicos e industriais regidos pelo código ASME (Divisões 1 e 2).],
+    [Engenharia Mecânica / Caldeiraria],
+    [ASME BPVC Sec. VIII Div. 1 e 2],
+
+    // Linha 5
+    [*25,0 a 39,5 MPa* \ _(250 a 395 bar)_],
+    [Ensaios de cilindros compósitos sob carregamentos combinados de pressão interna e força axial.],
+    [Engenharia Aeroespacial e Estrutural],
+    [Gargiulo et al. (2021) /*@Gargiulo2021*/ / de Menezes et al. (2025) /*@Menezes2025*/],
+
+    // Linha 6
+    [*35,0 MPa* \ _(350 bar)_],
+    [Pressão nominal de projeto para reservatórios Tipo III (liner de alumínio + CFRP) em veículos a H₂.],
+    [Engenharia Automotiva / Aeroespacial],
+    [@Zhang2022],
+
+    // Linha 7
+    [*70,0 MPa* \ _(700 bar)_],
+    [Pressão de serviço de alta densidade para tanques Tipo IV de armazenamento de hidrogênio comprimido.],
+    [Engenharia de Energia / Automotiva],
+    [Leh et al. (2015) /*@Leh2015*/ / @Zhang2022],
+
+    // Linha 8
+    [*119,0 MPa* \ _(1190 bar)_],
+    [Pressão limite de estouro/ruptura (_burst pressure_) para validação estrutural de vasos Tipo III de CFRP.],
+    [Mecânica dos Sólidos / Segurança Estrutural],
+    [@Zhang2022],
+  ),
+) <tab-pressao-vasos>
+
+
 
 == Meios com Estrutura Periódica e Células Recorrentes
-Um meio com estrutura periódica é definido matematicamente como aquele composto por elementos ou células unitárias que se repetem ao longo de sua estrutura [Bak89]. Na engenharia de materiais, essa repetição geométrica é a característica definidora de diversos compósitos, como os reforçados por fibras unidirecionais ou sistemas granulados tridimensionais [Bak89].
+Um meio com estrutura periódica é definido matematicamente como aquele composto por elementos ou células unitárias que se repetem ao longo de sua estrutura @HomogenisationReportBakhvalov #margin-note[Verificar se essa citação está correta]. Na engenharia de materiais, essa repetição geométrica é a característica definidora de diversos compósitos, como os reforçados por fibras unidirecionais ou sistemas granulados tridimensionais @HomogenisationReportBakhvalov #margin-note[Verificar se essa citação está correta].
 
 #image("/images/composito_periodico_bakhvalov.png")
 
-A análise desses meios fundamenta-se na eystência de dois comprimentos característicos: a dimensão da célula periódica ($l$) e a dimensão global do espécime ($L$). A premissa básica da homogeneização eyge que as dimensões da microestrutura sejam muito menores que as da macroestrutura, estabelecendo o parâmetro adimensional pequeno (como já dito na Introdução):
+A análise desses meios fundamenta-se na existência de dois comprimentos característicos: a dimensão da célula periódica ($l$) e a dimensão global do espécime ($L$). A premissa básica da homogeneização eyge que as dimensões da microestrutura sejam muito menores que as da macroestrutura, estabelecendo o parâmetro adimensional pequeno (como já dito na Introdução):
 
 $ epsilon = l / L << 1 $
 
-De acordo com [Bak89], essa separação de escalas permite que as propriedades físicas, que oscilam rapidamente na microescala, sejam investigadas assintoticamente quando $epsilon -> 0$.
+De acordo com @HomogenisationReportBakhvalov #margin-note[Verificar se essa citação está correta], essa separação de escalas permite que as propriedades físicas, que oscilam rapidamente na microescala, sejam investigadas assintoticamente quando $epsilon -> 0$.
+
+== Mecânica dos sólidos: Equações governantes da elasticidade linear
+
+#let sigma_bx = $bold(sigma) (bold(x))$
+#let sigma_by = $bold(sigma) (bold(y))$
+
+$
+  cases(
+    mat(
+      delim: #none,
+      display(-nabla dot #sigma_bx + bold(b) = 0)\,;
+      display(bold(epsilon.alt) = 1/2 [nabla bold(u) (bold(x)) + nabla bold(u) (bold(x))^T])\,;
+    ) quad bold(x) in Omega,
+    #sigma_bx dot bold(n) = T\, quad bold(x) in partial Omega.
+  )
+$ <eq:OriginalPDE>
+
+Onde $bold(b)$ é o campo de forças de corpo, $bold(u)$ é o vetor de deslocamentos, $bold(n)$ é a normal unitária externa à fronteira $partial Omega$, e $T$ é o tensor de tensões aplicado na fronteira.
 
 == Evolução Histórica da Homogeneização
-O problema de determinar propriedades efetivas para meios heterogêneos remonta a trabalhos clássicos de Poisson, Maxwell, Rayleigh, Voigt e Reuss [Bak89]. Historicamente, duas abordagens limitantes tornaram-se fundamentais:
-- *Abordagem de Voigt:* Sugere que as constantes elásticas sejam calculadas pela média dos valores sobre o volume, fornecendo o limite superior para os parâmetros efetivos [Bak89].
-- *Abordagem de Reuss:* Utiliza a média dos componentes do tensor inverso (compliância), estabelecendo o limite inferior [Bak89].
+O problema de determinar propriedades efetivas para meios heterogêneos remonta a trabalhos clássicos de Poisson, Maxwell, Rayleigh, Voigt e Reuss @HomogenisationReportBakhvalov #margin-note[Verificar se essa citação está correta]. Historicamente, duas abordagens limitantes tornaram-se fundamentais:
+- *Abordagem de Voigt:* Sugere que as constantes elásticas sejam calculadas pela média dos valores sobre o volume, fornecendo o limite superior para os parâmetros efetivos @HomogenisationReportBakhvalov #margin-note[Verificar se essa citação está correta].
 
-A discrepância entre esses limites, conhecida como "Garfo de Hill" (_Hill's fork_), pode ser significativamente larga em compósitos com fases de propriedades muito distintas, o que justifica a aplicação de métodos mais rigorosos, como o MHA, para prever as características do material de forma assintoticamente exata [Bak89].
+- *Abordagem de Reuss:* Utiliza a média dos componentes do tensor inverso (compliância), estabelecendo o limite inferior @HomogenisationReportBakhvalov #margin-note[Verificar se essa citação está correta].
+
+A discrepância entre esses limites, conhecida como "Garfo de Hill" (_Hill's fork_), pode ser significativamente larga em compósitos com fases de propriedades muito distintas, o que justifica a aplicação de métodos mais rigorosos, como o MHA, para prever as características do material de forma assintoticamente exata @HomogenisationReportBakhvalov #margin-note[Verificar se essa citação está correta].
 
 == Fundamentos do Método de Homogeneização Assintótica (MHA)
-O MHA trata processos em meios periódicos descritos por equações diferenciais parciais com coeficientes rapidamente oscilantes [Bak89]. O método busca soluções na forma de séries de potências de $epsilon$, onde os coeficientes dependem tanto de variáveis lentas ou macroscópicas ($x$) quanto de variáveis rápidas ou microscópicas ($y = x/epsilon$):
+O MHA trata processos em meios periódicos descritos por equações diferenciais parciais com coeficientes rapidamente oscilantes @HomogenisationReportBakhvalov. O método busca soluções na forma de séries de potências de $epsilon$, onde os coeficientes dependem tanto de variáveis lentas ou macroscópicas ($x$) quanto de variáveis rápidas ou microscópicas ($y = x/epsilon$):
 
 $ u^(infinity) (x, epsilon) = sum_(i=0)^(infinity) epsilon^i u_i (x, y) $
 
-Nesta formulação, as variáveis lentas descrevem a estrutura global do campo, enquanto as variáveis rápidas capturam a estrutura local [Bak89]. A substituição desta série nas equações governantes permite a determinação dos chamados "problemas locais" na célula unitária, cuja solução é essencial para o cálculo dos coeficientes efetivos do material homogêneo equivalente [Bak89].
+Nesta formulação, as variáveis lentas descrevem a estrutura global do campo, enquanto as variáveis rápidas capturam a estrutura local @HomogenisationReportBakhvalov #margin-note[Verificar se essa citação está correta]. A substituição desta série nas equações governantes permite a determinação dos chamados "problemas locais" na célula unitária, cuja solução é essencial para o cálculo dos coeficientes efetivos do material homogêneo equivalente [Bak89].
 
 
 
 
-=== Método dos elementos finitos: Formulação fraca
+== Método dos elementos finitos: Formulação fraca
 
 //=====================================================
 
-Para a aplicação do método dos elementos finitos, deve-se antes encontrar a forma fraca da //@eq:OriginalPDE. Priomeiro multiplica-se ambos os lados da equação por uma função vetorial de teste $bold(v)$, com o mesmo formato que o campo de deslocamentos.
+Para a aplicação do método dos elementos finitos, deve-se antes encontrar a forma fraca da @eq:OriginalPDE. Priomeiro multiplica-se ambos os lados da equação por uma função vetorial de teste $bold(v)$, com o mesmo formato que o campo de deslocamentos. Note que a função teste deve satisfazer as condições de contorno de deslocamento, ou seja, nula em partes do domínio onde o deslocamento é nulo.
 
 $
   -(nabla dot sigma)^T bold(v) = bold(f)^T bold(v).
@@ -67,13 +151,13 @@ $
 Pelo teorema da divergência de Gauss, é possível reduzir a ordem do termo $integral_Omega nabla dot (sigma bold(v)) d Omega$,
 
 $
-  integral_Omega nabla dot (sigma bold(v)) d Omega = integral_(partial Omega) (sigma bold(v))^T bold(n) d S
+  integral_Omega nabla dot (sigma bold(v)) d Omega = integral_(partial Omega) (sigma bold(v))^T bold(n) d S.
 $
 
 Considerando que o tensor $sigma$ é simétrico, o produto $(sigma bold(v))^T bold(n)$ pode ser desenvolvido da seguinte forma,
 
 $
-  (sigma bold(v))^T bold(n) = sigma^T bold(v)^T bold(n) = bold(v)^T sigma bold(n) = bold(v)^T bold(t)
+  (sigma bold(v))^T bold(n) = sigma^T bold(v)^T bold(n) = bold(v)^T sigma bold(n) = bold(v)^T bold(t),
 $
 
 onde $bold(t)$ é o vetor de tração, produto da aplicação de uma tensão a uma determinada área. Outro ponto a ser considerado é a contração dupla $sigma : nabla bold(v)$, onde $nabla bold(v)$ pode ser separado em sua parte simétrica e anti-simétrica, ou seja,
@@ -87,7 +171,7 @@ Mas, sabe-se da álgebra linear #margin-note[Citação aqui] que a contração d
 
 $
   integral_Omega sigma(bold(u)) : epsilon(bold(v)) d Omega = integral_Omega bold(f)^T bold(v) d Omega + integral_(partial Omega) bold(t)^T bold(v) d S,
-$
+$ <eq:WeakFormEquation>
 
 com $epsilon(bold(v))$ indicando a parte simétrica do gradiente do campo $bold(v)$.
 
@@ -98,48 +182,60 @@ com $epsilon(bold(v))$ indicando a parte simétrica do gradiente do campo $bold(
     - *Pegar no gemini*
 ]
 
-Para transpor o problema da forma fraca contínua para um sistema algébrico discreto solúvel computacionalmente, aplica-se o Método de Galerkin. O domínio $Omega$ é discretizado em elementos finitos, e os campos contínuos de deslocamento $bold(u)$ e da função teste (ou variação virtual) $bold(v)$ são aproximados por uma combinação linear de funções de forma $bold(N)$ e seus respectivos valores nodais:
+Para transpor o problema da forma fraca contínua para um sistema algébrico discreto solúvel computacionalmente, aplica-se o Método de Galerkin. O domínio $Omega$ é discretizado em elementos finitos, cujos domínios são $Omega_e$. Os campos contínuos de deslocamento $bold(u)$ e da função teste (ou variação virtual) $bold(v)$ são aproximados por uma combinação linear de funções de forma $bold(N)$ e seus respectivos valores nodais:
 
-$ bold(u) (bold(x)) approx bold(N)(bold(x)) bold(d) $
-$ bold(v) (bold(x)) approx bold(N)(bold(x)) bold(c) $
+$ bold(u) (bold(x)) approx bold(N)(bold(x)) bold(d), $
+$ bold(v) (bold(x)) approx bold(N)(bold(x)) bold(c). $
 
 onde $bold(d)$ é o vetor de deslocamentos nodais incógnitos e $bold(c)$ é um vetor de deslocamentos virtuais nodais arbitrário.
 
 Aplicando o operador diferencial (gradiente simétrico) às funções de forma, obtém-se a matriz de deformação $bold(B)$, que relaciona as deformações aos deslocamentos nodais:
 
-$ bold(epsilon.alt) (bold(u)) = bold(B)(bold(x)) bold(d) $
-$ bold(epsilon.alt) (bold(v)) = bold(B)(bold(x)) bold(c) $
+$ bold(epsilon.alt) (bold(u)) = bold(B)(bold(x)) bold(d)\, $
+$ bold(epsilon.alt) (bold(v)) = bold(B)(bold(x)) bold(c). $
 
 Utilizando a Lei de Hooke generalizada, o tensor de tensões é expresso em função dos deslocamentos nodais pela matriz de elasticidade constitutiva $bold(cal(C))$:
 
-$ bold(sigma) (bold(u)) = bold(cal(C)) bold(epsilon.alt) (bold(u)) = bold(cal(C)) bold(B) bold(d) $
+$ bold(sigma) (bold(u)) = bold(cal(C)) bold(epsilon.alt) (bold(u)) = bold(cal(C)) bold(B) bold(d). $
 
-Substituindo as aproximações de tensão e deformação na integral do lado esquerdo da forma fraca, e utilizando a notação matricial para o produto interno duplo ($bold(sigma) : bold(epsilon.alt) = bold(epsilon.alt)^T bold(sigma)$), o trabalho virtual interno torna-se:
+Substituindo as aproximações de tensão e deformação na integral do lado esquerdo da forma fraca, e utilizando a notação matricial para o produto interno duplo ($bold(sigma) : bold(epsilon.alt) = bold(epsilon.alt)^T bold(sigma)$), o trabalho virtual interno por elemento finito é dado por:
 
 $
-  integral_Omega bold(sigma)(bold(u)) : bold(epsilon.alt)(bold(v)) d Omega = integral_Omega (bold(B) bold(c))^T (bold(cal(C)) bold(B) bold(d)) d Omega
+  integral_Omega_e bold(sigma)(bold(u)) : bold(epsilon.alt)(bold(v)) d Omega_e = integral_Omega_e (bold(B) bold(c))^T (bold(cal(C)) bold(B) bold(d)) d Omega_e.
 $
 
 Pelas propriedades de transposição matricial, $(bold(B) bold(c))^T = bold(c)^T bold(B)^T$. Como os vetores nodais $bold(c)$ e $bold(d)$ independem das coordenadas espaciais de integração, eles podem ser isolados fora da integral:
 
 $
-  integral_Omega bold(sigma)(bold(u)) : bold(epsilon.alt)(bold(v)) d Omega = bold(c)^T [ integral_Omega bold(B)^T bold(cal(C)) bold(B) d Omega ] bold(d)
+  integral_Omega_e bold(sigma)(bold(u)) : bold(epsilon.alt)(bold(v)) d Omega_e = bold(c)^T [ integral_Omega_e bold(B)^T bold(cal(C)) bold(B) d Omega_e ] bold(d).
 $
 
-O termo entre colchetes representa a contribuição puramente geométrica e constitutiva do domínio à resistência contra deformações. A este termo dá-se o nome de matriz de rigidez global do sistema, denotada por $bold(K)$:
+O termo entre colchetes representa a contribuição puramente geométrica e constitutiva do domínio à resistência contra deformações. A este termo dá-se o nome de matriz de rigidez do elemento finito, denotada por $bold(K_e)$:
 
-$ bold(K) = integral_Omega bold(B)^T bold(cal(C)) bold(B) d Omega $
+$ bold(K_e) = integral_Omega_e bold(B)^T bold(cal(C)) bold(B) d Omega_e. $
 
-De modo análogo, o lado direito da forma fraca é discretizado para formar o vetor de forças globais $bold(F)$, englobando as forças de corpo e as trações de contorno:
+De modo análogo, o lado direito da forma fraca é discretizado para formar o vetor de forças globais $bold(F_e)$, englobando as forças de corpo e as trações de contorno:
 
 $
-  integral_Omega bold(f)^T (bold(N) bold(c)) d Omega + integral_(partial Omega) bold(t)^T (bold(N) bold(c)) d S = bold(c)^T [ integral_Omega bold(N)^T bold(f) d Omega + integral_(partial Omega) bold(N)^T bold(t) d S ]
+  integral_Omega_e bold(f)^T (bold(N) bold(c)) d Omega_e + integral_(partial Omega_e) bold(t)^T (bold(N) bold(c)) d S_e = bold(c)^T [ integral_Omega_e bold(N)^T bold(f) d Omega_e + integral_(partial Omega_e) bold(N)^T bold(t) d S_e ],
 $
-$ L(bold(v)) = bold(c)^T bold(F) $
+$ L(bold(v)) = bold(c)^T bold(F_e). $
 
-Igualando o trabalho interno ao externo ($bold(c)^T bold(K) bold(d) = bold(c)^T bold(F)$) e considerando que o vetor virtual $bold(c)$ é arbitrário e não nulo, chega-se ao sistema de equações algébricas lineares fundamental do Método dos Elementos Finitos:
+Igualando o trabalho interno ao externo ($bold(c)^T bold(K_e) bold(d) = bold(c)^T bold(F_e)$) e considerando que o vetor virtual $bold(c)$ é arbitrário e não nulo, chega-se ao sistema de equações algébricas lineares fundamental do Método dos Elementos Finitos:
 
-$ bold(K) bold(d) = bold(F) $
+$ bold(K_e) bold(d) = bold(F_e). $
+
+== "Assembly": Obtenção da matriz de rigidez global
+
+O processo de "assembly", ou montagem, consiste na construção da matriz de rigidez global $bold(K)$ e do vetor de forças globais $bold(F)$ através da superposição das contribuições de cada elemento finito.
+
+$ bold(K) bold(d) = bold(F). $
+
+== Condições de contorno
+
+#idea[
+  Falar sobre separação da matriz de rigidez em deslocamentos ativos e restritos?
+]
 
 //=====================================================
 

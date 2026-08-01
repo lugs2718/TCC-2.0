@@ -1,9 +1,6 @@
 #import "../imports.typ": *
 
-
 == Motivação e Contexto
-
-
 
 Os materiais compósitos são definidos pela combinação de dois ou mais
 constituintes macroscópicos distintos, concebida com o objetivo de obter
@@ -16,12 +13,12 @@ pois emerge precisamente da interação entre as fases que o compõem
 uma capacidade singular de ajuste de propriedades  (rigidez, resistência
 específica, tenacidade e condutividade térmica, entre outras) tornando-os
 indispensáveis em setores que impõem restrições simultâneas e conflitantes
-de desempenho e massa. 
+de desempenho e massa.
 
 Na engenharia moderna, a utilização dessas estruturas é fundamental em
 domínios que exigem alta resistência específica aliada à redução de peso,
 #margin-note[Não encontrei essa parte no artigo "LEITE, 2025". Vou tentar buscar outro.]
-como as indústrias aeroespacial e naval. /*e de exploração de hidrocarbonetos (LEITE, 2025).*/ 
+como as indústrias aeroespacial e naval. /*e de exploração de hidrocarbonetos (LEITE, 2025).*/
 /*Neste último segmento, duas configurações estruturais concentram especial relevância tecnológica: os vasos de pressão de múltiplas camadas reforçados por fibra (_Composite Overwrapped Pressure Vessels_, COPVs) e os risers flexíveis utilizados em sistemas de produção de petróleo e gás em águas profundas (LEITE, 2025; PEREIRA, 2024).*/ Aplicações críticas incluem o uso de painéis laminados em aeronaves comerciais (como no caso do Boeing 787 Dreamliner, cuja estrutura é composta majoritariamente por compósitos) #margin-note[Verificar essa citação também.] e vasos de pressão que operam sob condições severas de carregamento (LEITZKE, 2025).
 Ambas as estruturas operam sob condições severas e combinadas de carregamento  (pressão interna elevada /*gradientes térmicos*/ e solicitações cíclicas)  o que impõe ao engenheiro a necessidade de modelos matemáticos capazes de reproduzir com fidelidade a resposta mecânica local e global do componente.
 
@@ -62,10 +59,12 @@ PANASENKO, 1989; PARTON; KUDRYAVTSEV, 1993). Para tanto, o MHA
 emprega uma _Solução Assintótica Formal_ (SAF) em série de potências do
 parâmetro $epsilon$ (LEITZKE, 2017), a saber:
 
-$ bold(u)^((infinity))(bold(x), epsilon) =
+$
+  bold(u)^((infinity))(bold(x), epsilon) =
   bold(u)^0(bold(x)) +
   epsilon bold(u)^1(bold(x), bold(y)) +
-  epsilon^2 bold(u)^2(bold(x), bold(y)) + dots.h , $
+  epsilon^2 bold(u)^2(bold(x), bold(y)) + dots.h ,
+$
 
 onde $bold(x)$ denota as coordenadas macroscópicas e
 $bold(y) = bold(x) slash epsilon$ as coordenadas microscópicas  estas

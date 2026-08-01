@@ -1,9 +1,9 @@
 //#import "@preview/pinit:0.2.2": *
 #import "@preview/gentle-clues:1.2.0": *
 #import "@preview/drafting:0.2.2": inline-note, margin-note, set-margin-note-defaults//,note-outline
-#import "@preview/fletcher:0.5.2" as fletcher: diagram, edge, node
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 
-#import "@preview/codly:0.2.0": *
+#import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.0": *
 
 // Inicialização obrigatória do codly no documento
@@ -17,8 +17,7 @@
   ),
   //zebra-fill: luma(245),
   fill: none, // <-- Adicione isso!
-  stroke-width: 0.5pt,
-  stroke-color: luma(200),
+  stroke: 0.5pt + luma(200),
   radius: 2pt,
 )
 

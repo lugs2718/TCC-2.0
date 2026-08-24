@@ -171,18 +171,18 @@ def comparar_mha_mef(
 A microestrutura heterogênea do cilindro foi modelada definindo-se propriedades mecânicas alternadas para seções concêntricas na direção radial. Computacionalmente, isso foi implementado no FEniCS por meio de uma classe que herda de `UserExpression`, nomeada `PeriodicProperty` @bleyer2018numericaltours. Essa classe recebe como parâmetros os valores das propriedades de cada material (`val1` e `val2`, correspondentes ao módulo de elasticidade $E$ e ao coeficiente de Poisson $nu$) e um vetor de coordenadas radiais que definem as interfaces entre as camadas. Durante a montagem das matrizes do MEF, a função de avaliação da classe verifica a posição espacial radial (coordenada $r$) do ponto de integração e atribui as propriedades do material correspondente, gerando assim a alternância periódica requerida pelo modelo.
 
 ```py
-  class PeriodicProperty(UserExpression):
-          def __init__(self, val1, val2, interfaces, **kwargs):
-              super().__init__(**kwargs)
-              self.val1, self.val2 = val1, val2
-              self.interfaces = interfaces
-          def eval(self, values, x):
-              idx = 0
-              for r_int in self.interfaces:
-                  if x[0] <= r_int: break
-                  idx += 1
-              values[0] = self.val1 if idx % 2 == 0 else self.val2
-          def value_shape(self): return ()
+class PeriodicProperty(UserExpression):
+        def __init__(self, val1, val2, interfaces, **kwargs):
+            super().__init__(**kwargs)
+            self.val1, self.val2 = val1, val2
+            self.interfaces = interfaces
+        def eval(self, values, x):
+            idx = 0
+            for r_int in self.interfaces:
+                if x[0] <= r_int: break
+                idx += 1
+            values[0] = self.val1 if idx % 2 == 0 else self.val2
+        def value_shape(self): return ()
 ```
 
 // Explicar que foi necessário alterar a definição do número de camadas para garantir que o número de elementos por camada seja um número inteiro e então ser possível modificar a fração volumétrica livremente sem perder a precisão da malha. Agora, o número de elementos por camada é calculado a partir de variáveis auxiliares N_celulas e resolucao_malha.
@@ -203,18 +203,53 @@ Dada a natureza axissimétrica do problema, o domínio computacional foi definid
 ```py
 # TODO: Inserir código — Cálculo do número de elementos por camada
 # Malha adaptativa: número de elementos por célula respeita a proporção de cada material
-    nel_1 = int(V1 * resolucao_malha)
-    nel_2 = int(V2 * resolucao_malha)
-    nel_celula = nel_1 + nel_2
-    n_elements_r = N_celulas * nel_celula
+nel_1 = int(V1 * resolucao_malha)
+nel_2 = int(V2 * resolucao_malha)
+nel_celula = nel_1 + nel_2
+n_elements_r = N_celulas * nel_celula
 
-    mesh = RectangleMesh(Point(R_int, 0.0), Point(R_ext, H), int(n_elements_r), int(n_elem_z))
+mesh = RectangleMesh(Point(R_int, 0.0), Point(R_ext, H), int(n_elements_r), int(n_elem_z))
 
 ```
+
+
+#task[
+
+  - Objetivo M.6: Mostrar como foram inclusos os coeficientes efetivos no código
+]
+
+Para o cálculo dos coeficientes efetivos, emprega-se a função `get_C_matrix(E, nu)`, que retorna os coeficientes de rigidez $C_11$, $C_12$ e $G$ para um material isotrópico. Assim, os coeficientes efetivos são calculados conforme as equações @eq:Chat11_Calculation, @eq:Chat12_Calculation e @eq:Chatg_Calculation.
+
+```py
+# =======================================================
+# 2. CÁLCULO DOS COEFICIENTES HOMOGENEIZADOS (MHA)
+# Baseado na Teoria de Laminação (Homogeneização Assintótica 1D)
+# =======================================================
+notificar("Calculando coeficientes homogeneizados...")
+
+def get_C_matrix(E, nu):
+    # Retorna C11 e C12 para material isotrópico
+    C11 = E * (1 - nu) / ((1 + nu) * (1 - 2 * nu))
+    C12 = E * nu / ((1 + nu) * (1 - 2 * nu))
+    G = E / (2 * (1 + nu))
+    return C11, C12, G
+
+C11_1, C12_1, G_1 = get_C_matrix(E1, nu1)
+C11_2, C12_2, G_2 = get_C_matrix(E2, nu2)
+
+# Coeficientes Efetivos (Média Harmônica na direção radial, Aritmética nas outras)
+C11_eff = 1.0 / (V1/C11_1 + V2/C11_2)
+C12_eff = C11_eff * (V1 * C12_1/C11_1 + V2 * C12_2/C11_2)
+C22_eff = (V1*C11_1 + V2*C11_2) - (V1*(C12_1**2)/C11_1 + V2*(C12_2**2)/C11_2) + (C12_eff**2)/C11_eff
+G_eff = 1.0 / (V1/G_1 + V2/G_2)
+
+```
+
 
 #task[
   - Objetivo M.5: Forma fraca do problema de elasticidade: Mostrar a forma final usada para a equação de equilíbrio e como ela foi implementada no código.
 ]
+
 
 === Formulação variacional do problema axissimétrico
 
@@ -247,59 +282,84 @@ $
 
 onde $bold(n)$ é o vetor normal unitário externo à superfície interna do cilindro.
 
-Na implementação computacional via FEniCS, os campos de deslocamento e função teste são definidos como funções vetoriais sobre um espaço de elementos finitos de Lagrange de grau 2. O tensor de deformações $bold(epsilon.alt)(bold(u))$ é obtido pelo gradiente simétrico do campo de deslocamentos, enquanto o tensor de tensões $bold(sigma)(bold(u))$ resulta da aplicação da lei constitutiva isotrópica (@eq:HookesLawCoeffs).
-Para a comparação entre os 2 métodos, foram definidos 2 tensores de tensão separados, o tensor de tensões de equilíbrio `sigma_mef` e o tensor de tensões homogêneo equivalente `sigma_mha`.
+Na implementação computacional via FEniCS, os campos de deslocamento e função teste são definidos como funções vetoriais sobre um espaço de elementos finitos de Lagrange de grau 2. Para cada modo de solição foi criado um problema variacional sepadado, cada um com seu próprio campo de deslocamentos `u_mha` para a homogenenização e `u_mef` para caso de elementos finitos. O tensor de deformações $bold(epsilon.alt)(bold(u))$ é obtido pelo gradiente simétrico do campo de deslocamentos, enquanto o tensor de tensões $bold(sigma)(bold(u))$ resulta da aplicação da lei constitutiva isotrópica (@eq:HookesLawCoeffs). Para as deformações, utiliza-se o operador de gradiente simétrico em coodenadas cilíndricas
 
 ```py
 def eps(u):
     return sym(as_tensor([[u[0].dx(0), 0, u[0].dx(1)], [0, u[0]/r, 0], [u[1].dx(0), 0, u[1].dx(1)]]))
+```
 
+E para as tensões, no caso do MEF:
+
+```py
 def sigma_mef(u):
     return lmbda_func * tr(eps(u)) * Identity(3) + 2.0 * mu_func * eps(u)
+```
+
+E para o caso do MHA:
+
+```py
+def sigma_mha(u):
+        # Tensor de tensão para o material homogeneizado transversalmente isotrópico
+        err = u[0].dx(0)
+        ett = u[0]/r
+        ezz = u[1].dx(1)
+        erz = 0.5 * (u[0].dx(1) + u[1].dx(0))
+
+        # Leis constitutivas homogeneizadas
+        srr = C11_eff*err + C12_eff*ett + C12_eff*ezz
+        stt = C12_eff*err + C22_eff*ett + C12_eff*ezz
+        szz = C12_eff*err + C12_eff*ett + C22_eff*ezz
+        srz = 2.0 * G_eff * erz
+
+        return as_tensor([[srr, 0, srz], [0, stt, 0], [srz, 0, szz]])
 
 ```
 
-As formas bilinear e linear são então declaradas utilizando as primitivas da biblioteca: o operador `inner` para a contração dupla, `sym(grad(u))` para $bold(epsilon.alt)$, e a medida de integração de contorno `ds` com marcador de fronteira para a aplicação da pressão. O fator geométrico $r$ (coordenada radial do ponto de integração) é incorporado explicitamente como multiplicador em ambas as formas, garantindo a correta representação do volume axissimétrico conforme a @eq:BilinearAxisym.
+As formas bilinear e linear #margin-note[Definir na revisão bibliográfica] são então declaradas utilizando as primitivas da biblioteca: o operador `inner` para a contração dupla e a medida de integração de contorno `ds` com marcador de fronteira para a aplicação da pressão. O fator geométrico $r$ (coordenada radial do ponto de integração) é incorporado explicitamente como multiplicador em ambas as formas, garantindo a correta representação do volume axissimétrico conforme a @eq:BilinearAxisym.
 
-// ── Placeholder M.5b: Lei constitutiva (função sigma) ──
 ```py
-# TODO: Inserir código — Definição da função sigma(u)
-# Ex: def sigma(u):
-#         eps = sym(grad(u))
-#         return C11 * eps + C12 * tr(eps) * Identity(dim)
+r = x[0]
+a_mef = inner(sigma_mef(u), eps(v)) * r * dx
+a_mha = inner(sigma_mha(u), eps(v)) * r * dx
 ```
 
-// ── Placeholder M.5c: Forma bilinear a(u, v) ──
-```py
-# TODO: Inserir código — Forma bilinear com fator r
-# Ex: r = Expression('x[0]', degree=1)
-     a = inner(sigma(u), sym(grad(v))) * r * dx
-```
+No que diz respeito ao carregamento, foi imposta uma condição de contorno de Neumann  na fronteira interna do domínio ($Gamma_"int"$), representando a pressão interna sob a qual vasos de pressão geralmente operam.
 
-// ── Placeholder M.5d: Funcional linear L(v) ──
 ```py
-# TODO: Inserir código — Funcional linear (pressão interna)
-# Ex: L = p * v[0] * r * ds(marker_interno)
+T = -Constant(P_int) * FacetNormal(mesh)
+L = inner(T, v) * r * ds_custom(1)
 ```
 
 #task[
   - Objetivo M.3: Condições de Contorno e Carregamento: Formalizar em texto que a pressão interna de $10 "MPa"$ foi aplicada no contorno $Gamma_("int")$ e que as bordas superior e inferior foram restringidas para simular o estado plano de deformação.
 ]
 
-No que diz respeito ao carregamento, foi imposta uma condição de contorno de Neumann  na fronteira interna do domínio ($Gamma_"int"$), representando a pressão interna sob a qual vasos de pressão geralmente operam. #margin-note[Citação aqui] O valor da pressão foi definido como 10 MPa, distribuído uniformemente ao longo da superfície interna do cilindro. Ademais, aplicaram-se condições de contorno de Dirichlet essenciais nas faces superior e inferior do domínio axissimétrico, restringindo os deslocamentos axiais (em $z$) nessas fronteiras, de forma a garantir as premissas de um estado plano de deformação e assegurar o comportamento puramente bidimensional do modelo. #margin-note[Citação aqui]
+#margin-note[Citação aqui] O valor da pressão foi definido como #P_int MPa, distribuído uniformemente ao longo da superfície interna do cilindro. Ademais, aplicaram-se condições de contorno de Dirichlet essenciais nas faces superior e inferior do domínio axissimétrico, restringindo os deslocamentos axiais (em $z$) nessas fronteiras, de forma a garantir as premissas de um estado plano de deformação e assegurar o comportamento puramente bidimensional do modelo. #margin-note[Citação aqui]
 
-// ── Placeholder M.3a: Condição de Neumann (pressão interna) ──
 ```py
-# TODO: Inserir código — Aplicação da pressão interna no contorno
-# Ex: p = Constant(10e6)  # 10 MPa
-#     # Marcação da fronteira interna (r = R_int)
+# Condições de Contorno (Travando Z para simular Estado Plano 1D)
+bcs = [
+    DirichletBC(V_space.sub(1), Constant(0.0), boundaries, 2), # Trava base
+    DirichletBC(V_space.sub(1), Constant(0.0), boundaries, 3)  # Trava topo
+]
 ```
 
-// ── Placeholder M.3b: Condições de Dirichlet (restrição axial) ──
+Com tudo isso em mãos, define-se o problema homogêneo assintótico com:
+
 ```py
-# TODO: Inserir código — Restrição dos deslocamentos axiais
-# Ex: bc_top = DirichletBC(V.sub(1), Constant(0.0), boundary_top)
-#     bc_bot = DirichletBC(V.sub(1), Constant(0.0), boundary_bot)
-#     bcs = [bc_top, bc_bot]
+a_mha = inner(sigma_mha(u), eps(v)) * r * dx
+u_mha = Function(V_space)
+solve(a_mha == L, u_mha, bcs)
 ```
+
+Assim como o problema heterogêneo com:
+
+```py
+a_mef = inner(sigma_mef(u), eps(v)) * r * dx
+u_mef = Function(V_space)
+solve(a_mef == L, u_mef, bcs)
+```
+
+
 

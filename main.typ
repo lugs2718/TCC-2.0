@@ -63,31 +63,46 @@
       node-fill: rgb("#f5f9fd"),
       edge-stroke: 1.2pt + rgb("#666666"),
       node-corner-radius: 5pt,
-      
-      node((0, 0), [*1. Definição do Problema* \ Vaso de pressão multicamadas], width: 4.5cm),
-      
-      node((0, 1), [*2. Parâmetros Iniciais* \ Propriedades e fração volumétrica], width: 4.5cm),
-      
+
+      node(
+        (0, 0),
+        [*1. Definição do Problema* \
+
+          - Vaso de pressão multicamadas
+        ],
+        width: 6cm,
+      ),
+
+      node(
+        (0, 1),
+        [*2. Parâmetros Iniciais* \
+          - Geometria
+          - Fração volumétrica
+          - Condições de contorno
+        ],
+        width: 5cm,
+      ),
+
       node((-1, 2), [*3a. Modelo Analítico* \ Homogeneização Assintótica (MHA)], width: 4.5cm),
       node((1, 2), [*3b. Modelo Numérico* \ Elementos Finitos (MEF - FEniCS)], width: 4.5cm),
-      
-      node((0, 3), [*4. Verificação* \ Comparação (Tensões e Deslocamentos)], width: 4.5cm),
-      
-      node((0, 4), [*5. Análise de Viabilidade* \ Resistência ($W_g$) e Rigidez ($K_g$)], width: 4.5cm),
-      
+
+      node((0, 3), [*4. Verificação* \ Comparação (Tensões e Deslocamentos)], width: 5cm),
+
+      node((0, 4), [*5. Análise de Viabilidade* \ Resistência ($W_g$) e Rigidez ($K_g$)], width: 6cm),
+
       // Conexões diretas
-      edge((0,0), (0,1), "-|>"),
-      
+      edge((0, 0), (0, 1), "-|>"),
+
       // Bifurcação para os modelos
-      edge((0,1), (-1,2), "-|>"),
-      edge((0,1), (1,2), "-|>"),
-      
+      edge((0, 1), (-1, 2), "-|>"),
+      edge((0, 1), (1, 2), "-|>"),
+
       // Junção dos modelos para comparação
-      edge((-1,2), (0,3), "-|>"),
-      edge((1,2), (0,3), "-|>"),
-      
+      edge((-1, 2), (0, 3), "-|>"),
+      edge((1, 2), (0, 3), "-|>"),
+
       // Conclusão
-      edge((0,3), (0,4), "-|>"),
+      edge((0, 3), (0, 4), "-|>"),
     )
   ],
   caption: [Fluxograma geral da metodologia adotada.],
@@ -101,31 +116,7 @@
 
 = Resultados e discussões
 
-== Comparação entre o deslocamento radial obtido pelo MHA e MEF
-
-#image("images/MHA vs MEF 20 camadas.png")
-
-#image("images/MHA vs MEF 40 camadas.png")
-
-#image("images/MHA vs MEF 100 camadas.png")
-
-== Comparação entre o deslocamento tangencial obtido pelo MHA e MEF
-
-== Análise da precisão do MHA
-
-== Obtenção dos campos de tensão no vaso cilíndrico
-
-== Propriedades do material
-
-// Tabela mostrando a resistência específica e a rigidez específica dos materiais e do compósito resultante variando com a fração volumétrica
-
-#table(
-  columns: 4,
-  [Material], [Fração volumétrica], [Resistência específica ($W_g$) (MN·m/kg)], [Rigidez específica ($K_g$) (m/s²)],
-  [Aço], [1.00], [300], [200],
-  [Alumínio], [0.00], [400], [270],
-  [Compósito (50/50)], [0.50], [350], [235],
-)
+#include "pages/Results.typ"
 
 = Conclusão
 

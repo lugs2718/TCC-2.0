@@ -2,6 +2,7 @@
 #import "@preview/gentle-clues:1.2.0": *
 #import "@preview/drafting:0.2.2": inline-note, margin-note, set-margin-note-defaults//,note-outline
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
+#import "@preview/cetz:0.3.4"
 
 #import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.0": *
@@ -68,22 +69,3 @@
     # 800 elementos em R para garantir 20 elementos DENTRO de cada camada
     mesh = RectangleMesh(Point(R_int, 0.0), Point(R_ext, H), 800, 10)
 ```
-
-#show: codly-init.with()
-
-// https://xkcd.com/1195/
-#import fletcher.shapes: diamond
-// #set text(font: "Comic Neue", weight: 600) // testing: omit
-#diagram(
-  node-stroke: 1pt,
-  node((0, 0), [Start], corner-radius: 2pt, extrude: (0, 3)),
-  edge("-|>"),
-  node(
-    (0, 1),
-    align(center)[
-      Hey, wait,\ this flowchart\ is a trap!
-    ],
-    shape: diamond,
-  ),
-  edge("d,r,u,l", "-|>", [Yes], label-pos: 0.1),
-)

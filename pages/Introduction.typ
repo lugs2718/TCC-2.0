@@ -2,6 +2,8 @@
 
 == Motivação e Contexto
 
+
+
 Os materiais compósitos são definidos pela combinação de dois ou mais
 constituintes macroscópicos distintos, concebida com o objetivo de obter
 propriedades físicas e mecânicas superiores às dos materiais homogêneos

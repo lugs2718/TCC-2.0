@@ -6,6 +6,7 @@
 
 // #pinit-point-from(1)[It is simple.]
 
+
 == Uso de vasos de pressão na engenharia
 Vasos de pressão são equipamentos amplamente utilizados em diversas aplicações industriais, como na geração de energia, processamento de petróleo e alimentos, armazenamento de fluidos, entre outros. Sua função é conter fluidos sob pressão elevada, garantindo a segurança e eficiência dos processos. [ref]
 
@@ -112,7 +113,7 @@ A discrepância entre esses limites, conhecida como "Garfo de Hill" (_Hill's for
 == Fundamentos do Método de Homogeneização Assintótica (MHA)
 O MHA trata processos em meios periódicos descritos por equações diferenciais parciais com coeficientes rapidamente oscilantes @HomogenisationReportBakhvalov. O método busca soluções na forma de séries de potências de $epsilon$, onde os coeficientes dependem tanto de variáveis lentas ou macroscópicas ($x$) quanto de variáveis rápidas ou microscópicas ($y = x/epsilon$):
 
-$ u^(infinity) (x, epsilon) = sum_(i=0)^(infinity) epsilon^i u_i (x, y) $
+$ u^(infinity) (x, epsilon) = sum_(i=0)^(infinity) epsilon^i u_i (x, y) $ <eq:ExpansaoAssintoticaSAF>
 
 Nesta formulação, as variáveis lentas descrevem a estrutura global do campo, enquanto as variáveis rápidas capturam a estrutura local @HomogenisationReportBakhvalov #margin-note[Verificar se essa citação está correta]. A substituição desta série nas equações governantes permite a determinação dos chamados "problemas locais" na célula unitária, cuja solução é essencial para o cálculo dos coeficientes efetivos do material homogêneo equivalente [Bak89].
 

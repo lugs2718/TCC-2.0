@@ -142,9 +142,8 @@ $
     #sigma_bx dot bold(n) = bold(0)\, quad bold(x) in Gamma_t
   )
 $ <eq:HomogenizationOriginalPDE>
-#margin-note[A pressão $p$ deveria ter $epsilon$?]
 
-onde $#sigma_bx = bold(sigma)^epsilon (bold(r)/epsilon) = #sigma_by$ é o tensor de tensões que varia na microestrutura, descrita pela variável local $bold(y)$. O vetor $bold(b)$ denota o campo de forças de corpo, $bold(u)^epsilon$ é o vetor de deslocamentos (a principal incógnita), $bold(n)$ é a normal unitária externa à fronteira $partial Omega = Gamma_u union Gamma_t$, e $bold(p)$ é a #strong[pressão manométrica] #margin-note[Em problemas estruturais, utiliza-se a pressão manométrica, pois a pressão atmosférica atua tanto externa quanto internamente (se o cilindro for aberto), anulando-se; a tensão real é gerada apenas pela diferença de pressão (pressão efetiva).] aplicada na superfície interna do cilindro. O conjunto $Gamma_u$ representa a superfície interna onde as condições de contorno de Neumann de pressão constante são impostas, enquanto $Gamma_t$ denota a superfície externa, livre de trações (veja /*@fig:Composito*/).
+onde $#sigma_bx = bold(sigma)^epsilon (bold(r)/epsilon) = #sigma_by$ é o tensor de tensões que varia na microestrutura, descrita pela variável local $bold(y)$. O vetor $bold(b)$ denota o campo de forças de corpo, $bold(u)^epsilon$ é o vetor de deslocamentos (a principal incógnita), $bold(n)$ é a normal unitária externa à fronteira $partial Omega = Gamma_u union Gamma_t$, e $bold(p)$ é a #strong[pressão manométrica] Em problemas estruturais, utiliza-se a pressão manométrica, pois a pressão atmosférica atua tanto externa quanto internamente (se o cilindro for aberto), anulando-se; a tensão real é gerada apenas pela diferença de pressão (pressão efetiva). aplicada na superfície interna do cilindro. O conjunto $Gamma_u$ representa a superfície interna onde as condições de contorno de Neumann de pressão constante são impostas, enquanto $Gamma_t$ denota a superfície externa, livre de trações (veja fig:Composito).
 
 O divergente do tensor de tensões em coordenadas cilíndricas, conforme @Itskov2007,
 possui componentes nas direções radial
@@ -181,8 +180,7 @@ Entretanto, assumindo #strong[axisimetria], não há variação das propriedades
 
 $ partial_theta (dot) = 0. $
 
-Além disso, no caso clássico sem torção, as tensões de cisalhamento
-circunferenciais são nulas,
+Além disso, no caso clássico sem torção, as tensões de cisalhamento circunferenciais são nulas,
 
 $ #tau_r_t = 0, $
 
@@ -195,11 +193,11 @@ $
   mat(
     sigma_(r r), 0, tau_(r z);
     0, sigma_(theta theta), 0;
-    tau_(z r), 0, sigma_(z z) #margin-note[Neste estágio da dedução, as tensões $tau_(r z)$ e $tau_(z r)$ são mantidas de forma genérica. Elas só se tornarão estritamente nulas quando adotarmos a hipótese cinemática de Estado Plano de Deformação Generalizado mais adiante, onde $partial u_r / partial z = 0$ e $partial u_z / partial r = 0$.]
+    tau_(z r), 0, sigma_(z z)
   ).
 $
 
-Ou, usando a notação de Voigt:
+Neste estágio da dedução, as tensões $tau_(r z)$ e $tau_(z r)$ são mantidas de forma genérica. Elas só se tornarão estritamente nulas quando adotarmos a hipótese cinemática de Estado Plano de Deformação Generalizado mais adiante, onde $(partial u_r) / (partial z) = 0$ e $(partial u_z )/ (partial r) = 0$. Assim, usando a notação de Voigt, conforme apêndice de @RMJones2018, o tensor de tensões é dado por:
 
 $
   sigma = #stress.
@@ -217,9 +215,6 @@ $
   + b_r = 0
 $ <eq:equilibrium_r_direction>
 
-#margin-note[
-  A direção circunferencial ($theta$) foi omitida porque, sob a hipótese de axissimetria ($partial_theta = 0$) e ausência de tensões cisalhantes circunferenciais ($tau_(r theta) = tau_(theta z) = 0$), todos os termos da equação de equilíbrio na direção $theta$ tornam-se identicamente nulos, resultando na identidade $0 = 0$.
-]
 e na direção axial
 
 $
@@ -228,6 +223,8 @@ $
   + #tau_r_z / r
   + b_z = 0.
 $
+
+A direção circunferencial ($theta$) foi omitida porque, sob a hipótese de axissimetria ($partial_theta = 0$) e ausência de tensões cisalhantes circunferenciais ($tau_(r theta) = tau_(theta z) = 0$), todos os termos da equação de equilíbrio na direção $theta$ tornam-se identicamente nulos, resultando na identidade $0 = 0$.
 
 === Relações constitutivas - Lei de Hooke
 
@@ -243,7 +240,7 @@ e $bold(epsilon.alt)$ é o tensor de deformações.
 #margin-note[
   Encontrar bibliografia para descrever melhor o produto interno duplo.
 ]
-e ":" o produto interno duplo. Em sua forma mais geral, o tensor possui $3^4$componentes. Entretanto, considerando o material isotrópico, o tensor se reduz para
+e ":" o produto interno duplo. Em sua forma mais geral, o tensor possui $3^4$componentes. Entretanto, considerando o material isotrópico, o tensor, em notação de Voigt (@RMJones2018), se reduz para
 
 // Forma "geral" do tensor de elasticidade
 //$
@@ -383,8 +380,6 @@ $
     (partial_z u_r^epsilon + partial_r u_z^epsilon) / 2,
   )
 $
-
-
 
 Adotando a hipótese de que não há forças de corpo ($b_r = 0$) e que o problema não varia na direção axial ($partial_z = 0$, implicando que as derivadas em relação a $z$ e a tensão de cisalhamento $tau_(r z)$ se anulam devido ao *Estado Plano de Deformação* detalhado adiante), a equação de equilíbrio radial (@eq:equilibrium_r_direction) reduz-se à forma unidimensional:
 

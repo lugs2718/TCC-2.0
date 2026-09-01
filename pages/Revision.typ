@@ -399,7 +399,18 @@ Para representar com precisão física o efeito zigue-zague sem recorrer a simul
     u_z (r, theta, z) = u_z^0 (r, theta) + z phi_z (r, theta) + sum_(k=1)^(N-1) zeta_k (z) hat(phi)_z^k (r, theta)
   $ <eq:zzt_disp>
 
-As funções de enriquecimento $zeta_k (z)$ são pré-calculadas analiticamente de forma a satisfazer a priori as condições de continuidade de tensões interlaminares na interface (@eq:cont_stress). Como resultado prático, as Teorias Zigue-Zague conseguem capturar com precisão cirúrgica os "kinks" nos deslocamentos e prever o início de falhas por delaminação interlaminares mantendo o número total de graus de liberdade do modelo matemático independente do número de camadas do compósito, oferecendo uma excelente alternativa computacional para análises mecânicas locais [34]. #margin-note[Essa seção mostra outros métodos, como o zig-zag, que talvez seriam melhores para essa aplicação. Talvez eu deva retirar algumas.]
+As funções de enriquecimento $zeta_k (z)$ são pré-calculadas analiticamente de forma a satisfazer a priori as condições de continuidade de tensões interlaminares na interface (@eq:cont_stress). Como resultado prático, as Teorias Zigue-Zague conseguem capturar com precisão cirúrgica os "kinks" nos deslocamentos e prever o início de falhas por delaminação interlaminares mantendo o número total de graus de liberdade do modelo matemático independente do número de camadas do compósito, oferecendo uma excelente alternativa computacional para análises mecânicas locais [34].
+
+== Justificativa para a Adoção da Homogeneização Assintótica (MHA) frente às ZZT
+
+Embora as Teorias Zigue-Zague (ZZT) representem um avanço cinematográfico significativo ao desacoplar os graus de liberdade globais do número de camadas $N$, a adoção do Método de Homogeneização Assintótica (MHA) se justifica por razões de escalabilidade, rigor matemático e facilidade de implementação numérica no projeto de vasos multicamadas com alto número de períodos [7, 34, 39, 43]:
+
+1. *Inviabilidade Algébrica sob Alta Periodicidade:* Nas ZZT, as funções de enriquecimento local $zeta_k (z)$ e os coeficientes de acoplamento precisam ser formulados e pré-calculados analiticamente de interface em interface ($N-1$ interfaces) [34]. Para cilindros bimetálicos de alta densidade periódica ou estruturas com centenas de microcamadas (em que $N$ cresce consideravelmente), a montagem desse sistema algébrico de enriquecimento torna-se altamente complexa, onerosa e propensa a erros numéricos de condicionamento. O MHA contorna isso completamente ao desacoplar as escalas de análise: o problema físico global é resolvido como um contínuo perfeitamente homogêneo, cuja complexidade matemática é invariante em relação ao número real de camadas [7, 43].
+2. *Rigor Matemático e Convergência Provada:* Ao contrário das ZZT, que se baseiam em aproximações cinemáticas ad hoc (ou *ansatz* físicos), o MHA é ancorado no rigor da análise assintótica clássica e na teoria da $H$-convergência elíptica [7, 43]. Ele fornece uma prova formal de consistência matemática na qual, por meio do Teorema da Relação de Proximidade em espaços de Sobolev ($L^2$ e $H^1$), a diferença entre a solução heterogênea do MEF e a aproximação homogeneizada decresce de forma estritamente linear com o parâmetro de escala pequena ($epsilon = l/L -> 0$) [7]. Isso garante que, quanto maior for a densidade de camadas do vaso, mais exata e robusta é a resposta fornecida pelo MHA.
+3. *Acoplamento Direto e Simplicidade em Solvers de Elementos Finitos (FEniCS):* A implementação numérica de elementos finitos enriquecidos baseados em ZZT exige o desenvolvimento de elementos customizados não padronizados e formulações variacionais complexas (geralmente indisponíveis em pacotes de MEF comerciais ou open-source) [34, 35]. Por outro lado, o MHA permite utilizar elementos lagrangeanos quadráticos clássicos em malhas bidimensionais axissimétricas comuns. O solver do FEniCS resolve o equilíbrio global sem qualquer modificação em suas matrizes de rigidez elástica homogêneas nativas, e o problema de célula local (1D) é resolvido de forma independente e direta, simplificando enormemente a programação e estabilidade numérica do código [14, 15].
+4. *Capacidade de Reconstrução de Campos Locais e Interlaminares:* Uma das maiores vantagens do MHA é o seu caráter de modelagem multiescala bidirecional. Após obter a solução macroscópica homogeneizada suave $u_0(r)$, o comportamento local em zigue-zague dos deslocamentos e as flutuações das tensões interlaminares em cada camada individual podem ser reconstruídos com exatidão analítica _a posteriori_ em qualquer ponto através dos corretores locais elásticos (incluindo a função de perturbação local $N_1(y)$) [7, 39]:
+  $ u_i^epsilon (r) approx u_{0,i}(r) + epsilon N_{1,i j}(y) frac(partial u_{0,j}, partial r) $ <eq:correction_mha>
+  Dessa forma, o MHA recupera toda a física microscópica e as descontinuidades de derivada ("kinks") na interface sem sobrecarregar a cinemática global da estrutura [7].
 
 #task[
   - Objetivo B.4: Métodos de Homogeneização e a Transição Micro-Macro:
@@ -562,9 +573,9 @@ $
     0, u_r / r, 0;
     (partial_z u_r + partial_r u_z) / 2, 0, partial_z u_z
   )
-$
+$<eq:WeakFormEquation>
 
-Note que o termo de expansão $u_r/r$ introduz uma singularidade matemática intrínseca quando o raio $r \to 0$ [190]. No entanto, para o caso de vasos de pressão ocos com raio interno positivo ($R_{"int"} > 0$), a formulação permanece perfeitamente regular, suave e elíptica.
+Note que o termo de expansão $u_r/r$ introduz uma singularidade matemática intrínseca quando o raio $r -> 0$ [190]. No entanto, para o caso de vasos de pressão ocos com raio interno positivo ($R_{"int"} > 0$), a formulação permanece perfeitamente regular, suave e elíptica.
 
 === Discretização de Galerkin e a Matriz de Rigidez
 
@@ -601,5 +612,3 @@ Em contrapartida, a escolha da plataforma de código aberto *FEniCS* blinda o pr
 1. *Programação Direta em Linguagem de Formas Unificadas (UFL):* O FEniCS permite escrever a forma bilinear $a(bold(u), bold(v))$ e o funcional elástico $L(bold(v))$ diretamente em sintaxe matemática de alto nível (Python/C++). O compilador de formas do FEniCS (FFC) encarrega-se de realizar a diferenciação automática e a integração numérica de forma transparente e otimizada [127].
 2. *Controle Absoluto da Microestrutura:* A criação de centenas de camadas periódicas concêntricas de materiais alternados (como aço e alumínio) é automatizada diretamente por meio do desenvolvimento de expressões de propriedades elásticas espaciais em Python (classe `PeriodicProperty`), eliminando a necessidade de modelagem e costura manual de centenas de retângulos concêntricos na interface gráfica (CAD) [126, 302].
 3. *Integração Natural MHA-MEF:* Como o FEniCS possui total flexibilidade para redefinir as componentes da matriz constitutiva ponto a ponto, é possível calcular os coeficientes efetivos do MHA analiticamente e, na linha de instrução subsequente, alimentar diretamente o solver macroscópico com o tensor elástico homogeneizado equivalente, garantindo um fluxo de processamento de frações de segundo contra minutos ou horas exigidos pela modelagem detalhada tradicional [126, 308].
-
-

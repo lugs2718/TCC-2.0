@@ -6,6 +6,10 @@
 
 == Validação analítica: Cilindro homogêneo de parede grossa
 
+A validação de modelos numéricos baseados em formulações elásticas complexas, como a ortotropia curvilínea resultante da homogeneização assintótica, exige um protocolo rigoroso de Verificação e Validação (V&V). No presente trabalho, adota-se a estratégia de *degeneração elástica*. Embora o solver axissimétrico desenvolvido no FEniCS seja formulado de maneira geral para materiais ortotrópicos, as suas propriedades constituintes são colapsadas no limite isotrópico ($E_r = E_theta = E_z$ e $nu_(i j) = nu$) para fins de calibração.
+
+Esta abordagem é matematicamente robusta por dois fatores: primeiro, ao reproduzir com exatidão a clássica solução analítica de Lamé para cilindros homogêneos de parede grossa, garante-se que a cinemática axissimétrica, a integração espacial ponderada pelo raio e as condições de contorno de pressão estão livres de erros de implementação algorítmica. Segundo, evita-se a comparação com soluções analíticas ortotrópicas fechadas da literatura de cascas, as quais frequentemente apresentam simplificações físicas severas ou inconsistências tipográficas em suas coordenadas curvilíneas. Uma vez verificado o núcleo do solucionador numérico sob o limite de Lamé, a precisão do comportamento ortotrópico equivalente do MHA é validada diretamente via convergência assintótica frente ao modelo discretizado multicamadas (MEF).
+
 Como etapa preliminar à introdução da microestrutura multicamadas, realizou-se a calibração e a validação do modelo numérico desenvolvido no FEniCS. Para tanto, considerou-se um cilindro de parede grossa ($R_("interno")=9 "mm"$, $R_("externo")=11 "mm"$) puramente homogêneo e isotrópico submetido a uma pressão interna ($P_i$) e externa ($P_o$). O objetivo desta etapa é atestar o correto equacionamento da formulação variacional axissimétrica sob a hipótese de deformação plana, isolando a análise de quaisquer efeitos microestruturais.
 
 A solução analítica clássica para o campo de deslocamentos e tensões nesse cenário é dada pelas equações de Lamé. O deslocamento radial exato, denotado por $u_r (r)$, é expresso como:

@@ -81,8 +81,7 @@ domínio global e governado por esses coeficientes (LEITE, 2017).
 
 Uma distinção fundamental separa as abordagens de primeira e de segunda ordem da SAF. A solução de primeira ordem  (truncando a série após o termo $epsilon bold(u)^1$)  fornece uma aproximação satisfatória para os campos de deslocamento macroscópico, porém falha em reproduzir com precisão as oscilações locais de tensão que caracterizam a resposta em escala de microestrutura (LEITE, 2017). Para superar esta limitação, o presente trabalho adota a SAF de segunda ordem, que incorpora o termo $epsilon^2 bold(u)^2$ e é capaz de reproduzir as flutuações locais da solução exata com acurácia significativamente superior, sem aumentar proporcionalmente o custo computacional do problema macroscópico (LEITE, 2017). #margin-note[Correção: Vou usar apenas a primeira ordem da SAF]
 
-
-== Objetivos gerais
+== Objetivo geral
 
 O objetivo geral deste trabalho é realizar uma análise multiescala de
 cilindros compósitos microperiódicos, estabelecendo um comparativo
@@ -93,6 +92,8 @@ método principal de análise.
 
 == Objetivos específicos
 Os objetivos específicos que sustentam esta meta são os seguintes:
+
+#margin-note[Retirar referências (Apenas aqueles que forem comparativos)]
 
 + *Formular o problema de equilíbrio do cilindro compósito microperiódico*
   em coordenadas cilíndricas, sob hipótese de axissimetria, e reduzi-lo à
@@ -120,7 +121,7 @@ Os objetivos específicos que sustentam esta meta são os seguintes:
   na SAF sobre a qualidade da aproximação dos campos de tensão e
   deslocamento (LEITE, 2017).
 
-== Organização do Trabalho
+== Organização e limitações do Trabalho #margin-note[Falar sobre o escopo do trabalho]
 
 O presente trabalho está organizado em seis capítulos. O *Capítulo 2*
 apresenta a revisão bibliográfica, cobrindo os fundamentos dos meios

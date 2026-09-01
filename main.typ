@@ -120,6 +120,4 @@
 
 = Conclusão
 
-= Referências bibliográficas
-
 #bibliography("bibliografia.bib")

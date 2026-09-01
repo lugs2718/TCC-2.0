@@ -289,7 +289,7 @@ def eps(u):
     return sym(as_tensor([[u[0].dx(0), 0, u[0].dx(1)], [0, u[0]/r, 0], [u[1].dx(0), 0, u[1].dx(1)]]))
 ```
 
-E para as tensões, no caso do MEF:
+E para as tensões, no caso do MEF #margin-note[Falar que essa é a lei de Hooke]:
 
 ```py
 def sigma_mef(u):

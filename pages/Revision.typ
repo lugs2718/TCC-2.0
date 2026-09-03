@@ -401,7 +401,7 @@ Para representar com precisão física o efeito zigue-zague sem recorrer a simul
 
 As funções de enriquecimento $zeta_k (z)$ são pré-calculadas analiticamente de forma a satisfazer a priori as condições de continuidade de tensões interlaminares na interface (@eq:cont_stress). Como resultado prático, as Teorias Zigue-Zague conseguem capturar com precisão cirúrgica os "kinks" nos deslocamentos e prever o início de falhas por delaminação interlaminares mantendo o número total de graus de liberdade do modelo matemático independente do número de camadas do compósito, oferecendo uma excelente alternativa computacional para análises mecânicas locais [34].
 
-== Justificativa para a Adoção da Homogeneização Assintótica (MHA) frente às ZZT
+=== Justificativa para a Adoção da Homogeneização Assintótica (MHA) frente às ZZT
 
 Embora as Teorias Zigue-Zague (ZZT) representem um avanço cinematográfico significativo ao desacoplar os graus de liberdade globais do número de camadas $N$, a adoção do Método de Homogeneização Assintótica (MHA) se justifica por razões de escalabilidade, rigor matemático e facilidade de implementação numérica no projeto de vasos multicamadas com alto número de períodos [7, 34, 39, 43]:
 
@@ -419,7 +419,7 @@ Embora as Teorias Zigue-Zague (ZZT) representem um avanço cinematográfico sign
     * Fontes-chave:* Bakhvalov & Panasenko (1989), Bruna Homogeneização (2017), David Guinovart (2015), e Parton & Kudryavtsev (1993).
 ]
 
-=== Métodos de Homogeneização e a Transição Micro-Macro (Objetivo B.4)
+== Métodos de Homogeneização e a Transição Micro-Macro (Objetivo B.4)
 
 A modelagem de materiais heterogêneos com microestrutura complexa impõe desafios severos à análise mecânica clássica. A presença de fases distintas com propriedades mecânicas discrepantes resulta em coeficientes elétricos ou elásticos que oscilam de forma extremamente rápida na escala microscópica. Resolver as equações de equilíbrio elástico em domínios dessa natureza por meio de técnicas discretas diretas, como o Método dos Elementos Finitos (MEF), exige um refinamento de malha tão severo que o custo computacional torna-se proibitivo para estruturas de escala industrial [7, 47]. Esta seção aborda a transição conceitual e matemática entre as escalas micro e macro, apresentando os limites elásticos clássicos, o modelo de médias de Backus para estratificados e o formalismo rigoroso do Método de Homogeneização Assintótica (MHA).
 
@@ -496,7 +496,7 @@ Substituindo a SAF dada pela @eq:saf_disp na equação governante do equilíbrio
     C_(11) = chevron.l C_(11)^(-1)(y) chevron.r^(-1) , quad C_(12) = chevron.l C_(11)^(-1)(y) chevron.r^(-1) chevron.l C_(12)(y) C_(11)^(-1)(y) chevron.r
   $ <eq:effective_coeffs>
 
-== Rigor Matemático: H-Convergência e Relação de Proximidade
+=== Rigor Matemático: H-Convergência e Relação de Proximidade
 
 A validade científica do Método de Homogeneização Assintótica não se limita à obtenção de equações médias simplificadas, mas repousa sobre provas matemáticas rigorosas de convergência elíptica, no âmbito da chamada *H-Convergência* [39].
 

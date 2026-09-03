@@ -122,6 +122,14 @@ $
   )
 $
 
+#task[3.1. Hipótese do Contínuo e Equações Governantes (O Cilindro): Apresentação das equações diferenciais parciais de equilíbrio mecânico (Navier-Cauchy) em coordenadas cilíndricas tridimensionais, reduzindo-as para o caso axissimétrico sob hipótese de estado plano de deformações ou restrições longitudinais, além de definir as condições de contorno de Dirichlet e Neumann (pressão interna $P_i$).]
+
+#task[3.2. Dedução do MHA e do Problema Local: Desenvolvimento matemático detalhado da separação de escalas via parâmetro de perturbação pequeno $epsilon = l/L$, expandindo o deslocamento na SAF e isolando o problema local sobre a célula unitária $Y$ para deduzir as funções de perturbação $N_1(y)$ e $N_2(y)$.]
+
+#task[3.3. Propriedades Efetivas Transversais: Equacionamento analítico fechado das propriedades elásticas homogeneizadas equivalentes ($hat{C}_{11}$, $hat{C}_{12}$, $hat{C}_{22}$ e módulo de cisalhamento $hat{G}$) correlacionando-as com a teoria de Backus e a regra das misturas (médias aritméticas e harmônicas radiais).]
+
+#task[3.4. Formulação Variacional Fraca Axissimétrica: Demonstração matemática de como as equações fortes são convertidas em integrais através do Princípio dos Trabalhos Virtuais, detalhando o "truque" geométrico de multiplicar as integrais pelo raio $r$ para que o FEniCS consiga realizar a integração volumétrica correta no domínio 2D plano.]
+
 == Equações fundamentais
 
 === Equações de equilíbrio em coordenadas cilíndricas

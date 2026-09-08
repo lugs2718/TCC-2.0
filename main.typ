@@ -58,7 +58,7 @@
 
 #include "pages/materials&methods/Equilibrum.typ"
 
-#include "pages/materials&methods/Homogenization.typ"
+//#include "pages/materials&methods/Homogenization.typ"
 
 = Materiais e métodos
 

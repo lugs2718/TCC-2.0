@@ -47,9 +47,7 @@ $
                                                epsilon^2 bold(sigma)^(2)(r, y) + dots
 $ <eq:asymptotic_expansions>
 
-Truncando a expansão de tensões após o termo de primeira ordem ($cal(O)(epsilon)$) em @eq:asymptotic_expansions e substituindo na lei constitutiva @eq:HookesLawCoeffs, obtém-se a seguinte equação matricial:
-
-
+Truncando a expansão de tensões após o termo de primeira ordem ($cal(O)(epsilon)$) em @eq:asymptotic_expansions e substituindo na lei constitutiva #margin-note([Colocar aqui a lei de hooke isotrópica eq:HookesLawCoeffs]), obtém-se a seguinte equação matricial:
 
 $
   mat(
@@ -75,7 +73,7 @@ $
      epsilon^0 & : sigma_r^(0) = cal(C)_11 (y) partial(u0, r) + cal(C)_11 (y) partial(u1, y) + cal(C)_12 (y) u0 / r.
 $ <eq:HookesLawWithSAFRdirection>
 
-Para o equilíbrio mecânico (@eq:EquilibriumCylindricalForm), a coleta de termos de ordem $epsilon^(-1)$ e $epsilon^0$ resulta em:
+Para o equilíbrio mecânico(@eq:equilibrium_radial_1d), a coleta de termos de ordem $epsilon^(-1)$ e $epsilon^0$ resulta em:
 
 $
   epsilon^(-1) & : partial(sigma_r^(0), y) = 0, \

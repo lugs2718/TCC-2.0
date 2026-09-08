@@ -35,7 +35,7 @@ Para quantificar a precisão da aproximação numérica, calculou-se o erro rela
     [$sigma_(theta theta) (a)$], [0.000], [0.000], [0.00 %],
   ),
   caption: [Comparação e análise de erro entre os resultados do MEF e a solução analítica (Lamé) para o cilindro homogêneo isotrópico.],
-) <tab-comparacao-mef-mha>
+) <tab-comparacao-mef-mha>#margin-note([Completar essa tabela])
 
 Como evidenciado na tabela, os valores de deslocamento e tensões obtidos numericamente apresentaram uma concordância excepcional com as equações clássicas de Lamé, exibindo um erro relativo da ordem de magnitude da precisão da máquina. Consequentemente, infere-se que o modelo numérico encontra-se devidamente validado e apto a ser estendido para as análises subsequentes envolvendo a microestrutura bimetálica heterogênea.
 

@@ -1,0 +1,71 @@
+# ==============================================================================
+# .gitignore — Projeto de TCC em LaTeX / Python / FEniCS
+# Autor: Luiz Gustavo da Silva Pereira (UFF)
+# ==============================================================================
+
+# --- Executáveis e Instaladores Pesados ---
+*.exe
+*.msi
+*.dll
+*.so
+*.dylib
+*.iso
+*.bin
+
+# --- Arquivos Temporários de Compilação LaTeX ---
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.snm
+*.synctex(busy)
+*.synctex.gz
+*.toc
+*.vrb
+_minted*
+*.run.xml
+*-blx.bib
+
+# --- Acervo de Referências Externas e Documentos Administrativos Pesados ---
+# (Manter apenas os arquivos de texto e código no controle de versão)
+Referências/
+Referncias/
+Documentos UFF - Projeto final/
+*.lnk
+
+# --- Arquivos Temporários do Sistema Operacional e Office ---
+~$*
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# --- Python & Ambientes Virtuais ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# --- Saídas de Dados Volumosos de Simulação / ParaView ---
+*.vtu
+*.pvd
+*.xdmf
+*.h5
+results/
+Códigos/Plotagem do cilindro com Paraview/ParaView*
+

@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\caption{Comparação de Desempenho Computacional e Precisão: MEF Heterogêneo vs. MHA Homogeneizado ($P_{int} = 30\text{ MPa}$, $V_1 = 0{,}50$).}
+\label{tab:comparativo_mef_mha}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{cc|cc|ccc|ccc}
+\hline
+\textbf{$N_{cél}$} & \textbf{Camadas} & \textbf{DOFs MEF} & \textbf{DOFs MHA} & \textbf{Tempo MEF (s)} & \textbf{Tempo MHA (s)} & \textbf{Redução (\%)} & \textbf{Speedup} & \textbf{Erro Máx. (\%)} & \textbf{Erro $L^2$ (\%)} \\
+\hline
+2 & 4 & 198 & 682 &  0.007 &  0.010 & \textbf{-35.2\%} &   0.7x &  2.88\% &  2.47\% \\
+5 & 10 & 462 & 682 &  0.008 &  0.010 & \textbf{-28.0\%} &   0.8x &  1.16\% &  1.00\% \\
+10 & 20 & 902 & 682 &  0.014 &  0.010 & \textbf{ 31.1\%} &   1.5x &  0.58\% &  0.50\% \\
+20 & 40 & 1,782 & 682 &  0.024 &  0.010 & \textbf{ 58.6\%} &   2.4x &  0.29\% &  0.25\% \\
+50 & 100 & 4,422 & 682 &  0.058 &  0.010 & \textbf{ 82.7\%} &   5.8x &  0.12\% &  0.10\% \\
+100 & 200 & 8,822 & 682 &  0.114 &  0.010 & \textbf{ 91.3\%} &  11.5x &  0.06\% &  0.05\% \\
+200 & 400 & 17,622 & 682 &  0.250 &  0.010 & \textbf{ 96.0\%} &  25.1x &  0.03\% &  0.02\% \\
+\hline
+\end{tabular}%
+}
+\end{table}

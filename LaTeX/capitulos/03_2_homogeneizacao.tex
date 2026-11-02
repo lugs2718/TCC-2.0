@@ -1,0 +1,83 @@
+\chapter{Método de Homogeneização Assintótica}
+
+\section{Aplicando o Método de Homogeneização}
+
+Assim como feito por \cite{PartonReport} e \cite{Guinovart2024}, será utilizada uma expansão assintótica de primeira ordem para tensões, deformações e deslocamentos. As expansões são expressas como:
+
+\begin{equation}
+  \begin{aligned}
+    % SAF para deslocamento
+    \mathbf{u}^{(\infty)}(r, \epsilon) &= \mathbf{u}^{(0)}(r) + \epsilon \mathbf{u}^{(1)}(r, y) + \epsilon^2 \mathbf{u}^{(2)}(r, y) + \dots, \\
+    % SAF para deformações
+    \boldsymbol{\varepsilon}^{(\infty)}(r, \epsilon) &= \boldsymbol{\varepsilon}^{(0)}(r, y) + \epsilon \boldsymbol{\varepsilon}^{(1)}(r, y) + \epsilon^2 \boldsymbol{\varepsilon}^{(2)}(r, y) + \dots, \\
+    % SAF para tensões
+    \boldsymbol{\sigma}^{(\infty)}(r, \epsilon) &= \boldsymbol{\sigma}^{(0)}(r, y) + \epsilon \boldsymbol{\sigma}^{(1)}(r, y) + \epsilon^2 \boldsymbol{\sigma}^{(2)}(r, y) + \dots
+  \end{aligned}
+  \label{eq:asymptotic_expansions}
+\end{equation}
+
+Truncando a expansão de tensões após o termo de primeira ordem ($\mathcal{O}(\epsilon)$) em \eqref{eq:asymptotic_expansions} e substituindo na lei constitutiva \marginpar{\tiny Colocar aqui a lei de hooke isotrópica eq:HookesLawCoeffs}, obtém-se a seguinte equação matricial:
+
+\begin{equation}
+  \begin{bmatrix}
+    \sigma_r^{(0)} + \epsilon \sigma_r^{(1)} \\
+    \sigma_\theta^{(0)} + \epsilon \sigma_\theta^{(1)} \\
+    \tau_{rz}^{(0)} + \epsilon \tau_{rz}^{(1)}
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    \mathcal{C}_{11}(y) & \mathcal{C}_{12}(y) & \mathcal{C}_{13}(y) \\
+    \mathcal{C}_{21}(y) & \mathcal{C}_{22}(y) & \mathcal{C}_{23}(y) \\
+    \mathcal{C}_{31}(y) & \mathcal{C}_{32}(y) & \mathcal{C}_{33}(y)
+  \end{bmatrix}
+  \begin{bmatrix}
+    \partial_r (u_r^{(0)} + \epsilon u_r^{(1)}) \\
+    \frac{1}{r}(u_r^{(0)} + \epsilon u_r^{(1)}) \\
+    \frac{1}{2}(\partial_z (u_r^{(0)} + \epsilon u_r^{(1)}) + \partial_r u_z)
+  \end{bmatrix}
+  \label{eq:HookesLawWithSAF_MatrixForm}
+\end{equation}
+
+\marginpar{\tiny Note a presença do tensor de elasticidade reduzido.}
+
+Aplicando a regra da cadeia à \eqref{eq:HookesLawWithSAF_MatrixForm} e separando os termos por potências de $\epsilon$, as seguintes condições devem ser satisfeitas: \marginpar{\tiny Explicar como a regra da cadeia funciona nesse contexto.}
+
+\begin{equation}
+  \begin{aligned}
+    \epsilon^{-1} &: \frac{\partial u_r^{(0)}}{\partial y} = 0, \\
+    \epsilon^0 &: \sigma_r^{(0)} = \mathcal{C}_{11}(y) \frac{\partial u_r^{(0)}}{\partial r} + \mathcal{C}_{11}(y) \frac{\partial u_r^{(1)}}{\partial y} + \mathcal{C}_{12}(y) \frac{u_r^{(0)}}{r}.
+  \end{aligned}
+  \label{eq:HookesLawWithSAFRdirection}
+\end{equation}
+
+Para o equilíbrio mecânico \eqref{eq:equilibrium_radial_1d}, a coleta de termos de ordem $\epsilon^{-1}$ e $\epsilon^0$ resulta em:
+
+\begin{equation}
+  \begin{aligned}
+    \epsilon^{-1} &: \frac{\partial \sigma_r^{(0)}}{\partial y} = 0, \\
+    \epsilon^0 &: \frac{\partial \sigma_r^{(0)}}{\partial r} + \frac{\partial \sigma_r^{(1)}}{\partial y} + \frac{1}{r} (\sigma_r^{(0)} - \sigma_\theta^{(0)}) = 0.
+  \end{aligned}
+  \label{eq:EquilibriumWithStressSAFs}
+\end{equation}
+
+Assume-se que a função de deslocamento de primeira ordem possui a forma separável $u_r^{(1)} = \chi^{(1)}(y) \frac{\partial u_r^{(0)}}{\partial r} + \chi^{(2)}(y) \frac{u_r^{(0)}}{r}$ do mesmo modo como feito por \cite{BrunaReport}. A substituição desta forma na equação de equilíbrio de ordem $\epsilon^{-1}$ define os \textbf{problemas locais}:
+
+\begin{equation}
+  \begin{aligned}
+    \frac{\partial}{\partial y} \left( \mathcal{C}_{11}(y) \frac{\partial \chi^{(1)}(y)}{\partial y} + \mathcal{C}_{11}(y) \right) &= 0, \\
+    \frac{\partial}{\partial y} \left( \mathcal{C}_{11}(y) \frac{\partial \chi^{(2)}(y)}{\partial y} + \mathcal{C}_{12}(y) \right) &= 0.
+  \end{aligned}
+  \label{eq:LocalProblems}
+\end{equation}
+
+Para garantir a existência e unicidade dessas soluções, impõe-se a condição de \textbf{contato perfeito} na interface entre as camadas:
+
+\begin{equation}
+  [[\chi(y)]] = 0, \quad \left[\left[ \mathcal{C}_{11}(y) \frac{\partial \chi(y)}{\partial y} + \mathcal{C}_{ij}(y) \right]\right] = 0,
+\end{equation}
+
+além da condição de normalização da média na célula unitária $Y$:
+
+\begin{equation}
+  \langle \chi^{(1)}(y) \rangle = \langle \chi^{(2)}(y) \rangle = 0.
+\end{equation}

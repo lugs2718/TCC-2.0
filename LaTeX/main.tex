@@ -1,0 +1,228 @@
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% Trabalho de Conclusão de Curso (TCC) - Engenharia / Mecânica Computacional
+% Modelo abntex2 - Associação Brasileira de Normas Técnicas (ABNT)
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,			% para impressão em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel.
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	brazilian			% o último idioma é o principal do documento
+]{abntex2}
+
+% ---
+% PACOTES BÁSICOS
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype}			% para melhorias de justificação
+\usepackage{amsmath, amsfonts, amssymb} % Pacotes matemáticos avançados
+\usepackage{bm}                 % Vetores e tensores em negrito (\bm)
+\usepackage{tikz}               % Criação de diagramas e figuras vetoriais
+\usetikzlibrary{shapes.geometric, arrows, positioning}
+\usepackage{listings}           % Listagem de códigos fonte
+\usepackage{booktabs}           % Tabelas de alta qualidade
+\usepackage{subcaption}        % Subfiguras
+
+%---
+% Pacotes para display de programas
+%---
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+% ---
+% PACOTES DE CITAÇÕES
+% ---
+\usepackage[alf,abnt-etal-cite=2,abnt-etal-list=0,abnt-full-initials=yes]{abntex2cite} % Citações padrão ABNT
+
+% ---
+% INFORMAÇÕES DO DOCUMENTO E CAPA
+% ---
+\titulo{Análise de um tubo cilíndrico multicamadas por meio da homogeneização assintótica numérica e método dos elementos finitos}
+\autor{Luiz Gustavo da Silva Pereira}
+\local{Volta Redonda -- RJ}
+\data{2026}
+\orientador{Prof. Dr.}
+\instituicao{%
+  Universidade Federal Fluminense -- UFF
+  \par
+  Escola de Engenharia Industrial Metalúrgica de Volta Redonda
+  \par
+  Departamento de Engenharia Mecânica}
+\tipotrabalho{Trabalho de Conclusão de Curso (Graduação)}
+\preambulo{Trabalho de Conclusão de Curso apresentado à Escola de Engenharia da Universidade Federal Fluminense como requisito parcial para obtenção do grau de Engenheiro.}
+
+% ---
+% CONFIGURAÇÕES VISUAIS E HIPERLINKS
+% ---
+\definecolor{blue}{RGB}{41,5,195}
+
+\hypersetup{
+    pdftitle={\imprimirtitulo},
+    pdfauthor={\imprimirautor},
+    pdfsubject={\imprimirpreambulo},
+    pdfcreator={LaTeX with abntex2},
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,        % color of internal links
+    citecolor=blue,        % color of links to bibliography
+    filecolor=magenta,     % color of file links
+    urlcolor=blue,
+    bookmarksdepth=4
+}
+
+% ---
+% ESPAÇAMENTO ENTRE PARÁGRAFOS E LINHAS
+% ---
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.2cm}
+
+% ---
+% COMPILAÇÃO DO ÍNDICE
+% ---
+\makeindex
+
+% --- CONTROLE DE COMPILAÇÃO ---
+% Comente ou remova as linhas dos capítulos que NÃO quer compilar agora.
+% Deixe apenas o capítulo que você está editando ativado.
+\includeonly{
+  %capitulos/01_introducao,
+ %capitulos/02_revisao_bibliografica,
+  %capitulos/03_1_equilibrio,
+  %capitulos/03_2_homogeneizacao,
+  %capitulos/04_mef,
+  %capitulos/05_resultados,
+  %capitulos/06_conclusao,
+}
+
+% ------------------------------------------------------------------------
+% INÍCIO DO DOCUMENTO
+% ------------------------------------------------------------------------
+\begin{document}
+
+% Seleciona o idioma do documento
+\selectlanguage{brazilian}
+
+% Retira espaço extra puxado pelo ênfase
+\frenchspacing
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+% Capa e Folha de Rosto
+\imprimircapa
+\imprimirfolhaderosto
+
+% ---
+% RESUMO
+% ---
+\setlength{\absparsep}{18pt}
+\begin{resumo}
+  Este trabalho apresenta uma análise multiescala de vasos de pressão cilíndricos multicamadas sob hipótese de axissimetria e deformação plana generalizada. Emprega-se o Método de Homogeneização Assintótica (MHA) de primeira ordem para derivar os coeficientes constitutivos efetivos do meio microperiódico bilaminado e reconstruir os campos locais de tensão e deslocamento. Os resultados analíticos homogeneizados são validados quantitativamente em relação a simulações de referência via Método dos Elementos Finitos (MEF) implementadas no ambiente FEniCS.
+
+  \textbf{Palavras-chave}: Método de Homogeneização Assintótica. Método dos Elementos Finitos. Vasos de Pressão Compósitos. Elasticidade Axissimétrica. FEniCS.
+\end{resumo}
+
+% ---
+% ABSTRACT
+% ---
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+   This work presents a multiscale analysis of multilayered cylindrical pressure vessels under axisymmetry and generalized plane strain hypotheses. The first-order Asymptotic Homogenization Method (AHM) is employed to derive the effective constitutive coefficients of the microperiodic bilaminated medium and reconstruct local stress and displacement fields. The analytical homogenized results are quantitatively validated against reference Finite Element Method (FEM) simulations implemented in the FEniCS framework.
+
+   \textbf{Keywords}: Asymptotic Homogenization Method. Finite Element Method. Composite Pressure Vessels. Axisymmetric Elasticity. FEniCS.
+ \end{otherlanguage*}
+\end{resumo}
+
+% ---
+% LISTA DE ILUSTRAÇÕES
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+% ---
+% LISTA DE TABELAS
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+
+% ---
+% SUMÁRIO
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% Introdução
+\include{capitulos/01_introducao}
+
+% Revisão Bibliográfica
+% \include{capitulos/02_revisao_bibliografica}
+
+% Formulação Matemática - Equilíbrio Elástico
+\include{capitulos/03_1_equilibrio}
+
+% Formulação Matemática - Homogeneização Assintótica
+\include{capitulos/03_2_homogeneizacao}
+
+% Método dos Elementos Finitos (MEF)
+\include{capitulos/04_mef}
+
+% Resultados e Discussões
+%\include{capitulos/05_resultados}
+
+% Conclusão
+%\include{capitulos/06_conclusao}
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% Referências bibliográficas
+\bibliography{bibliografia}
+
+\end{document}

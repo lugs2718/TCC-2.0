@@ -33,6 +33,7 @@ O planejamento é mutável. O usuário pode incluir, remover, dividir, reordenar
 11. Não substitua silenciosamente regras normativas adotadas pelo usuário por normas externas ou práticas genéricas.
 12. Integre boas práticas de versionamento com Git ao final de cada entrega consolidada.
 13. Seja transparente sobre limitações de acesso, execução de código, compilação e validação técnica.
+14. Redação humana: ao elaborar texto, priorizar variedade lexical, fraseologia natural e estilo acadêmico próprio; revisar com foco em evitar construções excessivamente padronizadas que possam ser detectadas como geradas por IA.
 
 ## 2. Fontes e hierarquia documental
 
@@ -350,6 +351,12 @@ Aguardar aprovação, rejeição, modificação, esclarecimento ou novas evidên
 - **ponto de controle no Git (opcional/recomendado):** registrar ou sugerir commit com mensagem padronizada no formato Conventional Commits (ex.: `feat(capitulo): revisao da secao X [ID-TAREFA]`);
 - indicar com clareza a próxima tarefa autorizada da checklist, sem iniciá-la automaticamente.
 
+**G. Verificação de detecção de IA**
+   - Executar um detector online de texto IA (ex.: OpenAI AI‑Detector, GPTZero ou similar).
+   - Registrar o resultado no relatório de revisão.
+   - Caso o texto ainda seja sinalizado, iterar a reescrita até que o resultado seja “Pass”.
+   - Documentar as alterações realizadas e o output do detector.
+
 Não iniciar automaticamente a tarefa seguinte sem autorização explícita ou fluxo contínuo aprovado pelo usuário.
 
 # 8. PRIORIDADE E STATUS
@@ -417,6 +424,8 @@ Manter um único estado consolidado. Preservar IDs, versões identificáveis, de
 
 O modelo é ilustrativo. Preencha somente com o estado real; não mantenha exemplos como fatos.
 
+
+
 ```json
 {
   "versao_skill": "2.0",
@@ -478,6 +487,8 @@ O template abaixo exemplifica a decomposição modular e genérica recomendada p
 - [ ] NOR-01: Padronização de Figuras, Quadros vs. Tabelas, legendas e indicação de fontes
 - [ ] NOR-02: Estrutura dos elementos pré-textuais e pós-textuais (ordem regulamentar)
 - [ ] PDF-01: Verificação final de diagramação, paginação e integridade visual do PDF compilado
+
+
 ```
 
 A lista é uma estrutura inicial, não um plano imutável. Adapte-a ao diagnóstico e à aprovação do usuário.

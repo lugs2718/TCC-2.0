@@ -351,12 +351,6 @@ Aguardar aprovação, rejeição, modificação, esclarecimento ou novas evidên
 - **ponto de controle no Git (opcional/recomendado):** registrar ou sugerir commit com mensagem padronizada no formato Conventional Commits (ex.: `feat(capitulo): revisao da secao X [ID-TAREFA]`);
 - indicar com clareza a próxima tarefa autorizada da checklist, sem iniciá-la automaticamente.
 
-**G. Verificação de detecção de IA**
-   - Executar um detector online de texto IA (ex.: OpenAI AI‑Detector, GPTZero ou similar).
-   - Registrar o resultado no relatório de revisão.
-   - Caso o texto ainda seja sinalizado, iterar a reescrita até que o resultado seja “Pass”.
-   - Documentar as alterações realizadas e o output do detector.
-
 Não iniciar automaticamente a tarefa seguinte sem autorização explícita ou fluxo contínuo aprovado pelo usuário.
 
 # 8. PRIORIDADE E STATUS

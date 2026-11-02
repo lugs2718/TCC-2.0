@@ -1,25 +1,45 @@
 \chapter{Revisão Bibliográfica}
 
 
-% TASK: 
-\begin{itemize}
-  \item Objetivo B.1: Vasos de Pressão e Critérios Normativos (ASME e NR-13):
-    \textbf{ O que abordar:}
-  \item Apresentar a definição de vasos de pressão,
-  \item A importância do projeto seguro.
-    \textbf{ Rigor técnico:} Discutir os limites de parede fina vs. parede grossa (solução de Lamé).
-  \item Apresentar os critérios de projeto mecânico conforme o Código ASME Seção VIII Divisão 1 (como o cálculo de espessura admissível)
-  \item As diretrizes de classificação e segurança operacional exigidas pela Norma Regulamentadora Brasileira NR-13.
-  \item highlight[Garantir que as seções estão coesas e coerentes. Rearranjei as seções sobre a NR13 e a ASME.
-    \textbf{ Fontes-chave:}
-  \item Felipe Zacharias (2018), Vasos de Pressão (UFJF),
-  \item Manual Simplificado ASME Sec VIII Div 1, e
-  \item NR-13.
-]
-% Seção 2.1: Vasos de Pressão e Critérios Normativos (ASME e NR-13)
-\end{itemize}
 
 \section{Vasos de Pressão e Critérios Normativos}
+
+\subsection{Classificação Geométrica: Paredes Finas vs. Paredes Grossas}
+
+Sob o ponto de vista da mecânica do contínuo e da resistência dos materiais, o dimensionamento elástico e a distribuição de tensões ao longo da parede do vaso são intrinsecamente dependentes da relação geométrica entre o raio interno ($r$) e a espessura da parede ($t$). Por este motivo, a literatura clássica estabelece o seguinte critério de classificação estrutural:
+
+\textbf{Vasos de Parede Fina:} Ocorrem quando a relação geométrica satisfaz a desigualdade:
+
+$ r/t \ge  10. $ <eq-limite-parede-fina>
+
+Nesta condição, assume-se que as tensões normais de tração atuantes na parede do vaso são uniformes ao longo de toda a espessura, sendo chamadas de tensões de membrana \cite[p.~415]{asme_sec8_div1_2019}.
+
+\textbf{Vasos de Parede Grossa:} Ocorrem quando a espessura do vaso é expressiva ($r/t < 10$), fazendo com que a distribuição de tensões varie radialmente de forma não linear ao longo da espessura, exigindo o emprego de soluções completas de elasticidade (como as clássicas soluções de Lamé) devido ao alto gradiente de tensões e efeitos de cisalhamento interlaminar \cite[p.~591]{Sadd2009}.
+
+A \cite[p.~19]{asme_sec8_div1_2019} cita também que as duas geometrias primárias mais difundidas na indústria para a contenção de fluidos pressurizados são os cilindros (verticais ou horizontais) e as esferas. Para reservatórios cilíndricos de parede fina sujeitos a uma pressão manométrica interna $p$, \cite[p.~159]{Sadd2009} afirma que o estado plano de tensões é governado por tensões principais normais sem componentes de cisalhamento, devido à simetria axial (axissimetria) do cilindro e do carregamento. \cite[p.~652]{beer1989resistencia} deduzem a tensão circunferencial (ou tangencial/hoop), denotada por $\sigma_1$, que atua no sentido tangencial ao longo do costado cilíndrico, sendo expressa como:
+
+$ sigma_1 = (p r) / t. $ <eq-tensao-circunferencial>
+
+De modo similar, a tensão longitudinal (ou axial), denotada por $sigma_2$, atua paralelamente ao eixo do cilindro e é gerada pelas forças de pressão que empurram os tampões de extremidade, sendo descrita por \cite{beer1989resistencia:}
+
+$ \sigma_2 = (p r) / (2 t). $ <eq-tensao-longitudinal>
+
+Comparando-se as equações \cite{eq-tensao-circunferencial} e \cite{eq-tensao-longitudinal}, observa-se que a tensão circunferencial é exatamente o dobro da tensão longitudinal ($\sigma_2 = 2 \sigma_1$). Essa relação física possui uma implicação mecânica fundamental de falha: ao pressurizar excessivamente um tubo ou cilindro metálico homogêneo, a parede falhará primeiro por tração ao longo das juntas longitudinais, gerando uma fissura linear paralela ao eixo de comprimento do cilindro. Por essa razão, juntas de solda longitudinais em cascos cilíndricos calandrados devem ser dimensionadas e inspecionadas para suportar o dobro do carregamento em relação às juntas circunferenciais. \marginpar{\tiny Não acho que esse trecho precise de citações, pois o conteúdo está claro pelas próprias equações e pelo que foi explicado.}
+
+Em contrapartida, para reservatórios esféricos de parede fina, \cite[p.~652]{beer1989resistencia} ressaltam que a perfeita simetria esférica do domínio faz com que as tensões circunferenciais e longitudinais sejam idênticas ($\sigma_1 = \sigma_2$), resultando em:
+
+$ \sigma_1 = \sigma_2 = \frac{pr}{2t} $ <eq-tensao-esferica>
+
+No estado de tensões na parede de uma esfera, as tensões principais normais são iguais, o que faz com que o círculo de Mohr correspondente ao plano tangencial se reduza a um único ponto, zerando a tensão cisalhante máxima no plano ($tau_{\text{no plano}} = 0$). No entanto, a tensão cisalhante máxima absoluta (fora do plano) para cilindros e esferas é dada, respectivamente, por \cite[p.~656]{beer1989resistencia}:
+
+\begin{equation}
+  \begin{aligned}
+    \tau_\textit{("max, cilindro")} = \sigma_1 / 2 = (p r) / (2 t) \\
+    \tau_\textit{("max, esfera")} = \sigma_1 / 2 = (p r) / (4 t)
+\end{aligned}
+\end{equation}
+
+Essa distribuição de tensões prova que, embora os vasos esféricos apresentem uma fabricação muito mais complexa e cara devido à necessidade de conformação tridimensional de gomos soldados, eles são mecanicamente muito mais eficientes, sendo capazes de suportar o dobro de pressão interna em relação a um vaso cilíndrico de mesmo diâmetro e espessura.
 
 \subsection{Gestão de Segurança e Integridade Estrutural Conforme a NR-13}
 
@@ -152,54 +172,6 @@ $ t = (P R) / (2 S E + 0,4 P) \quad text("ou") \quad P = (2 S E t) / (R - 0,4 t)
 
 O código estabelece de forma rigorosa que a espessura mínima nominal a ser adotada para a fabricação de cascos e tampos de aço carbono e baixa liga, independentemente do cálculo por pressão, é o maior valor entre $4,8$ mm ou a relação baseada no diâmetro interno com tolerância à corrosão (UG-16), visando garantir estabilidade dimensional e facilidade de fabricação na caldeiraria [24].
 % ====================================================
-
-
-\subsection{Classificação Geométrica: Paredes Finas vs. Paredes Grossas}
-
-\marginpar{\tiny Acho que a revisão bibliográfica ficou com subseções demais. O que você acha?}
-% =============================
-% Essa parte ficou meio jogada aqui. Acho que faz mais sentido passar para depois, quando eu for falar sobre a solução de Lamé.
-
-Sob o ponto de vista da mecânica do contínuo e da resistência dos materiais, o dimensionamento elástico e a distribuição de tensões ao longo da parede do vaso são intrinsecamente dependentes da relação geométrica entre o raio interno ($r$) e a espessura da parede ($t$). Por este motivo, a literatura clássica estabelece o seguinte critério de classificação estrutural:
-
-\textbf{Vasos de Parede Fina:} Ocorrem quando a relação geométrica satisfaz a desigualdade:
-
-$ r/t \ge  10. $ <eq-limite-parede-fina>
-
-Nesta condição, assume-se que as tensões normais de tração atuantes na parede do vaso são uniformes ao longo de toda a espessura, sendo chamadas de tensões de membrana \cite[p.~415]{asme_sec8_div1_2019}. \#strike[Estudos teóricos e experimentais demonstram que, ao adotar a hipótese de parede fina em vasos que respeitam a \cite{eq-limite-parede-fina}, as equações simplificadas de membrana fornecem um erro analítico menor que 4% em relação aos valores de tensão máxima real obtidos por teorias elásticas exatas tridimensionais \cite[p.~591]{Sadd2009}.] \marginpar{\tiny Não encontrei nos artigos validando a margem de 4%. Remover}
-
-\textbf{Vasos de Parede Grossa:} Ocorrem quando a espessura do vaso é expressiva ($r/t < 10$), fazendo com que a distribuição de tensões varie radialmente de forma não linear ao longo da espessura, exigindo o emprego de soluções completas de elasticidade (como as clássicas soluções de Lamé) devido ao alto gradiente de tensões e efeitos de cisalhamento interlaminar \cite[p.~591]{Sadd2009}.
-% =============================
-
-A \cite[p.~19]{asme_sec8_div1_2019} cita também que as duas geometrias primárias mais difundidas na indústria para a contenção de fluidos pressurizados são os cilindros (verticais ou horizontais) e as esferas. Para reservatórios cilíndricos de parede fina sujeitos a uma pressão manométrica interna $p$, \cite[p.~159]{Sadd2009} afirma que o estado plano de tensões é governado por tensões principais normais sem componentes de cisalhamento, devido à simetria axial (axissimetria) do cilindro e do carregamento. \cite[p.~652]{beer1989resistencia} deduzem a tensão circunferencial (ou tangencial/hoop), denotada por $\sigma_1$, que atua no sentido tangencial ao longo do costado cilíndrico, sendo expressa como:
-
-$ sigma_1 = (p r) / t. $ <eq-tensao-circunferencial>
-
-De modo similar, a tensão longitudinal (ou axial), denotada por $sigma_2$, atua paralelamente ao eixo do cilindro e é gerada pelas forças de pressão que empurram os tampões de extremidade, sendo descrita por \cite{beer1989resistencia:}
-
-$ \sigma_2 = (p r) / (2 t). $ <eq-tensao-longitudinal>
-
-Comparando-se as equações \cite{eq-tensao-circunferencial} e \cite{eq-tensao-longitudinal}, observa-se que a tensão circunferencial é exatamente o dobro da tensão longitudinal ($\sigma_2 = 2 \sigma_1$). Essa relação física possui uma implicação mecânica fundamental de falha: ao pressurizar excessivamente um tubo ou cilindro metálico homogêneo, a parede falhará primeiro por tração ao longo das juntas longitudinais, gerando uma fissura linear paralela ao eixo de comprimento do cilindro. Por essa razão, juntas de solda longitudinais em cascos cilíndricos calandrados devem ser dimensionadas e inspecionadas para suportar o dobro do carregamento em relação às juntas circunferenciais. \marginpar{\tiny Não acho que esse trecho precise de citações, pois o conteúdo está claro pelas próprias equações e pelo que foi explicado.}
-
-Em contrapartida, para reservatórios esféricos de parede fina, \cite[p.~652]{beer1989resistencia} ressaltam que a perfeita simetria esférica do domínio faz com que as tensões circunferenciais e longitudinais sejam idênticas ($\sigma_1 = \sigma_2$), resultando em:
-
-$ \sigma_1 = \sigma_2 = \frac{pr}{2t} $ <eq-tensao-esferica>
-
-No estado de tensões na parede de uma esfera, as tensões principais normais são iguais, o que faz com que o círculo de Mohr correspondente ao plano tangencial se reduza a um único ponto, zerando a tensão cisalhante máxima no plano ($tau_{\text{no plano}} = 0$). No entanto, a tensão cisalhante máxima absoluta (fora do plano) para cilindros e esferas é dada, respectivamente, por \cite[p.~656]{beer1989resistencia}:
-
-\begin{equation}
-  \begin{aligned}
-    \tau_\textit{("max, cilindro")} = \sigma_1 / 2 = (p r) / (2 t) \\
-    \tau_\textit{("max, esfera")} = \sigma_1 / 2 = (p r) / (4 t)
-\end{aligned}
-\end{equation}
-
-Essa distribuição de tensões prova que, embora os vasos esféricos apresentem uma fabricação muito mais complexa e cara devido à necessidade de conformação tridimensional de gomos soldados, eles são mecanicamente muito mais eficientes, sendo capazes de suportar o dobro de pressão interna em relação a um vaso cilíndrico de mesmo diâmetro e espessura.
-% ====================================================
-% Aqui eu introduzo a ASME e a NR-13. Mas como elas foram citadas na seção anterior, vou precisar colocar essa seção primeiro
-
-
-
 
 % TASK: 
 \begin{itemize}

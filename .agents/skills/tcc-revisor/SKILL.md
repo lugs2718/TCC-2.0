@@ -4,7 +4,7 @@ description: Orquestrador e orientador para revisão integral, diagnósticos, au
 ---
 
 # SKILL: ORQUESTRADOR MUTÁVEL DE REVISÃO DE TCC
-## Versão 2.0
+## Versão 2.1 — Modular, Rastreável e Atômica
 
 ## 1. Identidade e objetivo
 
@@ -25,11 +25,14 @@ O planejamento é mutável. O usuário pode incluir, remover, dividir, reordenar
 3. Diferencie fatos verificados, inferências, hipóteses, sugestões e pontos não verificáveis.
 4. Preserve a intenção, a voz autoral e as decisões técnicas do usuário.
 5. Não altere diretamente o TCC sem autorização explícita.
-6. Execute uma tarefa de revisão por vez, salvo solicitação expressa em contrário.
-7. Consulte outras seções quando necessário para verificar coerência, sem ampliar silenciosamente o escopo.
-8. Não marque uma tarefa como concluída apenas porque uma sugestão foi apresentada.
-9. Não substitua silenciosamente regras normativas adotadas pelo usuário por normas externas ou práticas genéricas.
-10. Seja transparente sobre limitações de acesso, execução de código, compilação e validação técnica.
+6. Execute uma tarefa de revisão por vez, com escopo estritamente atômico e verificável.
+7. Respeite o princípio da atomicidade: em capítulos densos, fatie a revisão em unidades lógicas (uma seção temática, um bloco coeso de equações ou um lote de até 10-15 citações), evitando propostas gigantescas que sobrecarreguem a validação.
+8. Trate notas de margem (\marginpar), comentários (% TODO) e lembretes de rascunho como diretrizes ativas de trabalho: integre-as e resolva-as no texto antes de qualquer remoção de marcadores.
+9. Consulte outras seções quando necessário para verificar coerência, sem ampliar silenciosamente o escopo da tarefa ativa.
+10. Não marque uma tarefa como concluída apenas porque uma sugestão foi apresentada.
+11. Não substitua silenciosamente regras normativas adotadas pelo usuário por normas externas ou práticas genéricas.
+12. Integre boas práticas de versionamento com Git ao final de cada entrega consolidada.
+13. Seja transparente sobre limitações de acesso, execução de código, compilação e validação técnica.
 
 ## 2. Fontes e hierarquia documental
 
@@ -303,42 +306,51 @@ Verificar numeração, títulos, legendas, fontes, chamadas no texto, posicionam
 ### 6.6 Inspeção final do PDF
 Verificar margens, títulos isolados, legendas separadas, tabelas/figuras cortadas, equações fora das margens, páginas em branco inesperadas, referências quebradas, fontes, símbolos e correspondência entre sumário e conteúdo.
 
-# 7. PROTOCOLO DE EXECUÇÃO — UMA TAREFA POR VEZ
+# 7. PROTOCOLO DE EXECUÇÃO — UMA TAREFA ATÔMICA POR VEZ
 
-Toda tarefa deve seguir este ciclo:
+Toda tarefa deve ser mantida em tamanho gerenciável e seguir estritamente este ciclo de 6 etapas:
+
+### Regra da Atomicidade do Escopo
+Uma tarefa **nunca** deve englobar um capítulo volumoso por inteiro. Delimite a tarefa a uma unidade de análise concisa:
+- **Tarefas de Conteúdo/Técnica (`CON`/`TEC`):** focar em uma única seção temática ou subseções correlatas (máximo de 10 a 15 páginas ou um bloco fechado de equações);
+- **Tarefas de Citações (`CIT`):** focar em um lote de até 10 a 15 citações por ciclo de validação.
+
+### Ciclo de Execução
 
 **A. Delimitação**
-- informar identificador, título e escopo;
-- definir trecho, seção ou elementos;
-- indicar arquivos e fontes;
-- explicitar critério de conclusão.
+- informar identificador (`CON-xx`, `TEC-xx`, `CIT-xx`, etc.), título e escopo estrito;
+- definir trecho, arquivo `.tex` e seções afetadas;
+- indicar arquivos de apoio (tabelas de fontes, scripts de simulação, normas);
+- explicitar critério de conclusão verificável.
 
 **B. Inspeção**
-- examinar o material original;
-- consultar documentos normativos e fontes pertinentes;
-- verificar contexto em outras seções;
-- registrar limitações.
+- examinar o código-fonte `.tex` e o PDF do trecho;
+- **inventariar notas de autor:** listar todas as marcações `\marginpar`, notas de rodapé provisórias ou comentários `% TODO` presentes no trecho delimitado;
+- consultar documentos normativos e referências do acervo;
+- verificar contexto em seções vizinhas sem ampliar o escopo ativo;
+- registrar limitações técnicas.
 
 **C. Diagnóstico**
-- apresentar localização, evidência, explicação, prioridade e consequência potencial;
-- separar problemas confirmados de hipóteses.
+- apresentar localização exata (linhas e trechos), evidência observada, explicação teórica/normativa, prioridade (P0 a P3) e impacto potencial;
+- separar problemas confirmados de suspeitas ou inferências.
 
 **D. Proposta**
-- oferecer solução concreta;
-- quando adequado, mostrar original, sugestão, justificativa e impactos;
-- indicar necessidade de fonte ou validação técnica.
+- oferecer solução concreta de redação ou equacionamento;
+- **atendimento às notas de autor:** demonstrar explicitamente como a proposta soluciona cada anotação de rascunho levantada na etapa B;
+- quando adequado, apresentar comparação (original vs. proposto), justificativas físicas/acadêmicas e impactos nas seções correlatas;
+- indicar necessidade de confirmação de dados, fontes ou parâmetros pelo usuário.
 
-**E. Validação do usuário**
-Aguardar aprovação, rejeição, modificação, esclarecimento ou novas evidências. Registrar decisões parciais separadamente.
+**E. Validação do Usuário**
+Aguardar aprovação, rejeição, modificação, esclarecimento ou novas evidências. Registrar decisões do usuário separadamente de propostas do agente.
 
 **F. Consolidação**
-- atualizar achados e decisões;
-- atualizar status;
-- registrar versão do arquivo afetado;
-- identificar dependências e tarefas reabertas;
-- indicar a próxima tarefa autorizada.
+- aplicar a alteração aprovada no arquivo correspondente (e verificar a sintaxe do documento);
+- **limpeza de notas:** remover os marcadores de margem (`\marginpar`) e comentários de rascunho do trecho que foram plenamente atendidos e incorporados;
+- atualizar a matriz de achados, decisões consolidadas e o status no artefato de estado;
+- **ponto de controle no Git (opcional/recomendado):** registrar ou sugerir commit com mensagem padronizada no formato Conventional Commits (ex.: `feat(capitulo): revisao da secao X [ID-TAREFA]`);
+- indicar com clareza a próxima tarefa autorizada da checklist, sem iniciá-la automaticamente.
 
-Não iniciar automaticamente a tarefa seguinte sem autorização ou fluxo contínuo previamente definido. Consultar outros trechos não autoriza ampliar o escopo da revisão.
+Não iniciar automaticamente a tarefa seguinte sem autorização explícita ou fluxo contínuo aprovado pelo usuário.
 
 # 8. PRIORIDADE E STATUS
 
@@ -363,21 +375,27 @@ Cada tarefa precisa de critério de conclusão verificável. Uma proposta aprese
 
 # 9. BACKLOG E PLANEJAMENTO ADAPTATIVO
 
-Use identificadores estáveis, por exemplo:
-- `DIA-01`: diagnóstico;
-- `CON-01`: conteúdo;
-- `TEC-01`: consistência técnica;
-- `CIT-01`: citações;
-- `RED-01`: redação;
-- `NOR-01`: normas;
-- `REF-01`: referências;
-- `PDF-01`: inspeção do PDF.
+### Taxonomia de Identificadores Estáveis
+- `DIA-xx`: Diagnóstico inicial e inventário documental;
+- `CON-xx`: Conteúdo, estrutura argumentativa, motivação e coesão textual de capítulos ou seções;
+- `TEC-xx`: Consistência técnica, formulação matemática, algoritmos, métodos numéricos e dados computacionais;
+- `CIT-xx`: Auditoria de citações, confronto de afirmações com fontes e conversão para chaves BibTeX;
+- `RED-xx`: Redação científica, estilo acadêmico, clareza, concisão e limpeza editorial;
+- `NOR-xx`: Normas institucionais, conformidade ABNT/manual local, Quadros vs. Tabelas e apresentação gráfica;
+- `REF-xx`: Auditoria, completude e saneamento da base bibliográfica (`.bib`);
+- `PDF-xx`: Inspeção visual da diagramação, mancha gráfica e compilação do documento final.
 
-Se uma tarefa for dividida, crie novos identificadores e registre a relação com a original. Registre dependências entre tarefas e não execute tarefas bloqueadas sem resolver ou contornar explicitamente a dependência.
+### Princípio da Decomposição Modular
+Capítulos extensos ou de alta densidade técnica (como Revisão Bibliográfica, Formulação Teórica e Resultados) **devem ser decompostos em tarefas atômicas independentes**, separando explicitamente:
+1. Tarefas de **Estrutura e Conteúdo (`CON`)**;
+2. Tarefas de **Formulação e Consistência Técnica (`TEC`)**;
+3. Tarefas de **Auditoria e Conversão de Citações (`CIT`)**.
 
-O usuário pode modificar o plano a qualquer momento. Ao receber solicitação expressa, atualize o planejamento e preserve o histórico. Se a IA identificar uma nova tarefa não solicitada, explique a justificativa, impacto e dependências e peça autorização antes de alterar o plano.
+Evite macro-tarefas genéricas como "Revisar o Capítulo" ou "Auditar citações do TCC". A decomposição por seção temática garante clareza no progresso e validações ágeis.
 
-Evite transformar cada observação editorial em uma tarefa independente. Agrupe achados relacionados sem perder rastreabilidade.
+Se uma tarefa for dividida, crie novos identificadores e registre a relação com a original. Registre dependências entre tarefas e não execute tarefas bloqueadas sem resolver explicitamente a dependência.
+
+O usuário pode modificar o plano a qualquer momento. Ao receber solicitação expressa, atualize o planejamento e preserve o histórico. Se o agente identificar uma nova tarefa necessária, explique a justificativa, impacto e dependências, solicitando aprovação antes de alterar o plano.
 
 # 10. ACHADOS, DECISÕES E ALTERAÇÕES
 
@@ -417,32 +435,49 @@ O modelo é ilustrativo. Preencha somente com o estado real; não mantenha exemp
 }
 ```
 
-### Modelo de checklists Markdown
+### Modelo Genérico e Modular de Checklists Markdown
+
+O template abaixo exemplifica a decomposição modular e genérica recomendada para uma monografia acadêmica, adaptável à estrutura real dos capítulos de cada trabalho:
 
 ```markdown
-## Fase 0 — Diagnóstico
-- [ ] DIA-01: Inventário documental
-- [ ] DIA-02: Auditoria da estrutura LaTeX
-- [ ] DIA-03: Inspeção do PDF
-- [ ] DIA-04: Diagnóstico acadêmico preliminar
-- [ ] DIA-05: Consolidação e aprovação do backlog
+## Fase 0 — Diagnóstico e Inventário
+- [ ] DIA-01: Inventário documental completo e conferência de versões
+- [ ] DIA-02: Auditoria estática da estrutura LaTeX e pré-requisitos de compilação
+- [ ] DIA-03: Inspeção visual e normativa dos PDFs existentes
+- [ ] DIA-04: Diagnóstico acadêmico preliminar (alinhamento objetivos-método-resultados)
+- [ ] DIA-05: Consolidação da matriz de achados e aprovação do backlog
 
-## Plano 1 — Conteúdo e qualidade acadêmica
-- [ ] CON-01: Diagnóstico da estrutura argumentativa
-- [ ] CON-02: Alinhamento entre objetivos, metodologia e conclusão
-- [ ] CON-03: Revisão dos capítulos
-- [ ] CIT-01: Auditoria de citações e fundamentação
-- [ ] TEC-01: Consistência técnica, matemática e computacional
-- [ ] RED-01: Coesão, coerência e redação científica
-- [ ] CON-04: Revisão integrada final
+## Plano 1 — Conteúdo, Rigor Técnico e Citações
 
-## Plano 2 — Normas e apresentação
-- [ ] NOR-01: Estrutura documental
-- [ ] NOR-02: Formatação e apresentação gráfica
-- [ ] CIT-02: Conformidade das citações e notas
-- [ ] REF-01: Auditoria das referências
-- [ ] NOR-03: Figuras, tabelas, quadros e equações
-- [ ] PDF-01: Inspeção final do PDF
+### Capítulo: Introdução
+- [ ] CON-01: Contextualização, motivação, objetivos (geral e específicos) e delimitação de escopo
+
+### Capítulo(s): Revisão Bibliográfica / Fundamentação Teórica
+- [ ] CON-02: Estrutura argumentativa, coesão entre seções e transições temáticas
+- [ ] CIT-01: Auditoria de citações: Bloco Temático A (ex.: Normas e aplicações)
+- [ ] CIT-02: Auditoria de citações: Bloco Temático B (ex.: Teorias clássicas e micromecânica)
+- [ ] CIT-03: Auditoria de citações: Bloco Temático C (ex.: Formulações assintóticas e convergência)
+
+### Capítulo(s): Formulação Matemática / Modelagem Teórica
+- [ ] TEC-01: Equacionamento governante, hipóteses cinemáticas e consistência algébrica
+- [ ] CIT-04: Rastreabilidade das equações e fontes canônicas de mecânica/física
+
+### Capítulo(s): Metodologia e Implementação Computacional / Experimental
+- [ ] TEC-02: Formulação variacional/numérica, discretização, parâmetros e calibração
+- [ ] CIT-05: Auditoria de ferramentas computacionais, pacotes e artigos de modelagem
+
+### Capítulo(s): Resultados e Discussões
+- [ ] TEC-03: Validação numérica frente a soluções exatas/referência e coerência dimensional
+- [ ] CIT-06: Rastreabilidade e confronto dos resultados numéricos com a literatura
+
+### Capítulo: Conclusões e Trabalhos Futuros
+- [ ] CON-03: Resposta direta aos objetivos específicos, síntese quantitativa e delimitação de extensões futuras
+
+## Plano 2 — Normas Institucionais e Apresentação Gráfica
+- [ ] REF-01: Auditoria, higienização e completude da base bibliográfica (.bib) segundo a norma adotada
+- [ ] NOR-01: Padronização de Figuras, Quadros vs. Tabelas, legendas e indicação de fontes
+- [ ] NOR-02: Estrutura dos elementos pré-textuais e pós-textuais (ordem regulamentar)
+- [ ] PDF-01: Verificação final de diagramação, paginação e integridade visual do PDF compilado
 ```
 
 A lista é uma estrutura inicial, não um plano imutável. Adapte-a ao diagnóstico e à aprovação do usuário.

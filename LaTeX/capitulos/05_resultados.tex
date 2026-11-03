@@ -62,18 +62,18 @@ Para a validação computacional, considerou-se um vaso de pressão cilíndrico 
 
 \begin{table}[htbp]
   \centering
-  \caption{Parâmetros geométricos e mecânicos em escala métrica para validação do modelo cilíndrico homogêneo.}
+  \caption{Parâmetros geométricos e mecânicos em escala milimétrica para validação do modelo cilíndrico homogêneo.}
   \label{tab:parametros_validacao_v3}
   \begin{tabular}{|l|c|c|}
     \hline
-    \textbf{Parâmetro} & \textbf{Símbolo} & \textbf{Valor Adotado (SI)} \\ \hline
-    Raio Interno & $R_{\text{int}}$ & $9,0 \, \text{m}$ \\ \hline
-    Raio Externo & $R_{\text{ext}}$ & $11,0 \, \text{m}$ \\ \hline
-    Espessura da Parede & $t$ & $2,0 \, \text{m}$ \\ \hline
-    Altura do Domínio & $H_z$ & $2,0 \, \text{m}$ \\ \hline
-    Módulo de Elasticidade & $E$ & $200 \, \text{GPa}$ ($2,0 \times 10^{11} \, \text{Pa}$) \\ \hline
+    \textbf{Parâmetro} & \textbf{Símbolo} & \textbf{Valor Adotado (mm--N--MPa)} \\ \hline
+    Raio Interno & $R_{\text{int}}$ & $9,0 \, \text{mm}$ \\ \hline
+    Raio Externo & $R_{\text{ext}}$ & $11,0 \, \text{mm}$ \\ \hline
+    Espessura da Parede & $t$ & $2,0 \, \text{mm}$ \\ \hline
+    Altura do Domínio & $H_z$ & $2,0 \, \text{mm}$ \\ \hline
+    Módulo de Elasticidade & $E$ & $200 \, \text{GPa}$ ($2,0 \times 10^{5} \, \text{MPa}$) \\ \hline
     Coeficiente de Poisson & $\nu$ & $0,30$ \\ \hline
-    Pressão Interna de Projeto & $p$ & $30 \, \text{MPa}$ ($3,0 \times 10^7 \, \text{Pa}$) \\ \hline
+    Pressão Interna de Projeto & $p$ & $30 \, \text{MPa}$ ($30 \, \text{N/mm}^2$) \\ \hline
   \end{tabular}
 \end{table}
 \marginpar{\tiny 
@@ -83,8 +83,9 @@ Para a validação computacional, considerou-se um vaso de pressão cilíndrico 
 \end{itemize}
 }
 
-O domínio computacional axissimétrico bidimensional no plano $r-z$ foi representado por um retângulo de largura correspondente à espessura da parede do vaso ($2,0 \, \text{m}$) e altura $H_z = 2,0 \, \text{m}$. A discretização de elementos finitos estruturada utilizou elementos triangulares de Lagrange de grau 1 ($P_1$), aplicando-se refinamento de malha adequado ($N_r = 4.000$ elementos radiais e $N_z = 10$ axiais, resultando em $80.000$ elementos triangulares) para garantir total convergência numérica e independência de malha.
+O domínio computacional axissimétrico bidimensional no plano $r-z$ foi representado por um retângulo de largura correspondente à espessura da parede do vaso ($2,0 \, \text{mm}$) e altura $H_z = 2,0 \, \text{mm}$. A discretização de elementos finitos estruturada utilizou elementos triangulares de Lagrange de grau 1 ($P_1$), aplicando-se refinamento de malha adequado ($N_r = 4.000$ elementos radiais e $N_z = 10$ axiais, resultando em $80.000$ elementos triangulares) para garantir total convergência numérica e independência de malha.
 
+% TODO: Verificar como modificar o tipo dos elementos, caso necessário no futuro
 Para emular perfeitamente o estado plano de deformação da solução analítica (onde a deformação axial é restrita, $\epsilon_{zz} = 0$), impôs-se condições de restrição rígida de movimento na direção axial ($u_z = 0$) em ambas as faces superior ($z = H_z$) e inferior ($z = 0$) do retângulo computacional, aplicando-se:
 
 \begin{lstlisting}[language=Python, caption={Aplicação de restrições de simetria axial no FEniCS.}]
@@ -96,23 +97,23 @@ bcs = [
 
 \subsection{Resultados Comparativos e Análise de Verificação}
 
-Substituindo-se os parâmetros elásticos do Quadro~\ref{tab:parametros_validacao_v3} nas constantes de Lamé, obtêm-se os coeficientes constitutivos do aço: $\lambda = 1,1538 \times 10^{11} \, \text{Pa}$ e $\mu = 7,6923 \times 10^{10} \, \text{Pa}$. Com estes coeficientes, as constantes de integração da solução analítica de Lamé resultam em $A = 5,2650 \times 10^{-5}$ e $B = 1,5927 \times 10^{-2} \, \text{m}^2$.
+Substituindo-se os parâmetros elásticos do Quadro~\ref{tab:parametros_validacao_v3} nas constantes de Lamé, obtêm-se os coeficientes constitutivos do aço: $\lambda = 1,1538 \times 10^{11} \, \text{Pa}$ e $\mu = 7,6923 \times 10^{10} \, \text{Pa}$. Com estes coeficientes, as constantes de integração da solução analítica de Lamé resultam em $A = 1,5795 \times 10^{-4}$ e $B = 4,7780 \times 10^{-2} \, \text{mm}^2$.
 
 A avaliação dessas constantes na solução geral (\eqref{eq:sol_geral_lame_v3}) fornece os deslocamentos radiais exatos de referência:
 \begin{itemize}
-  \item Na face interna ($r = 9,0 \, \text{m}$): $u_r (9,0) = 0,0022435 \, \text{m}$ ($2,2435 \, \text{mm}$);
-  \item Na face externa ($r = 11,0 \, \text{m}$): $u_r (11,0) = 0,0020270 \, \text{m}$ ($2,0270 \, \text{mm}$).
+  \item Na face interna ($r = 9,0 \, \text{mm}$): $u_r (9,0) = 6,7304 \times 10^{-3} \, \text{mm}$;
+  \item Na face externa ($r = 11,0 \, \text{mm}$): $u_r (11,0) = 6,0811 \times 10^{-3} \, \text{mm}$.
 \end{itemize}
 
 Adicionalmente, os perfis analíticos de tensão circunferencial de tração ($\sigma_{\theta\theta}$) de referência são dados por:
 \begin{itemize}
-  \item Na face interna ($r = 9,0 \, \text{m}$): $\sigma_{\theta\theta}(9,0) = 50,50 \, \text{MPa}$;
-  \item Na face externa ($r = 11,0 \, \text{m}$): $\sigma_{\theta\theta}(11,0) = 40,50 \, \text{MPa}$.
+  \item Na face interna ($r = 9,0 \, \text{mm}$): $\sigma_{\theta\theta}(9,0) = 151,50 \, \text{MPa}$;
+  \item Na face externa ($r = 11,0 \, \text{mm}$): $\sigma_{\theta\theta}(11,0) = 121,50 \, \text{MPa}$.
 \end{itemize}
 
 \marginpar{\tiny Incluir aqui a tabela comparativa}
 
-A comparação entre os valores obtidos numericamente via MEF ($P_1$) e as curvas geradas analiticamente pela solução clássica de Lamé demonstrou uma concordância excepcional, com desvio relativo nulo na ordem de precisão de máquina ($10^{-14}$). Na face interna do cilindro ($r = 9,0 \, \text{m}$), onde ocorre o deslocamento máximo decorrente do pico de expansão radial por tração, o valor calculado pelo FEniCS coincide com precisão de seis casas decimais com a solução analítica.
+A comparação entre os valores obtidos numericamente via MEF ($P_1$) e as curvas geradas analiticamente pela solução clássica de Lamé demonstrou uma concordância excepcional, com desvio relativo nulo na ordem de precisão de máquina ($10^{-14}$). Na face interna do cilindro ($r = 9,0 \, \text{mm}$), onde ocorre o deslocamento máximo decorrente do pico de expansão radial por tração, o valor calculado pelo FEniCS coincide com precisão de seis casas decimais com a solução analítica.
 
 A continuidade rigorosa do deslocamento radial $u_r (r)$ e da tensão radial $\sigma_{rr}(r)$ foi plenamente observada ao longo de todo o raio do cilindro. A tensão radial iniciou-se em $-30,0 \, \text{MPa}$ (compressão pura correspondente à pressão interna de entrada) na parede interna e evoluiu de maneira contínua e suave até atingir $0,0 \, \text{MPa}$ na superfície externa livre de tração, validando completamente a formulação de Neumann no solucionador.
 
@@ -131,12 +132,13 @@ Conforme equacionado no Capítulo 3, os coeficientes de rigidez homogeneizados e
   \item Rigidez circunferencial efetiva: $\hat{\mathcal{C}}_{22} = 1,8093 \times 10^{11} \, \text{Pa}$ (média de Backus).
 \end{itemize}
 
-Substituindo esses coeficientes na equação de Euler-Cauchy anisotrópica que governa o equilíbrio macroscópico, o parâmetro de anisotropia curvilínea resultante é $k_{\text{ani}} = \sqrt{\hat{\mathcal{C}}_{22} / \hat{\mathcal{C}}_{11}} \approx 1,0992$. As constantes de integração calculadas pelo resolvedor analítico para o carregamento crítico de $30 \, \text{MPa}$ são $A = 1,8627 \times 10^{-4}$ e $B = 8,8582 \times 10^{-2} \, \text{m}^2$.
+Substituindo esses coeficientes na equação de Euler-Cauchy anisotrópica que governa o equilíbrio macroscópico, o parâmetro de anisotropia curvilínea resultante é $k_{\text{ani}} = \sqrt{\hat{\mathcal{C}}_{22} / \hat{\mathcal{C}}_{11}} \approx 1,0992$. As constantes de integração calculadas pelo resolvedor analítico para o carregamento crítico de $30 \, \text{MPa}$ são $A = 1,8627 \times 10^{-4}$ e $B = 8,8582 \times 10^{-2} \, \text{mm}^2$.
 
+% TODO: Verificar se essa equação de Euler-Cauchy anistrópica existe.
 A avaliação dessas constantes elásticas fornece a curva mestra macroscópica contínua do deslocamento radial homogeneizado, ditando os deslocamentos limites exatos nas paredes do vaso:
 \begin{itemize}
-  \item Na face interna ($r = 9,0 \, \text{m}$): $u_r^{(0)} (9,0) = 0,0099994 \, \text{m}$ ($9,9994 \, \text{mm}$);
-  \item Na face externa ($r = 11,0 \, \text{m}$): $u_r^{(0)} (11,0) = 0,0089473 \, \text{m}$ ($8,9473 \, \text{mm}$).
+  \item Na face interna ($r = 9,0 \, \text{mm}$): $u_r^{(0)} (9,0) = 9,9994 \times 10^{-3} \, \text{mm}$;
+  \item Na face externa ($r = 11,0 \, \text{mm}$): $u_r^{(0)} (11,0) = 8,9473 \times 10^{-3} \, \text{mm}$.
 \end{itemize}
 
 Estes valores quantificam a expansão radial elástica global que a estrutura sofre sob a ação da pressão interna de projeto. Por se tratar de um meio homogeneizado equivalente elástico, o perfil de deslocamentos macroscópico do MHA descreve uma trajetória perfeitamente suave, hiperbólica e decrescente ao longo da espessura do costado do vaso.
@@ -178,13 +180,13 @@ Para além do campo de deslocamentos, a avaliação precisa do estado interno de
 A tensão radial representa a componente perpendicular às interfaces concêntricas e rege a transferência de pressão mecânica de contato entre as camadas de aço carbono e liga de alumínio. Pelo princípio de equilíbrio de Cauchy deduzido no Capítulo 3, a tensão radial deve manter-se perfeitamente contínua ao cruzar as interfaces bimetálicas, uma vez que qualquer salto de tração interfacial resultaria em forças infinitas localizadas.
 
 Os resultados obtidos no solver FEniCS para as soluções MEF-D e MHA sob pressão interna de $30 \, \text{MPa}$ ($3,0 \times 10^7 \, \text{Pa}$) demonstram que:
-1. \textbf{Na parede interna ($r = R_{\text{int}} = 9,0 \, \text{m}$):} Ambas as formulações (MHA e MEF-D) convergem de forma exata para a condição de contorno de Neumann imposta:
+1. \textbf{Na parede interna ($r = R_{\text{int}} = 9,0 \, \text{mm}$):} Ambas as formulações (MHA e MEF-D) convergem de forma exata para a condição de contorno de Neumann imposta:
 \begin{equation}
   \sigma_{rr}(9,0) = -30,0 \, \text{MPa}
   \label{eq:srr_int_val}
 \end{equation}
 representando o estado de compressão hidrostática decorrente do contato direto com o fluido de projeto.
-2. \textbf{Na parede externa ($r = R_{\text{ext}} = 11,0 \, \text{m}$):} Ambas as curvas decrescem suavemente ao longo da espessura até atingirem a condição de contorno externa livre de tração:
+2. \textbf{Na parede externa ($r = R_{\text{ext}} = 11,0 \, \text{mm}$):} Ambas as curvas decrescem suavemente ao longo da espessura até atingirem a condição de contorno externa livre de tração:
 \begin{equation}
   \sigma_{rr}(11,0) = 0,0 \, \text{MPa}
   \label{eq:srr_ext_val}
@@ -212,14 +214,14 @@ Substituindo a deformação radial elástica local em termos da tensão radial c
 
 Como os coeficientes elásticos de rigidez local do aço carbono (Fase 1) e da liga de alumínio (Fase 2) são marcadamente distintos ($E_1 = 200 \, \text{GPa}$ vs $E_2 = 70 \, \text{GPa}$), as propriedades elásticas de Voigt sofrem saltos bruscos nas coordenadas radiais de transição $r = r_k$. Ao avaliar a \eqref{eq:hoop_local_pos} para as propriedades físicas reais de cada fase, obtemos os seguintes resultados analíticos de referência:
 
-\textbf{Na parede interna ($r = 9,0 \, \text{m}$), sob tensão radial de compressão $\sigma_{rr} = -30,0 \, \text{MPa}$:}
+\textbf{Na parede interna ($r = 9,0 \, \text{mm}$), sob tensão radial de compressão $\sigma_{rr} = -30,0 \, \text{MPa}$:}
 \begin{itemize}
   \item Tensão hoop local no Aço (Fase 1): $\sigma_{\theta\theta}^{\text{aço}} \approx 231,33 \, \text{MPa}$.
   \item Tensão hoop local no Alumínio (Fase 2): $\sigma_{\theta\theta}^{\text{alumínio}} \approx 72,51 \, \text{MPa}$.
   \item Magnitude do Salto Interfacial de Hoop ($[[\sigma_{\theta\theta}]]$): \textbf{$158,82 \, \text{MPa}$}.
 \end{itemize}
 
-\textbf{Na parede externa ($r = 11,0 \, \text{m}$), sob tensão radial nula $\sigma_{rr} = 0,0 \, \text{MPa}$:}
+\textbf{Na parede externa ($r = 11,0 \, \text{mm}$), sob tensão radial nula $\sigma_{rr} = 0,0 \, \text{MPa}$:}
 \begin{itemize}
   \item Tensão hoop local no Aço (Fase 1): $\sigma_{\theta\theta}^{\text{aço}} \approx 178,77 \, \text{MPa}$.
   \item Tensão hoop local no Alumínio (Fase 2): $\sigma_{\theta\theta}^{\text{alumínio}} \approx 63,90 \, \text{MPa}$.
@@ -242,13 +244,13 @@ onde a tensão axial induzida pela restrição de deformação plana é dada por
 
 Devido à presença das descontinuidades abruptas de hoop ($\sigma_{\theta\theta}$), o campo equivalente de Von Mises calculado pelo MEF-D também exibe oscilações em degraus perfeitamente correlacionadas com a paridade das camadas bimetálicas. Ao calcularmos analiticamente a \eqref{eq:von_mises_calc} com as tensões radiais e circunferenciais de referência obtidas pelo SymPy, temos:
 
-\textbf{Na parede interna ($r = 9,0 \, \text{m}$):}
+\textbf{Na parede interna ($r = 9,0 \, \text{mm}$):}
 \begin{itemize}
   \item Tensão de Von Mises no Aço (Fase 1): $\sigma_{\text{VM}}^{\text{aço}} \approx 229,87 \, \text{MPa}$.
   \item Tensão de Von Mises no Alumínio (Fase 2): $\sigma_{\text{VM}}^{\text{alumínio}} \approx 89,07 \, \text{MPa}$.
 \end{itemize}
 
-\textbf{Na parede externa ($r = 11,0 \, \text{m}$):}
+\textbf{Na parede externa ($r = 11,0 \, \text{mm}$):}
 \begin{itemize}
   \item Tensão de Von Mises no Aço (Fase 1): $\sigma_{\text{VM}}^{\text{aço}} \approx 158,89 \, \text{MPa}$.
   \item Tensão de Von Mises no Alumínio (Fase 2): $\sigma_{\text{VM}}^{\text{alumínio}} \approx 56,40 \, \text{MPa}$.
@@ -269,14 +271,14 @@ Estes resultados numéricos validam plenamente a viabilidade estrutural do reser
   \begin{tabular}{|l|l|c|c|c|}
     \hline
     \textbf{Coordenada} & \textbf{Material / Fase} & \textbf{Tensão Radial $\sigma_{rr}$} & \textbf{Tensão Hoop $\sigma_{\theta\theta}$} & \textbf{Von Mises $\sigma_{\text{VM}}$} \\ \hline
-    Parede Interna ($r=9,0 \, \text{m}$) & Aço (Fase 1) & $-30,00 \, \text{MPa}$ & $231,33 \, \text{MPa}$ & $229,87 \, \text{MPa}$ \\ \hline
-    Parede Interna ($r=9,0 \, \text{m}$) & Alumínio (Fase 2) & $-30,00 \, \text{MPa}$ & $72,51 \, \text{MPa}$ & $89,07 \, \text{MPa}$ \\ \hline
-    Parede Externa ($r=11,0 \, \text{m}$) & Aço (Fase 1) & $0,00 \, \text{MPa}$ & $178,77 \, \text{MPa}$ & $158,89 \, \text{MPa}$ \\ \hline
-    Parede Externa ($r=11,0 \, \text{m}$) & Alumínio (Fase 2) & $0,00 \, \text{MPa}$ & $63,90 \, \text{MPa}$ & $56,40 \, \text{MPa}$ \\ \hline
+    Parede Interna ($r=9,0 \, \text{mm}$) & Aço (Fase 1) & $-30,00 \, \text{MPa}$ & $231,33 \, \text{MPa}$ & $229,87 \, \text{MPa}$ \\ \hline
+    Parede Interna ($r=9,0 \, \text{mm}$) & Alumínio (Fase 2) & $-30,00 \, \text{MPa}$ & $72,51 \, \text{MPa}$ & $89,07 \, \text{MPa}$ \\ \hline
+    Parede Externa ($r=11,0 \, \text{mm}$) & Aço (Fase 1) & $0,00 \, \text{MPa}$ & $178,77 \, \text{MPa}$ & $158,89 \, \text{MPa}$ \\ \hline
+    Parede Externa ($r=11,0 \, \text{mm}$) & Alumínio (Fase 2) & $0,00 \, \text{MPa}$ & $63,90 \, \text{MPa}$ & $56,40 \, \text{MPa}$ \\ \hline
   \end{tabular}
 \end{table}
 
-\section{Efeito do Aumento do Número de Camadas (Limite Assintótico)}\><sec:limite_assintotico}
+\section{Efeito do Aumento do Número de Camadas (Limite Assintótico)}\label{sec:limite_assintotico}
 
 Um dos pilares matemáticos da teoria de homogeneização é a premissa de separação de escalas, regida pelo parâmetro geométrico adimensional $\epsilon = l/L \ll 1$, o qual estabelece a relação entre a escala do período microestrutural ($l$) e a escala característica global da estrutura ($L$). Para validar numericamente essa hipótese de convergência fraca elíptica e demonstrar o rigor físico do Método de Homogeneização Assintótica (MHA), esta seção analisa o efeito do aumento do número de células periódicas ($N_{\text{cel}}$) — mantendo-se a fração volumétrica global constante em $V_1 = V_2 = 0,5$ — sobre a aproximação elástica obtida.
 
@@ -306,7 +308,7 @@ As simulações numéricas foram conduzidas para uma varredura paramétrica de p
   \label{tab:convergencia_erros}
   \begin{tabular}{|c|c|c|c|c|}
     \hline
-    \textbf{Células ($N_{\text{cel}}$)} & \textbf{Camadas ($N_{\text{cam}}$)} & \textbf{Período $\epsilon$ ($\text{m}$)} & \textbf{Erro Máximo $E_{L^\infty}$ ($\text{m}$)} & \textbf{Erro Relativo $E_{L^2}$ (\%)} \\ \hline
+    \textbf{Células ($N_{\text{cel}}$)} & \textbf{Camadas ($N_{\text{cam}}$)} & \textbf{Espessura da célula $l$ ($\text{mm}$)} & \textbf{Erro Máximo $E_{L^\infty}$ ($\text{mm}$)} & \textbf{Erro Relativo $E_{L^2}$ (\%)} \\ \hline
     $10$ & $20$ & $0,200$ & $5,7688 \times 10^{-5}$ & $0,4968$ \\ \hline
     $20$ & $40$ & $0,100$ & $2,8951 \times 10^{-5}$ & $0,2493$ \\ \hline
     $40$ & $80$ & $0,050$ & $1,4502 \times 10^{-5}$ & $0,1249$ \\ \hline
@@ -320,11 +322,11 @@ As simulações numéricas foram conduzidas para uma varredura paramétrica de p
 
 A análise dos resultados numéricos tabulados na Tabela~\ref{tab:convergencia_erros} revela um comportamento de decaimento de erro extremamente regular e consistente com a teoria assintótica.
 
-Observa-se que, ao dobrarmos o número de células periódicas de $N_{\text{cel}} = 10$ para $N_{\text{cel}} = 20$ (o que reduz a espessura da célula unitária de $\epsilon = 0,200 \, \text{m}$ para $\epsilon = 0,100 \, \text{m}$), as componentes de erro local e global são reduzidas exatamente pela metade:
-- O erro máximo local $E_{L^\infty}$ cai de $5,7688 \times 10^{-5} \, \text{m}$ para $2,8951 \times 10^{-5} \, \text{m}$ (decaimento de $49,82\%$);
+Observa-se que, ao dobrarmos o número de células periódicas de $N_{\text{cel}} = 10$ para $N_{\text{cel}} = 20$ (o que reduz a espessura da célula unitária de $l = 0,200 \, \text{mm}$ para $l = 0,100 \, \text{mm}$), as componentes de erro local e global são reduzidas exatamente pela metade:
+- O erro máximo local $E_{L^\infty}$ cai de $5,7688 \times 10^{-5} \, \text{mm}$ para $2,8951 \times 10^{-5} \, \text{mm}$ (decaimento de $49,82\%$);
 - O erro elástico global $E_{L^2}$ transiciona de $0,4968\%$ para $0,2493\%$ (decaimento de $49,82\%$).
 
-Essa mesma proporcionalidade matemática é mantida ao longo de toda a varredura paramétrica. Ao reduzirmos o período em dez vezes, de $\epsilon = 0,100 \, \text{m}$ (20 células) para $\epsilon = 0,010 \, \text{m}$ (200 células), os erros locais e globais decrescem de forma rigorosamente proporcional por um fator de dez, atingindo o patamar residual de apenas \textbf{$0,0250\%$} para o erro relativo $E_{L^2}$.
+Essa mesma proporcionalidade matemática é mantida ao longo de toda a varredura paramétrica. Ao reduzirmos o período em dez vezes, de $l = 0,100 \, \text{mm}$ (20 células) para $l = 0,010 \, \text{mm}$ (200 células), os erros locais e globais decrescem de forma rigorosamente proporcional por um fator de dez, atingindo o patamar residual de apenas \textbf{$0,0250\%$} para o erro relativo $E_{L^2}$.
 
 Esse comportamento comprova numericamente que a taxa de convergência elástica do Método de Homogeneização Assintótica (usando apenas o termo de ordem dominante $u_0$) é \textbf{estritamente linear e de ordem unitária em relação à escala do período}:
 \begin{equation}
@@ -338,7 +340,7 @@ Fisicamente, a \eqref{eq:convergencia_linear} confirma com rigor o teorema da re
 
 Para além do rigor matemático, a análise de convergência traz à tona a enorme vantagem computacional que a homogeneização assintótica confere aos projetos de engenharia.
 
-Em termos práticos, para resolver numericamente o cilindro bimetálico com $N_{\text{cel}} = 200$ (composto por $400$ subcamadas elásticas ultrafinas de espessura de apenas $5,0 \, \text{mm}$), o Método dos Elementos Finitos Detalhado (MEF-D) exige uma malha radial extremamente fina para garantir o alinhamento de nós discutido no Capítulo 4. A discretização radial requerida de $4.000$ divisões gera um sistema linear com \textbf{$80.000$ triângulos discretos}, demandando um esforço computacional e de memória de CPU consideráveis para a montagem de matrizes de rigidez altamente oscilatórias.
+Em termos práticos, para resolver numericamente o cilindro bimetálico com $N_{\text{cel}} = 200$ (composto por $400$ subcamadas elásticas ultrafinas de espessura de apenas $5,0 \, \mu\text{m}$), o Método dos Elementos Finitos Detalhado (MEF-D) exige uma malha radial extremamente fina para garantir o alinhamento de nós discutido no Capítulo 4. A discretização radial requerida de $4.000$ divisões gera um sistema linear com \textbf{$80.000$ triângulos discretos}, demandando um esforço computacional e de memória de CPU consideráveis para a montagem de matrizes de rigidez altamente oscilatórias.
 
 Em contrapartida, o Método de Homogeneização Assintótica (MHA) contorna essa sobrecarga operacional de forma extremamente elegante:
 1. O problema local de célula (unidimensional) é integrado analiticamente uma única vez para obter os coeficientes efetivos $[\hat{\mathcal{C}}]$, requerendo frações de segundo para ser computado;
@@ -360,24 +362,28 @@ A densidade volumétrica macroscópica equivalente ($\hat{\rho}$) de um meio per
   \label{eq:densidade_efetiva_sec55}
 \end{equation}
 
-Para os raios de projeto ($R_{\text{int}} = 9,0 \, \text{m}$ e $R_{\text{ext}} = 11,0 \, \text{m}$), a área da seção transversal do costado do vaso equivale a $A_{\text{wall}} = \pi (R_{\text{ext}}^2 - R_{\text{int}}^2) \approx 125,66 \, \text{m}^2$. A massa linear resultante $M_{\text{linear}} = A_{\text{wall}} \hat{\rho}$ (expressa em toneladas por metro de comprimento axial) para cada uma das três configurações estruturais é sumarizada abaixo:
+Para os raios de projeto ($R_{\text{int}} = 9,0 \, \text{mm}$ e $R_{\text{ext}} = 11,0 \, \text{mm}$), a área da seção transversal do costado do vaso equivale a $A_{\text{wall}} = \pi (R_{\text{ext}}^2 - R_{\text{int}}^2) = \pi (11,0^2 - 9,0^2) \approx 125,66 \, \text{mm}^2$. A massa linear resultante $M_{\text{linear}} = A_{\text{wall}} \hat{\rho}$, expressa em quilogramas por metro de comprimento axial (convertendo-se $A_{\text{wall}}$ para $\text{m}^2$ e mantendo-se $\hat{\rho}$ em $\text{kg/m}^3$), é sumarizada abaixo para cada uma das três configurações estruturais:
 \begin{itemize}
-  \item \textbf{Cilindro Homogêneo 100\% Aço Carbono:} $M_{\text{linear}} = 980,18 \, \text{t/m}$;
-  \item \textbf{Cilindro Homogêneo 100\% Liga de Alumínio:} $M_{\text{linear}} = 339,29 \, \text{t/m}$;
-  \item \textbf{Cilindro Multicamadas Bimetálico (MHA/MEF):} $M_{\text{linear}} = 659,73 \, \text{t/m}$.
+  \item \textbf{Cilindro Homogêneo 100\% Aço Carbono:} $M_{\text{linear}} = 0,9802 \, \text{kg/m}$;
+  \item \textbf{Cilindro Homogêneo 100\% Liga de Alumínio:} $M_{\text{linear}} = 0,3393 \, \text{kg/m}$;
+  \item \textbf{Cilindro Multicamadas Bimetálico (MHA/MEF):} $M_{\text{linear}} = 0,6597 \, \text{kg/m}$.
 \end{itemize}
+
+Os valores absolutos são naturalmente modestos porque o domínio é analisado na escala de milímetros do modelo numérico ($R_{\text{int}} = 9,0 \, \text{mm}$); o indicador relevante para o projeto é a razão entre configurações, que é invariante a essa escala geométrica.
 
 Conforme demonstrado analiticamente, a substituição do projeto puramente metálico em aço pela solução bimetálica hibridizada proporciona um \textbf{alívio direto de massa de $32,69\%$}. Essa redução de peso por metro linear representa um ganho substancial para o transporte, manuseio e montagem de reservatórios de grande porte de armazenamento de fluidos comprimidos.
 
 \subsection{Avaliação da Eficiência Estrutural e Fatores de Segurança}
 
-Para comparar o aproveitamento mecânico da matéria-prima em cada configuração sob a pressão interna de projeto de $30 \, \text{MPa}$ ($3,0 \times 10^7 \, \text{Pa}$), define-se o \textbf{Índice de Eficiência de Suporte de Carga por Unidade de Massa} ($W_{\text{ef}}$), expresso pela razão entre a pressão suportada e a massa linear do costado:
+Para comparar o aproveitamento mecânico da matéria-prima em cada configuração sob a pressão interna de projeto de $30 \, \text{MPa}$ ($3,0 \times 10^7 \, \text{Pa}$), define-se o \textbf{Índice de Eficiência de Suporte de Carga por Unidade de Massa} ($W_{\text{ef}}$). Como a pressão de projeto é idêntica nas três configurações, a razão $P_{\text{int}}/M_{\text{linear}}$ não discrimina o desempenho do material: ela é simplesmente o inverso da massa linear. Adota-se, portanto, a pressão de início de escoamento da configuração, $P_y$, de modo que o índice meça quanta pressão o costado suporta ainda em regime elástico por unidade de massa:
 \begin{equation}
-  W_{\text{ef}} = \frac{P_{\text{int}}}{M_{\text{linear}}} \quad [\text{MPa} / (\text{t/m})]
+  W_{\text{ef}} = \frac{P_y}{M_{\text{linear}}}, \qquad
+  P_y = p \min_{k} \left( \frac{\sigma_{y,k}}{\sigma_{\text{VM},k}^{\text{máx}}} \right) = p \, \text{FS}_{\min}
+  \quad [\text{MPa} \cdot \text{m/kg}]
   \label{eq:indice_eficiencia_massa}
 \end{equation}
 
-A Tabela~\ref{tab:comparativo_eficiencia} apresenta o estudo comparativo das métricas de desempenho elástico, tensões de Von Mises máximas, fatores de segurança locais contra escoamento e os índices de eficiência estrutural para as três configurações de vaso de pressão sob estudo.
+em que $\sigma_{y,k}$ é o limite de escoamento e $\sigma_{\text{VM},k}^{\text{máx}}$ a tensão equivalente de Von Mises máxima da fase $k$ sob a pressão de projeto $p$. A Tabela~\ref{tab:comparativo_eficiencia} apresenta o estudo comparativo das métricas de desempenho elástico, tensões de Von Mises máximas, fatores de segurança locais contra escoamento e massas lineares, e a Tabela~\ref{tab:indice_eficiencia_massa} consolida o índice $W_{\text{ef}}$ resultante para as três configurações de vaso de pressão sob estudo.
 
 \begin{table}[htbp]
   \centering
@@ -385,19 +391,32 @@ A Tabela~\ref{tab:comparativo_eficiencia} apresenta o estudo comparativo das mé
   \label{tab:comparativo_eficiencia}
   \begin{tabular}{|l|c|c|c|c|}
     \hline
-    \textbf{Configuração Estrutural} & \textbf{Densidade ($\text{kg/m}^3$)} & \textbf{Massa Linear ($\text{t/m}$)} & \textbf{Tensão $\sigma_{\text{VM}}^{\text{máx}}$ ($\text{MPa}$)} & \textbf{Fator de Segurança ($\text{FS}$)} \\ \hline
-    100\% Aço Carbono & $7800$ & $980,18$ & $159,05$ & $2,51$ \\ \hline
-    100\% Liga de Alumínio & $2700$ & $339,29$ & $158,53$ & $1,70$ \\ \hline
-    Bimetálico (Camada Aço) & $5250$ & $659,73$ & $229,87$ & $1,74$ \\ \hline
-    Bimetálico (Camada Alumínio) & $5250$ & $659,73$ & $89,07$ & $3,03$ \\ \hline
+    \textbf{Configuração Estrutural} & \textbf{Densidade ($\text{kg/m}^3$)} & \textbf{Massa Linear ($\text{kg/m}$)} & \textbf{Tensão $\sigma_{\text{VM}}^{\text{máx}}$ ($\text{MPa}$)} & \textbf{Fator de Segurança ($\text{FS}$)} \\ \hline
+    100\% Aço Carbono & $7800$ & $0,9802$ & $159,05$ & $2,51$ \\ \hline
+    100\% Liga de Alumínio & $2700$ & $0,3393$ & $158,53$ & $1,70$ \\ \hline
+    Bimetálico (Camada Aço) & $5250$ & $0,6597$ & $229,87$ & $1,74$ \\ \hline
+    Bimetálico (Camada Alumínio) & $5250$ & $0,6597$ & $89,07$ & $3,03$ \\ \hline
   \end{tabular}
 \end{table}
 
-A análise rigorosa dos dados da Tabela~\ref{tab:comparativo_eficiencia} revela aspectos mecânicos de altíssimo valor técnico:
+\begin{table}[htbp]
+  \centering
+  \caption{Pressão de início de escoamento ($P_y$) e índice de eficiência de suporte de carga por unidade de massa ($W_{\text{ef}}$) para as três configurações estruturais.}
+  \label{tab:indice_eficiencia_massa}
+  \begin{tabular}{|l|c|c|c|c|}
+    \hline
+    \textbf{Configuração Estrutural} & \textbf{$M_{\text{linear}}$ ($\text{kg/m}$)} & \textbf{$\text{FS}_{\min}$} & \textbf{$P_y$ ($\text{MPa}$)} & \textbf{$W_{\text{ef}}$ ($\text{MPa} \cdot \text{m/kg}$)} \\ \hline
+    100\% Aço Carbono & $0,9802$ & $2,51$ & $75,45$ & $76,97$ \\ \hline
+    100\% Liga de Alumínio & $0,3393$ & $1,70$ & $51,09$ & $150,59$ \\ \hline
+    Bimetálico (MHA/MEF) & $0,6597$ & $1,74$ & $52,20$ & $79,13$ \\ \hline
+  \end{tabular}
+\end{table}
 
-1. \textbf{Ganho de Eficiência Estrutural:} O vaso puramente de aço apresenta um índice de eficiência de $W_{\text{ef}}^{\text{aço}} = 30 / 980,18 \approx 0,03061 \, \text{MPa}/(\text{t/m})$. A solução bimetálica multicamadas atinge $W_{\text{ef}}^{\text{bimet}} = 30 / 659,73 \approx 0,04547 \, \text{MPa}/(\text{t/m})$, o que representa um \textbf{aumento de $48,57\%$ na eficiência de suporte de carga por unidade de massa} em relação ao aço sólido.
+A análise rigorosa dos dados das Tabelas~\ref{tab:comparativo_eficiencia} e~\ref{tab:indice_eficiencia_massa} revela aspectos mecânicos de altíssimo valor técnico:
+
+1. \textbf{Eficiência de Suporte de Carga por Unidade de Massa:} o vaso puramente de aço apresenta $W_{\text{ef}}^{\text{aço}} = 75,45 / 0,9802 \approx 76,97 \, \text{MPa}\cdot\text{m/kg}$, enquanto a solução bimetálica multicamadas atinge $W_{\text{ef}}^{\text{bimet}} = 52,20 / 0,6597 \approx 79,13 \, \text{MPa}\cdot\text{m/kg}$, o que corresponde a um acréscimo de apenas $2,80\%$. O cilindro de alumínio puro, por sua vez, alcança $W_{\text{ef}}^{\text{alu}} = 150,59 \, \text{MPa}\cdot\text{m/kg}$, valor $90,3\%$ superior ao do composto. Esse ordenamento é consequência direta da razão resistência/densidade dos materiais empregados ($\sigma_y/\rho = 0,100 \, \text{MPa}\cdot\text{m}^3/\text{kg}$ para o alumínio contra $0,0513 \, \text{MPa}\cdot\text{m}^3/\text{kg}$ para o aço): quando o critério de mérito é exclusivamente a resistência específica, o alumínio monolítico é imbatível e a hibridização não o supera. Além disso, o $P_y$ do composto é governado pela camada de aço ($\text{FS} = 1,74$), de modo que o índice penaliza o bimetálico precisamente pelo mecanismo que ele foi projetado para explorar — a transferência de carga para a fase mais resistente. A vantagem da solução híbrida deve, portanto, ser avaliada em conjunto com a rigidez específica e com a elevação do fator de segurança da fase de alumínio, discutidas a seguir.
 2. \textbf{Distribuição Inteligente de Esforços:} Em um cilindro de alumínio puro sob $30 \, \text{MPa}$, a tensão de Von Mises de $158,53 \, \text{MPa}$ consome grande parte da capacidade do material, resultando em um fator de segurança modesto de $\text{FS} = 1,70$ frente ao seu limite de escoamento de $270 \, \text{MPa}$. Na estrutura bimetálica, as camadas de aço carbono (mais rígidas) puxam as tensões circunferenciais de tração para si ($\sigma_{\theta\theta}^{\text{aço}} = 231,33 \, \text{MPa}$), aliviando drasticamente a sobrecarga sobre o alumínio ($\sigma_{\theta\theta}^{\text{alumínio}} = 72,51 \, \text{MPa}$).
-3. \textbf{Elevação do Fator de Segurança do Alumínio:} Como consequência do efeito de "cinturamento" promovido pelas subcamadas de aço, o fator de segurança da fase de alumínio no composto eleva-se para \textbf{$\text{FS} = 3,03$} (um ganho de $78,2\%$ em relação ao alumínio puro), enquanto o aço opera com um fator de segurança seguro de $\text{FS} = 1,74$.
+3. \textbf{Elevação do Fator de Segurança do Alumínio:} Como consequência do efeito de "cinturamento" promovido pelas subcamadas de aço, o fator de segurança da fase de alumínio no composto eleva-se para \textbf{$\text{FS} = 3,03$} (um ganho de $78,2\%$ em relação ao alumínio puro), enquanto a camada de aço, que passa a concentrar a solicitação, opera com $\text{FS} = 1,74$ e passa a governar o limite elástico da configuração.
 
 \subsection{Rigidez Específica e Desempenho Global}
 
@@ -409,6 +428,6 @@ A razão de rigidez específica do compósito é calculada por:
   \label{eq:rigidez_especifica_bimet}
 \end{equation}
 
-Para o aço carbono maciço ($\mathcal{C}_{11} = 269,23 \, \text{GPa}$ e $\rho = 7800 \, \text{kg/m}^3$), a rigidez específica resulta em $K_g^{\text{aço}} \approx 3,452 \times 10^7 \, \text{m}^2/\text{s}^2$. Isso comprova que a estrutura bimetálica \textbf{preserva $99,83\%$ da rigidez específica do aço maciço}, porém fornecendo um alívio de peso de quase um terço do total da estrutura.
+Para o aço carbono maciço ($\mathcal{C}_{11} = 269,23 \, \text{GPa}$ e $\rho = 7800 \, \text{kg/m}^3$), a rigidez específica resulta em $K_g^{\text{aço}} \approx 3,452 \times 10^7 \, \text{m}^2/\text{s}^2$. Isso comprova que a estrutura bimetálica \textbf{preserva $99,84\%$ da rigidez específica do aço maciço}, porém fornecendo um alívio de peso de quase um terço do total da estrutura. Para a liga de alumínio ($E = 70 \, \text{GPa}$ e $\rho = 2700 \, \text{kg/m}^3$), obtém-se $K_g^{\text{alu}} \approx 2,593 \times 10^7 \, \text{m}^2/\text{s}^2$, de modo que o composto é cerca de $32,9\%$ mais rígido por unidade de massa que o alumínio monolítico. É nesse compromisso entre rigidez específica e resistência específica, e não no mérito isolado de cada um deles, que reside o ganho efetivo da hibridização periódica.
 
 Estes resultados confirmam a plena viabilidade técnica do Método de Homogeneização Assintótica (MHA) no projeto e otimização de vasos de pressão multicamadas, demonstrando que a hibridização bimetálica periódica é uma alternativa de engenharia madura, segura e de elevada eficiência mecânica para reservatórios de alta pressão.

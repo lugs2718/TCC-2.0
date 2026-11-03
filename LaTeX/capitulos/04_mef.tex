@@ -46,13 +46,13 @@ Para manter total consistência físico-matemática e dimensional com o código 
 
 onde:
 \begin{itemize}
-  \item $R_{\text{int}} = 9,0 \, \text{m}$ representa o raio interno do cilindro de referência;
-  \item $R_{\text{ext}} = 11,0 \, \text{m}$ representa o raio externo do cilindro;
-  \item A largura do domínio equivale à espessura total da parede do vaso, dada por $t = R_{\text{ext}} - R_{\text{int}} = 2,0 \, \text{m}$;
-  \item A dimensão axial (altura do retângulo de revolução) é fixada em $H = 2,0 \, \text{m}$.
+  \item $R_{\text{int}} = 9,0 \, \text{mm}$ representa o raio interno do cilindro de referência;
+  \item $R_{\text{ext}} = 11,0 \, \text{mm}$ representa o raio externo do cilindro;
+  \item A largura do domínio equivale à espessura total da parede do vaso, dada por $t = R_{\text{ext}} - R_{\text{int}} = 2,0 \, \text{mm}$;
+  \item A dimensão axial (altura do retângulo de revolução) é fixada em $H = 2,0 \, \text{mm}$.
 \end{itemize}
 
-Essa escala geométrica em metros é rigorosamente compatível com as unidades das constantes constitutivas elásticas oficiais (Pascals, $10^9 \, \text{Pa}$) e da pressão nominal aplicada ($30 \, \text{MPa}$, ou $3,0 \times 10^7 \, \text{Pa}$) utilizadas no script principal, evitando inconsistências de fator de escala numérico durante a montagem das equações elásticas.
+Essa escala geométrica em milímetros é rigorosamente compatível com o sistema de unidades (N, mm, MPa) adotado no script principal, no qual as constantes constitutivas elásticas são prescritas em megapascals e a pressão nominal aplicada ($30 \, \text{MPa}$) coincide numericamente com $30 \, \text{N/mm}^2$, evitando inconsistências de fator de escala numérico durante a montagem das equações elásticas.
 
 \subsection{Escolha do Elemento Finito (Lagrange de Grau 1)}
 
@@ -244,16 +244,16 @@ O cilindro periódico analisado é composto pelo par metálico bimetálico forma
   \end{tabular}
 \end{table}
 
-A escolha desses materiais reflete um cenário clássico de alto contraste de rigidez elástica (com a razão de módulos $E_{\text{"aço"}}/E_{\text{"alu"}} \approx 2,86$), o qual representa o cenário ideal e mais rigoroso para testar os limites do Garfo de Hill elástico e a capacidade do MHA de suavizar as oscilações de alta frequência espacial sem perda de consistência energética [47, 48].
+A escolha desses materiais reflete um cenário clássico de alto contraste de rigidez elástica (com a razão de módulos $E_{\text{aço}}/E_{\text{alu}} \approx 2,86$), o qual representa o cenário ideal e mais rigoroso para testar os limites do Garfo de Hill elástico e a capacidade do MHA de suavizar as oscilações de alta frequência espacial sem perda de consistência energética [47, 48].
 
-A massa linear $M_{\text{"lin"}}$ (expressa em kg por metro de comprimento axial do cilindro) é calculada diretamente a partir da área da seção transversal da parede do vaso $A_{\text{"wall"}} = \pi (R_{\text{ext}}^2 - R_{\text{int}}^2)$ e da densidade média do material [562]. Para os raios de projeto ($R_{\text{int}} = 9,0 \, \text{m}$ e $R_{\text{ext}} = 11,0 \, \text{m}$), a área do costado resulta em $A_{\text{"wall"}} \approx 125,66 \, \text{m}^2$ [562]. A densidade equivalente macroscópica ($\hat{\rho}$) do compósito com fração volumétrica simétrica ($V_1 = V_2 = 0,5$) é regida estritamente pela regra aditiva simples [47, 562]:
+A massa linear $M_{\text{lin}}$ (expressa em kg por metro de comprimento axial do cilindro) é calculada diretamente a partir da área da seção transversal da parede do vaso $A_{\text{wall}} = \pi (R_{\text{ext}}^2 - R_{\text{int}}^2)$ e da densidade média do material [562]. Para os raios de projeto ($R_{\text{int}} = 9,0 \, \text{mm}$ e $R_{\text{ext}} = 11,0 \, \text{mm}$), a área do costado resulta em $A_{\text{wall}} \approx 125,66 \, \text{mm}^2$ [562]. A densidade equivalente macroscópica ($\hat{\rho}$) do compósito com fração volumétrica simétrica ($V_1 = V_2 = 0,5$) é regida estritamente pela regra aditiva simples [47, 562]:
 
 \begin{equation}
-  \hat{\rho} = V_1 \rho_{\text{"aço"}} + V_2 \rho_{\text{"alu"}} = 0,5 (7800) + 0,5 (2700) = 5250 \, \text{kg/m}^3
+  \hat{\rho} = V_1 \rho_{\text{aço}} + V_2 \rho_{\text{alu}} = 0,5 (7800) + 0,5 (2700) = 5250 \, \text{kg/m}^3
   \label{eq:densidade_efetiva}
 \end{equation}
 
-Resultando em uma massa linear de $659.715 \, \text{kg/m}$ para o cilindro bimetálico, o que representa um alívio de peso de exatamente $32,69\%$ em comparação a uma estrutura fabricada exclusivamente em aço maciço ($980.148 \, \text{kg/m}$), confirmando a elevada eficiência de peso da hibridização de materiais [47, 48].
+Resultando em uma massa linear de $0,6597 \, \text{kg/m}$ para o cilindro bimetálico, o que representa um alívio de peso de exatamente $32,69\%$ em comparação a uma estrutura fabricada exclusivamente em aço maciço ($0,9802 \, \text{kg/m}$), confirmando a elevada eficiência de peso da hibridização de materiais [47, 48].
 
 \subsection{Cenários de Carregamento e Pressão de Projeto}
 

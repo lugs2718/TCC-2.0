@@ -3,7 +3,7 @@
 **Autor:** Luiz Gustavo da Silva Pereira  
 **Instituição:** Universidade Federal Fluminense (UFF) — EEIMVR / Departamento de Engenharia Mecânica  
 **Data da Auditoria:** 02 de novembro de 2026 (Consolidação da Etapa 1 e Expansão Estruturada do Backlog)  
-**Status do Projeto:** Fase 0 concluída; Tarefa CON-01 concluída; Backlog expandido em tarefas granulares.
+**Status do Projeto:** Fase 0 concluída; CON-01 e TEC-04 concluídas; Backlog expandido em tarefas granulares.
 
 ---
 
@@ -122,6 +122,14 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - Conversão dos `[nn]` para as referências da biblioteca FEniCS (`@fenics2012` / Logg) e artigos de métodos numéricos.
 
 #### Capítulo 5 — Resultados e Discussões
+- [x] **TEC-04:** **Harmonização Dimensional (m → mm) do Capítulo 5 e do trecho correspondente do Capítulo 4**
+  - Escala autoritativa adotada: `R_int = 9,0 mm`, `R_ext = 11,0 mm`, `t = 2,0 mm`, `H = 2,0 mm`, `p = 30 MPa` (sistema N-mm-MPa), sincronizada com `Códigos/main.py` e com `Tabelas/inputs.csv`/`outputs.csv`.
+  - §5.1 (validação de Lamé) e §5.2 (MHA homogeneizado) recalculados para 30 MPa e raios em mm: `A = 1,5795e-4`, `B = 4,7780e-2 mm²`, `u_r(9) = 6,7304e-3 mm`, `u_r(11) = 6,0811e-3 mm`, `σθθ = 151,50/121,50 MPa`; no §5.2, `B = 8,8582e-2 mm²`, `u_r = 9,9994e-3/8,9473e-3 mm`.
+  - §5.3: rótulo `sec:limite_assintotico` restaurado; espessura de célula renomeada de `ε` para `l` e expressa em mm (a "espessura de 5,0 mm" passou a `5,0 µm`, valor coerente com as 400 subcamadas).
+  - §5.5: `A_wall = 125,66 mm²`; massas lineares convertidas para kg/m (aço `0,9802`, alumínio `0,3393`, bimetálico `0,6597`), preservado o alívio de massa de `32,69%`.
+  - §5.5: métrica `W_ef` redefinida como `P_y / M_linear`, com `P_y = p·min(σ_y/σ_VM^máx)`. Valores: aço `W_ef = 76,97`, alumínio `150,59`, bimetálico `79,13 MPa·m/kg` (acréscimo de apenas `2,80%` frente ao aço; o texto passou a declarar explicitamente que o alumínio lidera o critério de resistência específica).
+  - §5.5: corrigido `99,83%` → `99,84%` na preservação da rigidez específica e incluída a comparação com o alumínio (`+32,9%`).
+  - Capítulo 4 (`04_mef.tex`): raios/espessura/altura em mm no domínio Ω_rz, `A_wall = 125,66 mm²`, massas `0,6597`/`0,9802 kg/m`, remoção de aspas residuais de sintaxe Typst em `\text{"..."}`.
 - [ ] **TEC-03:** **Integração dos Novos Resultados Numéricos e Gráficos**
   - Inserção da tabela mestre compilada [`Tabelas/tabela_eficiencia_mha_vs_mef.tex`](file:///g:/Meu%20Drive/UFF/TCC%20-%20Wesley/Escrita%20TCC/Tabelas/tabela_eficiencia_mha_vs_mef.tex).
   - Inclusão e chamada no texto dos novos gráficos (`comparacao_perfis_deslocamento.png`, `bench_tempos_e_reducao.png`, `convergencia_assintotica_erro.png`).
@@ -155,17 +163,17 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 ```json
 {
   "versao_skill": "2.2",
-  "versao_estado": "1.5",
-  "data_atualizacao": "2026-11-02T19:56:00-03:00",
+  "versao_estado": "1.6",
+  "data_atualizacao": "2026-11-03T18:00:00-03:00",
   "autor_projeto": "Luiz Gustavo da Silva Pereira",
   "orientador": "Aguardando preenchimento formal",
   "sistema_unidades": "N-mm-MPa (Engenharia)",
   "objetivo": "Revisão integral de conteúdo, rigor técnico, citações e redação científica do TCC em LaTeX",
   "fase_atual": "plano_1_em_andamento",
-  "tarefa_ativa": "REV-02.1",
-  "subetapa_ativa": "D.2_equacoes_e_D.3_citacoes",
+  "tarefa_ativa": "TEC-04 (concluída) — aguardando autorização da próxima tarefa atômica",
+  "subetapa_ativa": "consolidação_pós_TEC-04",
   "tarefas_concluidas": [
-    "DIA-01", "DIA-02", "DIA-03", "DIA-04", "DIA-05", "CON-01"
+    "DIA-01", "DIA-02", "DIA-03", "DIA-04", "DIA-05", "CON-01", "TEC-04"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -178,9 +186,12 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "Solução de Lamé explicitada no Objetivo Geral como referência analítica de verificação.",
     "Escopo e limitações físicas/cinemáticas explicitadas no Capítulo 1.",
     "Notas de margem são diretrizes de autor e devem ser atendidas no texto antes de sua remoção.",
-    "Tarefa REV-01-IA (mitigação de detecção IA na Introdução) registrada no backlog; execução adiada para após REV-02.x."
+    "Tarefa REV-01-IA (mitigação de detecção IA na Introdução) registrada no backlog; execução adiada para após REV-02.x.",
+    "TEC-04 concluída: escala milimétrica (mm-N-MPa) adotada como autoritativa no Capítulo 5 e no Capítulo 4; números recalculados para p = 30 MPa.",
+    "Métrica de eficiência redefinida: W_ef = P_y / M_linear, com P_y = p·min(σ_y/σ_VM^máx); a razão P_int/M_linear foi descartada por ser apenas o inverso da massa linear.",
+    "Resultado declarado com honestidade: o bimetálico supera o aço em apenas 2,80% em W_ef, e o alumínio monolítico lidera o critério de resistência específica; a justificativa da hibridização passa a apoiar-se no compromisso rigidez específica × resistência específica."
   ],
-  "proximo_passo": "Concluir a tarefa REV-02.1 executando os Sub-blocos D.2 (conversão das equações Typst para LaTeX) e D.3 (conversão das citações [nn] para chaves BibTeX e conversão dos Quadros comentados).",
-  "prompt_de_continuidade": "A tarefa ativa é REV-02.1 (Seção 2.1 de 02_revisao_bibliografica.tex). O Sub-bloco D.1 (reorganização lógica e limpeza de rascunhos) já foi aplicado com sucesso no arquivo .tex. Prossiga imediatamente com o Sub-bloco D.2 (converter equações Typst das linhas 13, 21, 25, 31, 35-40, 146, 171 para LaTeX padrão) e Sub-bloco D.3 (mapear citações numéricas [nn] para chaves BibTeX e reativar/formatar os Quadros da NR-13 e ASME)."
+  "proximo_passo": "Escolher a próxima tarefa atômica: TEC-05 (auditoria dos dados do Capítulo 5: N_z = 10 no texto vs. 20 em inputs.csv, grau do elemento, inserção da tabela mestre), TEC-03 (resultados numéricos e gráficos) ou CIT-00 (estratégia de citação sem lista numérica legada).",
+  "prompt_de_continuidade": "TEC-04 foi aplicada em 05_resultados.tex (§5.1 a §5.5) e 04_mef.tex (domínio Ω_rz, massa linear). Não há compilador LaTeX no ambiente: a verificação é estática (balanceamento de ambientes e revisão dos números). As alterações estão no working tree, não commitadas. Próxima ação: obter do autor a autorização da próxima tarefa atômica antes de qualquer nova edição."
 }
 ```

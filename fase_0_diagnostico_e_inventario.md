@@ -4,7 +4,6 @@
 **Instituição:** Universidade Federal Fluminense (UFF) — EEIMVR / Departamento de Engenharia Mecânica  
 **Data da Auditoria:** 02 de novembro de 2026 (Consolidação da Etapa 1 e Expansão Estruturada do Backlog)  
 **Status do Projeto:** Fase 0 concluída; CON-01 e TEC-04 concluídas; Backlog expandido em tarefas granulares.
-
 ---
 
 ## 1. Registro Histórico das Ações e Decisões Consolidadas
@@ -110,7 +109,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - Fusão dos arquivos `03_1_equilibrio.tex` e `03_2_homogeneizacao.tex` sob um único comando `\chapter`, transformando a segunda parte em `\section`.
   - Resolução das notas de autor: explicitação da expansão do operador diferencial pela regra da cadeia e inserção da lei de Hooke local.
   - Conferência analítica das funções de perturbação $\chi^1(y)$, $\chi^2(y)$ e das constantes efetivas de Backus ($\hat{\mathcal{C}}_{11}, \hat{\mathcal{C}}_{12}, \hat{\mathcal{C}}_{22}, \hat{G}$).
-- [ ] **CIT-05:** **Auditoria de Citações e Rastreabilidade do Capítulo 3**
+- [ ] **CIT-05 (legado) → CIT-02:** **Auditoria de Citações e Rastreabilidade do Capítulo 3**
   - Conversão das chamadas numéricas nas equações diferenciais em coordenadas cilíndricas para as referências canônicas (Lai, Sadd, Timoshenko, Bakhvalov).
 
 #### Capítulo 4 — Metodologia e Simulação Numérica (MEF / FEniCS)
@@ -118,7 +117,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - Harmonização dimensional estrita para a escala de engenharia **mm-N-MPa** sincronizada com o código `Códigos/main.py`.
   - Revisão da formulação variacional axissimétrica, destacando o papel crítico do peso do raio $r$ no integrando bidimensional.
   - Fundamentação da escolha do elemento finito de Lagrange linear ($P_1$) e do alinhamento geométrico estrito nó-interface.
-- [ ] **CIT-06:** **Auditoria de Citações e Implementação Computacional do MEF**
+- [ ] **CIT-06 (legado) → CIT-01:** **Auditoria de Citações e Implementação Computacional do MEF**
   - Conversão dos `[nn]` para as referências da biblioteca FEniCS (`@fenics2012` / Logg) e artigos de métodos numéricos.
 
 #### Capítulo 5 — Resultados e Discussões
@@ -134,7 +133,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - Inserção da tabela mestre compilada [`Tabelas/tabela_eficiencia_mha_vs_mef.tex`](file:///g:/Meu%20Drive/UFF/TCC%20-%20Wesley/Escrita%20TCC/Tabelas/tabela_eficiencia_mha_vs_mef.tex).
   - Inclusão e chamada no texto dos novos gráficos (`comparacao_perfis_deslocamento.png`, `bench_tempos_e_reducao.png`, `convergencia_assintotica_erro.png`).
   - Atualização dos valores de deslocamentos e tensões na escala mm e MPa.
-- [ ] **CIT-07:** **Rastreabilidade e Comparação Física dos Resultados**
+- [ ] **CIT-07 (legado) → TEC-03:** **Rastreabilidade e Comparação Física dos Resultados**
   - Rastreabilidade dos dados de validação de Lamé e confronto com os limites de escoamento das fases metálicas.
 
 #### Capítulo 6 — Conclusão e Trabalhos Futuros
@@ -158,22 +157,46 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 
 ---
 
+### Plano 3 — Citação e Rastreabilidade de Afirmações
+
+> Os identificadores `CIT-01` a `CIT-07` deste plano substituem as tarefas de citação antes numeradas `CIT-05`, `CIT-06` e `CIT-07` no Plano 1. As entradas antigas foram mantidas apenas como registro histórico.
+
+- [x] **CIT-00:** **Estratégia de Citação sem Lista Numérica Legada**
+  - Documento aprovado: [`citacao_estrategia_CIT-00.md`](file:///g:/Meu%20Drive/UFF/TCC%20-%20Wesley/Escrita%20TCC/citacao_estrategia_CIT-00.md).
+  - Decisões A–D: (A) autor-data; (B) NR-13 + ASME VIII Div. 1 e 2; (C) busca de fonte caso a caso, com bloqueio da tarefa quando não localizada; (D) Cap. 4 → Cap. 3 → Cap. 2.
+  - Diagnóstico: 536 marcadores órfãos em 304 grupos (Cap. 2: 313; Cap. 3: 136; Cap. 4: 87).
+  - Lista legada considerada irrecuperável após quatro tentativas (fontes `.typ`, `.bib` com no máximo 41 entradas, `articles_scraping.py` vazio, PDF antigo sem seção de referências).
+  - [ ] **CIT-01:** Capítulo 4 — **marcadores removidos; 6 bloqueios abertos**
+    - Relatório: [`citacao_CIT-01.md`](file:///g:/Meu%20Drive/UFF/TCC%20-%20Wesley/Escrita%20TCC/citacao_CIT-01.md).
+    - 85 referências numéricas (recontagem sobre `HEAD`) → 0; 11 chamadas `\cite` (`logg2012automated` 7, `Sadd2009` 2, `Timoshenko_1951` 1, `bakhvalov1989` 1). O inventário inicial registrava 87; a diferença está documentada em `citacao_CIT-01.md`.
+    - Bloqueios B1–B6 (interface e Gibbs, automação CAD, propriedades dos materiais, Garfo de Hill, reservatórios Tipo III) aguardando fonte — decisão C.
+  - [ ] **CIT-02:** Capítulo 3 (136 marcadores).
+  - [ ] **CIT-03:** Capítulo 2, §§2.1–2.2 (~125), após `REV-02.1` sub-bloco D.2.
+  - [ ] **CIT-04:** Capítulo 2, §2.3 (~32).
+  - [ ] **CIT-05:** Capítulo 2, §2.4 (~56).
+  - [ ] **CIT-06:** Capítulo 2, §2.5 (~48).
+  - [ ] **CIT-07:** Varredura final de chaves e `bibtex`.
+- [ ] **AUD-01:** **Matriz de Afirmações Verificáveis** (depende de `CIT-00`)
+  - Registro por afirmação: local, classe (literária/factual, numérica própria, metodológica, normativa), evidência, estado, tarefa associada.
+
+---
+
 ## 4. Protocolo de Passagem de Bastão (JSON Estado Vivo v2.2)
 
 ```json
 {
   "versao_skill": "2.2",
-  "versao_estado": "1.6",
-  "data_atualizacao": "2026-11-03T18:00:00-03:00",
+  "versao_estado": "1.7",
+  "data_atualizacao": "2026-11-03",
   "autor_projeto": "Luiz Gustavo da Silva Pereira",
   "orientador": "Aguardando preenchimento formal",
   "sistema_unidades": "N-mm-MPa (Engenharia)",
   "objetivo": "Revisão integral de conteúdo, rigor técnico, citações e redação científica do TCC em LaTeX",
   "fase_atual": "plano_1_em_andamento",
-  "tarefa_ativa": "TEC-04 (concluída) — aguardando autorização da próxima tarefa atômica",
-  "subetapa_ativa": "consolidação_pós_TEC-04",
+  "tarefa_ativa": "CIT-01 (bloqueada em 6 pontos)",
+  "subetapa_ativa": "consolidacao_com_bloqueios_B1_a_B6",
   "tarefas_concluidas": [
-    "DIA-01", "DIA-02", "DIA-03", "DIA-04", "DIA-05", "CON-01", "TEC-04"
+    "DIA-01", "DIA-02", "DIA-03", "DIA-04", "DIA-05", "CON-01", "TEC-04", "CIT-00"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -189,9 +212,15 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "Tarefa REV-01-IA (mitigação de detecção IA na Introdução) registrada no backlog; execução adiada para após REV-02.x.",
     "TEC-04 concluída: escala milimétrica (mm-N-MPa) adotada como autoritativa no Capítulo 5 e no Capítulo 4; números recalculados para p = 30 MPa.",
     "Métrica de eficiência redefinida: W_ef = P_y / M_linear, com P_y = p·min(σ_y/σ_VM^máx); a razão P_int/M_linear foi descartada por ser apenas o inverso da massa linear.",
-    "Resultado declarado com honestidade: o bimetálico supera o aço em apenas 2,80% em W_ef, e o alumínio monolítico lidera o critério de resistência específica; a justificativa da hibridização passa a apoiar-se no compromisso rigidez específica × resistência específica."
+    "Resultado declarado com honestidade: o bimetálico supera o aço em apenas 2,80% em W_ef, e o alumínio monolítico lidera o critério de resistência específica; a justificativa da hibridização passa a apoiar-se no compromisso rigidez específica × resistência específica.",
+    "CIT-00 proposta: lista numérica legada declarada irrecuperável após quatro tentativas documentadas; citação será recitada do zero no sistema autor-data (abntex2cite alf).",
+    "Contagem corrigida de marcadores órfãos: 536 em 304 grupos (a contagem anterior de 574 incluía intervalos em modo matemático).",
+    "Ordenação de citação proposta: Cap. 4 (CIT-01) → Cap. 3 (CIT-02) → Cap. 2 em quatro blocos (CIT-03 a CIT-06), com o Cap. 2 por último por estar comentado em main.tex e não compilar.",
+    "CIT-00 aprovada em 03/11/2026: (A) sistema autor-data; (B) base normativa NR-13 + ASME Seção VIII Div. 1 e 2; (C) afirmação sem fonte localizável preserva o texto e bloqueia a tarefa até busca caso a caso; (D) ordem Cap. 4 → Cap. 3 → Cap. 2.",
+    "CIT-01 executada parcialmente em 04_mef.tex: 85 referências numéricas removidas (recontagem sobre HEAD; o inventário inicial registrava 87), 11 chamadas autor-data para quatro obras já existentes no .bib (logg2012automated, Sadd2009, Timoshenko_1951, bakhvalov1989) e 6 bloqueios abertos (B1–B6) por ausência de fonte localizável.",
+    "CIT-01 corrigiu a espessura de subcamada de 5,0 mm para 5,0 µm em 04_mef.tex, coerente com L_c = 10 µm e V1 = V2 = 0,5."
   ],
-  "proximo_passo": "Escolher a próxima tarefa atômica: TEC-05 (auditoria dos dados do Capítulo 5: N_z = 10 no texto vs. 20 em inputs.csv, grau do elemento, inserção da tabela mestre), TEC-03 (resultados numéricos e gráficos) ou CIT-00 (estratégia de citação sem lista numérica legada).",
-  "prompt_de_continuidade": "TEC-04 foi aplicada em 05_resultados.tex (§5.1 a §5.5) e 04_mef.tex (domínio Ω_rz, massa linear). Não há compilador LaTeX no ambiente: a verificação é estática (balanceamento de ambientes e revisão dos números). As alterações estão no working tree, não commitadas. Próxima ação: obter do autor a autorização da próxima tarefa atômica antes de qualquer nova edição."
+  "proximo_passo": "Decidir sobre os bloqueios B1–B6 da CIT-01: fornecer as fontes, autorizar busca externa ou aceitar reformulação do trecho. Só depois iniciar CIT-02 (Capítulo 3).",
+  "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

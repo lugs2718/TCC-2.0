@@ -1,0 +1,245 @@
+(function() {
+  this.API = {
+    enable_log: false,
+    log: function() {
+      if (this.enable_log) {
+        return console.log.apply(console, arguments);
+      }
+    },
+    getData: function(attr) {
+      var $data;
+      $data = this.data;
+      attr.split(".").map(function(el, i, array) {
+        if ($data) {
+          return $data = $data[el];
+        }
+      });
+      return $data;
+    },
+    setData: function(attr, value) {
+      var $data;
+      $data = this.data;
+      attr.split(".").map(function(el, i, array) {
+        if ((array.length - i) === 1) {
+          $data[el] = value;
+          return $data = $data[el];
+        } else if ($data[el]) {
+          return $data = $data[el];
+        } else {
+          $data[el] = {};
+          return $data = $data[el];
+        }
+      });
+      this.triggerOnSetData(attr, value);
+      return $data;
+    },
+    getDataFunction: function(attr) {
+      var $data;
+      $data = this.dataFunctions;
+      attr.split(".").map(function(el, i, array) {
+        if ($data) {
+          return $data = $data[el];
+        }
+      });
+      return $data;
+    },
+    triggerOnSetData: function(attr, value) {
+      var $trigger;
+      $trigger = this.onSetDataFunctions;
+      attr.split(".").map(function(el, i, array) {
+        if ($trigger) {
+          return $trigger = $trigger[el];
+        }
+      });
+      if (typeof $trigger === "function") {
+        this.log("triggerOnSetData", $trigger, arguments);
+        return $trigger.apply(this, arguments);
+      }
+    },
+    onSetDataFunctions: {
+      cmi: {
+        completion_status: function(attr, value) {
+          if (value === "completed") {
+            return TwygoLearn.markComplete(API.content_id || (typeof TwygoLearn !== "undefined" && TwygoLearn !== null ? TwygoLearn.react_content_id : void 0) || (typeof TwygoLearn !== "undefined" && TwygoLearn !== null ? TwygoLearn.content_id : void 0), false, false, true);
+          }
+        },
+        success_status: function(attr, value) {
+          if (value === "passed") {
+            return TwygoLearn.markComplete(API.content_id || (typeof TwygoLearn !== "undefined" && TwygoLearn !== null ? TwygoLearn.react_content_id : void 0) || (typeof TwygoLearn !== "undefined" && TwygoLearn !== null ? TwygoLearn.content_id : void 0), false, false, true);
+          }
+        },
+        progress_measure: function(attr, value) {
+          if (parseFloat(value) === 1) {
+            return TwygoLearn.markComplete(API.content_id || (typeof TwygoLearn !== "undefined" && TwygoLearn !== null ? TwygoLearn.react_content_id : void 0) || (typeof TwygoLearn !== "undefined" && TwygoLearn !== null ? TwygoLearn.content_id : void 0), false, false, true);
+          }
+        },
+        core: {
+          lesson_status: function(attr, value) {
+            if (value === "passed" || value === "completed") {
+              return TwygoLearn.markComplete(API.content_id || (typeof TwygoLearn !== "undefined" && TwygoLearn !== null ? TwygoLearn.react_content_id : void 0) || (typeof TwygoLearn !== "undefined" && TwygoLearn !== null ? TwygoLearn.content_id : void 0), false, false, true);
+            }
+          }
+        }
+      }
+    },
+    dataFunctions: {
+      cmi: {
+        completion_status: function() {
+          var $data;
+          $data = API.getData("cmi.completion_status");
+          if (!$data) {
+            $data = (function() {
+              var ref;
+              switch (typeof TwygoLearn !== "undefined" && TwygoLearn !== null ? (ref = TwygoLearn.currentUserContent) != null ? ref.status : void 0 : void 0) {
+                case "waiting":
+                  return "not attempted";
+                case "incomplete":
+                  return "incomplete";
+                case "complete":
+                  return "completed";
+                default:
+                  return "not attempted";
+              }
+            })();
+          }
+          return $data;
+        },
+        core: {
+          student_id: function() {
+            return "" + TwygoLearn.student.id;
+          },
+          student_name: function() {
+            return TwygoLearn.student.full_name;
+          },
+          lesson_mode: function() {
+            if (TwygoLearn.review) {
+              return "review";
+            } else {
+              return "normal";
+            }
+          },
+          lesson_status: function() {
+            var $data;
+            $data = API.getData("cmi.core.lesson_status");
+            if (!$data) {
+              $data = (function() {
+                var ref;
+                switch (typeof TwygoLearn !== "undefined" && TwygoLearn !== null ? (ref = TwygoLearn.currentUserContent) != null ? ref.status : void 0 : void 0) {
+                  case "waiting":
+                    return "not attempted";
+                  case "incomplete":
+                    return "incomplete";
+                  case "complete":
+                    return "completed";
+                  default:
+                    return "not attempted";
+                }
+              })();
+            }
+            return $data;
+          }
+        }
+      }
+    },
+    ApiInitialize: function() {
+      this.log("Initialize", this, arguments);
+      this.content_id = (typeof TwygoLearn !== "undefined" && TwygoLearn !== null ? TwygoLearn.react_content_id : void 0) || (typeof TwygoLearn !== "undefined" && TwygoLearn !== null ? TwygoLearn.content_id : void 0);
+      return "true";
+    },
+    Initialize: function() {
+      return this.ApiInitialize.apply(this, arguments);
+    },
+    LMSInitialize: function() {
+      return this.ApiInitialize.apply(this, arguments);
+    },
+    ApiTerminate: function() {
+      this.log("Terminate", this, arguments);
+      TwygoLearn.storeScorm(this.content_id, this.data);
+      return "true";
+    },
+    Terminate: function() {
+      return this.ApiTerminate.apply(this, arguments);
+    },
+    LMSFinish: function() {
+      return this.ApiTerminate.apply(this, arguments);
+    },
+    ApiGetValue: function(attr) {
+      var $data;
+      this.log("GetValue", this, arguments);
+      if (!this.data) {
+        this.data = {};
+      }
+      $data = this.getDataFunction(attr);
+      if ($data) {
+        if (typeof $data === "function") {
+          $data = $data.apply(this, arguments);
+        }
+      } else {
+        $data = this.getData(attr);
+      }
+      this.log("GetValue", attr, $data);
+      return $data || "";
+    },
+    GetValue: function(attr) {
+      return this.ApiGetValue.apply(this, arguments);
+    },
+    LMSGetValue: function(attr) {
+      return this.ApiGetValue.apply(this, arguments);
+    },
+    ApiSetValue: function(attr, value) {
+      this.log("SetValue", this, arguments);
+      this.setData(attr, value);
+      return "true";
+    },
+    SetValue: function(attr, value) {
+      return this.ApiSetValue.apply(this, arguments);
+    },
+    LMSSetValue: function(attr, value) {
+      return this.ApiSetValue.apply(this, arguments);
+    },
+    ApiCommit: function() {
+      this.log("Commit", this, arguments);
+      TwygoLearn.storeScorm(this.content_id, this.data);
+      return "true";
+    },
+    Commit: function() {
+      return this.ApiCommit.apply(this, arguments);
+    },
+    LMSCommit: function() {
+      return this.ApiCommit.apply(this, arguments);
+    },
+    ApiGetLastError: function() {
+      this.log("GetLastError", this, arguments);
+      return 0;
+    },
+    GetLastError: function() {
+      return this.ApiGetLastError.apply(this, arguments);
+    },
+    LMSGetLastError: function() {
+      return this.ApiGetLastError.apply(this, arguments);
+    },
+    ApiGetErrorString: function() {
+      this.log("GetErrorString", this, arguments);
+      return "";
+    },
+    GetErrorString: function() {
+      return this.ApiGetErrorString.apply(this, arguments);
+    },
+    LMSGetErrorString: function() {
+      return this.ApiGetErrorString.apply(this, arguments);
+    },
+    ApiGetDiagnostic: function() {
+      this.log("GetDiagnostic", this, arguments);
+      return "";
+    },
+    GetDiagnostic: function() {
+      return this.ApiGetDiagnostic.apply(this, arguments);
+    },
+    LMSGetDiagnostic: function() {
+      return this.ApiGetDiagnostic.apply(this, arguments);
+    }
+  };
+
+  window.API_1484_11 = this.API;
+
+}).call(this);

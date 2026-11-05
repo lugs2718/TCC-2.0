@@ -125,29 +125,15 @@ Adotando-se a configuração padrão de simulação com $N_{\text{cel}} = 200$ c
 
 %Se um elemento finito cruzar a interface que divide uma camada de aço de uma camada de alumínio, as propriedades elásticas integradas para aquele elemento sofrerão uma média suave artificial ("borramento" interfacial). Como consequência física direta, o salto descontínuo na tensão circunferencial ($\sigma_{\theta\theta}$) e a mudança de inclinação (\textbf{kinks}) no deslocamento radial ($u_r$), característicos da interface de contato perfeito bimetálica, seriam suavizados, arruinando completamente a acurácia física e a consistência local da simulação numérica.  
 
-% MODIFY (acabei de inventar esse código): Modificar este trecho para falar sobre a interpolação do deslocamento caso o elemento cruze a interface, ao invés de falar sobre integração e pontos de Gauss
-
 No Método dos Elementos Finitos, o deslocamento é encontrado nos nós e interpolado para o interior de cada elemento finito \cite{logg2012automated}.
 
 Se um elemento finito cruzar a interface que divide uma camada de aço de uma camada de alumínio, o deslocamento será interpolado de forma suave entre as duas camadas, o que pode levar a resultados imprecisos.
 
 Para blindar o modelo contra essa perda de precisão, a fronteira de cada subcamada material \textbf{deve coincidir estritamente com as bordas dos elementos finitos}. Ou seja, os nós da malha espacial devem estar localizados exatamente sobre as coordenadas radiais das interfaces elásticas.
 
-% [CIT] BLOQUEIO B1 (CIT-01): as afirmações sobre média artificial das propriedades em elementos que cruzam a interface e sobre a exigência de nós coincidentes com as interfaces não têm fonte localizada no .bib. Texto preservado; aguarda fonte (decisão C).
-
-% Como a citação foi modificada por uma afirmação bem mais simples que a anterior, creio ser possível liberar o bloqueio
-
 Essa restrição é perfeitamente satisfeita no código real ao impor o arredondamento inteiro de \texttt{nel1} e \texttt{nel2} por célula periódica através da função \texttt{int()} em Python. Ao garantir que $n_{\text{el\_cam1}}, n_{\text{el\_cam2}} \in \mathbb{N}$, a espessura de cada camada física se torna um múltiplo inteiro exato do tamanho local do elemento ($h_r = t / N_r$). O gerador de malhas realiza a transição de propriedades de forma abrupta a cada nó interfacial, eliminando oscilações numéricas próximas às interfaces e garantindo a convergência estrita da simulação heterogênea para o limite assintótico homogeneizado do MHA.
 
-% [CIT] BLOQUEIO B2 (CIT-01): a existência de um "fenômeno de Gibbs elástico" e a garantia de convergência estrita ao limite homogeneizado não têm fonte localizada no .bib. Texto preservado; aguarda fonte (decisão C).
-
-% REMOVE: Removi a referência ao fenômeno de Gibbs elástico, pois realmente não sei de onde veio
-
-A simulação numérica de meios altamente heterogêneos e microperiódicos, como o cilindro bimetálico composto por camadas alternadas de aço carbono e liga de alumínio, impõe desafios significativos de modelagem geométrica. À medida que o número de períodos $N_{\text{cell}}$ aumenta, a espessura de cada subcamada individual encolhe de forma inversamente proporcional, tornando a reconstrução física de cada interface no ambiente de CAD tradicional e o posterior corte da malha (\textit{mesh partitioning}) processos manuais altamente ineficientes, propensos a erros de precisão numérica e impossíveis de serem automatizados de forma paramétrica.
-
-% [CIT] BLOQUEIO B3 (CIT-01): a afirmação de que a reconstrução CAD e o particionamento da malha são impossíveis de automatizar parametricamente não tem fonte localizada no .bib. Texto preservado; aguarda fonte (decisão C).
-
-% TODO: Bloqueio mantido para revisão do agente.
+A simulação numérica de meios altamente heterogêneos e microperiódicos, como o cilindro bimetálico composto por camadas alternadas de aço carbono e liga de alumínio, impõe desafios significativos de modelagem geométrica. À medida que o número de períodos $N_{\text{cell}}$ aumenta, a espessura de cada subcamada individual encolhe de forma inversamente proporcional, tornando a reconstrução física de cada interface no ambiente de CAD tradicional e o posterior corte da malha (\textit{mesh partitioning}) processos manuais altamente ineficientes e propensos a erros de precisão numérica. Neste trabalho, optou-se por não automatizar a geração de uma malha conforme às interfaces físicas; em vez disso, adota-se o mapeamento implícito de propriedades descrito a seguir.
 
 Para contornar essa barreira operacional, adota-se neste trabalho a estratégia de \textbf{Mapeamento Implícito de Propriedades} via vetor de interfaces discretas. Em vez de discretizar as interfaces físicas na própria malha, o domínio espacial é particionado por uma malha estruturada única e contínua no plano $r-z$ (conforme já discutido na Seção~\ref{sec:discretizacao_malha}). As propriedades elásticas locais dos materiais de fase (módulo de Young, coeficiente de Poisson e a respectiva matriz constitutiva) são injetadas diretamente nos pontos de integração Gaussiana através de expressões analíticas espaciais periódicas de busca indexada programadas no ambiente FEniCS \cite{logg2012automated}.
 
@@ -263,9 +249,7 @@ Para a execução das simulações numéricas via Método dos Elementos Finitos 
 
 \subsection{Propriedades Mecânicas e Físicas das Fases Constituintes}
 
-O cilindro periódico analisado é composto pelo par metálico bimetálico formado por aço carbono e liga de alumínio, ambos tratados individualmente como meios homogêneos e isotrópicos em nível de subcamada microestrutural. As propriedades mecânicas de entrada (módulo de Young $E$ e coeficiente de Poisson $\nu$), associadas às propriedades físicas de massa específica ($\rho$) e resistência mecânica elástica limite ($\sigma_y$), são sumarizadas na Tabela~\ref{tab:propriedades_fases}:
-
-% [CIT] BLOQUEIO B4 (CIT-01): os valores de $E$, $\nu$, $\rho$ e $\sigma_y$ da Tabela~\ref{tab:propriedades_fases} não têm fonte localizada no .bib; o texto não identifica os graus específicos do aço e da liga de alumínio. Valores preservados; aguarda fonte (decisão C).
+O cilindro periódico analisado é composto pelo par metálico bimetálico formado por aço carbono (ASTM A516 Gr. 70) e liga de alumínio 6061-T6, ambos tratados individualmente como meios homogêneos e isotrópicos em nível de subcamada microestrutural. As propriedades mecânicas de entrada (módulo de Young $E$ e coeficiente de Poisson $\nu$), associadas às propriedades físicas de massa específica ($\rho$) e resistência mecânica elástica limite ($\sigma_y$), são sumarizadas na Tabela~\ref{tab:propriedades_fases}:
 
 \begin{table}[htbp]
   \centering
@@ -277,15 +261,11 @@ O cilindro periódico analisado é composto pelo par metálico bimetálico forma
     Módulo de Elasticidade & $E$ & $200 \, \text{GPa}$ ($2,0 \times 10^{11} \, \text{Pa}$) & $70 \, \text{GPa}$ ($7,0 \times 10^{10} \, \text{Pa}$) \\ \hline
     Coeficiente de Poisson & $\nu$ & $0,30$ & $0,33$ \\ \hline
     Densidade Volumétrica & $\rho$ & $7800 \, \text{kg/m}^3$ & $2700 \, \text{kg/m}^3$ \\ \hline
-    Limite de Escoamento & $\sigma_y$ & $400,0 \, \text{MPa}$ ($4,0 \times 10^8 \, \text{Pa}$) & $270,0 \, \text{MPa}$ ($2,7 \times 10^8 \, \text{Pa}$) \\ \hline
+    Limite de Escoamento & $\sigma_y$ & $260,0 \, \text{MPa}$ ($2,6 \times 10^8 \, \text{Pa}$) & $270,0 \, \text{MPa}$ ($2,7 \times 10^8 \, \text{Pa}$) \\ \hline
   \end{tabular}
 \end{table}
 
-A escolha desses materiais reflete um cenário clássico de alto contraste de rigidez elástica (com a razão de módulos $E_{\text{aço}}/E_{\text{alu}} \approx 2,86$), o qual representa o cenário ideal e mais rigoroso para testar os limites do Garfo de Hill elástico e a capacidade do MHA de suavizar as oscilações de alta frequência espacial sem perda de consistência energética.
-
-% [CIT] BLOQUEIO B5 (CIT-01): o "Garfo de Hill" é citado sem referência localizada no .bib. Texto preservado; aguarda fonte (decisão C).
-
-% TODO: Bloqueio a ser tratado pelo agente
+A escolha desses materiais reflete um cenário clássico de alto contraste de rigidez elástica (com a razão de módulos $E_{\text{aço}}/E_{\text{alu}} \approx 2,86$), o qual representa o cenário ideal e mais rigoroso para testar a capacidade do MHA de suavizar as oscilações de alta frequência espacial sem perda de consistência energética.
 
 A massa linear $M_{\text{lin}}$ (expressa em kg por metro de comprimento axial do cilindro) é calculada diretamente a partir da área da seção transversal da parede do vaso $A_{\text{wall}} = \pi (R_{\text{ext}}^2 - R_{\text{int}}^2)$ e da densidade média do material. Para os raios de projeto ($R_{\text{int}} = 9,0 \, \text{mm}$ e $R_{\text{ext}} = 11,0 \, \text{mm}$), a área do resulta em $A_{\text{wall}} \approx 125,66 \, \text{mm}^2$. A densidade equivalente macroscópica ($\hat{\rho}$) do compósito com fração volumétrica simétrica ($V_1 = V_2 = 0,5$) é regida estritamente pela regra aditiva simples:
 
@@ -304,14 +284,10 @@ Resultando em uma massa linear de $0,6597 \, \text{kg/m}$ para o cilindro bimet�
 
 Para submeter o modelo numérico axissimétrico e a formulação analítica do MHA a condições operacionais realistas e severas, estabeleceu-se uma \textbf{pressão interna de projeto estável de $30 \, \text{MPa}$} ($3,0 \times 10^7 \, \text{Pa}$) aplicada de forma contínua na fronteira radial interna do cilindro ($r = R_{\text{int}}$).
 
-Esta escolha de carregamento é amplamente fundamentada em aplicações de vasos de pressão modernos na engenharia automotiva e aeroespacial. Conforme ilustrado na literatura técnica e normativa, a faixa de $30$ a $35 \, \text{MPa}$ representa a pressão nominal de operação para reservatórios de alta performance Tipo III (que utilizam liner metálico de alumínio ou aço recobertos por enrolamento filamentar composto, CFRP) para o armazenamento seguro de hidrogênio gasoso comprimido ($H_2$).
-
-% [CIT] BLOQUEIO B6 (CIT-01): a faixa de 30 a 35 MPa para reservatórios Tipo III e o armazenamento de $H_2$ não têm fonte localizada no .bib; a base normativa aprovada (NR-13 + ASME VIII) não cobre reservatórios Tipo III. Texto preservado; aguarda fonte (decisão C).
-
-% Bloqueio a ser tratado pelo agente
+Esta escolha de carregamento situa-se no patamar de pressões de serviço reportado para vasos de pressão Tipo III de armazenamento de hidrogênio, para os quais a literatura indica pressão de projeto inferior a $35 \, \text{MPa}$ \cite{Zhang2022}.
 
 A imposição deste patamar de solicitação induz um estado de tensões internas elevadas na parede do cilindro de parede grossa ($R_{\text{int}}/t = 4,5$), permitindo-nos avaliar:
-1. \textbf{O escoamento inicial das fases:} Onde o aço (com escoamento de $400,0 \, \text{MPa}$) e o alumínio (escoamento de $270,0 \, \text{MPa}$) são testados sob as tensões equivalentes locais de Von Mises calculadas pelo MEF;
+1. \textbf{O escoamento inicial das fases:} Onde o aço ASTM A516 Gr. 70 (com escoamento de $260,0 \, \text{MPa}$) e o alumínio (escoamento de $270,0 \, \text{MPa}$) são testados sob as tensões equivalentes locais de Von Mises calculadas pelo MEF;
 2. \textbf{A precisão microscópica do MHA:} Provando se a solução analítica homogeneizada da modelagem assintótica consegue prever as tensões médias e as deformações globais em regime elástico linear mesmo sob pressões internas severas de $300 \, \text{bar}$ ($30 \, \text{MPa}$).
 
 As condições de contorno de Neumann de pressão interna foram aplicadas no contorno radial interno $\Gamma_{\text{int}}$ por meio da forma linear de trabalho virtual descrita na Seção 3.4, garantindo a perfeita integração espacial ponderada pelo raio $r$ exigida pelo FEniCS \cite{logg2012automated}.

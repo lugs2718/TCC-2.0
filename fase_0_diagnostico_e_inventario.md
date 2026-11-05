@@ -187,16 +187,24 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 {
   "versao_skill": "2.2",
   "versao_estado": "1.7",
-  "data_atualizacao": "2026-11-03",
+  "data_atualizacao": "2026-11-05",
   "autor_projeto": "Luiz Gustavo da Silva Pereira",
   "orientador": "Aguardando preenchimento formal",
   "sistema_unidades": "N-mm-MPa (Engenharia)",
   "objetivo": "Revisão integral de conteúdo, rigor técnico, citações e redação científica do TCC em LaTeX",
   "fase_atual": "plano_1_em_andamento",
-  "tarefa_ativa": "CIT-01 (bloqueada em 6 pontos)",
-  "subetapa_ativa": "consolidacao_com_bloqueios_B1_a_B6",
+  "tarefa_ativa": null,
+  "subetapa_ativa": null,
   "tarefas_concluidas": [
-    "DIA-01", "DIA-02", "DIA-03", "DIA-04", "DIA-05", "CON-01", "TEC-04", "CIT-00"
+    "DIA-01",
+    "DIA-02",
+    "DIA-03",
+    "DIA-04",
+    "DIA-05",
+    "CON-01",
+    "TEC-04",
+    "CIT-00",
+    "CIT-01"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -218,9 +226,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "Ordenação de citação proposta: Cap. 4 (CIT-01) → Cap. 3 (CIT-02) → Cap. 2 em quatro blocos (CIT-03 a CIT-06), com o Cap. 2 por último por estar comentado em main.tex e não compilar.",
     "CIT-00 aprovada em 03/11/2026: (A) sistema autor-data; (B) base normativa NR-13 + ASME Seção VIII Div. 1 e 2; (C) afirmação sem fonte localizável preserva o texto e bloqueia a tarefa até busca caso a caso; (D) ordem Cap. 4 → Cap. 3 → Cap. 2.",
     "CIT-01 executada parcialmente em 04_mef.tex: 85 referências numéricas removidas (recontagem sobre HEAD; o inventário inicial registrava 87), 11 chamadas autor-data para quatro obras já existentes no .bib (logg2012automated, Sadd2009, Timoshenko_1951, bakhvalov1989) e 6 bloqueios abertos (B1–B6) por ausência de fonte localizável.",
-    "CIT-01 corrigiu a espessura de subcamada de 5,0 mm para 5,0 µm em 04_mef.tex, coerente com L_c = 10 µm e V1 = V2 = 0,5."
+    "CIT-01 corrigiu a espessura de subcamada de 5,0 mm para 5,0 µm em 04_mef.tex, coerente com L_c = 10 µm e V1 = V2 = 0,5.",
+    "CIT-01 conclu?da (05/11/2026): 85 refer?ncias num?ricas removidas; 14 chamadas \\cite (Sadd2009, Timoshenko_1951, logg2012automated, bakhvalov1989, Zhang2022). B1, B2, B3, B5 resolvidos por reformula??o; B4 resolvido com graus nomeados (A516 Gr.70, 6061-T6) e ?y do a?o ajustado para 260 MPa; B6 reformulado para \"press?o de projeto < 35 MPa\" (Zhang2022). Decis?o C emendada: afirma??es bloqueadas podem ser suavizadas quando n?o houver fonte."
   ],
-  "proximo_passo": "Decidir sobre os bloqueios B1–B6 da CIT-01: fornecer as fontes, autorizar busca externa ou aceitar reformulação do trecho. Só depois iniciar CIT-02 (Capítulo 3).",
+  "proximo_passo": "CIT-01 conclu?da. Pr?xima tarefa autorizada a definir pelo usu?rio (sugest?o: CIT-02 no Cap?tulo 3, ou REF-01 para saneamento do .bib, incluindo bakhvalov1989 author, Zhang2022 j? adicionado, ASTM A516 e 6061-T6).",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

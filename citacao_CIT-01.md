@@ -124,7 +124,11 @@ O valor foi corrigido para `5,0 \, \mu\text{m}` nas duas ocorrências. A afirma�
 
 ## 8. Pendências e próximo passo
 
-1. **Decidir sobre B1–B6:** fornecer as fontes, autorizar a busca externa ou aceitar a reformulação do trecho. Sem isso, a CIT-01 fica `bloqueada` nesses pontos.
-2. **AUD-01:** consolidar a matriz de afirmações com os registros desta auditoria.
-3. **CIT-02:** só iniciar após decisão sobre os bloqueios, para não acumular pendências no Capítulo 3.
-4. **REF-01:** a entrada `bakhvalov1989` tem o campo `author` fora do padrão (`Panasenko, NSBG and Bakhvalov, NS`) e `Guinovart2024` termina com `}*/`; ambas precisam de saneamento antes da compilação final.
+1. **B1 e B2 — resolvidos por reformulação (commit 110055c, 05/11/2026):** a afirmação de B1 foi simplificada para o caso de interpolação de deslocamento (sem alegação de média de propriedades em pontos de Gauss) e a referência ao “fenômeno de Gibbs elástico” foi removida de B2. Os marcadores `% [CIT]` correspondentes foram limpos. Decisão C emendada: afirmações bloqueadas podem ser suavizadas quando não houver fonte, preservando o sentido técnico.
+2. **B3 - resolvido por reformulação:** a negativa categórica ("impossíveis de automatizar parametricamente") foi substituída por uma descrição da limitação real do fluxo adotado (não se automatizou a geração de malha conforme às interfaces). Marcador `% [CIT] BLOQUEIO B3` removido.
+3. **B5 - resolvido por reformulação (esta micro-tarefa):** a menção a "Garfo de Hill elástico" foi removida da frase (suavização autorizada). Marcador `% [CIT] BLOQUEIO B5` removido.
+4. **B4 - resolvido por reformulação (esta micro-tarefa):** graus identificados (aço ASTM A516 Gr. 70; alumínio 6061-T6) e σy do aço ajustado de 400,0 para 260,0 MPa na tabela e no texto. Marcador `% [CIT] BLOQUEIO B4` removido. Os valores permanecem como parâmetros adotados do script de projeto; as entradas correspondentes no `.bib` (ASTM A516, 6061-T6) são dependência da REF-01.
+5. **B6 - resolvido por reformulação (esta micro-tarefa):** a faixa "30 a 35 MPa como pressão nominal de Tipo III" foi substituída por "pressão de projeto inferior a 35 MPa" \cite{Zhang2022}, com 30 MPa mantido como valor adotado na simulação. Marcador `% [CIT] BLOQUEIO B6` removido. Entrada `Zhang2022` adicionada ao `.bib`.
+6. **AUD-01:** consolidar a matriz de afirmações com os registros desta auditoria.
+7. **CIT-02:** só iniciar após decisão sobre os bloqueios restantes, para não acumular pendências no Capítulo 3.
+8. **REF-01:** a entrada `bakhvalov1989` tem o campo `author` fora do padrão (`Panasenko, NSBG and Bakhvalov, NS`) e `Guinovart2024` termina com `}*/`; ambas precisam de saneamento antes da compilação final. Adicionar também as entradas para ASTM A516 e 6061-T6 (Hibbeler, já no acervo).

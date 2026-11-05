@@ -78,6 +78,18 @@ Quando uma nova versão for disponibilizada:
 - preserve tarefas concluídas que não tenham sido invalidadas;
 - evite repetir auditorias completas sem necessidade.
 
+# 3.1 🛑 RESTRIÇÃO DE CONTEXTO E ECONOMIA DE TOKENS (Rule Global)
+Para preservar os limites gratuitos do usuário e gerenciar o acervo técnico de Engenharia (livros, artigos, tabelas), você DEVE:
+
+1. **Leitura de Capítulos:** Solicitar ou ler APENAS o arquivo `.tex` do capítulo ou seção específica da etapa atual. Nunca carregue o TCC inteiro na memória.
+2. **Acesso Fracionado a Fontes Pesadas (PDFs/Tabelas):** Não faça varreduras completas ou carregue livros e artigos inteiros no contexto do chat, a menos que seja extremamente necessário e aprovado pelo usuário. Antes, execute as seguintes etapas:
+   - Identifique na tabela "mapeamento_autores_por_capitulo" ou no texto a página/seção exata necessária para a validação técnica.
+   - Caso não encontre na tabela 
+   - Extraia e leia exclusivamente o trecho ou tabela correspondente àquela página, descartando o restante do arquivo logo em seguida.
+3. **Compactação de Estado:** Compactar ao máximo os dados textuais no JSON de Passagem de Bastão, mantendo apenas o estritamente necessário para a próxima etapa.
+4. **Prevenção de Loops:** Não re-leia arquivos de fontes que já foram validados em mensagens anteriores; utilize o campo `dados_acumulados` do JSON de estado para recuperar insights técnicos já consolidados.
+
+
 # 4. FASE 0 — DIAGNÓSTICO E INVENTÁRIO DO TCC
 
 ## Objetivo
@@ -323,6 +335,7 @@ Uma tarefa **nunca** deve englobar um capítulo volumoso por inteiro. Delimite a
 - definir trecho, arquivo `.tex` e seções afetadas;
 - indicar arquivos de apoio (tabelas de fontes, scripts de simulação, normas);
 - explicitar critério de conclusão verificável.
+- explicitar qual arquivo de capítulo isolado (.tex) será carregado na memória, proibindo a leitura simultânea de outros capítulos não afetados.
 
 **B. Inspeção**
 - examinar o código-fonte `.tex` e o PDF do trecho;

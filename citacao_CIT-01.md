@@ -54,7 +54,7 @@ Nenhuma chave nova foi criada. Todas as quatro já existiam em `LaTeX/bibliograf
 
 > Os locais referem-se à numeração de linhas do arquivo em `HEAD`, antes das edições. No arquivo atual, os comentários `% [CIT]` deslocaram as linhas seguintes.
 
-TODO (Autor): Verificar se essas decisões fazem sentido.
+- [ ] TODO (Autor): Verificar se essas decisões fazem sentido.
 
 | Local (HEAD) | Referências | Decisão | Justificativa |
 |---|---:|---|---|

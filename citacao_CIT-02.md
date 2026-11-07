@@ -5,6 +5,11 @@
 - Sistema de chamada: autor-data (`abntex2cite`, opção `alf`).
 - Nenhum marcador `[nn]` pode sobreviver ao fim da tarefa.
 
+## 1.1 Legenda de verificação das ancoragens
+- **V** (verificado no PDF do acervo): `Backus1962` (Backus 1962, pp. 4427–4440), `Zhang2022` (Zhang et al. 2022, p. 18), `hibbeler2010` (Hibbeler 7ª ed. BR, 2010, p. 658), `lai2010continuum` (Lai et al. 2010, prefácio), `leitzke2017` (Leitzke 2017, catalogação).
+- **T** (temática, não verificada localmente — baseada em correspondência tópica): `Timoshenko_1951` (PDF escaneado, sem camada de texto), `Sadd2009` (disponível mas não verificado para cada afirmação), `bakhvalov1989` (verificado apenas para "Hill's forks" e "Voight-Reuss-Hill"), `PartonReport` (verificado apenas para "Voigt-Reuss bounds"), `logg2012automated` (verificado para FEM/malha, não para cada afirmação).
+- A verificação fina (página/parágrafo) será feita na AUD-01, priorizando os trechos críticos.
+
 ## 2. Estratégia de fatiamento
 7 micro-lotes por seção (10–15 citações por ciclo). Fatias concluídas: 02.1, 02.2, 02.3a, 02.3b, 02.3c. Pendentes: 02.4a (proposta), 02.4b.
 

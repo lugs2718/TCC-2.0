@@ -3,33 +3,44 @@
 \section{Hipótese do Contínuo e Equações Governantes}
 
 A análise do comportamento mecânico de um vaso de pressão cilíndrico composto por camadas de materiais que se alternam periodicamente na direção radial baseia-se na \textbf{mecânica dos meios contínuos}. Esta seção apresenta as equações de conservação da quantidade de movimento (equações de equilíbrio) e as relações cinemáticas fundamentais expressas em coordenadas cilíndricas tridimensionais, justificando rigorosamente sua redução para o modelo axissimétrico unidimensional.
+% VERIFY: Verificado pelo autor
 
 Assume-se que o cilindro opera sob regime de pequenas deformações elásticas lineares e que está submetido a uma pressão interna constante, mantendo-se livre de forças de corpo gravitacionais ou inerciais ($\mathbf{b} = \mathbf{0}$).
+% VERIFY: Verificado pelo autor
 
 \subsection{Equações de Equilíbrio Geral em Coordenadas Cilíndricas}
 
-Para modelar o estado tridimensional de tensões em um cilindro, as equações diferenciais de equilíbrio, chamadas equações de cauchy \cite{LaiBook},  são expressas no sistema natural de coordenadas cilíndricas $(r, \theta, z)$. O divergente do tensor de tensões de Cauchy $\boldsymbol{\sigma}^\epsilon$ possui componentes nas direções radial, circunferencial e axial dadas, respectivamente, por \cite{Sadd2009}:
+Para modelar o estado tridimensional de tensões em um cilindro, as equações diferenciais de equilíbrio, chamadas equações de cauchy \cite{LaiBook},  são expressas no sistema natural de coordenadas cilíndricas $(r, \theta, z)$. O divergente do tensor de tensões de Cauchy $\boldsymbol{\sigma}^\varepsilon$ possui componentes nas direções radial, circunferencial e axial dadas, respectivamente, por \cite{Sadd2009}:
+
+% VERIFY: Trecho 13 Verificado pelo autor
+
 
 \begin{equation}
- (\nabla \cdot \boldsymbol{\sigma}^\epsilon)_r = \frac{\partial \sigma_{rr}^\epsilon}{\partial r} + \frac{1}{r} \frac{\partial \tau_{r\theta}^\epsilon}{\partial \theta} + \frac{\partial \tau_{rz}^\epsilon}{\partial z} + \frac{\sigma_{rr}^\epsilon - \sigma_{\theta\theta}^\epsilon}{r} + b_r = 0
+ (\nabla \cdot \boldsymbol{\sigma}^\varepsilon)_r = \frac{\partial \sigma_{rr}^\varepsilon}{\partial r} + \frac{1}{r} \frac{\partial \tau_{r\theta}^\varepsilon}{\partial \theta} + \frac{\partial \tau_{rz}^\varepsilon}{\partial z} + \frac{\sigma_{rr}^\varepsilon - \sigma_{\theta\theta}^\varepsilon}{r} + b_r = 0
   \label{eq:equilibrium_3d_r}
 \end{equation}
 
 \begin{equation}
-  (\nabla \cdot \boldsymbol{\sigma}^\epsilon)_\theta = \frac{\partial \tau_{r\theta}^\epsilon}{\partial r} + \frac{1}{r} \frac{\partial \sigma_{\theta\theta}^\epsilon}{\partial \theta} + \frac{\partial \tau_{\theta z}^\epsilon}{\partial z} + \frac{2 \tau_{r\theta}^\epsilon}{r} + b_\theta = 0
+  (\nabla \cdot \boldsymbol{\sigma}^\varepsilon)_\theta = \frac{\partial \tau_{r\theta}^\varepsilon}{\partial r} + \frac{1}{r} \frac{\partial \sigma_{\theta\theta}^\varepsilon}{\partial \theta} + \frac{\partial \tau_{\theta z}^\varepsilon}{\partial z} + \frac{2 \tau_{r\theta}^\varepsilon}{r} + b_\theta = 0
   \label{eq:equilibrium_3d_theta}
 \end{equation}
 
 \begin{equation}
-  (\nabla \cdot \boldsymbol{\sigma}^\epsilon)_z = \frac{\partial \tau_{rz}^\epsilon}{\partial r} + \frac{1}{r} \frac{\partial \tau_{\theta z}^\epsilon}{\partial \theta} + \frac{\partial \sigma_{zz}^\epsilon}{\partial z} + \frac{\tau_{rz}^\epsilon}{r} + b_z = 0
+  (\nabla \cdot \boldsymbol{\sigma}^\varepsilon)_z = \frac{\partial \tau_{rz}^\varepsilon}{\partial r} + \frac{1}{r} \frac{\partial \tau_{\theta z}^\varepsilon}{\partial \theta} + \frac{\partial \sigma_{zz}^\varepsilon}{\partial z} + \frac{\tau_{rz}^\varepsilon}{r} + b_z = 0
   \label{eq:equilibrium_3d_z}
 \end{equation}
 
+% VERIFY: Trecho 18-31 Verificado pelo autor
+
 onde o sobrescrito $\epsilon$ denota que as variáveis físicas variam na escala microscópica rápida induzida pela heterogeneidade periódica do material, descrita localmente pela variável rápida $\mathbf{y} = \mathbf{r}/\epsilon$  \cite{bakhvalov1989}.
+
+% VERIFY: Trecho 35 Verificado pelo autor
 
 \subsection{Simplificação por Axissimetria}
 
-Devido à simetria de revolução da estrutura cilíndrica e à natureza uniforme do carregamento de pressão interna, o problema mecânico é classificado como axissimétrico. Esta característica geométrica e física impõe duas simplificações severas sobre os campos de deslocamento e tensão:
+Devido à simetria de revolução da estrutura cilíndrica e à natureza uniforme do carregamento de pressão interna, o problema mecânico é classificado como \textbf{axissimétrico}. Esta característica geométrica e física impõe duas simplificações sobre os campos de deslocamento e tensão:
+
+% VERIFY: Trecho 41 Verificado pelo autor
 
 1. \textbf{Invariância Circunferencial:} Nenhuma propriedade física ou campo mecânico varia ao longo do ângulo $\theta$, o que anula todas as derivadas parciais nesta direção \cite{Sadd2009}:
 \begin{equation}
@@ -39,210 +50,237 @@ Devido à simetria de revolução da estrutura cilíndrica e à natureza uniform
 
 2. \textbf{Ausência de Torção:} Na ausência de carregamentos torsoriais aplicados às extremidades do cilindro, as componentes de deslocamento tangencial $u_\theta$ e as tensões de cisalhamento associadas a esse plano são nulas \cite{Sadd2009}:
 \begin{equation}
-  \tau_{r\theta}^\epsilon = \tau_{\theta z}^\epsilon = 0
+  \tau_{r\theta}^\varepsilon = \tau_{\theta z}^\varepsilon = 0
   \label{eq:axisymmetry_shear}
 \end{equation}
 
 Substituindo as \eqref{eq:axisymmetry_deriv} e \eqref{eq:axisymmetry_shear} nas equações gerais, a equação de equilíbrio na direção circunferencial (\eqref{eq:equilibrium_3d_theta}) é identicamente satisfeita ($0 = 0$). As componentes radial e axial simplificam-se para \cite{Timoshenko_1951}:
 
+% VERIFY: Trecho 45-57 Verificado pelo autor
+
 \begin{equation}
-  \frac{\partial \sigma_{rr}^\epsilon}{\partial r} + \frac{\partial \tau_{rz}^\epsilon}{\partial z} + \frac{\sigma_{rr}^\epsilon - \sigma_{\theta\theta}^\epsilon}{r} + b_r = 0
+  \frac{\partial \sigma_{rr}^\varepsilon}{\partial r} + \frac{\partial \tau_{rz}^\varepsilon}{\partial z} + \frac{\sigma_{rr}^\varepsilon - \sigma_{\theta\theta}^\varepsilon}{r} + b_r = 0
   \label{eq:equilibrium_axi_r}
 \end{equation}
 
 \begin{equation}
-  \frac{\partial \tau_{rz}^\epsilon}{\partial r} + \frac{\partial \sigma_{zz}^\epsilon}{\partial z} + \frac{\tau_{rz}^\epsilon}{r} + b_z = 0
+  \frac{\partial \tau_{rz}^\varepsilon}{\partial r} + \frac{\partial \sigma_{zz}^\varepsilon}{\partial z} + \frac{\tau_{rz}^\varepsilon}{r} + b_z = 0
   \label{eq:equilibrium_axi_z}
 \end{equation}
 
-O tensor de tensões axissimétrico, mantendo ainda as tensões de cisalhamento longitudinal de forma genérica, é representado em notação de Voigt como [112, 115]:
+O tensor de tensões axissimétrico, mantendo ainda as tensões de cisalhamento longitudinal de forma genérica, é representado em notação compacta como \cite{Sadd2009}:
+Voigt
+% TODO: Trecho 71 ainda mantém-se com citação numérica incorreta. Ajustar
+% FIX: SADD usado para citação sobre notação compacta, mas ele chama de "notação compacta" então mudei o trecho para esse formato 
 
 \begin{equation}
-  \boldsymbol{\sigma}^\epsilon = \begin{bmatrix}
-    \sigma_{rr}^\epsilon \\
-    \sigma_{\theta\theta}^\epsilon \\
-    \sigma_{zz}^\epsilon \\
-    \tau_{rz}^\epsilon
+  \boldsymbol{\sigma}^\varepsilon = \begin{bmatrix}
+    \sigma_{rr}^\varepsilon \\
+    \sigma_{\theta\theta}^\varepsilon \\
+    \sigma_{zz}^\varepsilon \\
+    \tau_{rz}^\varepsilon
   \end{bmatrix}
   \label{eq:voigt_stress_axi}
 \end{equation}
 
+% CHECK: Trecho 76-84 verificado pelo autor
+
 \subsection{Relações Cinemáticas e Estado Plano de Deformação Generalizado}
 
-As componentes do tensor de deformações infinitesimais $\mathbf{\epsilon}^\epsilon$ relacionam-se com as componentes de deslocamento radial $u_r^\epsilon$ e axial $u_z^\epsilon$ por meio das relações elásticas axissimétricas [115, 161]:
+As componentes do tensor de deformações infinitesimais $\mathbf{\epsilon}^\varepsilon$ relacionam-se com as componentes de deslocamento radial $u_r^\varepsilon$ e axial $u_z^\varepsilon$ por meio das relações elásticas axissimétricas \cite{Timoshenko_1951}:
+
+% MODIFY: Modifiquei toda chamada à ^\epsilon do documento para ^\varepsilon. 
 
 \begin{equation}
-  \epsilon_{rr}^\epsilon = \frac{\partial u_r^\epsilon}{\partial r}, \quad \epsilon_{\theta\theta}^\epsilon = \frac{u_r^\epsilon}{r}, \quad \epsilon_{zz}^\epsilon = \frac{\partial u_z^\epsilon}{\partial z}
+  \epsilon_{rr}^\varepsilon = \frac{\partial u_r^\varepsilon}{\partial r}, \quad \epsilon_{\theta\theta}^\varepsilon = \frac{u_r^\varepsilon}{r}, \quad \epsilon_{zz}^\varepsilon = \frac{\partial u_z^\varepsilon}{\partial z}
   \label{eq:strains_normal}
 \end{equation}
 
 \begin{equation}
-  \gamma_{rz}^\epsilon = 2\epsilon_{rz}^\epsilon = \frac{\partial u_r^\epsilon}{\partial z} + \frac{\partial u_z^\epsilon}{\partial r}
+  \gamma_{rz}^\varepsilon = 2\epsilon_{rz}^\varepsilon = \frac{\partial u_r^\varepsilon}{\partial z} + \frac{\partial u_z^\varepsilon}{\partial r}
   \label{eq:strain_shear}
 \end{equation}
 
-Para viabilizar a resolução analítica e reduzir o problema elástico bidimensional do plano $r-z$ para uma formulação estritamente unidimensional na direção radial, introduz-se a hipótese de \textbf{Estado Plano de Deformação Generalizado} (condizente com cilindros longos com extremidades restritas) [209, 210]:
+Para viabilizar a resolução analítica e reduzir o problema elástico bidimensional do plano $r-z$ para uma formulação estritamente unidimensional na direção radial, introduz-se a hipótese de \textbf{Estado Plano de Deformação Generalizado} (condizente com cilindros longos com extremidades restritas) \cite{Timoshenko_1951}:
 
-1. \textbf{Uniformidade Axial:} Assume-se que a geometria do cilindro e o carregamento de pressão são constantes ao longo do eixo axial $z$, o que implica que o deslocamento radial $u_r^\epsilon$ independe da coordenada $z$:
+1. \textbf{Uniformidade Axial:} Assume-se que a geometria do cilindro e o carregamento de pressão são constantes ao longo do eixo axial $z$, o que implica que o deslocamento radial $u_r^\varepsilon$ independe da coordenada $z$:
 \begin{equation}
-  \frac{\partial u_r^\epsilon}{\partial z} = 0
+  \frac{\partial u_r^\varepsilon}{\partial z} = 0
   \label{eq:plane_strain_ur}
 \end{equation}
 
-2. \textbf{Preservação de Seções Planas:} Postula-se que as seções transversais ao eixo longitudinal permanecem planas após a deformação. Logo, o deslocamento axial $u_z^\epsilon$ varia no máximo linearmente com a coordenada $z$, resultando em uma deformação axial constante ($\epsilon_{zz}^\epsilon = \epsilon_0$) e independente do raio $r$:
+2. \textbf{Preservação de Seções Planas:} Postula-se que as seções transversais ao eixo longitudinal permanecem planas após a deformação. Logo, o deslocamento axial $u_z^\varepsilon$ varia no máximo linearmente com a coordenada $z$, resultando em uma deformação axial constante ($\epsilon_{zz}^\varepsilon = \epsilon_0$) e independente do raio $r$:
 \begin{equation}
-  \frac{\partial u_z^\epsilon}{\partial r} = 0
+  \frac{\partial u_z^\varepsilon}{\partial r} = 0
   \label{eq:plane_strain_uz}
 \end{equation}
 
-Substituindo as \eqref{eq:plane_strain_ur} e \eqref{eq:plane_strain_uz} na equação de deformação por cisalhamento (\eqref{eq:strain_shear}), conclui-se que o cisalhamento transversal é identicamente nulo em todo o domínio [211]:
+Substituindo as \eqref{eq:plane_strain_ur} e \eqref{eq:plane_strain_uz} na equação de deformação por cisalhamento (\eqref{eq:strain_shear}), conclui-se que o cisalhamento transversal é identicamente nulo em todo o domínio \cite{Timoshenko_1951}:
 
 \begin{equation}
-  \gamma_{rz}^\epsilon = 0 + 0 = 0
+  \gamma_{rz}^\varepsilon = 0 + 0 = 0
   \label{eq:shear_zero}
 \end{equation}
 
-Pela Lei de Hooke para meios isotrópicos locais, a anulação da deformação cisalhante transversal implica diretamente na anulação da tensão de cisalhamento ($\tau_{rz}^\epsilon = 0$) [211]. Sob essas premissas cinemáticas, e assumindo a ausência de forças de corpo ($b_r = 0$), a equação de equilíbrio radial (\eqref{eq:equilibrium_axi_r}) simplifica-se para a sua forma final escalar unidimensional ordinária [116, 125]:
+%CHECK: Trecho 94-123 verificado pelo autor 
+
+Pela Lei de Hooke para meios isotrópicos locais, a anulação da deformação cisalhante transversal implica diretamente na anulação da tensão de cisalhamento ($\tau_{rz}^\varepsilon = 0$) \cite{Timoshenko_1951}. Sob essas premissas cinemáticas, e assumindo a ausência de forças de corpo ($b_r = 0$), a equação de equilíbrio radial (\eqref{eq:equilibrium_axi_r}) simplifica-se para a sua forma final escalar unidimensional ordinária \cite{Timoshenko_1951}:
 
 \begin{equation}
-  \frac{d \sigma_{rr}^\epsilon(r)}{d r} + \frac{\sigma_{rr}^\epsilon(r) - \sigma_{\theta\theta}^\epsilon(r)}{r} = 0
+  \frac{d \sigma_{rr}^\varepsilon(r)}{d r} + \frac{\sigma_{rr}^\varepsilon(r) - \sigma_{\theta\theta}^\varepsilon(r)}{r} = 0
   \label{eq:equilibrium_radial_1d}
 \end{equation}
 
+% CHECK: Trecho 127-132 verificado pelo autor
+
 \subsection{Relações Constitutivas Locais}
 
-Para cada camada homogênea constituinte do vaso de pressão (fases aço e alumínio), assume-se um comportamento elástico linear regido pela Lei de Hooke [113, 126]:
+Para cada camada homogênea constituinte do vaso de pressão (fases aço e alumínio), assume-se um comportamento elástico linear regido pela Lei de Hooke \cite{Sadd2009}:
 
 \begin{equation}
-  \mathbf{\sigma}^\epsilon (r) = \mathbf{\mathcal{C}}^\epsilon (r) : \mathbf{\epsilon}^\epsilon (r)
+  \mathbf{\sigma}^\varepsilon (r) = \mathbf{\mathcal{C}}^\varepsilon (r) : \mathbf{\epsilon}^\varepsilon (r)
   \label{eq:hooke_tensor_local}
 \end{equation}
 
-onde $\mathbf{\mathcal{C}}^\epsilon (r)$ é o tensor de elasticidade local dependente da posição radial $r$. Na notação de Voigt reduzida, descartando-se as componentes de cisalhamento nulas, a relação elástica local é dada por [115, 127]:
+onde $\mathbf{\mathcal{C}}^\varepsilon (r)$ é o tensor de elasticidade local dependente da posição radial $r$. Na notação compacta reduzida, descartando-se as componentes de cisalhamento nulas, a relação elástica local é dada por \cite{Sadd2009}:
+
+% MODIFY: notação de Voigt substituída para notação compacta (embasada pelo Sadd) em todo o documento.
+
 \begin{equation}
   \begin{bmatrix}
-    \sigma_{rr}^\epsilon (r) \\
-    \sigma_{\theta\theta}^\epsilon (r)
-  \end{bmatrix} = \begin{bmatrix}
-    \mathcal{C}_{11}^\epsilon (r) & \mathcal{C}_{12}^\epsilon (r) \\
-    \mathcal{C}_{12}^\epsilon (r) & \mathcal{C}_{11}^\epsilon (r)
-  \end{bmatrix} \begin{bmatrix}
-    d u_r^\epsilon / d r \\
-    u_r^\epsilon / r
+    \sigma_{rr}^\varepsilon (r) \\
+    \sigma_{\theta\theta}^\varepsilon (r)
+  \end{bmatrix} =
+  \begin{bmatrix}
+    \mathcal{C}_{11}^\varepsilon (r) & \mathcal{C}_{12}^\varepsilon (r) \\
+    \mathcal{C}_{12}^\varepsilon (r) & \mathcal{C}_{11}^\varepsilon (r)
+  \end{bmatrix}
+  \begin{bmatrix}
+    d u_r^\varepsilon / d r \\
+    u_r^\varepsilon / r
   \end{bmatrix}
   \label{eq:voigt_hooke_radial}
 \end{equation}
 
-As constantes elásticas locais da matriz de rigidez relacionam-se com as constantes de Lamé do material por [119, 127]:
+% CHECK: Trecho 149-163 verificado pelo autor
+
+As constantes elásticas locais da matriz de rigidez relacionam-se com as constantes de Lamé do material por \cite{Timoshenko_1951}:
 
 \begin{equation}
-  \mathcal{C}_{11}^\epsilon (r) = \lambda^\epsilon (r) + 2 \mu^\epsilon (r) = \frac{E^\epsilon (r) (1 - \nu^\epsilon (r))}{(1 + \nu^\epsilon (r))(1 - 2 \nu^\epsilon (r))}
+  \mathcal{C}_{11}^\varepsilon (r) = \lambda^\varepsilon (r) + 2 \mu^\varepsilon (r) = \frac{E^\varepsilon (r) (1 - \nu^\varepsilon (r))}{(1 + \nu^\varepsilon (r))(1 - 2 \nu^\varepsilon (r))}
   \label{eq:c11_lame}
 \end{equation}
 
 \begin{equation}
-  \mathcal{C}_{12}^\epsilon (r) = \lambda^\epsilon (r) = \frac{E^\epsilon (r) \nu^\epsilon (r)}{(1 + \nu^\epsilon (r))(1 - 2 \nu^\epsilon (r))}
+  \mathcal{C}_{12}^\varepsilon (r) = \lambda^\varepsilon (r) = \frac{E^\varepsilon (r) \nu^\varepsilon (r)}{(1 + \nu^\varepsilon (r))(1 - 2 \nu^\varepsilon (r))}
   \label{eq:c12_lame}
 \end{equation}
 
-onde $E^\epsilon (r)$ representa o módulo de Young e $\nu^\epsilon (r)$ o coeficiente de Poisson da fase correspondente à coordenada $r$ [118, 127].
+onde $E^\varepsilon (r)$ representa o módulo de Young e $\nu^\varepsilon (r)$ o coeficiente de Poisson da fase correspondente à coordenada $r$ \cite{Sadd2009}.
+
+% CHECK: Trecho 168-180 verificado pelo autor
 
 \subsection{Equação Governante do Deslocamento Radial e Condições de Contorno}
 
-Substituindo a Lei de Hooke (\eqref{eq:voigt_hooke_radial}) de volta na equação de equilíbrio radial escalar (\eqref{eq:equilibrium_radial_1d}), obtém-se a equação diferencial ordinária de segunda ordem que governa o deslocamento radial $u^\epsilon (r)$ [119, 128]:
+Substituindo a Lei de Hooke (\eqref{eq:voigt_hooke_radial}) de volta na equação de equilíbrio radial escalar (\eqref{eq:equilibrium_radial_1d}), obtém-se a equação diferencial ordinária de segunda ordem que governa o deslocamento radial $u^\varepsilon (r)$ \cite{Timoshenko_1951}:
 
 \begin{equation}
-  \mathcal{C}_{11}^\epsilon (r) \frac{d^2 u_r^\epsilon(r)}{d r^2} + \left[ \frac{\mathcal{C}_{11}^\epsilon (r)}{r} + \frac{d \mathcal{C}_{11}^\epsilon (r)}{d r} \right] \frac{d u_r^\epsilon(r)}{d r} + \left[ \frac{1}{r} \frac{d \mathcal{C}_{12}^\epsilon (r)}{d r} - \frac{\mathcal{C}_{11}^\epsilon (r)}{r^2} \right] u_r^\epsilon(r) = 0
+  \mathcal{C}_{11}^\varepsilon (r) \frac{d^2 u_r^\varepsilon(r)}{d r^2} + \left[ \frac{\mathcal{C}_{11}^\varepsilon (r)}{r} + \frac{d \mathcal{C}_{11}^\varepsilon (r)}{d r} \right] \frac{d u_r^\varepsilon(r)}{d r} + \left[ \frac{1}{r} \frac{d \mathcal{C}_{12}^\varepsilon (r)}{d r} - \frac{\mathcal{C}_{11}^\varepsilon (r)}{r^2} \right] u_r^\varepsilon(r) = 0
   \label{eq:ode_governing_radial}
 \end{equation}
 
-Para completar o Problema de Valor de Contorno (PVC), as condições mecânicas de Neumann (pressão constante prescrita na parede interna $r = r_i$ e parede livre de tensões na parede externa $r = r_e$) são impostas como [119, 129]:
+Para completar o Problema de Valor de Contorno (PVC), as condições mecânicas de Neumann (pressão constante prescrita na parede interna $r = r_i$ e parede livre de tensões na parede externa $r = r_e$) são impostas como \cite{Sadd2009}:
 
 \begin{equation}
-  \sigma_{rr}^\epsilon (r_i) = \mathcal{C}_{11}^\epsilon (r_i) \left. \frac{d u_r^\epsilon}{d r} \right|_{(r_i)} + \mathcal{C}_{12}^\epsilon (r_i) \frac{u_r^\epsilon (r_i)}{r_i} = -p
+  \sigma_{rr}^\varepsilon (r_i) = \mathcal{C}_{11}^\varepsilon (r_i) \left. \frac{d u_r^\varepsilon}{d r} \right|_{(r_i)} + \mathcal{C}_{12}^\varepsilon (r_i) \frac{u_r^\varepsilon (r_i)}{r_i} = -p
   \label{eq:bc_radial_inner}
 \end{equation}
 
 \begin{equation}
-  \sigma_{rr}^\epsilon (r_e) = \mathcal{C}_{11}^\epsilon (r_e) \left. \frac{d u_r^\epsilon}{d r} \right|_{(r_e)} + \mathcal{C}_{12}^\epsilon (r_e) \frac{u_r^\epsilon (r_e)}{r_e} = 0
+  \sigma_{rr}^\varepsilon (r_e) = \mathcal{C}_{11}^\varepsilon (r_e) \left. \frac{d u_r^\varepsilon}{d r} \right|_{(r_e)} + \mathcal{C}_{12}^\varepsilon (r_e) \frac{u_r^\varepsilon (r_e)}{r_e} = 0
   \label{eq:bc_radial_outer}
 \end{equation}
 
-onde $p$ representa a pressão manométrica interna atuando no vaso [109, 122]. A \eqref{eq:ode_governing_radial} associada às condições de contorno de Neumann (\eqref{eq:bc_radial_inner} e \eqref{eq:bc_radial_outer}) constitui o sistema físico-matemático original completo ao qual o Método de Homogeneização Assintótica (MHA) será aplicado para obter as propriedades efetivas equivalentes do cilindro [118, 211].
+onde $p$ representa a pressão manométrica interna atuando no vaso \cite{Sadd2009}. A \eqref{eq:ode_governing_radial} associada às condições de contorno de Neumann (\eqref{eq:bc_radial_inner} e \eqref{eq:bc_radial_outer}) constitui o sistema físico-matemático original completo ao qual o Método de Homogeneização Assintótica (MHA) será aplicado para obter as propriedades efetivas equivalentes do cilindro \cite{Timoshenko_1951}.
+
+% CHECK: Trecho 183-206 verificado pelo autor
 
 \section{O Formalismo do Método de Homogeneização Assintótica (MHA) no Cilindro (Objetivo C.2)}
 
-A modelagem mecânica de cilindros de parede grossa compostos por múltiplos períodos de camadas concêntricas alternadas (aço e alumínio) é resolvida analiticamente por meio do Método de Homogeneização Assintótica (MHA). Este método permite desacoplar a resposta global do vaso de pressão dos gradientes de tensão microscópicos altamente oscilatórios de interface em interface, tratando as equações diferenciais parciais com coeficientes rapidamente oscilantes de forma rigorosa e sistemática [47, 48].
+A modelagem mecânica de cilindros de parede grossa compostos por múltiplos períodos de camadas concêntricas alternadas (aço e alumínio) é resolvida analiticamente por meio do Método de Homogeneização Assintótica (MHA). Este método permite desacoplar a resposta global do vaso de pressão dos gradientes de tensão microscópicos altamente oscilatórios de interface em interface, tratando as equações diferenciais parciais com coeficientes rapidamente oscilantes de forma rigorosa e sistemática \cite{bakhvalov1989}.
 
 \subsection{Separação de Escalas e Operadores de Derivada}
 
-Considere a espessura total do cilindro de parede grossa como a escala característica macroscópica global do domínio, denotada por $L = R_{\text{ext}} - R_{\text{int}}$. Introduz-se a escala geométrica local do período elementar de lamelas, denotada por $l$. O princípio fundamental do MHA apoia-se na existência de um parâmetro adimensional pequeno $\epsilon$, que define a separação entre as escalas macroscópicas e microscópicas do meio heterogêneo [43, 47, 48]:
+Considere a espessura total do cilindro de parede grossa como a escala característica macroscópica global do domínio, denotada por $L = R_{\text{ext}} - R_{\text{int}}$. Introduz-se a escala geométrica local do período elementar, denotada por $l$, representando a espessura radial de uma única célula unitária. O princípio fundamental do MHA apoia-se na existência de um parâmetro adimensional pequeno $\epsilon$, que define a separação entre as escalas macroscópicas e microscópicas do meio heterogêneo \cite{bakhvalov1989}:
+
+% MODIFY: Retirei o termo "lamelas" pois não sei o que significa.
+% ADD: Adicionei um esclarecimeento do que $l$ representaria geometricamente, que seria a espessura da célula unitária, na minha concepção. 
 
 \begin{equation}
   \epsilon = \frac{l}{L} \ll 1
   \label{eq:epsilon_scale}
 \end{equation}
 
-Com base nesta separação física de escalas, definem-se duas coordenadas espaciais independentes para mapear o cilindro de parede grossa [47, 48]:
+Com base nesta separação física de escalas, definem-se duas coordenadas espaciais independentes para mapear o cilindro de parede grossa \cite{bakhvalov1989}:
 1. \textbf{Variável Lenta ou Macroscópica ($r$):} Descreve o comportamento global, o carregamento de pressão externa e os gradientes suaves de deslocamento do vaso.
-2. \textbf{Variável Rápida ou Microscópica ($y$):} Definida como $y = r/\epsilon$, mapeia o comportamento localizado no nível da célula unitária periódica $Y = [0, 1]$. O coeficiente elástico do material heterogêneo passa a ser uma função puramente dependente de $y$, isto é, $\mathcal{C}_{ij}(y)$ [47, 48].
+2. \textbf{Variável Rápida ou Microscópica ($y$):} Definida como $y = r/\epsilon$, mapeia o comportamento localizado no nível da célula unitária periódica $Y = [0, 1]$. O coeficiente elástico do material heterogêneo passa a ser uma função puramente dependente de $y$, isto é, $\mathcal{C}_{ij}(y)$ \cite{bakhvalov1989}.
 
-Por consequência da introdução das variáveis independentes $r$ e $y$, o operador de derivada total em relação ao raio $r$ é modificado por meio da aplicação rigorosa da regra da cadeia, dividindo-se em duas parcelas de escalas distintas [47, 48]:
+Por consequência da introdução das variáveis independentes $r$ e $y$, o operador de derivada total em relação ao raio $r$ é modificado por meio da aplicação rigorosa da regra da cadeia, dividindo-se em duas parcelas de escalas distintas \cite{bakhvalov1989}:
 
 \begin{equation}
   \frac{d}{d r} = \frac{\partial}{\partial r} + \frac{1}{\epsilon} \frac{\partial}{\partial y}
   \label{eq:modified_derivative}
 \end{equation}
 
-O operador dado pela \eqref{eq:modified_derivative} reflete que qualquer variação de uma propriedade no cilindro ocorre tanto de forma suave na escala global quanto de forma extremamente rápida através da transição entre os períodos de ligas metálicas [47, 48].
+O operador dado pela \eqref{eq:modified_derivative} reflete que qualquer variação de uma propriedade no cilindro ocorre tanto de forma suave na escala global quanto de forma extremamente rápida através da transição entre os períodos de ligas metálicas \cite{bakhvalov1989}.
 
 \section{Solução Assintótica Formal (SAF)}
 
-O MHA postula que o campo real de deslocamento radial $u^\epsilon(r)$ do cilindro multicamadas heterogêneo pode ser perfeitamente aproximado por uma série de potências do parâmetro pequeno $\epsilon$, conhecida como Solução Assintótica Formal (SAF) [43, 47, 48]:
+O MHA postula que o campo real de deslocamento radial $u^\varepsilon(r)$ do cilindro multicamadas heterogêneo pode ser perfeitamente aproximado por uma série de potências do parâmetro pequeno $\epsilon$, conhecida como Solução Assintótica Formal (SAF) \cite{bakhvalov1989}:
 
 \begin{equation}
-  u^\epsilon (r) = u_0(r, y) + \epsilon u_1(r, y) + \epsilon^2 u_2(r, y) + O(\epsilon^3)
+  u^\varepsilon (r) = u_0(r, y) + \epsilon u_1(r, y) + \epsilon^2 u_2(r, y) + O(\epsilon^3)
   \label{eq:saf_u}
 \end{equation}
 
 onde os termos de perturbação elástica $u_i (r, y)$ são periódicos com respeito à variável rápida $y$ na célula unitária $Y$ ($Y$-periódicos).
 
-Na teoria matemática de homogeneização de equações elípticas lineares, prova-se que o termo de ordem dominante $u_0(r, y)$ é estritamente independente da escala microscópica rápida $y$ [43, 47, 48]:
+Na teoria matemática de homogeneização de equações elípticas lineares, prova-se que o termo de ordem dominante $u_0(r, y)$ é estritamente independente da escala microscópica rápida $y$ \cite{bakhvalov1989}:
 
 \begin{equation}
   \frac{\partial u_0}{\partial y} = 0 \quad \Longrightarrow \quad u_0(r, y) = u_0(r)
   \label{eq:u0_macro}
 \end{equation}
 
-A \eqref{eq:u0_macro} carrega um significado físico profundo: sob o limite assintótico elíptico ($\epsilon \to 0$), o campo de deslocamentos principal do material microestruturado converge de forma forte para o comportamento regular e contínuo de um meio homogêneo equivalente global, eliminando as flutuações locais [47, 48].
+A \eqref{eq:u0_macro} carrega um significado físico profundo: sob o limite assintótico elíptico ($\epsilon \to 0$), o campo de deslocamentos principal do material microestruturado converge de forma forte para o comportamento regular e contínuo de um meio homogêneo equivalente global, eliminando as flutuações locais \cite{bakhvalov1989}.
 
 \subsection{Expansão dos Tensores de Deformação e Tensão}
 
-Substituindo a SAF dada pela \eqref{eq:saf_u} e aplicando a regra da derivada dada pela \eqref{eq:modified_derivative}, os campos cinemáticos de deformação infinitesimal radial $\epsilon_r^\epsilon$ e circunferencial $\epsilon_\theta^\epsilon$ são expandidos como [47, 48]:
+Substituindo a SAF dada pela \eqref{eq:saf_u} e aplicando a regra da derivada dada pela \eqref{eq:modified_derivative}, os campos cinemáticos de deformação infinitesimal radial $\epsilon_r^\varepsilon$ e circunferencial $\epsilon_\theta^\varepsilon$ são expandidos como \cite{bakhvalov1989}:
 
 \begin{equation}
-  \epsilon_r^\epsilon = \frac{d u^\epsilon}{d r} = \frac{\partial u_0}{\partial r} + \frac{\partial u_1}{\partial y} + \epsilon \left( \frac{\partial u_1}{\partial r} + \frac{\partial u_2}{\partial y} \right) + O(\epsilon^2)
+  \epsilon_r^\varepsilon = \frac{d u^\varepsilon}{d r} = \frac{\partial u_0}{\partial r} + \frac{\partial u_1}{\partial y} + \epsilon \left( \frac{\partial u_1}{\partial r} + \frac{\partial u_2}{\partial y} \right) + O(\epsilon^2)
   \label{eq:deform_r}
 \end{equation}
 
 \begin{equation}
-  \epsilon_\theta^\epsilon = \frac{u^\epsilon}{r} = \frac{u_0}{r} + \epsilon \frac{u_1}{r} + O(\epsilon^2)
+  \epsilon_\theta^\varepsilon = \frac{u^\varepsilon}{r} = \frac{u_0}{r} + \epsilon \frac{u_1}{r} + O(\epsilon^2)
   \label{eq:deform_theta}
 \end{equation}
 
-Substituindo estas deformações na Lei de Hooke para o cilindro axissimétrico em coordenadas curvilíneas, o tensor de tensões oscilatório é decomposto em potências hierárquicas de $\epsilon$ [47, 48]:
+Substituindo estas deformações na Lei de Hooke para o cilindro axissimétrico em coordenadas curvilíneas, o tensor de tensões oscilatório é decomposto em potências hierárquicas de $\epsilon$ \cite{bakhvalov1989}:
 
 \begin{equation}
-  \sigma_r^\epsilon = \sigma_r^0 + \epsilon \sigma_r^1 + O(\epsilon^2)
+  \sigma_r^\varepsilon = \sigma_r^0 + \epsilon \sigma_r^1 + O(\epsilon^2)
   \label{eq:stress_r_exp}
 \end{equation}
 
 \begin{equation}
-  \sigma_\theta^\epsilon = \sigma_\theta^0 + \epsilon \sigma_\theta^1 + O(\epsilon^2)
+  \sigma_\theta^\varepsilon = \sigma_\theta^0 + \epsilon \sigma_\theta^1 + O(\epsilon^2)
   \label{eq:stress_theta_exp}
 \end{equation}
 
-onde os termos dominantes de tensão de ordem zero ($\sigma^0$) são expressos em termos dos campos de deslocamento da SAF como [47, 48]:
+onde os termos dominantes de tensão de ordem zero ($\sigma^0$) são expressos em termos dos campos de deslocamento da SAF como \cite{bakhvalov1989}:
 
 \begin{equation}
   \sigma_r^0 (r, y) = \mathcal{C}_{11}(y) \left( \frac{\partial u_0}{\partial r} + \frac{\partial u_1}{\partial y} \right) + \mathcal{C}_{12}(y) \frac{u_0}{r}
@@ -256,10 +294,10 @@ onde os termos dominantes de tensão de ordem zero ($\sigma^0$) são expressos e
 
 \subsection{Equilíbrio Diferencial Recorrente}
 
-A equação forte de equilíbrio mecânico radial axissimétrico para o cilindro microperiódico, na ausência de forças de corpo, é dada por [47, 48]:
+A equação forte de equilíbrio mecânico radial axissimétrico para o cilindro microperiódico, na ausência de forças de corpo, é dada por \cite{bakhvalov1989}:
 
 \begin{equation}
-  \frac{d \sigma_r^\epsilon}{d r} + \frac{\sigma_r^\epsilon - \sigma_\theta^\epsilon}{r} = 0
+  \frac{d \sigma_r^\varepsilon}{d r} + \frac{\sigma_r^\varepsilon - \sigma_\theta^\varepsilon}{r} = 0
   \label{eq:equil_original}
 \end{equation}
 
@@ -270,7 +308,7 @@ Substituindo a expansão do tensor de tensões dado pelas \eqref{eq:stress_r_exp
   \label{eq:equil_substituted}
 \end{equation}
 
-Agrupando e organizando os termos da \eqref{eq:equil_substituted} em potências de ordem de magnitude do parâmetro geométrico pequeno $\epsilon$, obtém-se o sistema recorrente de equações governantes [47, 48]:
+Agrupando e organizando os termos da \eqref{eq:equil_substituted} em potências de ordem de magnitude do parâmetro geométrico pequeno $\epsilon$, obtém-se o sistema recorrente de equações governantes \cite{bakhvalov1989}:
 
 1. \textbf{Ordem $O(\epsilon^{-1})$:}
 \begin{equation}
@@ -284,25 +322,25 @@ Agrupando e organizando os termos da \eqref{eq:equil_substituted} em potências 
   \label{eq:order_zero}
 \end{equation}
 
-A equação de ordem $O(\epsilon^{-1})$ dada pela \eqref{eq:order_minus_1} impõe que a tensão radial de ordem zero é constante em relação à escala microscópica rápida $y$ dentro da célula unitária, ou seja, $\sigma_r^0 = \sigma_r^0 (r)$ [47, 48].
+A equação de ordem $O(\epsilon^{-1})$ dada pela \eqref{eq:order_minus_1} impõe que a tensão radial de ordem zero é constante em relação à escala microscópica rápida $y$ dentro da célula unitária, ou seja, $\sigma_r^0 = \sigma_r^0 (r)$ \cite{bakhvalov1989}.
 
 \subsection{Dedução do Problema Local e as Funções Corretoras}
 
-Substituindo a definição da tensão de ordem zero dada pela \eqref{eq:stress_r_zero} na equação governante microscópica dada pela \eqref{eq:order_minus_1}, obtém-se [47, 48]:
+Substituindo a definição da tensão de ordem zero dada pela \eqref{eq:stress_r_zero} na equação governante microscópica dada pela \eqref{eq:order_minus_1}, obtém-se \cite{bakhvalov1989}:
 
 \begin{equation}
   \frac{\partial}{\partial y} \left[ \mathcal{C}_{11}(y) \left( \frac{\partial u_0}{\partial r} + \frac{\partial u_1}{\partial y} \right) + \mathcal{C}_{12}(y) \frac{u_0}{r} \right] = 0
   \label{eq:order_minus_1_full}
 \end{equation}
 
-Para solucionar a equação diferencial parcial \eqref{eq:order_minus_1_full}, adota-se a técnica de separação de variáveis de homogeneização. Postula-se que o termo de perturbação de primeira ordem $u_1(r, y)$ é expresso pela combinação linear dos gradientes de deformação macroscópica dominantes multiplicados por funções auxiliares locais dependentes unicamente de $y$ [47, 48]:
+Para solucionar a equação diferencial parcial \eqref{eq:order_minus_1_full}, adota-se a técnica de separação de variáveis de homogeneização. Postula-se que o termo de perturbação de primeira ordem $u_1(r, y)$ é expresso pela combinação linear dos gradientes de deformação macroscópica dominantes multiplicados por funções auxiliares locais dependentes unicamente de $y$ \cite{bakhvalov1989}:
 
 \begin{equation}
   u_1(r, y) = \chi^{(1)}(y) \frac{\partial u_0}{\partial r} + \chi^{(2)}(y) \frac{u_0}{r}
   \label{eq:separable_u1}
 \end{equation}
 
-onde as funções $\chi^{(1)}(y)$ e $\chi^{(2)}(y)$ são conhecidas como as \textbf{funções corretoras} ou funções de perturbação da célula unitária básica $Y$ [47, 48].
+onde as funções $\chi^{(1)}(y)$ e $\chi^{(2)}(y)$ são conhecidas como as \textbf{funções corretoras} ou funções de perturbação da célula unitária básica $Y$ \cite{bakhvalov1989}.
 
 Substituindo a expressão separável da \eqref{eq:separable_u1} de volta na equação diferencial radial de microescala da \eqref{eq:order_minus_1_full}, e isolando os termos em evidência das deformações macroscópicas independentes de $y$ ($\partial_r u_0$ e $u_0/r$), chegamos a:
 
@@ -311,7 +349,7 @@ Substituindo a expressão separável da \eqref{eq:separable_u1} de volta na equa
   \label{eq:local_derivation}
 \end{equation}
 
-Dado que a relação em \eqref{eq:local_derivation} deve ser satisfeita de forma idêntica para quaisquer estados arbitrários de carregamento e gradientes macroscópicos de deformação do vaso de pressão ($\partial_r u_0 \neq 0$ e $u_0 \neq 0$), os coeficientes que acompanham estes termos devem anular-se individualmente. Isso isola o conjunto de equações diferenciais ordinárias de segunda ordem que constituem o \textbf{Problema Local de Célula} no domínio $Y = [0, 1]$ [47, 48]:
+Dado que a relação em \eqref{eq:local_derivation} deve ser satisfeita de forma idêntica para quaisquer estados arbitrários de carregamento e gradientes macroscópicos de deformação do vaso de pressão ($\partial_r u_0 \neq 0$ e $u_0 \neq 0$), os coeficientes que acompanham estes termos devem anular-se individualmente. Isso isola o conjunto de equações diferenciais ordinárias de segunda ordem que constituem o \textbf{Problema Local de Célula} no domínio $Y = [0, 1]$ \cite{bakhvalov1989}:
 
 \begin{equation}
   \frac{d}{d y} \left[ \mathcal{C}_{11}(y) \left( \frac{d \chi^{(1)}(y)}{d y} + 1 \right) \right] = 0
@@ -323,7 +361,7 @@ Dado que a relação em \eqref{eq:local_derivation} deve ser satisfeita de forma
   \label{eq:local_eq2}
 \end{equation}
 
-Para garantir a existência, continuidade e unicidade das funções de perturbação elástica $\chi^{(1)}(y)$ e $\chi^{(2)}(y)$, as equações diferenciais locais \eqref{eq:local_eq1} e \eqref{eq:local_eq2} são acopladas às seguintes condições físicas nas interfaces internas de contato perfeito ($y = y_{\text{int}}$) e de contorno periódico na célula unitária [47, 48]:
+Para garantir a existência, continuidade e unicidade das funções de perturbação elástica $\chi^{(1)}(y)$ e $\chi^{(2)}(y)$, as equações diferenciais locais \eqref{eq:local_eq1} e \eqref{eq:local_eq2} são acopladas às seguintes condições físicas nas interfaces internas de contato perfeito ($y = y_{\text{int}}$) e de contorno periódico na célula unitária \cite{bakhvalov1989}:
 
 1. \textbf{Compatibilidade Cinemática (Continuidade do Deslocamento):}
 \begin{equation}
@@ -343,11 +381,11 @@ Para garantir a existência, continuidade e unicidade das funções de perturba�
   \label{eq:local_norm}
 \end{equation}
 
-A condição de normalização dada na \eqref{eq:local_norm} é de fundamental importância matemática, eliminando o grau de liberdade de translação rígida infinitesimal na célula e garantindo que as flutuações microscópicas adicionadas pela SAF atuem puramente como corretores locais de energia, sem interferir no balanço volumétrico global da estrutura [47, 48].
+A condição de normalização dada na \eqref{eq:local_norm} é de fundamental importância matemática, eliminando o grau de liberdade de translação rígida infinitesimal na célula e garantindo que as flutuações microscópicas adicionadas pela SAF atuem puramente como corretores locais de energia, sem interferir no balanço volumétrico global da estrutura \cite{bakhvalov1989}.
 
 \section{Propriedades Efetivas Transversais (Objetivo B.4)}
 
-A determinação analítica dos coeficientes efetivos (homogeneizados) que regem o comportamento macroscópico do cilindro é um dos resultados mais elegantes do Método de Homogeneização Assintótica (MHA) [7, 39]. Sob o princípio de que, para um elevado número de períodos ($\epsilon \to 0$), a curvatura local das camadas infinitesimais tende a zero, o problema local de célula pode ser resolvido com exatidão analítica [15, 39]. Esta seção apresenta a integração matemática das equações diferenciais locais de célula formuladas na seção anterior, deduzindo os coeficientes de rigidez radial efetiva ($\hat{\mathcal{C}}_{11}$), de acoplamento circunferencial-radial efetivo ($\hat{\mathcal{C}}_{12}$), de rigidez hoop/tangencial efetiva ($\hat{\mathcal{C}}_{22}$) e o módulo de cisalhamento transversal equivalente ($\hat{G}$), fundamentados nas clássicas Médias de Backus para meios estratificados [15].
+A determinação analítica dos coeficientes efetivos (homogeneizados) que regem o comportamento macroscópico do cilindro é um dos resultados mais elegantes do Método de Homogeneização Assintótica (MHA) \cite{bakhvalov1989}. Sob o princípio de que, para um elevado número de períodos ($\epsilon \to 0$), a curvatura local das camadas infinitesimais tende a zero, o problema local de célula pode ser resolvido com exatidão analítica \cite{Backus1962}. Esta seção apresenta a integração matemática das equações diferenciais locais de célula formuladas na seção anterior, deduzindo os coeficientes de rigidez radial efetiva ($\hat{\mathcal{C}}_{11}$), de acoplamento circunferencial-radial efetivo ($\hat{\mathcal{C}}_{12}$), de rigidez hoop/tangencial efetiva ($\hat{\mathcal{C}}_{22}$) e o módulo de cisalhamento transversal equivalente ($\hat{G}$), fundamentados nas clássicas Médias de Backus para meios estratificados \cite{Backus1962}.
 
 \subsection{Integração do Problema Local e Dedução de $\hat{\mathcal{C}}_{11}$ e $\hat{\mathcal{C}}_{12}$}
 
@@ -363,11 +401,11 @@ No capítulo anterior, estabelecemos as equações fortes ordinárias na variáv
   \label{eq:cell_chi2}
 \end{equation}
 
-onde $\mathcal{C}_{11}(y) = \lambda(y) + 2 \mu(y)$ e $\mathcal{C}_{12}(y) = \lambda(y)$ representam as propriedades constitutivas locais flutuantes em Voigt de cada fase [39].
+onde $\mathcal{C}_{11}(y) = \lambda(y) + 2 \mu(y)$ e $\mathcal{C}_{12}(y) = \lambda(y)$ representam as propriedades constitutivas locais flutuantes em Voigt de cada fase \cite{Sadd2009}.
 
 \subsubsection{Dedução de $\hat{\mathcal{C}}_{11}$ (Média Harmônica Radial)}
 
-Para integrar a \eqref{eq:cell_chi1} em relação a $y$, definimos uma constante de integração $k_1$ [39]:
+Para integrar a \eqref{eq:cell_chi1} em relação a $y$, definimos uma constante de integração $k_1$ \cite{bakhvalov1989}:
 
 \begin{equation}
   \mathcal{C}_{11}(y) \left( \frac{d \chi^{(1)}(y)}{d y} + 1 \right) = k_1
@@ -381,7 +419,7 @@ Isolando o gradiente local da função de perturbação $d \chi^{(1)} / d y$, te
   \label{eq:grad_chi1}
 \end{equation}
 
-Como a função de perturbação $\chi^{(1)}(y)$ deve satisfazer a condição de periodicidade nas fronteiras da célula unitária $Y = [0, 1]$, a integral de sua derivada sobre o domínio de célula deve ser identicamente nula ($\int_0^1 (d \chi^{(1)} / d y) d y = \chi^{(1)}(1) - \chi^{(1)}(0) = 0$) [39, 47]. Aplicando o operador de valor médio espacial $\langle \cdot \rangle = \frac{1}{|Y|} \int_Y (\cdot) \, d y$ em ambos os lados da \eqref{eq:grad_chi1}, obtemos:
+Como a função de perturbação $\chi^{(1)}(y)$ deve satisfazer a condição de periodicidade nas fronteiras da célula unitária $Y = [0, 1]$, a integral de sua derivada sobre o domínio de célula deve ser identicamente nula ($\int_0^1 (d \chi^{(1)} / d y) d y = \chi^{(1)}(1) - \chi^{(1)}(0) = 0$) \cite{bakhvalov1989}. Aplicando o operador de valor médio espacial $\langle \cdot \rangle = \frac{1}{|Y|} \int_Y (\cdot) \, d y$ em ambos os lados da \eqref{eq:grad_chi1}, obtemos:
 
 \begin{equation}
   \left\langle \frac{d \chi^{(1)}(y)}{d y} \right\rangle = \left\langle \frac{k_1}{\mathcal{C}_{11}(y)} - 1 \right\rangle = 0
@@ -395,25 +433,25 @@ Como $k_1$ é uma constante em relação a $y$, ela pode ser extraída do operad
   \label{eq:k1_sol}
 \end{equation}
 
-Por definição de homogeneização do MHA, a constante de integração do fluxo de tensões de célula representa exatamente o coeficiente elástico efetivo macroscópico associado, ou seja, $\hat{\mathcal{C}}_{11} = k_1$ [112]. Portanto, a rigidez radial efetiva do vaso de parede grossa é dada de forma exata pela \textbf{média harmônica} (modelo de Reuss) de suas fases elásticas [39, 112]:
+Por definição de homogeneização do MHA, a constante de integração do fluxo de tensões de célula representa exatamente o coeficiente elástico efetivo macroscópico associado, ou seja, $\hat{\mathcal{C}}_{11} = k_1$ \cite{bakhvalov1989}. Portanto, a rigidez radial efetiva do vaso de parede grossa é dada de forma exata pela \textbf{média harmônica} (modelo de Reuss) de suas fases elásticas \cite{bakhvalov1989}:
 
 \begin{equation}
   \hat{\mathcal{C}}_{11} = \langle \mathcal{C}_{11}(y)^{-1} \rangle^{-1}
   \label{eq:C11_eff_final}
 \end{equation}
 
-No caso de um compósito bimetálico bilaminado onde as propriedades são perfeitamente homogêneas em cada fase, a média reduz-se a uma soma ponderada pelas frações volumétricas de aço ($v_1$) e alumínio ($v_2$), onde $v_1 + v_2 = 1$ [113]:
+No caso de um compósito bimetálico bilaminado onde as propriedades são perfeitamente homogêneas em cada fase, a média reduz-se a uma soma ponderada pelas frações volumétricas de aço ($v_1$) e alumínio ($v_2$), onde $v_1 + v_2 = 1$ \cite{PartonReport}:
 
 \begin{equation}
   \hat{\mathcal{C}}_{11} = \frac{1}{\frac{v_1}{\mathcal{C}_{11}^{(1)}} + \frac{v_2}{\mathcal{C}_{11}^{(2)}}} = \frac{\mathcal{C}_{11}^{(1)} \mathcal{C}_{11}^{(2)}}{v_1 \mathcal{C}_{11}^{(2)} + v_2 \mathcal{C}_{11}^{(1)}}
   \label{eq:C11_bilaminado}
 \end{equation}
 
-Fisicamente, esta relação reflete com precisão o comportamento de molas em série: como a solicitação de pressão atua perpendicularmente às interfaces concêntricas, a deformação radial macroscópica é governada pela compliância elástica das fases em série, sendo dominada pela fase de menor rigidez elástica [121].
+Fisicamente, esta relação reflete com precisão o comportamento de molas em série: como a solicitação de pressão atua perpendicularmente às interfaces concêntricas, a deformação radial macroscópica é governada pela compliância elástica das fases em série, sendo dominada pela fase de menor rigidez elástica \cite{PartonReport}.
 
 \subsubsection{Dedução de $\hat{\mathcal{C}}_{12}$ (Coeficiente de Acoplamento Efetivo)}
 
-De forma análoga, para deduzir o coeficiente de acoplamento efetivo $\hat{\mathcal{C}}_{12}$, integramos a segunda equação ordinária de célula dada pela \eqref{eq:cell_chi2}, estabelecendo a constante de integração $k_2$ [39]:
+De forma análoga, para deduzir o coeficiente de acoplamento efetivo $\hat{\mathcal{C}}_{12}$, integramos a segunda equação ordinária de célula dada pela \eqref{eq:cell_chi2}, estabelecendo a constante de integração $k_2$ \cite{Sadd2009}:
 
 \begin{equation}
   \mathcal{C}_{11}(y) \frac{d \chi^{(2)}(y)}{d y} + \mathcal{C}_{12}(y) = k_2
@@ -427,7 +465,7 @@ Isolando o gradiente local $d \chi^{(2)} / d y$, dividindo toda a expressão por
   \label{eq:grad_chi2}
 \end{equation}
 
-Invocando novamente a periodicidade de $\chi^{(2)}(y)$ na célula unitária, impõe-se que a média de sua primeira derivada é nula ($\langle d \chi^{(2)} / d y \rangle = 0$). Aplicando o operador de valor médio na \eqref{eq:grad_chi2}, isolamos a constante de integração $k_2$ [127]:
+Invocando novamente a periodicidade de $\chi^{(2)}(y)$ na célula unitária, impõe-se que a média de sua primeira derivada é nula ($\langle d \chi^{(2)} / d y \rangle = 0$). Aplicando o operador de valor médio na \eqref{eq:grad_chi2}, isolamos a constante de integração $k_2$ \cite{bakhvalov1989}:
 
 \begin{equation}
   k_2 \left\langle \frac{1}{\mathcal{C}_{11}(y)} \right\rangle = \left\langle \frac{\mathcal{C}_{12}(y)}{\mathcal{C}_{11}(y)} \right\rangle
@@ -439,107 +477,115 @@ Invocando novamente a periodicidade de $\chi^{(2)}(y)$ na célula unitária, imp
   \label{eq:k2_sol}
 \end{equation}
 
-Pelo formalismo matemático do MHA, a constante elástica homogeneizada de acoplamento radial-circunferencial macroscópico $\hat{\mathcal{C}}_{12}$ equivale a $k_2$ [129]. Substituindo a definição de $\hat{\mathcal{C}}_{11}$ dada pela \eqref{eq:C11_eff_final} na \eqref{eq:k2_sol}, conclui-se que [112]:
+Pelo formalismo matemático do MHA, a constante elástica homogeneizada de acoplamento radial-circunferencial macroscópico $\hat{\mathcal{C}}_{12}$ equivale a $k_2$ \cite{bakhvalov1989}. Substituindo a definição de $\hat{\mathcal{C}}_{11}$ dada pela \eqref{eq:C11_eff_final} na \eqref{eq:k2_sol}, conclui-se que \cite{bakhvalov1989}:
 
 \begin{equation}
   \hat{\mathcal{C}}_{12} = \hat{\mathcal{C}}_{11} \left\langle \frac{\mathcal{C}_{12}(y)}{\mathcal{C}_{11}(y)} \right\rangle
   \label{eq:Chat12_Calculation}
 \end{equation}
 
-Para a configuração bilaminada bimetálica de interesse deste trabalho, o coeficiente $\hat{\mathcal{C}}_{12}$ simplifica-se para [113]:
+Para a configuração bilaminada bimetálica de interesse deste trabalho, o coeficiente $\hat{\mathcal{C}}_{12}$ simplifica-se para \cite{PartonReport}:
 
 \begin{equation}
   \hat{\mathcal{C}}_{12} = \hat{\mathcal{C}}_{11} \left( v_1 \frac{\mathcal{C}_{12}^{(1)}}{\mathcal{C}_{11}^{(1)}} + v_2 \frac{\mathcal{C}_{12}^{(2)}}{\mathcal{C}_{11}^{(1)}} \right)
   \label{eq:C12_bilaminado}
 \end{equation}
 
-Esta formulação demonstra que o acoplamento elástico global $\hat{\mathcal{C}}_{12}$ não é uma média aditiva simples, mas sim uma média harmônica radial corrigida pelo acoplamento de Poisson local de cada camada elástica constituinte [122].
+Esta formulação demonstra que o acoplamento elástico global $\hat{\mathcal{C}}_{12}$ não é uma média aditiva simples, mas sim uma média harmônica radial corrigida pelo acoplamento de Poisson local de cada camada elástica constituinte \cite{Backus1962}.
 
 \subsection{Dedução de $\hat{\mathcal{C}}_{22}$ e a Média de Backus (Rigidez Hoop)}
 
-A determinação da rigidez hoop/tangencial macroscópica equivalente $\hat{\mathcal{C}}_{22}$ (que governa a resistência à tração circunferencial que tenta romper o cilindro lateralmente) e do módulo de cisalhamento transversal $\hat{G}$ exige a análise de problemas de contorno de célula associados aos carregamentos no plano tangente das interfaces [15].
+A determinação da rigidez hoop/tangencial macroscópica equivalente $\hat{\mathcal{C}}_{22}$ (que governa a resistência à tração circunferencial que tenta romper o cilindro lateralmente) e do módulo de cisalhamento transversal $\hat{G}$ exige a análise de problemas de contorno de célula associados aos carregamentos no plano tangente das interfaces \cite{Backus1962}.
 
 \subsubsection{O Princípio de Homogeneização de Backus (1962)}
 
-Pela teoria clássica de George Backus (1962) para meios elásticos estratificados formados por camadas paralelas de materiais isotrópicos, prova-se que o composto se comporta macroscopicamente como um meio \textbf{Transversalmente Isotrópico} elástico [15, 120]. Como as lâminas metálicas encontram-se perfeitamente aderidas e são forçadas a se deformar conjuntamente sob tração paralela à interface (no sentido circunferencial $\theta$ e axial $z$), o comportamento mecânico tangencial se assemelha a molas em paralelo [121].
+Pela teoria clássica de George Backus (1962) para meios elásticos estratificados formados por camadas paralelas de materiais isotrópicos, prova-se que o composto se comporta macroscopicamente como um meio \textbf{Transversalmente Isotrópico} elástico \cite{Backus1962}. Como as lâminas metálicas encontram-se perfeitamente aderidas e são forçadas a se deformar conjuntamente sob tração paralela à interface (no sentido circunferencial $\theta$ e axial $z$), o comportamento mecânico tangencial se assemelha a molas em paralelo \cite{Backus1962}.
 
-Matematicamente, a rigidez hoop efetiva $\hat{\mathcal{C}}_{22}$ é dada pelo somatório das médias aritméticas locais, deduzindo-se a famosa relação de Backus [15, 122]:
+Matematicamente, a rigidez hoop efetiva $\hat{\mathcal{C}}_{22}$ é dada pelo somatório das médias aritméticas locais, deduzindo-se a famosa relação de Backus \cite{Backus1962}:
 
 \begin{equation}
   \hat{\mathcal{C}}_{22} = \langle \mathcal{C}_{22}(y) \rangle - \left\langle \frac{\mathcal{C}_{12}(y)^2}{\mathcal{C}_{11}(y)} \right\rangle + \frac{\hat{\mathcal{C}}_{12}^2}{\hat{\mathcal{C}}_{11}}
   \label{eq:C22_eff_final}
 \end{equation}
 
-No caso de as fases elásticas constituintes serem puramente isotrópicas (onde $\mathcal{C}_{22}(y) = \mathcal{C}_{11}(y) = \lambda(y) + 2 \mu(y)$), a relação simplifica-se algebricamente no código computacional para a seguinte expressão em termos das propriedades de cada fase [132]:
+% FIX: Por que falou direto de C_{22} e não começou com C_{11}?
+% NOTE: Eu me enganei na afirmação acima, há uma seção inteira dedicada à C_{11} antes dessa.
+
+No caso de as fases elásticas constituintes serem puramente isotrópicas (onde $\mathcal{C}_{22}(y) = \mathcal{C}_{11}(y) = \lambda(y) + 2 \mu(y)$), a relação simplifica-se algebricamente no código computacional para a seguinte expressão em termos das propriedades de cada fase \cite{Sadd2009}:
 
 \begin{equation}
   \hat{\mathcal{C}}_{22} = (v_1 \mathcal{C}_{11}^{(1)} + v_2 \mathcal{C}_{11}^{(2)}) - \left( v_1 \frac{(\mathcal{C}_{12}^{(1)})^2}{\mathcal{C}_{11}^{(1)}} + v_2 \frac{(\mathcal{C}_{12}^{(2)})^2}{\mathcal{C}_{11}^{(2)}} \right) + \frac{\hat{\mathcal{C}}_{12}^2}{\hat{\mathcal{C}}_{11}}
   \label{eq:C22_bilaminado}
 \end{equation}
 
-Fisicamente, a \eqref{eq:C22_bilaminado} mostra que a rigidez hoop macroscópica é governada essencialmente pelo limite de Voigt (média aritmética, representando as molas em paralelo), porém severamente reduzida pelo efeito de deformação lateral livre decorrente do contraste de coeficientes de Poisson e rigidez das camadas (segundo e terceiro termos de acoplamento elástico) [122].
+Fisicamente, a \eqref{eq:C22_bilaminado} mostra que a rigidez hoop macroscópica é governada essencialmente pelo limite de Voigt (média aritmética, representando as molas em paralelo), porém severamente reduzida pelo efeito de deformação lateral livre decorrente do contraste de coeficientes de Poisson e rigidez das camadas (segundo e terceiro termos de acoplamento elástico) \cite{Backus1962}.
+
+% CHECK: Não entendi uma palavra do trecho 521 
+% TODO: Adicionar citação de Bakhvalov ou de Parton, ambos falam explicitamente sobre esse "Limite de Voigt"
 
 \subsection{Módulo de Cisalhamento Efetivo Out-of-Plane ($\hat{G}$)}
 
-Por fim, o módulo de cisalhamento efetivo out-of-plane $\hat{G} = \hat{\mathcal{C}}_{1313} = \hat{\mathcal{C}}_{2323}$ (que rege o acoplamento elástico de torção e cisalhamento radial-axial $r-z$ do vaso) é obtido aplicando o MHA sob torção microscópica [29]. Como o esforço cisalhante transversal precisa atravessar as interfaces perfeitamente unidas para manter o equilíbrio, as tensões de cisalhamento interfacial devem ser estritamente contínuas ($\tau_{rz}^{(1)} = \tau_{rz}^{(2)}$) [30].
+Por fim, o módulo de cisalhamento efetivo out-of-plane $\hat{G} = \hat{\mathcal{C}}_{1313} = \hat{\mathcal{C}}_{2323}$ (que rege o acoplamento elástico de torção e cisalhamento radial-axial $r-z$ do vaso) é obtido aplicando o MHA sob torção microscópica \cite{bakhvalov1989}. Como o esforço cisalhante transversal precisa atravessar as interfaces perfeitamente unidas para manter o equilíbrio, as tensões de cisalhamento interfacial devem ser estritamente contínuas ($\tau_{rz}^{(1)} = \tau_{rz}^{(2)}$) \cite{bakhvalov1989}.
 
-Para que haja a continuidade de tensão sob o contraste súbito dos módulos de cisalhamento locais das fases ($\mu(y) = G(y)$), as deformações cisalhantes são descontínuas, ditando que o módulo de cisalhamento efetivo macroscópico seja governado de forma pura pelo limite de Reuss (média harmônica) [31, 38]:
+Para que haja a continuidade de tensão sob o contraste súbito dos módulos de cisalhamento locais das fases ($\mu(y) = G(y)$), as deformações cisalhantes são descontínuas, ditando que o módulo de cisalhamento efetivo macroscópico seja governado de forma pura pelo limite de Reuss (média harmônica) \cite{Backus1962}:
 
 \begin{equation}
   \hat{G} = \langle \mu(y)^{-1} \rangle^{-1}
   \label{eq:Chatg_Calculation}
 \end{equation}
 
-Para o nosso cilindro bimetálico de aço e alumínio, a relação fornece de forma direta [132]:
+Para o nosso cilindro bimetálico de aço e alumínio, a relação fornece de forma direta \cite{Sadd2009}:
 
 \begin{equation}
   \hat{G} = \frac{1}{\frac{v_1}{G_1} + \frac{v_2}{G_2}} = \frac{G_1 G_2}{v_1 G_2 + v_2 G_1}
   \label{eq:G_bilaminado}
 \end{equation}
 
-onde $G_1$ e $G_2$ são os módulos de cisalhamento elástico locais do aço e alumínio, respectivamente [132].
+onde $G_1$ e $G_2$ são os módulos de cisalhamento elástico locais do aço e alumínio, respectivamente \cite{Sadd2009}.
 
-Este conjunto completo de coeficientes elásticos ($\hat{\mathcal{C}}_{11}$, $\hat{\mathcal{C}}_{12}$, $\hat{\mathcal{C}}_{22}$ e $\hat{G}$) fornece a caracterização elástica ortotrópica curvilínea exata que alimenta o tensor de rigidez macroscópica contínua no FEniCS, permitindo simular com altíssima eficiência e rigor de modelagem o vaso de pressão multicamadas sem a necessidade de discretizar individualmente cada camada física do cilindro [38, 115].
+Este conjunto completo de coeficientes elásticos ($\hat{\mathcal{C}}_{11}$, $\hat{\mathcal{C}}_{12}$, $\hat{\mathcal{C}}_{22}$ e $\hat{G}$) fornece a caracterização elástica ortotrópica curvilínea exata que alimenta o tensor de rigidez macroscópica contínua no FEniCS, permitindo simular com altíssima eficiência e rigor de modelagem o vaso de pressão multicamadas sem a necessidade de discretizar individualmente cada camada física do cilindro \cite{logg2012automated}.
+
+% CHECK: Trecho 529-549 verificado pelo autor.
 
 \section{Formulação Variacional Fraca Axissimétrica (Seção 3.4)}
 
-A resolução de problemas de elasticidade linear anisotrópica em domínios cilíndricos multicamadas por meio do Método dos Elementos Finitos (MEF) requer a transição da equação diferencial governante (forma forte) para a sua representação integral equivalente (forma fraca ou variacional). Esta seção apresenta a dedução matemática rigorosa da forma fraca axissimétrica baseada no Princípio dos Trabalhos Virtuais (PTV), detalhando a integração de volume no sistema de coordenadas cilíndricas e justificando a inclusão explícita do raio $r$ no domínio bidimensional de integração para simulação no solver FEniCS [14, 47].
+A resolução de problemas de elasticidade linear anisotrópica em domínios cilíndricos multicamadas por meio do Método dos Elementos Finitos (MEF) requer a transição da equação diferencial governante (forma forte) para a sua representação integral equivalente (forma fraca ou variacional). Esta seção apresenta a dedução matemática rigorosa da forma fraca axissimétrica baseada no Princípio dos Trabalhos Virtuais (PTV), detalhando a integração de volume no sistema de coordenadas cilíndricas e justificando a inclusão explícita do raio $r$ no domínio bidimensional de integração para simulação no solver FEniCS \cite{logg2012automated}.
 
 \section{O Princípio dos Trabalhos Virtuais (PTV)}
 
-Considere um domínio tridimensional de revolução $\Omega^{(3D)}$ delimitado por uma fronteira $\partial \Omega = \Gamma_D \cup \Gamma_N$, onde $\Gamma_D$ representa a fronteira de Dirichlet (deslocamentos prescritos) e $\Gamma_N$ denota a fronteira de Neumann (trações ou pressões aplicadas). O Princípio dos Trabalhos Virtuais estabelece que, para qualquer campo de deslocamentos virtuais cinematicamente admissíveis $\mathbf{v} = (v_r, v_z)^T \in V$ (onde $V$ é o espaço de Sobolev das funções de teste que se anulam em $\Gamma_D$), o trabalho virtual interno do sistema deve ser igual ao trabalho virtual externo [47, 48]:
+Considere um domínio tridimensional de revolução $\Omega^{(3D)}$ delimitado por uma fronteira $\partial \Omega = \Gamma_D \cup \Gamma_N$, onde $\Gamma_D$ representa a fronteira de Dirichlet (deslocamentos prescritos) e $\Gamma_N$ denota a fronteira de Neumann (trações ou pressões aplicadas). O Princípio dos Trabalhos Virtuais estabelece que, para qualquer campo de deslocamentos virtuais cinematicamente admissíveis $\mathbf{v} = (v_r, v_z)^T \in V$ (onde $V$ é o espaço de Sobolev das funções de teste que se anulam em $\Gamma_D$), o trabalho virtual interno do sistema deve ser igual ao trabalho virtual externo \cite{Sadd2009}:
 
 \begin{equation}
   \int_{\Omega^{(3D)}} \mathbf{\sigma} : \mathbf{\epsilon}(\mathbf{v}) \, d \Omega^{(3D)} = \int_{\Gamma_N^{(3D)}} \mathbf{t} \cdot \mathbf{v} \, d S^{(3D)}
   \label{eq:ptv_3d}
 \end{equation}
 
-onde $\mathbf{\sigma}$ é o tensor de tensões de Cauchy, $\mathbf{\epsilon}(\mathbf{v}) = \frac{1}{2} (\nabla \mathbf{v} + (\nabla \mathbf{v})^T)$ é o tensor de deformações virtuais lineares e $\mathbf{t}$ é o vetor de trações prescritas na superfície de Neumann [14, 47].
+onde $\mathbf{\sigma}$ é o tensor de tensões de Cauchy, $\mathbf{\epsilon}(\mathbf{v}) = \frac{1}{2} (\nabla \mathbf{v} + (\nabla \mathbf{v})^T)$ é o tensor de deformações virtuais lineares e $\mathbf{t}$ é o vetor de trações prescritas na superfície de Neumann \cite{logg2012automated}.
 
 \section{Integração por Revolução e Simplificação Axissimétrica}
 
-Devido à simetria de revolução geométrica e de carregamento em torno do eixo longitudinal $z$, o problema tridimensional pode ser projetado e resolvido em um domínio bidimensional meridiano plano $\Omega$ (definido no plano $r-z$). O elemento de volume tridimensional em coordenadas cilíndricas é escrito como [42, 47]:
+Devido à simetria de revolução geométrica e de carregamento em torno do eixo longitudinal $z$, o problema tridimensional pode ser projetado e resolvido em um domínio bidimensional meridiano plano $\Omega$ (definido no plano $r-z$). O elemento de volume tridimensional em coordenadas cilíndricas é escrito como \cite{Sadd2009}:
 
 \begin{equation}
   d \Omega^{(3D)} = r \, d r \, d \theta \, d z
   \label{eq:vol_element}
 \end{equation}
 
-Como as componentes de tensão, deformação e deslocamento são independentes da coordenada circunferencial $\theta$ ($\partial_{\theta} = 0$), podemos realizar a integração analítica direta ao longo da circunferência ($\theta \in [0, 2\pi]$). Assim, a integral tridimensional de volume simplifica-se para [14, 47]:
+Como as componentes de tensão, deformação e deslocamento são independentes da coordenada circunferencial $\theta$ ($\partial_{\theta} = 0$), podemos realizar a integração analítica direta ao longo da circunferência ($\theta \in [0, 2\pi]$). Assim, a integral tridimensional de volume simplifica-se para \cite{logg2012automated}:
 
 \begin{equation}
   \int_{\Omega^{(3D)}} f(r, z) \, d \Omega^{(3D)} = \int_{z} \int_{r} \int_0^{2\pi} f(r, z) r \, d r \, d \theta \, d z = 2 \pi \int_{\Omega} f(r, z) r \, d r \, d z
   \label{eq:int_revol}
 \end{equation}
 
-De forma análoga, para o elemento de área na fronteira cilíndrica lateral $d S^{(3D)} = r \, d \theta \, d s$, onde $d s$ representa o elemento de arco ao longo da fronteira unidimensional $\Gamma_N$ no plano meridiano, a integral de superfície externa torna-se [14, 47]:
+De forma análoga, para o elemento de área na fronteira cilíndrica lateral $d S^{(3D)} = r \, d \theta \, d s$, onde $d s$ representa o elemento de arco ao longo da fronteira unidimensional $\Gamma_N$ no plano meridiano, a integral de superfície externa torna-se \cite{logg2012automated}:
 
 \begin{equation}
   \int_{\Gamma_N^{(3D)}} \mathbf{t} \cdot \mathbf{v} \, d S^{(3D)} = 2 \pi \int_{\Gamma_N} \mathbf{t} \cdot \mathbf{v} r \, d s
   \label{eq:int_surf_revol}
 \end{equation}
 
-Substituindo as \eqref{eq:int_revol} e \eqref{eq:int_surf_revol} na equação do PTV (\eqref{eq:ptv_3d}) e cancelando o fator constante $2 \pi$ em ambos os membros, obtém-se a \textbf{forma fraca axissimétrica fundamental} definida no domínio plano $\Omega$ [14, 47, 48]:
+Substituindo as \eqref{eq:int_revol} e \eqref{eq:int_surf_revol} na equação do PTV (\eqref{eq:ptv_3d}) e cancelando o fator constante $2 \pi$ em ambos os membros, obtém-se a \textbf{forma fraca axissimétrica fundamental} definida no domínio plano $\Omega$ \cite{logg2012automated}:
 
 \begin{equation}
   \int_{\Omega} \mathbf{\sigma} : \mathbf{\epsilon}(\mathbf{v}) r \, d r \, d z = \int_{\Gamma_N} \mathbf{t} \cdot \mathbf{v} r \, d s
@@ -548,7 +594,7 @@ Substituindo as \eqref{eq:int_revol} e \eqref{eq:int_surf_revol} na equação do
 
 \section{Relações Constitutivas e Cinemáticas no Plano Meridiano}
 
-Para expressar a \eqref{eq:weak_axisymmetric} em termos das variáveis de deslocamento primárias $\mathbf{u} = (u_r, u_z)^T$ e de teste $\mathbf{v} = (v_r, v_z)^T$, aplicamos a Notação de Voigt reduzida para o comportamento axissimétrico ortotrópico curvilíneo. Os vetores de deformação macroscópica e virtual são definidos como [14, 47]:
+Para expressar a \eqref{eq:weak_axisymmetric} em termos das variáveis de deslocamento primárias $\mathbf{u} = (u_r, u_z)^T$ e de teste $\mathbf{v} = (v_r, v_z)^T$, aplicamos a Notação compacta reduzida para o comportamento axissimétrico ortotrópico curvilíneo. Os vetores de deformação macroscópica e virtual são definidos como \cite{logg2012automated}:
 
 \begin{equation}
   \mathbf{\epsilon}(\mathbf{u}) = \begin{bmatrix} \epsilon_{rr}, & \epsilon_{\theta\theta}, & \epsilon_{zz}, & \gamma_{rz} \end{bmatrix}^T = \begin{bmatrix} \frac{\partial u_r}{\partial r}, & \frac{u_r}{r}, & \frac{\partial u_z}{\partial z}, & \frac{\partial u_r}{\partial z} + \frac{\partial u_z}{\partial r} \end{bmatrix}^T
@@ -560,7 +606,7 @@ Para expressar a \eqref{eq:weak_axisymmetric} em termos das variáveis de desloc
   \label{eq:voigt_virtual_strain}
 \end{equation}
 
-A relação constitutiva linear para o material homogeneizado equivalente (MHA) ou para as fases elásticas individuais é expressa pela matriz de rigidez elástica axissimétrica $\mathbf{\mathcal{C}}$ [47, 48]:
+A relação constitutiva linear para o material homogeneizado equivalente (MHA) ou para as fases elásticas individuais é expressa pela matriz de rigidez elástica axissimétrica $\mathbf{\mathcal{C}}$ \cite{Sadd2009}:
 
 \begin{equation}
   \mathbf{\sigma} = \mathbf{\mathcal{C}} \mathbf{\epsilon}(\mathbf{u}) \implies
@@ -579,7 +625,7 @@ A relação constitutiva linear para o material homogeneizado equivalente (MHA) 
   \label{eq:constitutive_matrix}
 \end{equation}
 
-O produto interno do trabalho virtual interno em coordenadas cilíndricas expande-se como [14, 47]:
+O produto interno do trabalho virtual interno em coordenadas cilíndricas expande-se como \cite{logg2012automated}:
 
 \begin{equation}
   \mathbf{\sigma} : \mathbf{\epsilon}(\mathbf{v}) = \sigma_{rr} \epsilon_{rr}(\mathbf{v}) + \sigma_{\theta\theta} \epsilon_{\theta\theta}(\mathbf{v}) + \sigma_{zz} \epsilon_{zz}(\mathbf{v}) + \tau_{rz} \gamma_{rz}(\mathbf{v})
@@ -588,7 +634,7 @@ O produto interno do trabalho virtual interno em coordenadas cilíndricas expand
 
 \section{Formulação Variacional Final e o "Peso do Raio" no FEniCS}
 
-A forma variacional canônica $a(\mathbf{u}, \mathbf{v}) = L(\mathbf{v})$ é obtida substituindo a relação constitutiva (\eqref{eq:constitutive_matrix}) na equação de equilíbrio fraco (\eqref{eq:weak_axisymmetric}) [14, 47]:
+A forma variacional canônica $a(\mathbf{u}, \mathbf{v}) = L(\mathbf{v})$ é obtida substituindo a relação constitutiva (\eqref{eq:constitutive_matrix}) na equação de equilíbrio fraco (\eqref{eq:weak_axisymmetric}) \cite{logg2012automated}:
 
 \begin{equation}
   a(\mathbf{u}, \mathbf{v}) = \int_{\Omega} \left[ \mathbf{\epsilon}(\mathbf{v})^T \mathbf{\mathcal{C}} \mathbf{\epsilon}(\mathbf{u}) \right] r \, d r \, d z
@@ -602,11 +648,11 @@ A forma variacional canônica $a(\mathbf{u}, \mathbf{v}) = L(\mathbf{v})$ é obt
 
 \subsection{O Papel Crítico do Termo $r$ na Discretização}
 
-Os geradores de malha bidimensionais padrão e as bibliotecas automáticas de elementos finitos (como o FEniCS) realizam a integração numérica utilizando as medidas cartesianas planas nativas [14, 47]:
+Os geradores de malha bidimensionais padrão e as bibliotecas automáticas de elementos finitos (como o FEniCS) realizam a integração numérica utilizando as medidas cartesianas planas nativas \cite{logg2012automated}:
 - $dx = dr \, dz$ para integrais de domínio;
 - $ds$ para integrais de contorno plano.
 
-Fisicamente, se omitíssemos o termo de peso $r$ nas formas bilineares e lineares, o solver estaria resolvendo uma fatia plana 2D em estado plano de deformações cartesiano, o que anularia o efeito da curvatura e a expansão circunferencial (\textbf{hoop strain} $u_r/r$). Portanto, a \textbf{formulação fraca no FEniCS deve obrigatoriamente incorporar o raio $r$ como um campo geométrico multiplicador} diretamente no integrando [14, 47]:
+Fisicamente, se omitíssemos o termo de peso $r$ nas formas bilineares e lineares, o solver estaria resolvendo uma fatia plana 2D em estado plano de deformações cartesiano, o que anularia o efeito da curvatura e a expansão circunferencial (\textbf{hoop strain} $u_r/r$). Portanto, a \textbf{formulação fraca no FEniCS deve obrigatoriamente incorporar o raio $r$ como um campo geométrico multiplicador} diretamente no integrando \cite{logg2012automated}:
 
 \begin{lstlisting}[language=Python, caption={Implementação conceitual da forma fraca no FEniCS (UFL).}]
 # Coordenada radial x[0]

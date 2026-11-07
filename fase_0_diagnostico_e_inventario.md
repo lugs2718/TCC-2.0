@@ -30,11 +30,20 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 - **Diretriz de Redação Humana e Mitigação de Detectores de IA (Princípio 14 e Sub-passo G):** Instituída a priorização de variação lexical, alternância de extensão sintática e naturalidade acadêmica para eliminar padrões sintéticos excessivamente homogêneos, acompanhado da checagem em detectores de IA e documentação de resultados. A tarefa atômica `REV-01-IA` foi inserida no backlog para revisar a Introdução sob essa ótica.
 - **Higiene do Versionamento:** Criação do `.gitignore` na raiz do projeto para ignorar artefatos de compilação LaTeX (`*.aux`, `*.log`, `*.bbl`, etc.), ambientes virtuais Python e arquivos temporários de sistema.
 
-### 1.4 Capítulo 2 (Revisão Bibliográfica) — Execução do Sub-bloco D.1 da Tarefa REV-02.1
-- **Fatiamento Estruturado:** Divisão formal do Capítulo 2 em 4 tarefas atômicas sequenciais (`REV-02.1` a `REV-02.4`).
-- **Remoção de Prompts Residuais:** Exclusão integral do bloco `Task` visível no corpo do texto (antigas linhas 4–20).
-- **Reorganização do Fluxo Lógico:** A subseção *Classificação Geométrica: Paredes Finas vs. Paredes Grossas* foi transferida para a abertura da Seção 2.1, estabelecendo os fundamentos mecânicos do vaso de pressão antes de introduzir as exigências legais e normativas da NR-13 e do ASME Seção VIII.
-- **Saneamento de Incertezas Bibliográficas:** Removida a alegação sem comprovação bibliográfica de erro analítico menor que 4%, a tag de rascunho `\#strike[...]` e os comentários/marginpars associados.
+### 1.5 Capítulo 4 (MEF) — Tarefa CIT-01 Concluída (05/11/2026)
+- **Escopo:** auditoria de citações do Capítulo 4 (`04_mef.tex`): 85 referências numéricas legadas removidas (recontagem sobre `HEAD`; inventário inicial dizia 87 — diferença documentada em `citacao_CIT-01.md`).
+- **Resultado:** 14 chamadas `\cite` (`Sadd2009`, `Timoshenko_1951`, `logg2012automated`, `bakhvalov1989`, `Zhang2022`); 0 marcadores `% [CIT]` restantes.
+- **Bloqueios resolvidos por reformulação (decisão C emendada — suavização autorizada):** B1 (interpolação de deslocamento), B2 (remoção da referência ao “fenômeno de Gibbs elástico”), B3 (limitação real do fluxo adotado, em vez da negativa categórica), B5 (remoção da menção a “Garfo de Hill elástico”).
+- **Bloqueio B4 resolvido com ajuste:** graus nomeados (aço ASTM A516 Gr. 70; alumínio 6061-T6); σy do aço ajustado de 400,0 para 260,0 MPa na tabela e no texto. Valores permanecem como parâmetros adotados do script de projeto; entradas correspondentes no `.bib` são dependência da REF-01.
+- **Bloqueio B6 reformulado:** “faixa de 30 a 35 MPa como pressão nominal de Tipo III” → “pressão de projeto inferior a 35 MPa” \cite{Zhang2022}, com 30 MPa mantido como valor adotado na simulação. Entrada `Zhang2022` adicionada ao `.bib`.
+- **Busca local no acervo:** executada sobre 48 PDFs (6.170 páginas). B5 ancorado em Bakhvalov p. 225 (“Hill’s forks”) e p. XXXIII (“Voight-Reuss-Hill approximations”); B6 com suporte parcial (Zhang et al. 2022, p. 18); B4 com divergência (Hibbeler 6061-T6: E = 68,9 GPa, σy = 255 MPa vs. TCC 70 GPa / 270 MPa); B1, B2 e B3 sem fonte local.
+- **Arquivos:** `citacao_CIT-01.md` (relatório), `04_mef.tex`, `bibliografia.bib`, `fase_0_diagnostico_e_inventario.md` (JSON).
+
+### 1.6 Capítulo 3 (Equilíbrio e Homogeneização) — Tarefa CIT-02 Concluída (06/11/2026)
+- **Escopo:** auditoria de citações de `03_1_equilibrio.tex` (82 marcadores numéricos legados em 39 grupos; inventário inicial dizia 136 — recontagem corrigida).
+- **Resultado:** 82 marcadores → 0; 82 chamadas `\cite` (`bakhvalov1989` ×32, `Sadd2009` ×17, `logg2012automated` ×11, `Timoshenko_1951` ×9, `Backus1962` ×9, `PartonReport` ×3, `LaiBook` ×1). Lacunas A (L336–343) e B (L494–507) processadas. Notas de autor `% ADD`/`% CHECK` removidas. `Backus1962` verificado no acervo e adicionado ao `.bib` e à tabela de mapeamento (D15, D18).
+- **Fatiamento:** 7 micro-lotes (02.1 a 02.4b), concluídos em 06/11/2026.
+- **Arquivos:** `citacao_CIT-02.md` (relatório consolidado), `03_1_equilibrio.tex`.
 
 ---
 
@@ -45,9 +54,9 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 | `LaTeX/main.tex` | LaTeX | Arquivo principal do documento | **Auditado** | Autor atualizado; compilação modular via `\includeonly` preservada. |
 | `LaTeX/capitulos/01_introducao.tex` | LaTeX | Capítulo 1: Introdução | **Concluído** | 100% revisado, alinhado e limpo de rascunhos. |
 | `LaTeX/capitulos/02_revisao_bibliografica.tex` | LaTeX | Capítulo 2: Revisão Bibliográfica | **Em Análise** | 76 kB. Múltiplas marcações `[nn]` a converter para chaves BibTeX; notas de autor a resolver. |
-| `LaTeX/capitulos/03_1_equilibrio.tex` | LaTeX | Capítulo 3 (Equilíbrio e Navier-Cauchy) | **Pendente** | Equações fundamentais do cilindro axissimétrico. |
+| `LaTeX/capitulos/03_1_equilibrio.tex` | LaTeX | Capítulo 3 (Equilíbrio e Navier-Cauchy) | **CIT-02 concluída** | Equações fundamentais do cilindro axissimétrico. 0 marcadores; 82 `\cite`. |
 | `LaTeX/capitulos/03_2_homogeneizacao.tex` | LaTeX | Capítulo 3 (Homogeneização Assintótica) | **Pendente** | Dedução do problema local. Será unificado sob o Cap. 3. |
-| `LaTeX/capitulos/04_mef.tex` | LaTeX | Capítulo 4: Método dos Elementos Finitos | **Pendente** | Implementação FEniCS, formulação fraca com peso do raio $r$ e malha estruturada. |
+| `LaTeX/capitulos/04_mef.tex` | LaTeX | Capítulo 4: Método dos Elementos Finitos | **CIT-01 concluída** | Implementação FEniCS, formulação fraca com peso do raio $r$ e malha estruturada. 0 marcadores `% [CIT]`; 14 chamadas `\cite`. |
 | `LaTeX/capitulos/05_resultados.tex` | LaTeX | Capítulo 5: Resultados e Discussões | **Pendente** | Validação com Lamé, comparação MEF vs MHA, tabela de eficiência e novos gráficos. |
 | `LaTeX/capitulos/06_conclusao.tex` | LaTeX | Capítulo 6: Conclusão | **Pendente** | Será redigido no fechamento da revisão dos capítulos técnicos. |
 | `LaTeX/bibliografia.bib` | BibTeX | Base bibliográfica central | **Auditado** | 41 entradas. Chaves com erro tipográfico (`beer1989resistencia:`, `asme\textit{sec8}`). |
@@ -72,7 +81,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 
 ---
 
-### Plano 1 — Conteúdo, Consistência Técnica e Citações (Plano Ativo)
+### Plano 1 — Conteúdo e Consistência Técnica (Plano Ativo)
 
 #### Capítulo 1 — Introdução
 - [x] **CON-01:** **Revisão Integral do Capítulo 1 (Introdução)** [Concluída em 02/11/2026]
@@ -166,11 +175,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - Decisões A–D: (A) autor-data; (B) NR-13 + ASME VIII Div. 1 e 2; (C) busca de fonte caso a caso, com bloqueio da tarefa quando não localizada; (D) Cap. 4 → Cap. 3 → Cap. 2.
   - Diagnóstico: 536 marcadores órfãos em 304 grupos (Cap. 2: 313; Cap. 3: 136; Cap. 4: 87).
   - Lista legada considerada irrecuperável após quatro tentativas (fontes `.typ`, `.bib` com no máximo 41 entradas, `articles_scraping.py` vazio, PDF antigo sem seção de referências).
-  - [ ] **CIT-01:** Capítulo 4 — **marcadores removidos; 6 bloqueios abertos**
+  - [x] **CIT-01:** Capítulo 4 — **concluída (05/11/2026)**
     - Relatório: [`citacao_CIT-01.md`](file:///g:/Meu%20Drive/UFF/TCC%20-%20Wesley/Escrita%20TCC/citacao_CIT-01.md).
-    - 85 referências numéricas (recontagem sobre `HEAD`) → 0; 11 chamadas `\cite` (`logg2012automated` 7, `Sadd2009` 2, `Timoshenko_1951` 1, `bakhvalov1989` 1). O inventário inicial registrava 87; a diferença está documentada em `citacao_CIT-01.md`.
-    - Bloqueios B1–B6 (interface e Gibbs, automação CAD, propriedades dos materiais, Garfo de Hill, reservatórios Tipo III) aguardando fonte — decisão C.
-  - [ ] **CIT-02:** Capítulo 3 (136 marcadores).
+    - 85 referências numéricas (recontagem sobre `HEAD`) → 0; 14 chamadas `\cite` (`logg2012automated` 7, `Sadd2009` 2, `Timoshenko_1951` 1, `bakhvalov1989` 1, `Zhang2022` 1). Bloqueios B1–B6 resolvidos por reformulação/ancoragem (decisão C emendada).
+  - [x] **CIT-02:** Capítulo 3 (82 marcadores → 0 restantes; 82 `\cite` adicionados). Fatiada em 7 micro-lotes (02.1 a 02.4b), concluída em 06/11/2026. Relatório: `citacao_CIT-02.md`.
   - [ ] **CIT-03:** Capítulo 2, §§2.1–2.2 (~125), após `REV-02.1` sub-bloco D.2.
   - [ ] **CIT-04:** Capítulo 2, §2.3 (~32).
   - [ ] **CIT-05:** Capítulo 2, §2.4 (~56).
@@ -187,7 +195,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 {
   "versao_skill": "2.2",
   "versao_estado": "1.7",
-  "data_atualizacao": "2026-11-05",
+  "data_atualizacao": "2026-11-06",
   "autor_projeto": "Luiz Gustavo da Silva Pereira",
   "orientador": "Aguardando preenchimento formal",
   "sistema_unidades": "N-mm-MPa (Engenharia)",
@@ -204,7 +212,8 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CON-01",
     "TEC-04",
     "CIT-00",
-    "CIT-01"
+    "CIT-01",
+    "CIT-02"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -227,9 +236,11 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CIT-00 aprovada em 03/11/2026: (A) sistema autor-data; (B) base normativa NR-13 + ASME Seção VIII Div. 1 e 2; (C) afirmação sem fonte localizável preserva o texto e bloqueia a tarefa até busca caso a caso; (D) ordem Cap. 4 → Cap. 3 → Cap. 2.",
     "CIT-01 executada parcialmente em 04_mef.tex: 85 referências numéricas removidas (recontagem sobre HEAD; o inventário inicial registrava 87), 11 chamadas autor-data para quatro obras já existentes no .bib (logg2012automated, Sadd2009, Timoshenko_1951, bakhvalov1989) e 6 bloqueios abertos (B1–B6) por ausência de fonte localizável.",
     "CIT-01 corrigiu a espessura de subcamada de 5,0 mm para 5,0 µm em 04_mef.tex, coerente com L_c = 10 µm e V1 = V2 = 0,5.",
-    "CIT-01 conclu?da (05/11/2026): 85 refer?ncias num?ricas removidas; 14 chamadas \\cite (Sadd2009, Timoshenko_1951, logg2012automated, bakhvalov1989, Zhang2022). B1, B2, B3, B5 resolvidos por reformula??o; B4 resolvido com graus nomeados (A516 Gr.70, 6061-T6) e ?y do a?o ajustado para 260 MPa; B6 reformulado para \"press?o de projeto < 35 MPa\" (Zhang2022). Decis?o C emendada: afirma??es bloqueadas podem ser suavizadas quando n?o houver fonte."
+    "CIT-01 conclu?da (05/11/2026): 85 refer?ncias num?ricas removidas; 14 chamadas \\cite (Sadd2009, Timoshenko_1951, logg2012automated, bakhvalov1989, Zhang2022). B1, B2, B3, B5 resolvidos por reformula??o; B4 resolvido com graus nomeados (A516 Gr.70, 6061-T6) e ?y do a?o ajustado para 260 MPa; B6 reformulado para \"press?o de projeto < 35 MPa\" (Zhang2022). Decis?o C emendada: afirma??es bloqueadas podem ser suavizadas quando n?o houver fonte.",
+    "CIT-02 fatiada em 7 micro-lotes (02.1 a 02.4b) por secao, 10-15 citacoes por ciclo, conforme protocolo de economia de tokens. Fatias 02.1, 02.2, 02.3a, 02.3b, 02.3c concluidas (33 marcadores resolvidos). 02.4a proposta com 11 marcadores (Sadd2009, PartonReport, bakhvalov1989, logg2012automated) aguardando validacao. 02.4b pendente (~6 marcadores). Mapeamento de autores consultado em Tabelas/mapeamento_autores_por_capitulos_tcc.xlsx (Cap. 5 -> Timoshenko/Goodier, Bakhvalov/Parton, Logg, Sadd); chaves inexistentes no .bib (lai2010, bensoussan1978, leitzke2017) registradas como dependencia REF-01.",
+    "CIT-02 conclu?da (06/11/2026): 82 marcadores num?ricos removidos em 03_1_equilibrio.tex (0 restantes); 82 chamadas \\cite (bakhvalov1989 x32, Sadd2009 x17, logg2012automated x11, Timoshenko_1951 x9, Backus1962 x9, PartonReport x3, LaiBook x1). Fatias 02.1-02.4b conclu?das, incluindo lacunas A (L336-343) e B (L494-507). Backus 1962 verificado no acervo (Refer?ncias - Copia/MHA/backus_homogenization.pdf) e adicionado ao .bib; xlsx atualizado (D15, D18). Notas de autor % ADD/% CHECK removidas. Compila??o n?o executada."
   ],
-  "proximo_passo": "CIT-01 conclu?da. Pr?xima tarefa autorizada a definir pelo usu?rio (sugest?o: CIT-02 no Cap?tulo 3, ou REF-01 para saneamento do .bib, incluindo bakhvalov1989 author, Zhang2022 j? adicionado, ASTM A516 e 6061-T6).",
+  "proximo_passo": "CIT-02 conclu?da (0 marcadores, 82 \\cite). Pr?xima tarefa autorizada a definir (sugest?o: CIT-03 Cap. 2 ??2.1-2.2, ou REF-01 para saneamento do .bib incluindo bakhvalov1989 author, Backus1962, ASTM A516, 6061-T6).",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

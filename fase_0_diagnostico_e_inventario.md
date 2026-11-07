@@ -39,11 +39,15 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 - **Busca local no acervo:** executada sobre 48 PDFs (6.170 páginas). B5 ancorado em Bakhvalov p. 225 (“Hill’s forks”) e p. XXXIII (“Voight-Reuss-Hill approximations”); B6 com suporte parcial (Zhang et al. 2022, p. 18); B4 com divergência (Hibbeler 6061-T6: E = 68,9 GPa, σy = 255 MPa vs. TCC 70 GPa / 270 MPa); B1, B2 e B3 sem fonte local.
 - **Arquivos:** `citacao_CIT-01.md` (relatório), `04_mef.tex`, `bibliografia.bib`, `fase_0_diagnostico_e_inventario.md` (JSON).
 
-### 1.6 Capítulo 3 (Equilíbrio e Homogeneização) — Tarefa CIT-02 Concluída (06/11/2026)
-- **Escopo:** auditoria de citações de `03_1_equilibrio.tex` (82 marcadores numéricos legados em 39 grupos; inventário inicial dizia 136 — recontagem corrigida).
-- **Resultado:** 82 marcadores → 0; 82 chamadas `\cite` (`bakhvalov1989` ×32, `Sadd2009` ×17, `logg2012automated` ×11, `Timoshenko_1951` ×9, `Backus1962` ×9, `PartonReport` ×3, `LaiBook` ×1). Lacunas A (L336–343) e B (L494–507) processadas. Notas de autor `% ADD`/`% CHECK` removidas. `Backus1962` verificado no acervo e adicionado ao `.bib` e à tabela de mapeamento (D15, D18).
-- **Fatiamento:** 7 micro-lotes (02.1 a 02.4b), concluídos em 06/11/2026.
-- **Arquivos:** `citacao_CIT-02.md` (relatório consolidado), `03_1_equilibrio.tex`.
+### 1.7 Base Bibliográfica (`bibliografia.bib`) — Tarefa REF-01 Concluída (06/11/2026, com ressalvas)
+- **Escopo:** saneamento e padronização da base `.bib` (44 entradas após a tarefa).
+- **Adições (REF-01d):** `Backus1962` (verificado no PDF), `Zhang2022` (verificado), `lai2010continuum` (verificado), `leitzke2017` (verificado), `bensoussan1978` (canônica, não no acervo), `hibbeler2010` (verificado), `astm_a516` (título/organização verificados; ano a confirmar).
+- **Correções (REF-01a):** `bakhvalov1989` (author → Bakhvalov & Panasenko; @article → @book; publisher/address/year/volume/series); `Timoshenko_1951` (@Book → @book; booktitle removido). Removidas: `TaberReport`, `SatReport`, `HomogenisationReportBakhvalov` (opção C). `Heyliger2003` mantida (incompleta, opção C).
+- **Limpeza (REF-01b):** `Itskov2007` (remoção de 12 campos de scraping; author corrigido); `Choi1995_dup` removida.
+- **Completude (REF-01c):** `PartonReport` (@article → @book, publisher/address); `agne2024impact` (doi); `Adali1993` (@techReport → @article).
+- **Verificação (REF-01e):** 44 entradas; 8 chaves citadas, 0 ausentes; 1 entrada desbalanceada pré-existente (`Ruan2024`); 3 entradas sem year (`Heyliger2003`, `Ruan2024`, `astm_a516`).
+- **Achado:** tabela de mapeamento usa chaves inexistentes no `.bib` (dependência NOR-03).
+- **Arquivos:** `bibliografia.bib`, `fase_0_diagnostico_e_inventario.md`.
 
 ---
 
@@ -155,14 +159,20 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 
 ### Plano 2 — Normas Institucionais UFF e Apresentação Gráfica
 
-- [ ] **REF-01:** **Saneamento e Padronização da Base `bibliografia.bib`**
-  - Conferência da conformidade com a ABNT NBR 6023 (EdUFF 2012).
-  - Limpeza de chaves quebradas e padronização dos campos autor, título, local, editora e ano.
+- [x] **REF-01:** **Saneamento e Padronização da Base `bibliografia.bib`** (concluída em 06/11/2026, com ressalvas)
+  - Entradas: 44 (eram 41; +6 adicionadas: Backus1962, Zhang2022, lai2010continuum, leitzke2017, bensoussan1978, hibbeler2010, astm_a516; −3 removidas: TaberReport, SatReport, HomogenisationReportBakhvalov; −1 duplicata: Choi1995_dup).
+  - Correções: bakhvalov1989 (author + tipo + publisher), Timoshenko_1951 (tipo + booktitle), Itskov2007 (limpeza de scraping), PartonReport (tipo + publisher), agne2024impact (doi), Adali1993 (reclassificação techReport→article).
+  - Chaves citadas: 8/8 existem. Nenhuma chave ausente.
+  - Ressalvas residuais: `Heyliger2003` incompleta (sem year, mantida por escolha do usuário); `astm_a516` sem year (a confirmar); `Ruan2024` truncada (pré-existente); `Ruan2024` com braces desbalanceados (pré-existente).
 - [ ] **NOR-01:** **Padronização Normativa de Quadros vs. Tabelas e Legendas**
   - Adequação das matrizes comparativas para ambiente de Quadro (bordas fechadas) e tabelas numéricas conforme norma do IBGE/EdUFF 2012.
 - [ ] **NOR-02:** **Configuração Pré-Textual e Inspeção Visual Final do PDF**
   - Ajuste da ordem dos elementos pré-textuais (Sumário antes das listas conforme Coluna 2 da EdUFF 2012).
   - Verificação final de paginação, quebras de página e compilação do documento completo.
+- [ ] **NOR-03:** **Alinhamento das Chaves BibTeX na Tabela de Mapeamento (`mapeamento_autores_por_capitulos_tcc.xlsx`)**
+  - Atualizar a Coluna D (Chave BibTeX) para usar as chaves reais do `.bib` (ex.: `Timoshenko_1951` em vez de `@timoshenko1970`, `Sadd2009` em vez de `@sadd2009elasticity`, `logg2012automated` em vez de `@fenics2012`, `PartonReport` em vez de `@parton_reducido`, `Zhang2022` em vez de `@zhang2022`).
+  - Adicionar `@backus1962` nas linhas 4.2.4 e 4.4.1–4.4.2 (já feito).
+  - Motivação: evitar que tarefas futuras (CIT-03 a CIT-06) tentem usar chaves inexistentes.
 
 ---
 
@@ -213,7 +223,8 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "TEC-04",
     "CIT-00",
     "CIT-01",
-    "CIT-02"
+    "CIT-02",
+    "REF-01"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -238,9 +249,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CIT-01 corrigiu a espessura de subcamada de 5,0 mm para 5,0 µm em 04_mef.tex, coerente com L_c = 10 µm e V1 = V2 = 0,5.",
     "CIT-01 conclu?da (05/11/2026): 85 refer?ncias num?ricas removidas; 14 chamadas \\cite (Sadd2009, Timoshenko_1951, logg2012automated, bakhvalov1989, Zhang2022). B1, B2, B3, B5 resolvidos por reformula??o; B4 resolvido com graus nomeados (A516 Gr.70, 6061-T6) e ?y do a?o ajustado para 260 MPa; B6 reformulado para \"press?o de projeto < 35 MPa\" (Zhang2022). Decis?o C emendada: afirma??es bloqueadas podem ser suavizadas quando n?o houver fonte.",
     "CIT-02 fatiada em 7 micro-lotes (02.1 a 02.4b) por secao, 10-15 citacoes por ciclo, conforme protocolo de economia de tokens. Fatias 02.1, 02.2, 02.3a, 02.3b, 02.3c concluidas (33 marcadores resolvidos). 02.4a proposta com 11 marcadores (Sadd2009, PartonReport, bakhvalov1989, logg2012automated) aguardando validacao. 02.4b pendente (~6 marcadores). Mapeamento de autores consultado em Tabelas/mapeamento_autores_por_capitulos_tcc.xlsx (Cap. 5 -> Timoshenko/Goodier, Bakhvalov/Parton, Logg, Sadd); chaves inexistentes no .bib (lai2010, bensoussan1978, leitzke2017) registradas como dependencia REF-01.",
-    "CIT-02 conclu?da (06/11/2026): 82 marcadores num?ricos removidos em 03_1_equilibrio.tex (0 restantes); 82 chamadas \\cite (bakhvalov1989 x32, Sadd2009 x17, logg2012automated x11, Timoshenko_1951 x9, Backus1962 x9, PartonReport x3, LaiBook x1). Fatias 02.1-02.4b conclu?das, incluindo lacunas A (L336-343) e B (L494-507). Backus 1962 verificado no acervo (Refer?ncias - Copia/MHA/backus_homogenization.pdf) e adicionado ao .bib; xlsx atualizado (D15, D18). Notas de autor % ADD/% CHECK removidas. Compila??o n?o executada."
+    "CIT-02 conclu?da (06/11/2026): 82 marcadores num?ricos removidos em 03_1_equilibrio.tex (0 restantes); 82 chamadas \\cite (bakhvalov1989 x32, Sadd2009 x17, logg2012automated x11, Timoshenko_1951 x9, Backus1962 x9, PartonReport x3, LaiBook x1). Fatias 02.1-02.4b conclu?das, incluindo lacunas A (L336-343) e B (L494-507). Backus 1962 verificado no acervo (Refer?ncias - Copia/MHA/backus_homogenization.pdf) e adicionado ao .bib; xlsx atualizado (D15, D18). Notas de autor % ADD/% CHECK removidas. Compila??o n?o executada.",
+    "REF-01 conclu?da (06/11/2026, com ressalvas): 44 entradas no .bib (eram 41; +6 adicionadas: Backus1962, Zhang2022, lai2010continuum, leitzke2017, bensoussan1978, hibbeler2010, astm_a516; ?4 removidas: TaberReport, SatReport, HomogenisationReportBakhvalov, Choi1995_dup). Corrigidas: bakhvalov1989 (author+tipo+publisher), Timoshenko_1951 (tipo+booktitle), Itskov2007 (limpeza scraping), PartonReport (tipo+publisher), agne2024impact (doi), Adali1993 (techReport->article). Chaves citadas: 8/8 existem. Residuais: Heyliger2003 incompleta (mantida por escolha), astm_a516 sem year (a confirmar), Ruan2024 truncada/desbalanceada (pr?-existente). Tarefa NOR-03 adicionada para alinhamento das chaves na tabela de mapeamento."
   ],
-  "proximo_passo": "CIT-02 conclu?da (0 marcadores, 82 \\cite). Pr?xima tarefa autorizada a definir (sugest?o: CIT-03 Cap. 2 ??2.1-2.2, ou REF-01 para saneamento do .bib incluindo bakhvalov1989 author, Backus1962, ASTM A516, 6061-T6).",
+  "proximo_passo": "REF-01 conclu?da (com ressalvas). Pr?xima tarefa autorizada a definir (sugest?o: CIT-03 Cap. 2 ??2.1-2.2, ~125 marcadores; ou NOR-03 alinhamento da tabela de mapeamento).",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

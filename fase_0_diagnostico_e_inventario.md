@@ -55,6 +55,12 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 - **Ressalvas:** 4 chaves sem equivalente no `.bib` (`@vignoli2018`, `@tonatto2020`, `@beer2003`, `@kassapoglou2021`) — dependência REF-01d se forem citadas.
 - **Arquivos:** `mapeamento_autores_por_capitulos_tcc.xlsx` (backup `.bak`/`.bak2`), `fase_0_diagnostico_e_inventario.md`.
 
+### 1.9 Capítulo 2 (Revisão Bibliográfica) — Tarefa CIT-03 Concluída (07/11/2026)
+- **Escopo:** auditoria de citações de `02_revisao_bibliografica.tex` (185 marcadores numéricos legados em 106 grupos; inventário inicial dizia 136 — recontagem corrigida).
+- **Resultado:** 185 marcadores → 0 (excl. índices de Voigt em bloco Typst comentado, L227–L244). 184 chamadas `\cite` (`brasil_nr13_2022` ×25, `asme_sec8_div1_2019` ×21, `RMJones2018` ×11, `lai2010continuum` ×13, `Sadd2009` ×24, `Backus1962` ×11, `Timoshenko_1951` ×4, `bakhvalov1989` ×4, `PartonReport` ×2, `logg2012automated` ×16, `leitzke2017` ×1, `Guinovart2024` ×1, `beer1989resistencia` ×1). Correções incidentais: `\cite` malformado em comentário (L110) e `\cite{eq-tensao-...}` → `\eqref{}` (L23, L27).
+- **Fatiamento:** 14 micro-lotes (03.01 a 03.14), concluídos em 07/11/2026.
+- **Arquivos:** `citacao_CIT-03.md` (relatório consolidado), `02_revisao_bibliografica.tex`.
+
 ---
 
 ## 2. Inventário Documental dos Ativos do Projeto
@@ -63,7 +69,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 |---|---|---|---|---|
 | `LaTeX/main.tex` | LaTeX | Arquivo principal do documento | **Auditado** | Autor atualizado; compilação modular via `\includeonly` preservada. |
 | `LaTeX/capitulos/01_introducao.tex` | LaTeX | Capítulo 1: Introdução | **Concluído** | 100% revisado, alinhado e limpo de rascunhos. |
-| `LaTeX/capitulos/02_revisao_bibliografica.tex` | LaTeX | Capítulo 2: Revisão Bibliográfica | **Em Análise** | 76 kB. Múltiplas marcações `[nn]` a converter para chaves BibTeX; notas de autor a resolver. |
+| `LaTeX/capitulos/02_revisao_bibliografica.tex` | LaTeX | Capítulo 2: Revisão Bibliográfica | **CIT-03 concluída** | 684 linhas. 0 marcadores reais (excl. índices de Voigt em bloco Typst comentado). 184 `\cite`. |
 | `LaTeX/capitulos/03_1_equilibrio.tex` | LaTeX | Capítulo 3 (Equilíbrio e Navier-Cauchy) | **CIT-02 concluída** | Equações fundamentais do cilindro axissimétrico. 0 marcadores; 82 `\cite`. |
 | `LaTeX/capitulos/03_2_homogeneizacao.tex` | LaTeX | Capítulo 3 (Homogeneização Assintótica) | **Pendente** | Dedução do problema local. Será unificado sob o Cap. 3. |
 | `LaTeX/capitulos/04_mef.tex` | LaTeX | Capítulo 4: Método dos Elementos Finitos | **CIT-01 concluída** | Implementação FEniCS, formulação fraca com peso do raio $r$ e malha estruturada. 0 marcadores `% [CIT]`; 14 chamadas `\cite`. |
@@ -195,7 +201,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     - Relatório: [`citacao_CIT-01.md`](file:///g:/Meu%20Drive/UFF/TCC%20-%20Wesley/Escrita%20TCC/citacao_CIT-01.md).
     - 85 referências numéricas (recontagem sobre `HEAD`) → 0; 14 chamadas `\cite` (`logg2012automated` 7, `Sadd2009` 2, `Timoshenko_1951` 1, `bakhvalov1989` 1, `Zhang2022` 1). Bloqueios B1–B6 resolvidos por reformulação/ancoragem (decisão C emendada).
   - [x] **CIT-02:** Capítulo 3 (82 marcadores → 0 restantes; 82 `\cite` adicionados). Fatiada em 7 micro-lotes (02.1 a 02.4b), concluída em 06/11/2026. Relatório: `citacao_CIT-02.md`.
-  - [ ] **CIT-03:** Capítulo 2, §§2.1–2.2 (~125), após `REV-02.1` sub-bloco D.2.
+  - [x] **CIT-03:** Capítulo 2, §§2.1–2.2 (~125 marcadores) — concluída em 07/11/2026. 185 marcadores → 0 (excl. índices de Voigt em bloco Typst comentado, L227–L244). 184 `\cite` adicionados. Fatiada em 14 micro-lotes (03.01 a 03.14). Relatório: `citacao_CIT-03.md`.
   - [ ] **CIT-04:** Capítulo 2, §2.3 (~32).
   - [ ] **CIT-05:** Capítulo 2, §2.4 (~56).
   - [ ] **CIT-06:** Capítulo 2, §2.5 (~48).
@@ -211,7 +217,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 {
   "versao_skill": "2.2",
   "versao_estado": "1.7",
-  "data_atualizacao": "2026-11-06",
+  "data_atualizacao": "2026-11-07",
   "autor_projeto": "Luiz Gustavo da Silva Pereira",
   "orientador": "Aguardando preenchimento formal",
   "sistema_unidades": "N-mm-MPa (Engenharia)",
@@ -231,7 +237,8 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CIT-01",
     "CIT-02",
     "REF-01",
-    "NOR-03"
+    "NOR-03",
+    "CIT-03"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -258,9 +265,20 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CIT-02 fatiada em 7 micro-lotes (02.1 a 02.4b) por secao, 10-15 citacoes por ciclo, conforme protocolo de economia de tokens. Fatias 02.1, 02.2, 02.3a, 02.3b, 02.3c concluidas (33 marcadores resolvidos). 02.4a proposta com 11 marcadores (Sadd2009, PartonReport, bakhvalov1989, logg2012automated) aguardando validacao. 02.4b pendente (~6 marcadores). Mapeamento de autores consultado em Tabelas/mapeamento_autores_por_capitulos_tcc.xlsx (Cap. 5 -> Timoshenko/Goodier, Bakhvalov/Parton, Logg, Sadd); chaves inexistentes no .bib (lai2010, bensoussan1978, leitzke2017) registradas como dependencia REF-01.",
     "CIT-02 conclu?da (06/11/2026): 82 marcadores num?ricos removidos em 03_1_equilibrio.tex (0 restantes); 82 chamadas \\cite (bakhvalov1989 x32, Sadd2009 x17, logg2012automated x11, Timoshenko_1951 x9, Backus1962 x9, PartonReport x3, LaiBook x1). Fatias 02.1-02.4b conclu?das, incluindo lacunas A (L336-343) e B (L494-507). Backus 1962 verificado no acervo (Refer?ncias - Copia/MHA/backus_homogenization.pdf) e adicionado ao .bib; xlsx atualizado (D15, D18). Notas de autor % ADD/% CHECK removidas. Compila??o n?o executada.",
     "REF-01 conclu?da (06/11/2026, com ressalvas): 44 entradas no .bib (eram 41; +6 adicionadas: Backus1962, Zhang2022, lai2010continuum, leitzke2017, bensoussan1978, hibbeler2010, astm_a516; ?4 removidas: TaberReport, SatReport, HomogenisationReportBakhvalov, Choi1995_dup). Corrigidas: bakhvalov1989 (author+tipo+publisher), Timoshenko_1951 (tipo+booktitle), Itskov2007 (limpeza scraping), PartonReport (tipo+publisher), agne2024impact (doi), Adali1993 (techReport->article). Chaves citadas: 8/8 existem. Residuais: Heyliger2003 incompleta (mantida por escolha), astm_a516 sem year (a confirmar), Ruan2024 truncada/desbalanceada (pr?-existente). Tarefa NOR-03 adicionada para alinhamento das chaves na tabela de mapeamento.",
-    "NOR-03 conclu?da (06/11/2026): alinhamento das chaves BibTeX na tabela de mapeamento (mapeamento_autores_por_capitulos_tcc.xlsx). 9 chaves alinhadas (22 ocorr?ncias) ?s chaves reais do .bib. 4 chaves remanescentes sem equivalente (vignoli2018, tonatto2020, beer2003, kassapoglou2021) registradas como depend?ncia REF-01d."
+    "NOR-03 conclu?da (06/11/2026): alinhamento das chaves BibTeX na tabela de mapeamento (mapeamento_autores_por_capitulos_tcc.xlsx). 9 chaves alinhadas (22 ocorr?ncias) ?s chaves reais do .bib. 4 chaves remanescentes sem equivalente (vignoli2018, tonatto2020, beer2003, kassapoglou2021) registradas como depend?ncia REF-01d.",
+    "CIT-03 iniciada: fatia 03.01 (L44-L78, 15 marcadores NR-13) concluída. Todos os 15 grupos substituídos por brasil_nr13_2022. Cite malformado em comentário (L50) corrigido. 170 marcadores restantes em 13 fatias.",
+    "CIT-03: fatias 03.01 e 03.02 concluídas (25 marcadores NR-13 -> brasil_nr13_2022). 160 marcadores restantes em 12 fatias. Cite malformado em comentário (L50) corrigido.",
+    "CIT-03: fatias 03.01-03.03 concluídas (30 marcadores: 25 NR-13 + 15 ASME, com 10 do 03.02). 155 marcadores restantes em 11 fatias. Cite malformado em comentário (L110) corrigido.",
+    "CIT-03: fatias 03.01-03.04 concluídas (36 marcadores: 25 NR-13 + 15 ASME, com 10 do 03.02 e 6 do 03.04). 149 marcadores restantes em 10 fatias. Cite malformado em comentário (L110) corrigido.",
+    "CIT-03: fatias 03.01-03.05 concluídas (47 marcadores: 25 NR-13 + 15 ASME + 11 elasticidade clássica). 138 marcadores restantes em 9 fatias. Variedade: Sadd2009 x2, lai2010continuum x6, Timoshenko_1951 x2, RMJones2018 x1.",
+    "CIT-03: fatias 03.01-03.06 concluídas (53 marcadores). 132 marcadores restantes em 8 fatias. Variedade: brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, lai2010continuum x7, Sadd2009 x6, Timoshenko_1951 x2, RMJones2018 x2.",
+    "CIT-03: fatias 03.01-03.07 concluídas (69 marcadores). 116 marcadores restantes em 7 fatias. Variedade: brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, lai2010continuum x13, Sadd2009 x10, Backus1962 x6, Timoshenko_1951 x3, bakhvalov1989 x2, PartonReport x1, RMJones2018 x1.",
+    "CIT-03: fatias 03.01-03.08 concluídas (84 marcadores). 101 marcadores restantes em 6 fatias. Variedade: brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, RMJones2018 x11, lai2010continuum x13, Sadd2009 x12, Backus1962 x6, Timoshenko_1951 x3, bakhvalov1989 x2, PartonReport x2.",
+    "CIT-03: fatias 03.01-03.12 concluídas (95 marcadores). 90 marcadores restantes em 2 fatias (03.13, 03.14a, 03.14b). Variedade: brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, lai2010continuum x13, Sadd2009 x14, Backus1962 x11, Timoshenko_1951 x3, bakhvalov1989 x4, PartonReport x2, logg2012automated x1, leitzke2017 x1, Guinovart2024 x1, RMJones2018 x1.",
+    "CIT-03: fatias 03.01-03.13 concluídas (107 marcadores). 78 marcadores restantes (fatia 03.14). Variedade: brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, lai2010continuum x13, Sadd2009 x17, Backus1962 x11, Timoshenko_1951 x4, bakhvalov1989 x4, PartonReport x2, logg2012automated x7, leitzke2017 x1, Guinovart2024 x1, RMJones2018 x1.",
+    "CIT-03 concluída (07/11/2026): 185 marcadores numéricos removidos em 02_revisao_bibliografica.tex (0 restantes, excl. índices de Voigt em bloco Typst comentado L227-L244). 184 chamadas \\cite (brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, RMJones2018 x11, lai2010continuum x13, Sadd2009 x24, Backus1962 x11, Timoshenko_1951 x4, bakhvalov1989 x4, PartonReport x2, logg2012automated x16, leitzke2017 x1, Guinovart2024 x1, beer1989resistencia x1). Correções incidentais: cite malformado (L110, L23, L27). Compilação não executada (Overleaf)."
   ],
-  "proximo_passo": "NOR-03 conclu?da. REF-01 conclu?da (com ressalvas). Pr?xima tarefa autorizada a definir (sugest?o: CIT-03 Cap. 2 ??2.1-2.2, ~125 marcadores).",
+  "proximo_passo": "CIT-03 concluída. Próxima tarefa autorizada a definir (sugestão: CIT-04 Cap. 2 §2.3, ~32 marcadores; ou TEC-01 unificação do Cap. 3).",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

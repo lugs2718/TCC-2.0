@@ -49,6 +49,12 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 - **Achado:** tabela de mapeamento usa chaves inexistentes no `.bib` (dependência NOR-03).
 - **Arquivos:** `bibliografia.bib`, `fase_0_diagnostico_e_inventario.md`.
 
+### 1.8 Tabela de Mapeamento (`mapeamento_autores_por_capitulos_tcc.xlsx`) — Tarefa NOR-03 Concluída (06/11/2026)
+- **Escopo:** alinhamento das chaves BibTeX na Coluna D da tabela de mapeamento às chaves reais do `.bib`.
+- **Alterações:** 9 chaves alinhadas (22 ocorrências): `@jones2018mechanics`→`@RMJones2018`, `@pereira2024`→`@Pereira2025`, `@sadd2009elasticity`→`@Sadd2009`, `@asme2019`→`@asme_sec8_div1_2019`, `@nr13_2023`→`@brasil_nr13_2022`, `@parton_reducido`→`@PartonReport`, `@fenics2012`→`@logg2012automated`, `@timoshenko1970`→`@Timoshenko_1951`, `@zhang2022`→`@Zhang2022`. `@backus1962` adicionado nas linhas 4.2.4 e 4.4.1–4.4.2 (na REF-01d).
+- **Ressalvas:** 4 chaves sem equivalente no `.bib` (`@vignoli2018`, `@tonatto2020`, `@beer2003`, `@kassapoglou2021`) — dependência REF-01d se forem citadas.
+- **Arquivos:** `mapeamento_autores_por_capitulos_tcc.xlsx` (backup `.bak`/`.bak2`), `fase_0_diagnostico_e_inventario.md`.
+
 ---
 
 ## 2. Inventário Documental dos Ativos do Projeto
@@ -169,10 +175,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 - [ ] **NOR-02:** **Configuração Pré-Textual e Inspeção Visual Final do PDF**
   - Ajuste da ordem dos elementos pré-textuais (Sumário antes das listas conforme Coluna 2 da EdUFF 2012).
   - Verificação final de paginação, quebras de página e compilação do documento completo.
-- [ ] **NOR-03:** **Alinhamento das Chaves BibTeX na Tabela de Mapeamento (`mapeamento_autores_por_capitulos_tcc.xlsx`)**
-  - Atualizar a Coluna D (Chave BibTeX) para usar as chaves reais do `.bib` (ex.: `Timoshenko_1951` em vez de `@timoshenko1970`, `Sadd2009` em vez de `@sadd2009elasticity`, `logg2012automated` em vez de `@fenics2012`, `PartonReport` em vez de `@parton_reducido`, `Zhang2022` em vez de `@zhang2022`).
-  - Adicionar `@backus1962` nas linhas 4.2.4 e 4.4.1–4.4.2 (já feito).
-  - Motivação: evitar que tarefas futuras (CIT-03 a CIT-06) tentem usar chaves inexistentes.
+- [x] **NOR-03:** **Alinhamento das Chaves BibTeX na Tabela de Mapeamento (`mapeamento_autores_por_capitulos_tcc.xlsx`)** (concluída em 06/11/2026, com ressalvas)
+  - 9 chaves alinhadas às chaves reais do `.bib`: `@jones2018mechanics`→`@RMJones2018`, `@pereira2024`→`@Pereira2025`, `@sadd2009elasticity`→`@Sadd2009`, `@asme2019`→`@asme_sec8_div1_2019`, `@nr13_2023`→`@brasil_nr13_2022`, `@parton_reducido`→`@PartonReport`, `@fenics2012`→`@logg2012automated`, `@timoshenko1970`→`@Timoshenko_1951`, `@zhang2022`→`@Zhang2022` (22 ocorrências no total).
+  - `@backus1962` adicionado nas linhas 4.2.4 e 4.4.1–4.4.2 (já feito na REF-01d).
+  - 4 chaves remanescentes sem equivalente no `.bib` (dependência REF-01d): `@vignoli2018`, `@tonatto2020`, `@beer2003`, `@kassapoglou2021`. Se forem citadas nas tarefas futuras (CIT-03 a CIT-06), será necessário adicionar as entradas correspondentes.
 
 ---
 
@@ -224,7 +230,8 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CIT-00",
     "CIT-01",
     "CIT-02",
-    "REF-01"
+    "REF-01",
+    "NOR-03"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -250,9 +257,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CIT-01 conclu?da (05/11/2026): 85 refer?ncias num?ricas removidas; 14 chamadas \\cite (Sadd2009, Timoshenko_1951, logg2012automated, bakhvalov1989, Zhang2022). B1, B2, B3, B5 resolvidos por reformula??o; B4 resolvido com graus nomeados (A516 Gr.70, 6061-T6) e ?y do a?o ajustado para 260 MPa; B6 reformulado para \"press?o de projeto < 35 MPa\" (Zhang2022). Decis?o C emendada: afirma??es bloqueadas podem ser suavizadas quando n?o houver fonte.",
     "CIT-02 fatiada em 7 micro-lotes (02.1 a 02.4b) por secao, 10-15 citacoes por ciclo, conforme protocolo de economia de tokens. Fatias 02.1, 02.2, 02.3a, 02.3b, 02.3c concluidas (33 marcadores resolvidos). 02.4a proposta com 11 marcadores (Sadd2009, PartonReport, bakhvalov1989, logg2012automated) aguardando validacao. 02.4b pendente (~6 marcadores). Mapeamento de autores consultado em Tabelas/mapeamento_autores_por_capitulos_tcc.xlsx (Cap. 5 -> Timoshenko/Goodier, Bakhvalov/Parton, Logg, Sadd); chaves inexistentes no .bib (lai2010, bensoussan1978, leitzke2017) registradas como dependencia REF-01.",
     "CIT-02 conclu?da (06/11/2026): 82 marcadores num?ricos removidos em 03_1_equilibrio.tex (0 restantes); 82 chamadas \\cite (bakhvalov1989 x32, Sadd2009 x17, logg2012automated x11, Timoshenko_1951 x9, Backus1962 x9, PartonReport x3, LaiBook x1). Fatias 02.1-02.4b conclu?das, incluindo lacunas A (L336-343) e B (L494-507). Backus 1962 verificado no acervo (Refer?ncias - Copia/MHA/backus_homogenization.pdf) e adicionado ao .bib; xlsx atualizado (D15, D18). Notas de autor % ADD/% CHECK removidas. Compila??o n?o executada.",
-    "REF-01 conclu?da (06/11/2026, com ressalvas): 44 entradas no .bib (eram 41; +6 adicionadas: Backus1962, Zhang2022, lai2010continuum, leitzke2017, bensoussan1978, hibbeler2010, astm_a516; ?4 removidas: TaberReport, SatReport, HomogenisationReportBakhvalov, Choi1995_dup). Corrigidas: bakhvalov1989 (author+tipo+publisher), Timoshenko_1951 (tipo+booktitle), Itskov2007 (limpeza scraping), PartonReport (tipo+publisher), agne2024impact (doi), Adali1993 (techReport->article). Chaves citadas: 8/8 existem. Residuais: Heyliger2003 incompleta (mantida por escolha), astm_a516 sem year (a confirmar), Ruan2024 truncada/desbalanceada (pr?-existente). Tarefa NOR-03 adicionada para alinhamento das chaves na tabela de mapeamento."
+    "REF-01 conclu?da (06/11/2026, com ressalvas): 44 entradas no .bib (eram 41; +6 adicionadas: Backus1962, Zhang2022, lai2010continuum, leitzke2017, bensoussan1978, hibbeler2010, astm_a516; ?4 removidas: TaberReport, SatReport, HomogenisationReportBakhvalov, Choi1995_dup). Corrigidas: bakhvalov1989 (author+tipo+publisher), Timoshenko_1951 (tipo+booktitle), Itskov2007 (limpeza scraping), PartonReport (tipo+publisher), agne2024impact (doi), Adali1993 (techReport->article). Chaves citadas: 8/8 existem. Residuais: Heyliger2003 incompleta (mantida por escolha), astm_a516 sem year (a confirmar), Ruan2024 truncada/desbalanceada (pr?-existente). Tarefa NOR-03 adicionada para alinhamento das chaves na tabela de mapeamento.",
+    "NOR-03 conclu?da (06/11/2026): alinhamento das chaves BibTeX na tabela de mapeamento (mapeamento_autores_por_capitulos_tcc.xlsx). 9 chaves alinhadas (22 ocorr?ncias) ?s chaves reais do .bib. 4 chaves remanescentes sem equivalente (vignoli2018, tonatto2020, beer2003, kassapoglou2021) registradas como depend?ncia REF-01d."
   ],
-  "proximo_passo": "REF-01 conclu?da (com ressalvas). Pr?xima tarefa autorizada a definir (sugest?o: CIT-03 Cap. 2 ??2.1-2.2, ~125 marcadores; ou NOR-03 alinhamento da tabela de mapeamento).",
+  "proximo_passo": "NOR-03 conclu?da. REF-01 conclu?da (com ressalvas). Pr?xima tarefa autorizada a definir (sugest?o: CIT-03 Cap. 2 ??2.1-2.2, ~125 marcadores).",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

@@ -55,11 +55,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 - **Ressalvas:** 4 chaves sem equivalente no `.bib` (`@vignoli2018`, `@tonatto2020`, `@beer2003`, `@kassapoglou2021`) — dependência REF-01d se forem citadas.
 - **Arquivos:** `mapeamento_autores_por_capitulos_tcc.xlsx` (backup `.bak`/`.bak2`), `fase_0_diagnostico_e_inventario.md`.
 
-### 1.9 Capítulo 2 (Revisão Bibliográfica) — Tarefa CIT-03 Concluída (07/11/2026)
-- **Escopo:** auditoria de citações de `02_revisao_bibliografica.tex` (185 marcadores numéricos legados em 106 grupos; inventário inicial dizia 136 — recontagem corrigida).
-- **Resultado:** 185 marcadores → 0 (excl. índices de Voigt em bloco Typst comentado, L227–L244). 184 chamadas `\cite` (`brasil_nr13_2022` ×25, `asme_sec8_div1_2019` ×21, `RMJones2018` ×11, `lai2010continuum` ×13, `Sadd2009` ×24, `Backus1962` ×11, `Timoshenko_1951` ×4, `bakhvalov1989` ×4, `PartonReport` ×2, `logg2012automated` ×16, `leitzke2017` ×1, `Guinovart2024` ×1, `beer1989resistencia` ×1). Correções incidentais: `\cite` malformado em comentário (L110) e `\cite{eq-tensao-...}` → `\eqref{}` (L23, L27).
-- **Fatiamento:** 14 micro-lotes (03.01 a 03.14), concluídos em 07/11/2026.
-- **Arquivos:** `citacao_CIT-03.md` (relatório consolidado), `02_revisao_bibliografica.tex`.
+### 1.10 Capítulo 3 (Unificação) — Tarefa TEC-01 Concluída (07/11/2026)
+- **Escopo:** unificação estrutural e consistência algébrica do Capítulo 3 (fusão de `03_1_equilibrio.tex` e `03_2_homogeneizacao.tex`).
+- **Resultado:** arquivo merged com 753 linhas, 1 `\chapter`, 10 `\section`, 14 `\subsection`. `main.tex` atualizado (03_2 comentado). 3 `\marginpar` removidos (lei de Hooke local, tensor de elasticidade reduzido, regra da cadeia — conteúdo ao redor os endereça). Conferência estrutural: 77 labels (0 duplicados), 46 refs/eqrefs (0 targets ausentes), 86 `\cite` (0 chaves ausentes). Equações do problema local (χ¹, χ²) e constantes efetivas (Ĉ₁₁, Ĉ₁₂, Ĉ₂₂, Ĝ) na parte merged são consistentes com a formulação do Cap. 3.
+- **Arquivos:** `03_1_equilibrio.tex` (merged), `main.tex`.
 
 ---
 
@@ -130,10 +129,12 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - Conversão dos `[nn]` para `@bakhvalov1989`, `@bensoussan1978`, `@leitzke2017`, `@guinovart2015`.
 
 #### Capítulo 3 — Formulação Matemática e Homogeneização
-- [ ] **TEC-01:** **Unificação Estrutural e Consistência Algébrica do Capítulo 3**
-  - Fusão dos arquivos `03_1_equilibrio.tex` e `03_2_homogeneizacao.tex` sob um único comando `\chapter`, transformando a segunda parte em `\section`.
-  - Resolução das notas de autor: explicitação da expansão do operador diferencial pela regra da cadeia e inserção da lei de Hooke local.
-  - Conferência analítica das funções de perturbação $\chi^1(y)$, $\chi^2(y)$ e das constantes efetivas de Backus ($\hat{\mathcal{C}}_{11}, \hat{\mathcal{C}}_{12}, \hat{\mathcal{C}}_{22}, \hat{G}$).
+- [x] **TEC-01:** **Unificação Estrutural e Consistência Algébrica do Capítulo 3** [Concluída em 07/11/2026]
+  - Fusão de `03_1_equilibrio.tex` e `03_2_homogeneizacao.tex` sob um único `\chapter`: 03_2 convertido em `\section{Método de Homogeneização Assintótica}` + `\subsection{Aplicando o Método de Homogeneização}`. Arquivo resultante: 753 linhas, 1 `\chapter`, 10 `\section`, 14 `\subsection`.
+  - `main.tex` atualizado: `\include{capitulos/03_2_homogeneizacao}` comentado (L209). Capítulo 3 agora compila como unidade única.
+  - Notas de autor (`\marginpar`) resolvidas e removidas: lei de Hooke local (L688), tensor de elasticidade reduzido (L710), regra da cadeia (L712) — conteúdo ao redor as endereça.
+  - Conferência estrutural: 77 labels (0 duplicados), 46 refs/eqrefs (0 targets ausentes), 86 `\cite` (0 chaves ausentes). Equações do problema local (χ¹, χ²) e constantes efetivas (Ĉ₁₁, Ĉ₁₂, Ĉ₂₂, Ĝ) na parte merged são consistentes com a formulação do Cap. 3 (mesmas equações `eq:local_eq1`, `eq:local_eq2`, `eq:cell_chi1`, `eq:cell_chi2`).
+  - Arquivos: `03_1_equilibrio.tex` (merged), `main.tex`.
 - [ ] **CIT-05 (legado) → CIT-02:** **Auditoria de Citações e Rastreabilidade do Capítulo 3**
   - Conversão das chamadas numéricas nas equações diferenciais em coordenadas cilíndricas para as referências canônicas (Lai, Sadd, Timoshenko, Bakhvalov).
 
@@ -238,7 +239,8 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CIT-02",
     "REF-01",
     "NOR-03",
-    "CIT-03"
+    "CIT-03",
+    "TEC-01"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -276,9 +278,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CIT-03: fatias 03.01-03.08 concluídas (84 marcadores). 101 marcadores restantes em 6 fatias. Variedade: brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, RMJones2018 x11, lai2010continuum x13, Sadd2009 x12, Backus1962 x6, Timoshenko_1951 x3, bakhvalov1989 x2, PartonReport x2.",
     "CIT-03: fatias 03.01-03.12 concluídas (95 marcadores). 90 marcadores restantes em 2 fatias (03.13, 03.14a, 03.14b). Variedade: brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, lai2010continuum x13, Sadd2009 x14, Backus1962 x11, Timoshenko_1951 x3, bakhvalov1989 x4, PartonReport x2, logg2012automated x1, leitzke2017 x1, Guinovart2024 x1, RMJones2018 x1.",
     "CIT-03: fatias 03.01-03.13 concluídas (107 marcadores). 78 marcadores restantes (fatia 03.14). Variedade: brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, lai2010continuum x13, Sadd2009 x17, Backus1962 x11, Timoshenko_1951 x4, bakhvalov1989 x4, PartonReport x2, logg2012automated x7, leitzke2017 x1, Guinovart2024 x1, RMJones2018 x1.",
-    "CIT-03 concluída (07/11/2026): 185 marcadores numéricos removidos em 02_revisao_bibliografica.tex (0 restantes, excl. índices de Voigt em bloco Typst comentado L227-L244). 184 chamadas \\cite (brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, RMJones2018 x11, lai2010continuum x13, Sadd2009 x24, Backus1962 x11, Timoshenko_1951 x4, bakhvalov1989 x4, PartonReport x2, logg2012automated x16, leitzke2017 x1, Guinovart2024 x1, beer1989resistencia x1). Correções incidentais: cite malformado (L110, L23, L27). Compilação não executada (Overleaf)."
+    "CIT-03 concluída (07/11/2026): 185 marcadores numéricos removidos em 02_revisao_bibliografica.tex (0 restantes, excl. índices de Voigt em bloco Typst comentado L227-L244). 184 chamadas \\cite (brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, RMJones2018 x11, lai2010continuum x13, Sadd2009 x24, Backus1962 x11, Timoshenko_1951 x4, bakhvalov1989 x4, PartonReport x2, logg2012automated x16, leitzke2017 x1, Guinovart2024 x1, beer1989resistencia x1). Correções incidentais: cite malformado (L110, L23, L27). Compilação não executada (Overleaf).",
+    "TEC-01 concluída (07/11/2026): fusão de 03_1_equilibrio.tex e 03_2_homogeneizacao.tex sob um único \\chapter (753 linhas, 10 sections, 14 subsections). main.tex atualizado (03_2 comentado). 3 marginpar removidos (lei de Hooke local, tensor reduzido, regra da cadeia). Conferência estrutural: 77 labels (0 duplicados), 46 refs (0 ausentes), 86 cites (0 chaves ausentes)."
   ],
-  "proximo_passo": "CIT-03 concluída. Próxima tarefa autorizada a definir (sugestão: CIT-04 Cap. 2 §2.3, ~32 marcadores; ou TEC-01 unificação do Cap. 3).",
+  "proximo_passo": "TEC-01 concluída. Próxima tarefa autorizada a definir (sugestão: TEC-02 Cap. 4 — consistência físico-matemática do MEF; ou CIT-04 Cap. 2 §2.3, ~32 marcadores; ou CON-03 conclusão).",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

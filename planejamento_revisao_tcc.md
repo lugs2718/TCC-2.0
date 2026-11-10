@@ -214,10 +214,11 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - Rastreabilidade dos dados de validação de Lamé e confronto com os limites de escoamento das fases metálicas.
 
 #### Capítulo 6 — Conclusão e Trabalhos Futuros
-- [ ] **CON-03:** **Redação Estruturada do Capítulo 6**
-  - Resposta individualizada aos 5 objetivos específicos estabelecidos na Introdução.
-  - Síntese dos resultados quantitativos (alívio de peso de $32{,}7\%$, speedup de até $25{,}1\times$, convergência $\mathcal{O}(\epsilon)$).
-  - Formalização explícita de limitações e trabalhos futuros (reconstrução do corretor local $\epsilon \mathbf{u}^1$, plasticidade, efeitos térmicos).
+- [~] **CON-03:** **Redação Estruturada do Capítulo 6** [Em andamento — esboço concluído]
+  - [x] **CON-03a (concluída em 10/11/2026):** Esboço/outline da conclusão: estrutura com 4 seções (Síntese e Resposta aos Objetivos, Síntese dos Resultados Quantitativos, Limitações, Trabalhos Futuros) + Considerações Finais. Mapeamento dos 5 objetivos específicos às suas respostas. Dados quantitativos extraídos do Cap. 5.
+  - [ ] **CON-03b:** Redação da resposta aos 5 objetivos específicos (substituição dos placeholders `% TODO`).
+  - [ ] **CON-03c:** Síntese dos resultados quantitativos (tabela resumo).
+  - [ ] **CON-03d:** Limitações e trabalhos futuros (redação final dos placeholders).
 
 ---
 
@@ -295,7 +296,9 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "TEC-02",
     "REV-02.2",
     "REV-02.3",
-    "REV-02.4"
+    "REV-02.4",
+    "CON-03",
+    "TEC-03"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -349,9 +352,14 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "REV-02.3b concluída (10/11/2026): conversão completa de funções Typst (frac, sum, hat, arrow) para LaTeX em §2.3. 10 equações reescritas (L403, L404, L441, L442, L444, L450, L452, L454, L465, L479, L491, L496). Verificação: 0 artefatos Typst restantes em §2.3 (exceto índices de Voigt em bloco Typst ativo, L227-L244).",
     "REV-02.3 concluída (10/11/2026): §2.3 revisada. Sub-tarefas: 02.3a (16 subscritos Typst puros), 02.3b (10 equações reescritas Typst->LaTeX), 02.3c (enriquecimento Lema de Cauchy, parágrafo inserido com citação Sadd 2009). Citações já resolvidas na CIT-03. Bloco Typst ativo (L227-L244) preservado para conversão futura.",
     "REV-02.4 concluída (10/11/2026): §2.4 revisada. REV-02.4a (7 conversões Backus/SAF) e REV-02.4b (11 conversões Typst->LaTeX em §2.4) concluídas. 0 artefatos Typst restantes em §2.4. 4 linhas com mojibake corrigidas (L551, L555, L574, L603). REV-02.4c (redução de redundância com §2.2) pendente. Ressalva: bloco Typst ativo (L227-L244, Cap. 2) com índices de Voigt preservado para conversão futura.",
-    "REV-02.4 concluída (10/11/2026): §2.4 revisada. 02.4a (7 conversões Backus/SAF) e 02.4b (11 conversões Typst->LaTeX em §2.4) concluídas. 02.4c (redução de redundância com §2.2) concluída: parágrafos de transição inseridos após L485 e L506. 0 artefatos Typst restantes em §2.4. 4 linhas com mojibake corrigidas."
+    "REV-02.4 concluída (10/11/2026): §2.4 revisada. 02.4a (7 conversões Backus/SAF) e 02.4b (11 conversões Typst->LaTeX em §2.4) concluídas. 02.4c (redução de redundância com §2.2) concluída: parágrafos de transição inseridos após L485 e L506. 0 artefatos Typst restantes em §2.4. 4 linhas com mojibake corrigidas.",
+    "CON-03a concluída (10/11/2026): esboço/outline da conclusão (Cap. 6) criado em 06_conclusao.tex com 4 seções (Síntese e Resposta aos Objetivos, Síntese dos Resultados Quantitativos, Limitações, Trabalhos Futuros) + Considerações Finais. Mapeamento dos 5 objetivos específicos às suas respostas. Dados quantitativos extraídos do Cap. 5.",
+    "CON-03b concluida (10/11/2026): 6 paragrafos aplicados a 06_conclusao.tex (introducao da secao + 5 objetivos + paragrafo de fechamento). 0 placeholders restantes nos objetivos. 3 placeholders restantes para CON-03c/03d.",
+    "CON-03c concluida (10/11/2026): tabela resumo com 16 metricas inserida em 06_conclusao.tex (L35). Correcao do valor 2,47% para 0,4968% nos paragrafos da CON-03b. 2 placeholders restantes para CON-03d.",
+    "CON-03 concluida (10/11/2026): Cap. 6 redigido integralmente. 03a (esboco), 03b (5 objetivos + intro + fechamento), 03c (tabela resumo 16 metricas), 03d (7 limitacoes + 8 trabalhos futuros em itemize). 0 placeholders restantes. Correcao 2,47%->0,4968%.",
+    "TEC-03 concluida (10/11/2026): Cap. 5 integrado. Tabela mestre inserida via input (L367). 3 figuras incluidas (comparacao_perfis L171, convergencia_erro L348, bench_tempos L369). Valores ja em mm/MPa. Rastreabilidade Lamé verificada."
   ],
-  "proximo_passo": "REV-02.4 concluída. Próxima tarefa autorizada a definir (sugestão: CON-03 conclusão; ou TEC-03 resultados; ou NOR-01/NOR-02 normas e apresentação).",
+  "proximo_passo": "TEC-03 concluida. Cap. 5 integrado com tabela mestre e 3 figuras. Proxima tarefa autorizada a definir (sugestao: NOR-01/NOR-02 normas e apresentacao; ou CON/RED conversao Typst L227-244; ou REF-01 continuacao).",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

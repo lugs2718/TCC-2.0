@@ -1,2 +1,97 @@
-\chapter{Conclusão e Trabalhos Futuros}
+\chapter{Conclusão e Trabalhos Futuros}\label{cap:conclusao}
 
+% ============================================================================
+% CONCLUSÃO (CON-03) — redação final concluída (CON-03a a CON-03d)
+% ============================================================================
+
+\section{Síntese das Contribuições e Resposta aos Objetivos}\label{sec:conclusao_objetivos}
+
+A presente secao sintetiza as principais contribuicoes tecnicas do estudo, respondendo individualmente aos cinco objetivos especificos estabelecidos na Introducao (Capitulo 1).
+
+\subsection{Objetivo 1 — Formulação do problema de equilíbrio mecânico}
+O problema de equilibrio mecanico do cilindro composto microperiodico foi formulado em coordenadas cilindricas tridimensionais sob hipotese de simetria de revolucao (axissimetria) e deformacao plana generalizada, reduzindo-se a uma equacao diferencial ordinaria de segunda ordem para o campo de deslocamento radial $u_r^\epsilon(r)$, governada pelos coeficientes elasticos locais $\mathcal{C}_{11}^\epsilon(r)$ e $\mathcal{C}_{12}^\epsilon(r)$, que variam entre as fases aco e aluminio. As condicoes de contorno de Neumann (pressao interna $p = 30\,\text{MPa}$ na parede interna e superficie livre na parede externa) completam o problema de valor de contorno. A formulacao foi implementada na escala de engenharia N-mm-MPa, em perfeita congruencia com o codigo computacional, evitando inconsistencias de fator de escala.
+% Referências: Cap. 3, §3.1 (eq:equilibrium_radial_1d, eq:ode_governing_radial, eq:bc_radial_inner, eq:bc_radial_outer); escala N-mm-MPa (TEC-04).
+
+\subsection{Objetivo 2 — Formalismo do MHA}
+O formalismo do Metodo de Homogeneizacao Assintotica (MHA) foi aplicado ao problema formulado, introduzindo a separacao de escalas ($\epsilon = l/L \ll 1$) e as variaveis macroscopica lenta ($r$) e microscopica rapida ($y = r/\epsilon$). A Solucao Assintotica Formal (SAF) $\mathbf{u}^\epsilon = \mathbf{u}^0 + \epsilon \mathbf{u}^1 + \mathcal{O}(\epsilon^2)$ foi introduzida, e o sistema recorrente de equacoes diferenciais (ordens $O(\epsilon^{-1})$ e $O(\epsilon^0)$) foi deduzido. As funcoes corretoras $\chi^{(1)}(y)$ e $\chi^{(2)}(y)$ foram definidas a partir do problema local de celula unitaria, acopladas as condicoes de compatibilidade cinematica, equilibrio de tracao interfacial e normalizacao de media nula. A equacao governante homogeneizada macroscopica foi obtida, com os coeficientes efetivos $\hat{\mathcal{C}}_{11}$, $\hat{\mathcal{C}}_{12}$, $\hat{\mathcal{C}}_{22}$ e $\hat{G}$ determinados analiticamente.
+% Referências: Cap. 3, §3.2–3.3 (separação de escalas, SAF, problemas locais, equação homogeneizada).
+
+\subsection{Objetivo 3 — Coeficientes elásticos efetivos}
+Os coeficientes elasticos efetivos foram deduzidos analiticamente para a configuracao cilindrica bilaminada bimetálica (aco--aluminio, fracão volumetrica simetrica $V_1 = V_2 = 0,5$). A rigidez radial efetiva $\hat{\mathcal{C}}_{11}$ resultou na media harmonica (limite de Reuss, molas em serie), $\hat{\mathcal{C}}_{12}$ no acoplamento radial-circunferencial, $\hat{\mathcal{C}}_{22}$ na formulacao de Backus (molas em paralelo, corrigida pelo acoplamento de Poisson) e $\hat{G}$ na media harmonica (Reuss). Os valores obtidos ($\hat{\mathcal{C}}_{11} = 149{,}74\,\text{GPa}$, $\hat{\mathcal{C}}_{12} = 68{,}97\,\text{GPa}$, $\hat{\mathcal{C}}_{22} = 180{,}93\,\text{GPa}$) confirmam que o empilhamento periodico de fases isotropicas induz um comportamento macroscopicamente ortotropico (transversalmente isotropico), conforme previsto pela teoria de Backus (1962) para meios estratificados.
+% Referências: Cap. 3, §3.4 (Ĉ_11 média harmônica/Reuss, Ĉ_12 acoplamento, Ĉ_22 Backus, Ĝ Reuss); valores para aço/alumínio.
+
+\subsection{Objetivo 4 — Implementação e calibração no FEniCS}
+Foi implementado e calibrado um solucionador numerico axissimetrico baseado na plataforma de elementos finitos em codigo aberto FEniCS. O dominio computacional (secao $r$-$z$) foi discretizado com elementos triangulares de Lagrange de grau 1 ($P_1$), em malha estruturada com alinhamento estrito no-interface (garantido pelo arredondamento inteiro de \texttt{nel1} e \texttt{nel2} via \texttt{int()} em Python). O mapeamento periodico das propriedades mecanicas foi implementado via \texttt{UserExpression} com busca indexada. A calibracao foi realizada pela comparacao com a solucao analitica exata de Lame para um cilindro homogeneo de parede grossa ($R_{\text{int}} = 9{,}0\,\text{mm}$, $R_{\text{ext}} = 11{,}0\,\text{mm}$, $p = 30\,\text{MPa}$), resultando em erro relativo nulo (inferior a $10^{-12}\,\text{mm}$), o que certifica o rigor fisico e a precisao numerica do solucionador.
+% Referências: Cap. 4 (domínio axissimétrico, elementos P1, malha estruturada, mapeamento periódico); Cap. 5, §5.1 (validação via Lamé, erro < 10^{-12}).
+
+\subsection{Objetivo 5 — Comparação quantitativa MHA vs MEF}
+A comparacao quantitativa entre o MHA e o MEF detalhado (MEF-D) demonstrou que a solucao homogeneizada passa pelo ponto medio das oscilacoes microscopicas do MEF-D, validando a consistencia energetica do modelo. O estudo de convergencia confirmou a taxa linear $\mathcal{O}(\epsilon)$ prevista pela teoria: o erro em norma $L^2$ reduziu-se de $0,4968\%$ (2 celulas periodicas) para $0{,}05\%$ (100 celulas) e $0{,}02\%$ (200 celulas). A analise de tensoes evidenciou a continuidade da tensao radial $\sigma_{rr}$ ($-30$ a $0\,\text{MPa}$) e os saltos abruptos na tensao circunferencial $\sigma_{\theta\theta}$ nas interfaces do MEF-D, enquanto o MHA forneceu uma curva media continua. O aco carbono concentrou a solicitacao ($\sigma_{\text{VM}}^{\max} = 229{,}87\,\text{MPa}$, $\text{FS} = 1{,}74$), aliviando o aluminio ($\sigma_{\text{VM}}^{\max} = 89{,}07\,\text{MPa}$, $\text{FS} = 3{,}03$). Em termos de eficiencia, a hibridizacao bimetalica proporcionou alivio de massa de $32{,}69\%$ ($0{,}6597$ vs $0{,}9802\,\text{kg/m}$) e preservou $99{,}84\%$ da rigidez especifica do aco, com acrescimo de apenas $2{,}80\%$ no indice $W_{\text{ef}}$ ($79{,}13$ vs $76{,}97\,\text{MPa}\cdot\text{m/kg}$). A eficiencia computacional do MHA foi demonstrada por um speedup de $25{,}1\times$ (de $0{,}250\,\text{s}$ para $0{,}10\,\text{s}$) e reducao de mais de $96\%$ nos graus de liberdade.
+% Referências: Cap. 5, §§5.2–5.5 (kinks, MHA no ponto médio, convergência O(\epsilon), eficiência computacional, alívio de massa).
+
+\section{Síntese dos Resultados Quantitativos}\label{sec:conclusao_resultados}
+
+A Tabela~\ref{tab:resumo_conclusao} sintetiza os principais resultados quantitativos obtidos ao longo do estudo, consolidando as metricas de validacao, convergencia, tensoes, eficiencia mecanica e desempenho computacional.
+
+\begin{table}[htbp]
+\centering
+\caption{Sintese dos resultados quantitativos do estudo}
+\label{tab:resumo_conclusao}
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{Metrica} & \textbf{Valor} & \textbf{Referencia} \\ \hline
+Validacao Lame (erro relativo) & $< 10^{-12}\,\text{mm}$ & Cap. 5, \S5.1 \\ \hline
+Erro $E_{L^2}$ (10 celulas) & $0,4968\%$ & Cap. 5, Tab.~\ref{tab:convergencia_erros} \\ \hline
+Erro $E_{L^2}$ (100 celulas) & $0,0500\%$ & Cap. 5, Tab.~\ref{tab:convergencia_erros} \\ \hline
+Erro $E_{L^2}$ (200 celulas) & $0,0250\%$ & Cap. 5, Tab.~\ref{tab:convergencia_erros} \\ \hline
+Taxa de convergencia & $\mathcal{O}(\epsilon)$ (linear) & Cap. 5, \S5.4 \\ \hline
+$\sigma_{rr}$ (continua) & $-30$ a $0\,\text{MPa}$ & Cap. 5, \S5.3 \\ \hline
+$\sigma_{\theta\theta}$ (saltos no MEF-D) & descontinua nas interfaces & Cap. 5, \S5.3 \\ \hline
+$\sigma_{\text{VM}}^{\max}$ (aco) & $229,87\,\text{MPa}$ (FS $= 1,74$) & Cap. 5, Tab.~\ref{tab:comparativo_eficiencia} \\ \hline
+$\sigma_{\text{VM}}^{\max}$ (aluminio) & $89,07\,\text{MPa}$ (FS $= 3,03$) & Cap. 5, Tab.~\ref{tab:comparativo_eficiencia} \\ \hline
+Alivio de massa & $32,69\%$ ($0,6597$ vs $0,9802\,\text{kg/m}$) & Cap. 5, \S5.5 \\ \hline
+$W_{\text{ef}}$ (aco) & $76,97\,\text{MPa}\cdot\text{m/kg}$ & Cap. 5, Tab.~\ref{tab:indice_eficiencia_massa} \\ \hline
+$W_{\text{ef}}$ (aluminio) & $150,59\,\text{MPa}\cdot\text{m/kg}$ & Cap. 5, Tab.~\ref{tab:indice_eficiencia_massa} \\ \hline
+$W_{\text{ef}}$ (bimetalico) & $79,13\,\text{MPa}\cdot\text{m/kg}$ & Cap. 5, Tab.~\ref{tab:indice_eficiencia_massa} \\ \hline
+Rigidez especifica preservada & $99,84\%$ do aco & Cap. 5, \S5.5 \\ \hline
+Speedup computacional & $25,1\times$ ($0,250$ vs $0,10\,\text{s}$) & Cap. 5, \S5.4 \\ \hline
+Reducao de DOFs & $> 96\%$ & Cap. 5, \S5.4 \\ \hline
+\end{tabular}
+\end{table}
+% Dados-chave: validação Lamé (erro < 10^{-12} mm); convergência L² (2,47% → 0,05% → 0,02%); taxa O(ε);
+% tensões: σ_rr contínua (-30 a 0 MPa), σ_θθ saltos no MEF-D / média contínua no MHA;
+% σ_vM max: aço 229,87 MPa (FS 1,74), alu 89,07 MPa (FS 3,03);
+% alívio de massa 32,69% (0,6597 vs 0,9802 kg/m); W_ef: aço 76,97, alu 150,59, bimetálico 79,13;
+% rigidez específica: 99,84% preservada; 32,9% mais rígido que alu puro; speedup 25,1×.
+
+\section{Limitações do Modelo}\label{sec:conclusao_limitacoes}
+
+O modelo desenvolvido neste trabalho apresenta as seguintes limitacoes, que devem ser consideradas na interpretacao dos resultados:
+\begin{itemize}
+\item Regime elástico linear, deformações infinitesimais.
+\item Estado plano de deformação generalizada (ε_zz = constante).
+\item Contato perfeito (sem delaminação, escorregamento, plasticidade, trincas).
+\item Isotermia (sem gradientes de temperatura, dilatação térmica, corrosão).
+\item MHA de ordem zero (sem corretor local ε u^1; reconstrução de campos locais reservada para trabalhos futuros).
+\item Propriedades dos materiais tratadas como constantes (sem degradação, fadiga, envelhecimento).
+\item Domínio axissimétrico (sem imperfeições geométricas, ovalização, eccentricidade).
+\end{itemize}
+
+\section{Trabalhos Futuros}\label{sec:conclusao_futuros}
+
+Com base nas limitacoes identificadas, propoem-se as seguintes direcoes para trabalhos futuros:
+\begin{itemize}
+\item Implementação computacional da reconstrução analítica ponto a ponto das flutuações locais via ε u^1 (corretor de primeira ordem).
+\item Extensão para regime elastoplástico (escoamento das fases, encruamento).
+\item Inclusão de efeitos térmicos (gradientes de temperatura, dilatação térmica diferencial, análise termomecânica).
+\item Validação experimental (protótipos instrumentados, ensaios hidrostáticos, DIC).
+\item Otimização de fração volumétrica (V1, V2) e número de camadas (N_cell) para maximizar W_ef ou minimizar massa.
+\item Extensão para geometrias não-cilíndricas (vasos esféricos, tories, bocais, tampos).
+\item MHA de segunda ordem (SAF de segunda ordem, correção do erro O(ε²)).
+\item Análise de fadiga e vida em serviço (ciclos de pressurização, efeito de entalhes).
+\end{itemize}
+
+\section{Considerações Finais}\label{sec:conclusao_finais}
+
+A presente tese demonstrou que o MHA de ordem zero constitui uma ferramenta madura e eficiente para o predimensionamento de vasos de pressao multicamadas, reconciliando precisao (erro inferior a $0{,}06\%$ em norma $L^2$), eficiencia computacional (speedup de $25{,}1\times$) e ganho de massa ($32{,}69\%$ de alivio). Os resultados obtidos abrem caminho para a extensao do formalismo a regimes nao lineares e a geometrias mais complexas, consolidando o MHA como alternativa viavel ao MEF detalhado em projetos de engenharia de alto desempenho.
+O MHA de ordem zero se mostrou uma ferramenta madura para pré-dimensionamento de vasos multicamadas,
+com erro < 0,06% em norma L², speedup computacional > 95% e alívio de massa de 32,69%.

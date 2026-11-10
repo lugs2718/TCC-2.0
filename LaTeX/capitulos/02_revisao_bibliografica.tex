@@ -214,24 +214,21 @@ A introdução da simetria maior dada pela \eqref{eq:sym_major} impõe que a mat
 
 Com o intuito de simplificar a manipulação algébrica e a implementação computacional, utiliza-se a Notação de Voigt para contrair os tensores de segunda e quarta ordens em arranjos matriciais de menor dimensão \cite{Sadd2009}. A contração de índices segue o algoritmo padrão de mapeamento para os índices de tensão e deformação normais e cisalhantes :
 
-#align(center)[
-  #table(
-    columns: (2cm, 2cm, 2cm, 2cm),
-    align: center,
-    stroke: 0.5pt,
-    [\textbf{Índice Tensorial $(i j)$}],
-    [\textbf{Índice de Voigt $(\alpha)$}],
-    [\textbf{Tensão Voigt ($sigma_alpha$)}],
-    [\textbf{Deformação Voigt ($epsilon_alpha$)}],
-
-    [11], [1], [$\sigma\textit{1 = \sigma}11$], [$\epsilon\textit{1 = \epsilon}11$],
-    [22], [2], [$\sigma\textit{2 = \sigma}22$], [$\epsilon\textit{2 = \epsilon}22$],
-    [33], [3], [$\sigma\textit{3 = \sigma}33$], [$\epsilon\textit{3 = \epsilon}33$],
-    [23 ou 32], [4], [$\sigma\textit{4 = \tau}23$], [$\epsilon\textit{4 = \gamma}23 = 2 epsilon_23$],
-    [13 ou 31], [5], [$\sigma\textit{5 = \tau}13$], [$\epsilon\textit{5 = \gamma}13 = 2 epsilon_13$],
-    [12 ou 21], [6], [$\sigma\textit{6 = \tau}12$], [$\epsilon\textit{6 = \gamma}12 = 2 epsilon_12$],
-  )
-]
+\begin{table}[htbp]
+\centering
+\caption{Notacao de Voigt: correspondencia entre indices tensoriais e de Voigt.}
+\label{tab:voigt_notation}
+\begin{tabular}{c c c c}
+\hline
+\textbf{Indice Tensorial $(ij)$} & \textbf{Indice de Voigt $(\alpha)$} & \textbf{Tensao Voigt ($\sigma_\alpha$)} & \textbf{Deformacao Voigt ($\epsilon_\alpha$)} \\ \hline
+$11$ & $1$ & $\sigma_1 = \sigma_{11}$ & $\epsilon_1 = \epsilon_{11}$ \\
+$22$ & $2$ & $\sigma_2 = \sigma_{22}$ & $\epsilon_2 = \epsilon_{22}$ \\
+$33$ & $3$ & $\sigma_3 = \sigma_{33}$ & $\epsilon_3 = \epsilon_{33}$ \\
+$23$ ou $32$ & $4$ & $\sigma_4 = \tau_{23}$ & $\epsilon_4 = \gamma_{23} = 2\epsilon_{23}$ \\
+$13$ ou $31$ & $5$ & $\sigma_5 = \tau_{13}$ & $\epsilon_5 = \gamma_{13} = 2\epsilon_{13}$ \\
+$12$ ou $21$ & $6$ & $\sigma_6 = \tau_{12}$ & $\epsilon_6 = \gamma_{12} = 2\epsilon_{12}$ \\ \hline
+\end{tabular}
+\end{table}
 
 É de extrema importância frisar que, ao contrair o tensor de deformações, introduz-se um fator multiplicador de 2 nas componentes cisalhantes ($\gamma\textit{\alpha = 2 \epsilon}(i j)$ para $i \neq  j$), de modo a preservar o trabalho interno virtual $d W = \sigma\textit{(i j) d \epsilon}(i j) = \sigma\textit{\alpha d \epsilon}\alpha$ \cite{Sadd2009}.
 
@@ -240,26 +237,26 @@ Aplicando a notação de Voigt, a Lei de Hooke tridimensional assume a forma mat
 \begin{equation}
   \begin{aligned}
     \begin{bmatrix}
-  \sigma\textit{1 \\
-  \sigma}2 \\
-  \sigma\textit{3 \\
-  \tau}23 \\
-  \tau\textit{13 \\
-  \tau}12
+  \sigma_1 \\
+  \sigma_2 \\
+  \sigma_3 \\
+  \tau_{23} \\
+  \tau_{13} \\
+  \tau_{12}
 \end{bmatrix} = \begin{bmatrix}
-  C\textit{11 & C}12 & C\textit{13 & C}14 & C\textit{15 & C}16 \\
-  C\textit{12 & C}22 & C\textit{23 & C}24 & C\textit{25 & C}26 \\
-  C\textit{13 & C}23 & C\textit{33 & C}34 & C\textit{35 & C}36 \\
-  C\textit{14 & C}24 & C\textit{34 & C}44 & C\textit{45 & C}46 \\
-  C\textit{15 & C}25 & C\textit{35 & C}45 & C\textit{55 & C}56 \\
-  C\textit{16 & C}26 & C\textit{36 & C}46 & C\textit{56 & C}66
+  C_{11} & C_{12} & C_{13} & C_{14} & C_{15} & C_{16} \\
+  C_{12} & C_{22} & C_{23} & C_{24} & C_{25} & C_{26} \\
+  C_{13} & C_{23} & C_{33} & C_{34} & C_{35} & C_{36} \\
+  C_{14} & C_{24} & C_{34} & C_{44} & C_{45} & C_{46} \\
+  C_{15} & C_{25} & C_{35} & C_{45} & C_{55} & C_{56} \\
+  C_{16} & C_{26} & C_{36} & C_{46} & C_{56} & C_{66}
 \end{bmatrix} \begin{bmatrix}
-  \epsilon\textit{1 \\
-  \epsilon}2 \\
-  \epsilon\textit{3 \\
-  \gamma}23 \\
-  \gamma\textit{13 \\
-  \gamma}12
+  \epsilon_1 \\
+  \epsilon_2 \\
+  \epsilon_3 \\
+  \gamma_{23} \\
+  \gamma_{13} \\
+  \gamma_{12}
 \end{bmatrix}
   \end{aligned}
   \label{eq:voigt_matrix_anisotropic}
@@ -272,17 +269,17 @@ A equação \eqref{eq:voigt_matrix_anisotropic} representa a relação constitut
 À medida que o material exibe planos de simetria física ou estrutural em sua microestrutura, o número de constantes elásticas independentes é reduzido de forma sistemática através de leis de transformação de coordenadas tensoriais \cite{lai2010continuum}. Três simetrias elásticas são fundamentais para o entendimento do comportamento dos compósitos estruturais:
 
 \subsubsection{Material Monoclínico (1 Plano de Simetria)}
-Se o material possui um único plano de simetria elástica (por exemplo, o plano $x\textit{1 - x}2$), as propriedades elásticas devem permanecer invariantes sob uma transformação de reflexão em relação a este plano ($x\textit{3' = -x}3$). Isso anula as constantes de acoplamento cisalhante fora do plano, reduzindo o número total de constantes para \textbf{13 componentes} \cite{RMJones2018}:
+Se o material possui um único plano de simetria elástica (por exemplo, o plano $x_1 - x_2$), as propriedades elásticas devem permanecer invariantes sob uma transformação de reflexão em relação a este plano ($x_3' = -x_3$). Isso anula as constantes de acoplamento cisalhante fora do plano, reduzindo o número total de constantes para \textbf{13 componentes} \cite{RMJones2018}:
 
 \begin{equation}
   \begin{aligned}
     [C] = \begin{bmatrix}
-  C\textit{11 & C}12 & C\textit{13 & 0 & 0 & C}16 \\
-  C\textit{12 & C}22 & C\textit{23 & 0 & 0 & C}26 \\
-  C\textit{13 & C}23 & C\textit{33 & 0 & 0 & C}36 \\
-  0 & 0 & 0 & C\textit{44 & C}45 & 0 \\
-  0 & 0 & 0 & C\textit{45 & C}55 & 0 \\
-  C\textit{16 & C}26 & C\textit{36 & 0 & 0 & C}66
+  C_{11} & C_{12} & C_{13} & 0 & 0 & C_{16} \\
+  C_{12} & C_{22} & C_{23} & 0 & 0 & C_{26} \\
+  C_{13} & C_{23} & C_{33} & 0 & 0 & C_{36} \\
+  0 & 0 & 0 & C_{44} & C_{45} & 0 \\
+  0 & 0 & 0 & C_{45} & C_{55} & 0 \\
+  C_{16} & C_{26} & C_{36} & 0 & 0 & C_{66}
 \end{bmatrix}
   \end{aligned}
   \label{eq:monoclinic_stiffness}
@@ -294,50 +291,50 @@ Se o material possui três planos ortogonais de simetria mecânica (como é o ca
 \begin{equation}
   \begin{aligned}
     [C] = \begin{bmatrix}
-  C\textit{11 & C}12 & C_13 & 0 & 0 & 0 \\
-  C\textit{12 & C}22 & C_23 & 0 & 0 & 0 \\
-  C\textit{13 & C}23 & C_33 & 0 & 0 & 0 \\
-  0 & 0 & 0 & C_44 & 0 & 0 \\
-  0 & 0 & 0 & 0 & C_55 & 0 \\
-  0 & 0 & 0 & 0 & 0 & C_66
+  C_{11} & C_{12} & C_{13} & 0 & 0 & 0 \\
+  C_{12} & C_{22} & C_{23} & 0 & 0 & 0 \\
+  C_{13} & C_{23} & C_{33} & 0 & 0 & 0 \\
+  0 & 0 & 0 & C_{44} & 0 & 0 \\
+  0 & 0 & 0 & 0 & C_{55} & 0 \\
+  0 & 0 & 0 & 0 & 0 & C_{66}
 \end{bmatrix}
   \end{aligned}
   \label{eq:orthotropic_stiffness}
 \end{equation}
 
-A relação de deformação-tensão (Lei de Hooke invertida) para materiais ortotrópicos em coordenadas principais é tradicionalmente expressa através de propriedades de engenharia com significado físico direto (Módulos de Young ($E\textit{1, E}2, E\textit{3$), Módulos de Cisalhamento ($G}{12}, G\textit{{13}, G}{23}$) e Coeficientes de Poisson ($\nu\textit{{12}, \nu}{13}, nu_{23}$)) \cite{Sadd2009}:
+A relação de deformação-tensão (Lei de Hooke invertida) para materiais ortotrópicos em coordenadas principais é tradicionalmente expressa através de propriedades de engenharia com significado físico direto (Módulos de Young ($E_1, E_2, E_3$), Módulos de Cisalhamento ($G}{12}, G\textit{{13}, G}{23}$) e Coeficientes de Poisson ($\nu\textit{{12}, \nu}{13}, nu_{23}$)) \cite{Sadd2009}:
 
 \begin{equation}
   \begin{aligned}
     \begin{bmatrix}
-  \epsilon\textit{1 \\
-  \epsilon}2 \\
-  \epsilon\textit{3 \\
-  \gamma}23 \\
-  \gamma\textit{13 \\
-  \gamma}12
+  \epsilon_1 \\
+  \epsilon_2 \\
+  \epsilon_3 \\
+  \gamma_{23} \\
+  \gamma_{13} \\
+  \gamma_{12}
 \end{bmatrix} = \begin{bmatrix}
-  1/E\textit{1 & -\nu}21/E\textit{2 & -\nu}31/E_3 & 0 & 0 & 0 \\
-  -\nu\textit{12/E}1 & 1/E\textit{2 & -\nu}32/E_3 & 0 & 0 & 0 \\
-  -\nu\textit{13/E}1 & -\nu\textit{23/E}2 & 1/E_3 & 0 & 0 & 0 \\
+  1/E_1 & -\nu_{21}/E_2 & -\nu_{31}/E_3 & 0 & 0 & 0 \\
+  -\nu_12/E_1 & 1/E_2 & -\nu_{32}/E_3 & 0 & 0 & 0 \\
+  -\nu_13/E_1 & -\nu_23/E_2 & 1/E_3 & 0 & 0 & 0 \\
   0 & 0 & 0 & 1/G_23 & 0 & 0 \\
   0 & 0 & 0 & 0 & 1/G_13 & 0 \\
   0 & 0 & 0 & 0 & 0 & 1/G_12
 \end{bmatrix} \begin{bmatrix}
-  \sigma\textit{1 \\
-  \sigma}2 \\
-  \sigma\textit{3 \\
-  \tau}23 \\
-  \tau\textit{13 \\
-  \tau}12
+  \sigma_1 \\
+  \sigma_2 \\
+  \sigma_3 \\
+  \tau_{23} \\
+  \tau_{13} \\
+  \tau_{12}
 \end{bmatrix}
   \end{aligned}
   \label{eq:orthotropic_compliance}
 \end{equation}
 
-Como a matriz de flexibilidade $[S] = [C]^(-1)$ é necessariamente simétrica ($S\textit{(\alpha \beta) = S}(\beta \alpha)$), as seguintes equações de reciprocidade (uma generalização da Lei de Betti) devem ser rigorosamente atendidas pelas propriedades elásticas de engenharia \cite{Timoshenko_1951}:
+Como a matriz de flexibilidade $[S] = [C]^(-1)$ é necessariamente simétrica ($S_{(\alpha\beta)} = S_{(\beta\alpha)}$), as seguintes equações de reciprocidade (uma generalização da Lei de Betti) devem ser rigorosamente atendidas pelas propriedades elásticas de engenharia \cite{Timoshenko_1951}:
 
-$ frac(\nu\textit{(i j), E}i) = frac(\nu\textit{(j i), E}j) , \quad text("para") i, j = 1, 2, 3 $ <eq:betti_reciprocity>
+$ \frac{\nu_{(ij)}}{E_i} = \frac{\nu_{(ji)}}{E_j} , \quad \text{para} i, j = 1, 2, 3 $ <eq:betti_reciprocity>
 
 \subsubsection{Material Transversalmente Isotrópico (1 Plano de Isotropia)}
 Se, em qualquer ponto do meio elástico, existe um plano físico no qual as propriedades elásticas são idênticas em todas as direções de forma rotacional, o material é classificado como transversalmente isotrópico \cite{lai2010continuum}. Tomando o plano $2-3$ como o plano de isotropia elástica (no qual as propriedades são invariantes sob qualquer rotação ao longo do eixo $1$), as componentes de rigidez são reduzidas a apenas \textbf{5 constantes elásticas independentes} \cite{lai2010continuum}:
@@ -345,19 +342,19 @@ Se, em qualquer ponto do meio elástico, existe um plano físico no qual as prop
 \begin{equation}
   \begin{aligned}
     [C] = \begin{bmatrix}
-  C\textit{11 & C}12 & C_12 & 0 & 0 & 0 \\
-  C\textit{12 & C}22 & C_23 & 0 & 0 & 0 \\
-  C\textit{12 & C}23 & C_22 & 0 & 0 & 0 \\
-  0 & 0 & 0 & frac(C\textit{22 - C}23 & 2
+  C_{11} & C_{12} & C_{12} & 0 & 0 & 0 \\
+  C_{12} & C_{22} & C_{23} & 0 & 0 & 0 \\
+  C_{12} & C_{23} & C_{22} & 0 & 0 & 0 \\
+  0 & 0 & 0 & \frac{C_{22} - C_{23}}{2}
 \end{bmatrix}, 0, 0;
-    0, 0, 0, 0, C_55, 0;
-    0, 0, 0, 0, 0, C_55
+    0, 0, 0, 0, C_{55}, 0;
+    0, 0, 0, 0, 0, C_{55}
   )
   \end{aligned}
-  \label{eq:transverse\textit{isotropic}stiffness}
+  \label{eq:transverse_isotropic_stiffness}
 \end{equation}
 
-onde o termo de cisalhamento no plano de isotropia é definido pela relação clássica $C\textit{44 = 1/2 (C}22 - C_23)$, análoga à relação elástica linear de materiais puramente isotrópicos \cite{Sadd2009}.
+onde o termo de cisalhamento no plano de isotropia é definido pela relação clássica $C_{44} = \frac{1}{2}(C_{22} - C_{23})$, análoga à relação elástica linear de materiais puramente isotrópicos \cite{Sadd2009}.
 
 \subsection{Origem Física do Comportamento Ortotrópico Cilíndrico Macroscópico}
 
@@ -485,7 +482,7 @@ Historicamente, o problema de determinar propriedades físicas efetivas para mei
 
 1. \textbf{Abordagem de Voigt (Média Aritmética):} Assume que o campo de deformações é perfeitamente uniforme em todo o composto (hipótese de isodeformação ou \textit{isostrain}). A rigidez efetiva equivalente $C_(i j)^V$ é calculada diretamente como a média aritmética ponderada pelas frações volumétricas das fases constituintes:
   $ C_{(ij)}^V = \langle C_{(ij)}(y) \rangle = \sum_{k=1}^{N} V_k C_{(ij)}^{(k)} $ <eq:voigt_mean>
-  onde $V\textit{k$ representa a fração volumétrica da fase $k$ e $C}(i j)^((k))$ seu respectivo coeficiente elástico. Termodinamicamente, o modelo de Voigt estabelece o limite superior absoluto para a rigidez do composto \cite{bakhvalov1989}.
+  onde $V_k$ representa a fração volumétrica da fase $k$ e $C_{(ij)}^{(k)}$ seu respectivo coeficiente elástico. Termodinamicamente, o modelo de Voigt estabelece o limite superior absoluto para a rigidez do composto \cite{bakhvalov1989}.
 
 2. \textbf{Abordagem de Reuss (Média Harmônica):} Assume que o campo de tensões é uniforme ao longo de todo o domínio (hipótese de isotensão ou \textit{isostress}). A compliância efetiva equivalente $S_(i j)^R$ (inverso da rigidez) é expressa como a média ponderada das compliâncias locais:
   \begin{equation}

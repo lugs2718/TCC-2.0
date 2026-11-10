@@ -299,7 +299,8 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "REV-02.4",
     "CON-03",
     "TEC-03",
-    "NOR-01"
+    "NOR-01",
+    "CON-RED"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -359,9 +360,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CON-03c concluida (10/11/2026): tabela resumo com 16 metricas inserida em 06_conclusao.tex (L35). Correcao do valor 2,47% para 0,4968% nos paragrafos da CON-03b. 2 placeholders restantes para CON-03d.",
     "CON-03 concluida (10/11/2026): Cap. 6 redigido integralmente. 03a (esboco), 03b (5 objetivos + intro + fechamento), 03c (tabela resumo 16 metricas), 03d (7 limitacoes + 8 trabalhos futuros em itemize). 0 placeholders restantes. Correcao 2,47%->0,4968%.",
     "TEC-03 concluida (10/11/2026): Cap. 5 integrado. Tabela mestre inserida via input (L367). 3 figuras incluidas (comparacao_perfis L171, convergencia_erro L348, bench_tempos L369). Valores ja em mm/MPa. Rastreabilidade Lamé verificada.",
-    "NOR-01 concluida (10/11/2026): 2 tabelas comparativas convertidas para Quadro (tab:comparativo_eficiencia, tab:comparativo_mef_mha). 5 tabelas numericas convertidas para estilo IBGE (remocao de linhas verticais): tab:parametros_validacao_v3, tab:tensoes_r_int_r_ext, tab:convergencia_erros, tab:indice_eficiencia_massa, tab:resumo_conclusao."
+    "NOR-01 concluida (10/11/2026): 2 tabelas comparativas convertidas para Quadro (tab:comparativo_eficiencia, tab:comparativo_mef_mha). 5 tabelas numericas convertidas para estilo IBGE (remocao de linhas verticais): tab:parametros_validacao_v3, tab:tensoes_r_int_r_ext, tab:convergencia_erros, tab:indice_eficiencia_massa, tab:resumo_conclusao.",
+    "CON-RED concluida (10/11/2026): bloco Typst residual no Cap. 2 (Voigt notation) convertido. Tabela de Voigt -> LaTeX table (tab:voigt_notation). Subscritos Typst convertidos em equacoes matriciais (anisotropica, monoclinica, ortotropica, transversalmente isotropica). Betti reciprocity e Voigt/Reuss convertidos. Ressalva: Typst artifacts em L604-L634 (sec 5 do Cap. 2, Formulacao Variacional) permanecem para tarefa futura."
   ],
-  "proximo_passo": "NOR-01 concluida. Proxima tarefa autorizada a definir (sugestao: NOR-02 configuracao pre-textual e inspecao visual final; ou CON/RED conversao Typst L227-244; ou REF-01 continuacao).",
+  "proximo_passo": "CON-RED concluida. Voigt notation block convertido. Ressalva: Typst artifacts em L604-L634 (Formulacao Variacional Fraca) permanecem. Proxima tarefa autorizada a definir (sugestao: REF-01 continuacao; ou NOR-02 pre-textual; ou nova tarefa para Typst artifacts em L604-L634).",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

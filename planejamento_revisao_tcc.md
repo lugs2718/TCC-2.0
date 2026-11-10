@@ -1,9 +1,28 @@
-# Relatório de Diagnóstico e Inventário do TCC (Fase 0 — Revisão Expandida)
+# Planejamento e Estado da Revisão do TCC (Fase 0 — Revisão Expandida)
 **Projeto:** *Análise de um tubo cilíndrico multicamadas por meio da homogeneização assintótica numérica e método dos elementos finitos*  
 **Autor:** Luiz Gustavo da Silva Pereira  
 **Instituição:** Universidade Federal Fluminense (UFF) — EEIMVR / Departamento de Engenharia Mecânica  
 **Data da Auditoria:** 02 de novembro de 2026 (Consolidação da Etapa 1 e Expansão Estruturada do Backlog)  
 **Status do Projeto:** Fase 0 concluída; CON-01 e TEC-04 concluídas; Backlog expandido em tarefas granulares.
+## 0. Legenda de Escopo das Tarefas (Taxonomia)
+
+Cada tarefa do projeto recebe um identificador estável (`XX-NN`) cujo prefixo indica o **escopo**:
+
+| Prefixo | Escopo | Descrição |
+|---|---|---|
+| `DIA` | Diagnóstico e Inventário | Mapeamento inicial de arquivos, estrutura LaTeX, PDF, diagnóstico acadêmico preliminar. |
+| `CON` | Conteúdo e Estrutura Argumentativa | Organização de capítulos/seções, coesão, alinhamento objetivos-método-resultados, redundâncias, lacunas. |
+| `TEC` | Consistência Técnica, Matemática e Computacional | Equações, símbolos, unidades, algoritmos, parâmetros de malha, coerência entre formulação e implementação. |
+| `CIT` | Auditoria de Citações e Rastreabilidade | Conversão de marcadores numéricos `[nn]` para chaves BibTeX, confronto de afirmações com fontes, resolução de bloqueios. |
+| `RED` | Redação Científica e Estilo | Clareza, concisão, variedade lexical, estilo acadêmico, limpeza editorial. |
+| `NOR` | Normas Institucionais e Apresentação Gráfica | Conformidade ABNT/EdUFF, estrutura pré/pós-textual, figuras, tabelas, quadros, legendas, paginação. |
+| `REF` | Saneamento da Base Bibliográfica (`.bib`) | Auditoria, completude, padronização e correção de entradas BibTeX. |
+| `PDF` | Inspeção Visual do PDF Final | Diagramação, mancha gráfica, margens, quebras, correspondência sumário-conteúdo. |
+| `REV` | Revisão por Capítulo/Seção (conteúdo) | Revisão integrada de um capítulo ou seção (estrutura + conteúdo + equações), fatiada em sub-tarefas quando necessário. |
+| `AUD` | Auditoria de Afirmações | Matriz de afirmações verificáveis (local, classe, evidência, estado). |
+
+**Regra de granularidade:** tarefas volumosas são fatiadas em micro-lotes (ex.: `CIT-02.1`, `CIT-02.2`, `REV-02.2a`). Cada micro-lote cobre 10–15 citações ou uma subseção coesa, com diagnóstico → proposta → validação → consolidação.
+
 ---
 
 ## 1. Registro Histórico das Ações e Decisões Consolidadas
@@ -37,7 +56,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 - **Bloqueio B4 resolvido com ajuste:** graus nomeados (aço ASTM A516 Gr. 70; alumínio 6061-T6); σy do aço ajustado de 400,0 para 260,0 MPa na tabela e no texto. Valores permanecem como parâmetros adotados do script de projeto; entradas correspondentes no `.bib` são dependência da REF-01.
 - **Bloqueio B6 reformulado:** “faixa de 30 a 35 MPa como pressão nominal de Tipo III” → “pressão de projeto inferior a 35 MPa” \cite{Zhang2022}, com 30 MPa mantido como valor adotado na simulação. Entrada `Zhang2022` adicionada ao `.bib`.
 - **Busca local no acervo:** executada sobre 48 PDFs (6.170 páginas). B5 ancorado em Bakhvalov p. 225 (“Hill’s forks”) e p. XXXIII (“Voight-Reuss-Hill approximations”); B6 com suporte parcial (Zhang et al. 2022, p. 18); B4 com divergência (Hibbeler 6061-T6: E = 68,9 GPa, σy = 255 MPa vs. TCC 70 GPa / 270 MPa); B1, B2 e B3 sem fonte local.
-- **Arquivos:** `citacao_CIT-01.md` (relatório), `04_mef.tex`, `bibliografia.bib`, `fase_0_diagnostico_e_inventario.md` (JSON).
+- **Arquivos:** `citacao_CIT-01.md` (relatório), `04_mef.tex`, `bibliografia.bib`, `planejamento_revisao_tcc.md` (JSON).
 
 ### 1.7 Base Bibliográfica (`bibliografia.bib`) — Tarefa REF-01 Concluída (06/11/2026, com ressalvas)
 - **Escopo:** saneamento e padronização da base `.bib` (44 entradas após a tarefa).
@@ -47,13 +66,13 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 - **Completude (REF-01c):** `PartonReport` (@article → @book, publisher/address); `agne2024impact` (doi); `Adali1993` (@techReport → @article).
 - **Verificação (REF-01e):** 44 entradas; 8 chaves citadas, 0 ausentes; 1 entrada desbalanceada pré-existente (`Ruan2024`); 3 entradas sem year (`Heyliger2003`, `Ruan2024`, `astm_a516`).
 - **Achado:** tabela de mapeamento usa chaves inexistentes no `.bib` (dependência NOR-03).
-- **Arquivos:** `bibliografia.bib`, `fase_0_diagnostico_e_inventario.md`.
+- **Arquivos:** `bibliografia.bib`, `planejamento_revisao_tcc.md`.
 
 ### 1.8 Tabela de Mapeamento (`mapeamento_autores_por_capitulos_tcc.xlsx`) — Tarefa NOR-03 Concluída (06/11/2026)
 - **Escopo:** alinhamento das chaves BibTeX na Coluna D da tabela de mapeamento às chaves reais do `.bib`.
 - **Alterações:** 9 chaves alinhadas (22 ocorrências): `@jones2018mechanics`→`@RMJones2018`, `@pereira2024`→`@Pereira2025`, `@sadd2009elasticity`→`@Sadd2009`, `@asme2019`→`@asme_sec8_div1_2019`, `@nr13_2023`→`@brasil_nr13_2022`, `@parton_reducido`→`@PartonReport`, `@fenics2012`→`@logg2012automated`, `@timoshenko1970`→`@Timoshenko_1951`, `@zhang2022`→`@Zhang2022`. `@backus1962` adicionado nas linhas 4.2.4 e 4.4.1–4.4.2 (na REF-01d).
 - **Ressalvas:** 4 chaves sem equivalente no `.bib` (`@vignoli2018`, `@tonatto2020`, `@beer2003`, `@kassapoglou2021`) — dependência REF-01d se forem citadas.
-- **Arquivos:** `mapeamento_autores_por_capitulos_tcc.xlsx` (backup `.bak`/`.bak2`), `fase_0_diagnostico_e_inventario.md`.
+- **Arquivos:** `mapeamento_autores_por_capitulos_tcc.xlsx` (backup `.bak`/`.bak2`), `planejamento_revisao_tcc.md`.
 
 ### 1.10 Capítulo 3 (Unificação) — Tarefa TEC-01 Concluída (07/11/2026)
 - **Escopo:** unificação estrutural e consistência algébrica do Capítulo 3 (fusão de `03_1_equilibrio.tex` e `03_2_homogeneizacao.tex`).

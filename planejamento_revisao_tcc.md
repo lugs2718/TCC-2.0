@@ -157,11 +157,25 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - Explicação rigorosa dos *kinks* via Lema de Cauchy (continuidade de tração vs. salto de deformação) — pendente (REV-02.3c).
   - Justificativa da adoção do MHA frente às teorias layerwise e ZZT — texto já presente.
   - Conversão dos `[nn]` para `@tonatto2020`, `@parton_reducido`, `@RMJones2018` — **concluída na CIT-03**.
-- [ ] **REV-02.4:** **Homogeneização, Médias de Backus e Formalismo do MHA (Seção 2.4)**
-  - Limites clássicos de Voigt e Reuss, Garfo de Hill e formulação de meios estratificados de Backus.
-  - Formalismo analítico da SAF e hierarquia de problemas locais e macroscópicos.
-  - Resolução das notas de autor (linhas 584 e 605) para evitar redundâncias com o Capítulo 3.
-  - Conversão dos `[nn]` para `@bakhvalov1989`, `@bensoussan1978`, `@leitzke2017`, `@guinovart2015`.
+- [x] **REV-02.4:** **Homogeneização, Médias de Backus e Formalismo do MHA (Seção 2.4)** [Concluída em 10/11/2026]
+  - Limites clássicos de Voigt e Reuss, Garfo de Hill e formulação de meios estratificados de Backus — texto presente e revisado.
+  - Formalismo analítico da SAF e hierarquia de problemas locais e macroscópicos — texto presente e revisado.
+  - Resolução das notas de autor (linhas 584 e 605) — já removidas na limpeza estrutural.
+  - Conversão dos `[nn]` para `@bakhvalov1989`, `@bensoussan1978`, `@leitzke2017`, `@guinovart2015` — **concluída na CIT-03**.
+  - REV-02.4a (conversão Typst→LaTeX): 7 equações de Backus/SAF reescritas (L512, L515, L535, L536, L543, L544, L548). Subscritos puros e funções Typst eliminados em §2.4.
+  - REV-02.4b (funções Typst restantes): 11 conversões adicionais (L519, L531, L551–L555, L559–L562, L570, L571, L574, L576, L590, L592, L603, L606). Verificação: 0 artefatos Typst restantes em §2.4.
+- [x] **REV-02.4:** **Homogeneização, Médias de Backus e Formalismo do MHA (Seção 2.4)** [Concluída em 10/11/2026]
+  - Limites clássicos de Voigt e Reuss, Garfo de Hill e formulação de meios estratificados de Backus — texto presente e revisado.
+  - Formalismo analítico da SAF e hierarquia de problemas locais e macroscópicos — texto presente e revisado.
+  - Resolução das notas de autor (linhas 584 e 605) — já removidas na limpeza estrutural.
+  - Conversão dos `[nn]` para `@bakhvalov1989`, `@bensoussan1978`, `@leitzke2017`, `@guinovart2015` — **concluída na CIT-03**.
+  - REV-02.4a (conversão Typst→LaTeX): 7 equações de Backus/SAF reescritas (L512, L515, L535, L536, L543, L544, L548). Subscritos puros e funções Typst eliminados em §2.4.
+  - REV-02.4b (funções Typst restantes): 11 conversões adicionais (L519, L531, L551–L555, L559–L562, L570, L571, L574, L576, L590, L592, L603, L606). Verificação: 0 artefatos Typst restantes em §2.4.
+  - REV-02.4c (redução de redundância com §2.2): parágrafos de transição inseridos após L485 (início da §2.4) e após L506 (início da subseção de Backus), referenciando a Seção 2.2. Reduz redundância nas explicações de Voigt/Reuss/Backus/Garfo de Hill.
+  - Notas de autor: nenhuma ativa na faixa.
+  - Ressalva: 4 linhas com mojibake (L551, L555, L574, L603) corrigidas com acentuação adequada.
+  - Notas de autor: nenhuma ativa na faixa.
+  - Ressalva: 4 linhas com mojibake (L551, L555, L574, L603) corrigidas com acentuação adequada.
 
 #### Capítulo 3 — Formulação Matemática e Homogeneização
 - [x] **TEC-01:** **Unificação Estrutural e Consistência Algébrica do Capítulo 3** [Concluída em 07/11/2026]
@@ -280,7 +294,8 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "TEC-01",
     "TEC-02",
     "REV-02.2",
-    "REV-02.3"
+    "REV-02.3",
+    "REV-02.4"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -332,9 +347,11 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "REV-02.3a1 aplicada (10/11/2026): 11 subscritos Typst puros corrigidos em §2.3 (L398-L436). 14 ocorrências restantes são fragmentos de equações Typst complexos (frac, sum, hat, arrow) registrados para REV-02.3b (CON/RED).",
     "REV-02.3a (subscritos Typst puros em §2.3) concluída (10/11/2026): 16 subscritos puros corrigidos (02.3a1: 11, 02.3a2: 3, 02.3a3: 2, 02.3a4: 0). As ~28 ocorrências restantes são fragmentos de equações Typst complexos (frac, sum, hat, arrow) registrados para REV-02.3b (CON/RED).",
     "REV-02.3b concluída (10/11/2026): conversão completa de funções Typst (frac, sum, hat, arrow) para LaTeX em §2.3. 10 equações reescritas (L403, L404, L441, L442, L444, L450, L452, L454, L465, L479, L491, L496). Verificação: 0 artefatos Typst restantes em §2.3 (exceto índices de Voigt em bloco Typst ativo, L227-L244).",
-    "REV-02.3 concluída (10/11/2026): §2.3 revisada. Sub-tarefas: 02.3a (16 subscritos Typst puros), 02.3b (10 equações reescritas Typst->LaTeX), 02.3c (enriquecimento Lema de Cauchy, parágrafo inserido com citação Sadd 2009). Citações já resolvidas na CIT-03. Bloco Typst ativo (L227-L244) preservado para conversão futura."
+    "REV-02.3 concluída (10/11/2026): §2.3 revisada. Sub-tarefas: 02.3a (16 subscritos Typst puros), 02.3b (10 equações reescritas Typst->LaTeX), 02.3c (enriquecimento Lema de Cauchy, parágrafo inserido com citação Sadd 2009). Citações já resolvidas na CIT-03. Bloco Typst ativo (L227-L244) preservado para conversão futura.",
+    "REV-02.4 concluída (10/11/2026): §2.4 revisada. REV-02.4a (7 conversões Backus/SAF) e REV-02.4b (11 conversões Typst->LaTeX em §2.4) concluídas. 0 artefatos Typst restantes em §2.4. 4 linhas com mojibake corrigidas (L551, L555, L574, L603). REV-02.4c (redução de redundância com §2.2) pendente. Ressalva: bloco Typst ativo (L227-L244, Cap. 2) com índices de Voigt preservado para conversão futura.",
+    "REV-02.4 concluída (10/11/2026): §2.4 revisada. 02.4a (7 conversões Backus/SAF) e 02.4b (11 conversões Typst->LaTeX em §2.4) concluídas. 02.4c (redução de redundância com §2.2) concluída: parágrafos de transição inseridos após L485 e L506. 0 artefatos Typst restantes em §2.4. 4 linhas com mojibake corrigidas."
   ],
-  "proximo_passo": "REV-02.3 concluída. Próxima tarefa autorizada a definir (sugestão: REV-02.4 §2.4 — Homogeneização, Backus, MHA; ou CON-03 conclusão; ou TEC-03 resultados).",
+  "proximo_passo": "REV-02.4 concluída. Próxima tarefa autorizada a definir (sugestão: CON-03 conclusão; ou TEC-03 resultados; ou NOR-01/NOR-02 normas e apresentação).",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

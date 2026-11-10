@@ -219,6 +219,39 @@ Distribuição: RMJones2018 ×8, PartonReport ×4. Sem suavização. Bloco `% TA
 
 Distribuição 03.10: bakhvalov1989 ×9, Backus1962 ×5, PartonReport ×2, logg2012automated ×2. Sem suavização. (A contagem de linhas/marcadores acima pode ter 1–2 a mais que o previsto; a aplicação foi feita por linha, com verificação ao final.)
 
+### CIT-03.11 (L523–L554) — concluída
+7 marcadores substituídos por `bakhvalov1989`:
+
+| Linha | Marcador | Trecho / Afirmação | Fonte adotada |
+|---:|---|---|---|
+| 525 | [14, 15, 39] | Backus: formulação analítica para meios estratificados | `Backus1962` |
+| 525 | [15, 39] | Backus (segundo) | `Backus1962` |
+| 527 | [15, 39] | Backus mistura médias harmônicas | `Backus1962` |
+| 530 | [15, 39] | direções paralelas (circunferencial, axial) | `Backus1962` |
+| 536 | [15, 39] | MHA: célula unitária periódica | `bakhvalov1989` |
+| 536 | [15, 39] | MHA (segundo) | `bakhvalov1989` |
+
+Distribuição: Backus1962 ×4, bakhvalov1989 ×2. Sem suavização.
+
+### CIT-03.12 (L583–L624) — concluída
+11 marcadores substituídos:
+
+| Linha | Marcador | Trecho / Afirmação | Fonte adotada |
+|---:|---|---|---|
+| 585 | [39] | validade científica do MHA (H-convergência) | `bakhvalov1989` |
+| 587 | [7, 39] | convergência fraca em Sobolev (Bakhvalov & Cioranescu) | `bakhvalov1989` |
+| 591 | [7, 39] | teorema da relação de proximidade (Leitzke, Guinovart) | `leitzke2017` |
+| 591 | [7, 39] | teorema (segundo) | `Guinovart2024` |
+| 610 | [35, 235] | MEF para geometrias complexas/heterogêneas | `Sadd2009` |
+| 610 | [35, 312] | MEF (segundo) | `logg2012automated` |
+| 614 | [238] | princípio fundamental do MEF | `logg2012automated` |
+| 617 | [238] | conexão entre elementos em nós | `logg2012automated` |
+| 619 | [300] | elementos de Lagrange de grau 2 | `logg2012automated` |
+| 619 | [230, 242] | acurácia nas tensões (polinômios quadráticos) | `logg2012automated` |
+| 623 | [230, 243] | acurácia nas tensões (segundo) | `Sadd2009` |
+
+Distribuição: bakhvalov1989 ×2, leitzke2017 ×1, Guinovart2024 ×1, Sadd2009 ×2, logg2012automated ×5. Sem suavização. Bloco `% TASK:` (L599–L605) mantido (planejamento do autor).
+
 ### CIT-03.13 (L625–L653) — concluída
 12 marcadores substituídos:
 

@@ -1,7 +1,5 @@
 \chapter{Revisão Bibliográfica}
 
-
-
 \section{Vasos de Pressão e Critérios Normativos}
 
 \subsection{Classificação Geométrica: Paredes Finas vs. Paredes Grossas}
@@ -96,8 +94,6 @@ Cruzando-se as matrizes de Classe de Fluido com o Grupo de Potencial de Risco, a
 %   [\textbf{Classe D} \ \textit{(Outros Fluidos)}], [\textbf{II}], % [\textbf{III}], [\textbf{IV}], [\textbf{V}], [\textbf{V}],
 % )
 
-
-
 Mecanicamente, para que um vaso de pressão seja operado legalmente em território nacional, a NR-13 exige que o estabelecimento industrial mantenha um conjunto de documentações técnicas atualizadas e prontamente acessíveis para a auditoria de fiscais do trabalho e do Ministério Público \cite{brasil_nr13_2022}. Essa pasta de integridade inclui obrigatoriamente \cite{brasil_nr13_2022}:
 1. \textbf{Prontuário do Vaso de Pressão:} Emitido e assinado pelo fabricante, contendo o código de construção (como o ASME), especificação dos materiais de retenção de pressão, procedimentos de fabricação, qualificação de soldagem e relatórios de exames e inspeção final \cite{brasil_nr13_2022};
 2. \textbf{Registro de Segurança:} Livro de ocorrências físicas onde são registradas as inspeções de segurança, calibrações de instrumentos e anomalias operacionais \cite{brasil_nr13_2022};
@@ -106,13 +102,11 @@ Mecanicamente, para que um vaso de pressão seja operado legalmente em territór
 
 Adicionalmente, cada vaso de pressão deve possuir afixado em seu corpo, em local de fácil acesso e amplamente visível, uma placa de identificação indelével com informações fundamentais gravadas (fabricante, número de série, ano de fabricação, código de construção, PMTA, eficiência de junta soldada) e, pintada em destaque no costado, a identificação visível de sua categoria (por exemplo, "CAT I" ou "CAT III") para fins de fiscalização operacional rápida \cite{brasil_nr13_2022}.
 
-
 \subsection{Critérios de Projeto Conforme o Código ASME Seção VIII (Divisões 1 e 2)}
 
 Para garantir a segurança operacional e mitigar os riscos de falhas explosivas catastróficas, o projeto e a fabricação de vasos de pressão industriais são rigorosamente regidos por códigos normativos internacionais, dos quais o mais amplamente utilizado globalmente e no Brasil é o Código ASME Seção VIII (\textbf{Boiler and Pressure Vessel Code}, BPVC), desenvolvido pela %\#pag(<asme_sec8_div1_2019>) (\textbf{American Society of Mechanical Engineers}).
 
 O Código ASME Seção VIII divide-se em três divisões com filosofias de projeto, fatores de segurança e limites de pressão distintos \cite{asme_sec8_div1_2019}:
-
 
 %#table(
 %  columns: (1fr, 2fr, 2fr),
@@ -144,7 +138,6 @@ O Código ASME Seção VIII divide-se em três divisões com filosofias de proje
 %  [Aplicável a pressões de projeto acima de $15$ psi ($0,1$ MPa) até %$3.000$ psi ($20$ MPa) \cite{asme_sec8_div1_2019}.],
 %  [Aplicável a pressões elásticas de projeto de até $10.000$ psi %($70$ MPa) \cite{asme_sec8_div1_2019}.],
 %) \marginpar{\tiny Coloar legenda (Quadro) e refenciá-lo no texto}
-
 
 Conforme a Subseção A, Parte UG do ASME Seção VIII Divisão 1, as fórmulas utilizadas para o cálculo da espessura mínima requerida ($t$) e da Pressão Máxima de Trabalho Admissível (PMTA, ou $P$) de cascos cilíndricos sob pressão interna são baseadas na tensão circunferencial solicitando as juntas soldadas longitudinais \cite{asme_sec8_div1_2019}. Quando a espessura do costado não excede a metade do raio interno, ou quando a pressão interna não ultrapassa o limite elástico $0,385 S E$, aplicam-se as seguintes expressões de projeto (UG-27) \cite{asme_sec8_div1_2019}:
 $ t = (P R) / (S E - 0,6 P) \quad text("ou") \quad P = (S E t) / (R + 0,6 t) $ <eq-asme-circunferencial>
@@ -423,7 +416,6 @@ $ \gamma_{(rz)}(z) = \phi_z + \frac{\partial w}{\partial z} = "constante" $ <eq:
 
 Embora a FSDT capture a flexibilidade global ao cisalhamento, a premissa de deformação cisalhante constante ao longo da espessura viola a condição física de contorno de tensão nula nas superfícies livres superior e inferior do cilindro ($\tau_{(rz)}|(z = p m h/2) = 0$) \cite{RMJones2018}. Na realidade mecânica de um meio homogêneo, a distribuição de tensão de cisalhamento transversal assume um perfil parabólico. Para corrigir essa discrepância energética, a FSDT necessita da introdução de um fator de correção de cisalhamento ($\kappa$), tipicamente adotado como $\kappa = 5/6$ para seções retangulares homogêneas, o qual se torna altamente complexo e impreciso quando aplicado a laminados compostos heterogêneos \cite{RMJones2018}.
 
-
 \subsection{Limitações de Aplicação em Cilindros de Parede Grossa e Meios de Alto Contraste}
 
 No estudo mecânico de vasos de pressão como o analisado neste trabalho — que apresenta uma espessura de parede $t = 2" mm"$ e raio interno $R_{\text{int}} = 9 \text{ mm}$, resultando em uma relação geométrica de parede grossa $R}"int"/t = 4,5$ — as teorias de ESL clássicas (CLT e FSDT) tornam-se completamente inadequadas devido a três fatores impeditivos \cite{Sadd2009}:
@@ -457,7 +449,6 @@ Graficamente, esse fenômeno traduz-se em mudanças súbitas e localizadas de in
 
 A continuidade da tensão normal radial $\sigma_{rr}$ e das tensões de cisalhamento transversal $\tau_{rz}$, $\tau_{r\theta}$ na interface segue diretamente do \textbf{Lema de Cauchy} (equilíbrio de um tetraedro infinitesimal na superfície de descontinuidade): o vetor de tração $\mathbf{t} = \boldsymbol{\sigma}\cdot\mathbf{n}$ deve ser contínuo através de qualquer superfície, e como a normal $\mathbf{n}$ é a mesma (em módulo) nos dois lados da interface, as componentes de tensão que atuam sobre a normal devem coincidir. Isso é o que permite afirmar que $\sigma_{rr}^{(k)} = \sigma_{rr}^{(k+1)}$ e $\tau_{rz}^{(k)} = \tau_{rz}^{(k+1)}$ na interface $r = r_k$, mesmo quando o módulo de cisalhamento $G$ sofre salto \cite{Sadd2009}.
 
-
 \subsection{Teorias Camada a Camada (\textbf{Layerwise}) e Teorias Zigue-Zague (ZZT)}
 
 Para representar com precisão física o efeito zigue-zague sem recorrer a simulações elásticas tridimensionais (3D) completas de altíssimo custo computacional, foram desenvolvidas formulações cinemáticas avançadas: as Teorias Camada a Camada (\textbf{Layerwise Theories}) e as Teorias Zigue-Zague (ZZT) \cite{PartonReport}.
@@ -484,6 +475,8 @@ Embora as Teorias Zigue-Zague (ZZT) representem um avanço cinematográfico sign
 
 \section{Métodos de Homogeneização e a Transição Micro-Macro (Objetivo B.4)}
 
+Conforme discutido na Seção 2.2 (Origem Física do Comportamento Ortotrópico Cilíndrico Macroscópico), o empilhamento periódico de camadas isotrópicas induz ortotropia macroscópica via médias de Backus e os limites clássicos de Voigt e Reuss. A presente seção formaliza matematicamente esses conceitos e apresenta o formalismo do Método de Homogeneização Assintótica (MHA).
+
 A modelagem de materiais heterogêneos com microestrutura complexa impõe desafios severos à análise mecânica clássica. A presença de fases distintas com propriedades mecânicas discrepantes resulta em coeficientes elétricos ou elásticos que oscilam de forma extremamente rápida na escala microscópica. Resolver as equações de equilíbrio elástico em domínios dessa natureza por meio de técnicas discretas diretas, como o Método dos Elementos Finitos (MEF), exige um refinamento de malha tão severo que o custo computacional torna-se proibitivo para estruturas de escala industrial \cite{bakhvalov1989}. Esta seção aborda a transição conceitual e matemática entre as escalas micro e macro, apresentando os limites elásticos clássicos, o modelo de médias de Backus para estratificados e o formalismo rigoroso do Método de Homogeneização Assintótica (MHA).
 
 \subsection{Abordagens Clássicas de Homogeneização e Limites Elásticos}
@@ -505,18 +498,20 @@ A diferença entre os limites de Voigt e Reuss é conhecida na literatura microm
 
 \subsection{Homogeneização de Meios Estratificados e a Média de Backus}
 
+A formulação de Backus (1962) para meios estratificados, introduzida na Seção 2.2, é apresentada a seguir em detalhe analítico, com a dedução das médias harmônicas (Reuss) para a direção transversal e das médias aritméticas corrigidas (Voigt modificado) para as direções paralelas.
+
 Para estruturas compostas por camadas paralelas alternadas de materiais isotrópicos, George Backus (1962) deduziu uma formulação analítica exata que descreve o comportamento macroscópico equivalente de ondas elásticas de longo comprimento \cite{Backus1962}. O modelo de Backus prova matematicamente que o empilhamento periódico de duas fases isotrópicas resulta em um meio macroscópico equivalente com comportamento \textbf{Transversalmente Isotrópico} \cite{Backus1962}.
 
 As equações de Backus misturam médias harmônicas (Reuss) para a direção perpendicular às interfaces e médias aritméticas com correções do efeito de Poisson (Voigt modificado) para as direções paralelas ao plano das camadas \cite{Backus1962}:
 \textbf{Direção Transversal (Radial $r$):} O comportamento mecânico é dominado por tensões que atravessam as interfaces, assemelhando-se a molas em série. Portanto, a rigidez efetiva radial transversal é ditada pelo limite de Reuss:
-$ C\textit{(11) = \langle C}(11)^(-1)(y) \rangle^(-1) $ <eq:backus_c11>
+$ \hat{C}_{11} = \langle C_{11}^{-1}(y) \rangle^{-1} $ <eq:backus_c11>
 \textbf{Direções Paralelas (Circunferencial $\theta$ e Axial $z$):} Como as camadas estão confinadas e ligadas rigidamente, elas deformam-se conjuntamente sob tração paralela (molas em paralelo). A rigidez efetiva circunferencial $C_(22)$ é expressa como uma média aritmética corrigida pelo acoplamento de Poisson das fases \cite{Backus1962}:
 \begin{equation}
-  C\textit{(22) = \langle C}(22) (y) \rangle - \langle \nu(y) \rangle^2 \langle C_(11)^(-1)(y) \rangle^(-1)
+\hat{C}_{22} = \langle C_{22}(y) \rangle - \langle \nu(y) \rangle^2 \langle C_{11}^{-1}(y) \rangle^{-1}
   \label{eq:backus_c22}
 \end{equation}
 
-Sob a ótica do Método de Homogeneização Assintótica (MHA), quando o número de camadas concêntricas periódicas de um vaso de pressão cilíndrico aumenta substancialmente, a espessura de cada lâmina torna-se minúscula frente ao raio global ($\epsilon arrow.r 0$). Nesse limite assintótico, a curvatura local do cilindro desaparece, de modo que a célula unitária anular microscópica comporta-se localmente como um laminado plano infinitesimal \cite{bakhvalov1989}. Consequentemente, as formulações cartesianas de Backus e as teorias de meios estratificados de Bakhvalov são matematicamente válidas e rigorosas para caracterizar a ortotropia cilíndrica equivalente do vaso de pressão de parede grossa \cite{bakhvalov1989}.
+Sob a ótica do Método de Homogeneização Assintótica (MHA), quando o número de camadas concêntricas periódicas de um vaso de pressão cilíndrico aumenta substancialmente, a espessura de cada lâmina torna-se minúscula frente ao raio global ($\epsilon \to 0$). Nesse limite assintótico, a curvatura local do cilindro desaparece, de modo que a célula unitária anular microscópica comporta-se localmente como um laminado plano infinitesimal \cite{bakhvalov1989}. Consequentemente, as formulações cartesianas de Backus e as teorias de meios estratificados de Bakhvalov são matematicamente válidas e rigorosas para caracterizar a ortotropia cilíndrica equivalente do vaso de pressão de parede grossa \cite{bakhvalov1989}.
 
 \subsection{Formalismo Matemático do Método de Homogeneização Assintótica (MHA)}
 
@@ -528,38 +523,38 @@ Em função do parâmetro $\epsilon$, introduz-se uma nova variável espacial mi
 $ y = x/\epsilon $ <eq:fast_var>
 
 Pela regra da cadeia, qualquer derivada espacial de uma variável dependente elástica que oscile rapidamente com respeito à microestrutura periódica deve ser expressa em termos de ambas as escalas por \cite{bakhvalov1989}:
-$ d/(d x) = partial/(partial x) + 1/\epsilon partial/(partial y) $ <eq:der_rule>
+$ \frac{d}{dx} = \frac{\partial}{\partial x} + \frac{1}{\epsilon} \frac{\partial}{\partial y} $ <eq:der_rule>
 
 \subsection{Proposta da Solução Assintótica Formal (SAF)}
 O MHA propõe que o campo de deslocamentos $u^\epsilon(r)$ do cilindro heterogêneo original seja aproximado por uma série de potências do parâmetro adimensional pequeno $\epsilon$, conhecida como Solução Assintótica Formal (SAF) \cite{bakhvalov1989}:
-$ u^(oo)(r, \epsilon) = u\textit{0(x) + \epsilon u}1(x, y) + \epsilon^2 u\textit{2(x, y) + \dots $ <eq:saf}disp>
-onde os termos de perturbação $u\textit{i (x, y)$ são funções $Y$-periódicas na variável rápida $y$ na escala da célula básica unitária $Y = [0, 1]$ \cite{bakhvalov1989}. Na teoria clássica do MHA, prova-se que o termo principal $u}0$ não depende de $y$, representando o deslocamento macroscópico puro e regular do meio homogêneo equivalente \cite{bakhvalov1989}.
+$ u^\infty(r,\epsilon) = u_0(x) + \epsilon u_1(x,y) + \epsilon^2 u_2(x,y) + \dots $ <eq:saf_disp>
+onde os termos de perturbação $u_i(x, y)$ são funções $Y$-periódicas na variável rápida $y$ na escala da célula básica unitária $Y = [0, 1]$ \cite{bakhvalov1989}. Na teoria clássica do MHA, prova-se que o termo principal $u_0$ não depende de $y$, representando o deslocamento macroscópico puro e regular do meio homogêneo equivalente \cite{bakhvalov1989}.
 
 \subsection{Substituição e Recorrência de Problemas}
 
 Substituindo a SAF dada pela \eqref{eq:saf_disp} na equação governante do equilíbrio elástico radial e separando os coeficientes associados a cada potência de $\epsilon$, obtém-se uma sequência recorrente de equações diferenciais elípticas \cite{bakhvalov1989}:
 
 1. \textbf{Termos de Ordem $O(\epsilon^(-2))$:}
-  $ partial/(partial y) ( C\textit{(11)(y) partial/(partial y) u}0(x) ) = 0 $ <eq:order_minus2>
-  Como $u\textit{0 = u}0(x)$, esta equação é identicamente nula, confirmando a independência de $u_0$ com respeito à variável rápida.
+$ \frac{\partial}{\partial y}\left( C_{11}(y) \frac{\partial u_0(x)}{\partial y} \right) = 0 $ <eq:order_minus2>
+Como $u_0 = u_0(x)$, esta equação é identicamente nula, confirmando a independência de $u_0$ com respeito à variável rápida.
 
 2. \textbf{Termos de Ordem $O(\epsilon^(-1))$ (Problema Local):}
   \begin{equation}
-  partial/(partial y) [ C\textit{(11)(y) ( partial/(partial x) u}0(x) + partial/(partial y) u_1(x, y) ) ] = 0
+$ \frac{\partial}{\partial y}\left[ C_{11}(y) \left( \frac{\partial u_0(x)}{\partial x} + \frac{\partial u_1(x,y)}{\partial y} \right) \right] = 0 $
   \label{eq:order_minus1}
 \end{equation}
-  Utilizando a técnica de separação de variáveis de homogeneização, postula-se que a perturbação de primeira ordem $u\textit{1$ é expressa pelo produto da derivada do deslocamento macroscópico por uma função auxiliar local $N}1(y)$, denominada função de perturbação da célula unitária \cite{bakhvalov1989}:
-  $ u\textit{1(x, y) = N}1(y) (d u\textit{0(x))/(d x) $ <eq:u1}sep>
-  Substituindo a \eqref{eq:u1\textit{sep} na \eqref{eq:order}minus1}, isola-se a equação governante do \textbf{Problema Local} sobre a célula básica $Y$:
-  $ d/(d y) ( C\textit{(11)(y) (d N}1(y))/(d y) + C\textit{(11)(y) ) = 0 $ <eq:local}problem_n1>
-  Esta EDO deve ser resolvida sob as condições de $1$-periodicidade de $N\textit{1(y)$ e normalização de média nula para garantir a unicidade de solução ($\langle N}1(y) \rangle = 0$) \cite{bakhvalov1989}.
+  Utilizando a técnica de separação de variáveis de homogeneização, postula-se que a perturbação de primeira ordem $u_1$ é expressa pelo produto da derivada do deslocamento macroscópico por uma função auxiliar local $N_1(y)$, denominada função de perturbação da célula unitária \cite{bakhvalov1989}:
+  $ u_1(x, y) = N_1(y) \frac{du_0(x)}{dx} $ <eq:u1_sep>
+  Substituindo a \eqref{eq:u1_sep} na \eqref{eq:order_minus1}, isola-se a equação governante do \textbf{Problema Local} sobre a célula básica $Y$:
+  $ \frac{d}{dy} \left( C_{11}(y) \frac{dN_1(y)}{dy} + C_{11}(y) \right) = 0 $ <eq:local_problem_n1>
+  Esta EDO deve ser resolvida sob as condições de $1$-periodicidade de $N_1(y)$ e normalização de média nula para garantir a unicidade de solução ($\langle N_1(y) \rangle = 0$) \cite{bakhvalov1989}.
 
 3. \textbf{Termos de Ordem $O(\epsilon^0)$ (Problema Homogeneizado):}
   Coletando os termos de ordem neutra e aplicando o operador valor médio volumétrico $\langle dot \rangle$ na célula unitária, as oscilações microscópicas rápidas se anulam por periodicidade, gerando a \textbf{Equação Homogeneizada Macroscópica} \cite{bakhvalov1989}:
-  $ C\textit{(11) (d^2 u}0(r))/(d r^2) + C\textit{(11)/r (d u}0(r))/(d r) - C\textit{(11)/r^2 u}0(r) = 0 $ <eq:homog_eq>
-  onde os coeficientes efetivos homogeneizados equivalentes $C\textit{(11)$ e $C}(12)$ do vaso de parede grossa são determinados analiticamente em termos das propriedades elásticas locais através de \cite{bakhvalov1989}: 
+  $ C_{11} \frac{d^2 u_0(r)}{dr^2} + \frac{C_{11}}{r} \frac{du_0(r)}{dr} - \frac{C_{11}}{r^2} u_0(r) = 0 $ <eq:homog_eq>
+  onde os coeficientes efetivos homogeneizados equivalentes $C_{11}$ e $C_{12}$ do vaso de parede grossa s?o determinados analiticamente em termos das propriedades el?sticas locais atrav?s de \cite{bakhvalov1989}:
   \begin{equation}
-  C\textit{(11) = \langle C}(11)^(-1)(y) \rangle^(-1) , \quad C\textit{(12) = \langle C}(11)^(-1)(y) \rangle^(-1) \langle C\textit{(12)(y) C}(11)^(-1)(y) \rangle
+  $ C_{11} = \langle C_{11}^{-1}(y) \rangle^{-1} , \quad C_{12} = \langle C_{11}^{-1}(y) \rangle^{-1} \langle C_{12}(y) C_{11}^{-1}(y) \rangle $
   \label{eq:effective_coeffs}
 \end{equation}
 
@@ -567,13 +562,13 @@ Substituindo a SAF dada pela \eqref{eq:saf_disp} na equação governante do equi
 
 A validade científica do Método de Homogeneização Assintótica não se limita à obtenção de equações médias simplificadas, mas repousa sobre provas matemáticas rigorosas de convergência elíptica, no âmbito da chamada \textbf{H-Convergência} \cite{bakhvalov1989}.
 
-De acordo com Bakhvalov & Panasenko (1989) e Cioranescu & Donato (1999), prova-se que à medida que o parâmetro de escala espacial tende a zero ($\epsilon arrow.r 0^+$), a solution exata heterogênea $u^\epsilon$ do vaso de pressão original de $N$ camadas concêntricas converge fraca e continuamente em espaços de Sobolev (como $H^1(\Omega)$) para a solução suave $u_0$ do problema macroscópico equivalente \cite{bakhvalov1989}:
-$ u^\epsilon arrow.r u\textit{0 \ \quad \ "quando" \ \ \epsilon arrow.r 0^+ $ <eq:weak}conv>
+De acordo com Bakhvalov & Panasenko (1989) e Cioranescu & Donato (1999), prova-se que à medida que o parâmetro de escala espacial tende a zero ($\epsilon \to 0^+$), a solution exata heterogênea $u^\epsilon$ do vaso de pressão original de $N$ camadas concêntricas converge fraca e continuamente em espaços de Sobolev (como $H^1(\Omega)$) para a solução suave $u_0$ do problema macroscópico equivalente \cite{bakhvalov1989}:
+$ u^\epsilon \to u_0 \quad \text{quando} \quad \epsilon \to 0^+ $ <eq:weak_conv>
 
 \subsection{Estimativa de Erro e Relação de Proximidade}
-Para quantificar o erro cometido pela simplificação macroscópica homogeneizada, as dissertações de Bruna Leitzke (2017) e David Guinovart (2015) deduzem o teorema da relação de proximidade \cite{leitzke2017}. A norma da diferença espacial entre a solução exata $u^\epsilon$ e a SAF de primeira ordem $u^((1)) = u\textit{0 + \epsilon u}1$ é limitada superiormente por uma constante real positiva $C_k$ multiplicada pela escala do período $\epsilon$ \cite{Guinovart2024}:
+Para quantificar o erro cometido pela simplificação macroscópica homogeneizada, as dissertações de Bruna Leitzke (2017) e David Guinovart (2015) deduzem o teorema da relação de proximidade \cite{leitzke2017}. A norma da diferença espacial entre a solução exata $u^\epsilon$ e a SAF de primeira ordem $u^{(1)} = u_0 + \epsilon u_1$ é limitada superiormente por uma constante real positiva $C_k$ multiplicada pela escala do período $\epsilon$ \cite{Guinovart2024}:
 \begin{equation}
-  norm(u^\epsilon - u^((1)))\textit{(C(\Omega)) \le  C}k \epsilon \quad arrow.r.double \quad norm(u^\epsilon - u^((1))) = O(\epsilon)
+  $ \|u^\epsilon - u^{(1)}\|_{C(\Omega)} \le C_k \epsilon \quad \Leftrightarrow \quad \|u^\epsilon - u^{(1)}\| = O(\epsilon) $
   \label{eq:closeness_error}
 \end{equation}
 
@@ -587,9 +582,9 @@ Para problemas elásticos lineares em geometrias complexas ou com heterogeneidad
 
 O princípio fundamental do MEF consiste em aproximar a solução de um problema contínuo infinito por meio da partição do domínio contínuo $\Omega$ em um conjunto finito de subdomínios menores disjuntos denominados elementos finitos ($Omega_e$), de modo que \cite{logg2012automated}:
 
-$ Omega approx union.sq\textit{e Omega}e \begin{equation}
+$ \Omega \approx \bigcup_e \Omega_e $
   A conexão entre elementos adjuntos ocorre em pontos discretos chamados nós. Dentro de cada elemento $Omega_e$, os campos contínuos de deslocamento real $\mathbf{u}(\mathbf{x})$ e virtual $\mathbf{v}(\mathbf{x})$ são aproximados a partir de seus valores nodais discretos ($\mathbf{d}^e$ e $\mathbf{c}^e$, respectively) através de uma matriz de funções de forma (ou funções de interpolação) $\mathbf{N}(\mathbf{x})$ \cite{logg2012automated}:
-\end{equation} bold(u)(bold(x)) approx bold(N)(bold(x)) bold(d)^e , quad bold(v)(bold(x)) approx bold(N)(bold(x)) bold(c)^e \begin{equation}
+\end{equation} \mathbf{u}(\mathbf{x}) \approx \mathbf{N}(\mathbf{x}) \mathbf{d}^e, \quad \mathbf{v}(\mathbf{x}) \approx \mathbf{N}(\mathbf{x}) \mathbf{c}^e \begin{equation}
   No desenvolvimento deste trabalho, adota-se os elementos elásticos de \textbf{Lagrange de grau 2} (elementos \quadráticos) \cite{logg2012automated}. Ao contrário dos elementos de grau 1 (lineares), onde as derivadas primeiras do deslocamento (deformações) são constantes dentro do elemento, os polinômios \quadráticos inserem nós adicionais nas arestas dos elementos. Isto confere as seguintes vantagens físicas \cite{logg2012automated}:
 
 1. \textbf{Captura de Gradientes Suaves:} Permite que o campo de deslocamentos assuma perfis parabólicos locais, o que melhora significativamente a estimativa de gradientes e picos de deformação em cascas delgadas e interfaces bimetálicas.
@@ -600,10 +595,10 @@ $ Omega approx union.sq\textit{e Omega}e \begin{equation}
 
 A equação governante do equilíbrio elástico tridimensional (equação de momento de Cauchy) na ausência de forças de corpo é expressa na forma forte como \cite{Sadd2009}:
 \end{equation} - bold(nabla) dot bold(sigma) = bold(0) , quad bold(x) in Omega \begin{equation}
-  Para transpor o problema do espaço diferencial de Sobolev para uma formulação integral solúvel numericamente, aplica-se o Princípio dos Trabalhos Virtuais (PTV) ou o Método de Galerkin \cite{Sadd2009}. Multiplica-se a equação de equilíbrio por um campo arbitrário de deslocamentos virtuais (função teste) $\mathbf{v}$ pertencente ao espaço admissível $\mathbf{V}\textit{0$ (onde $\mathbf{v} = \mathbf{0}$ sobre a fronteira de Dirichlet $\Gamma}u$), integrando-se sobre todo o volume do corpo \cite{logg2012automated}:
+  Para transpor o problema do espaço diferencial de Sobolev para uma formulação integral solúvel numericamente, aplica-se o Princípio dos Trabalhos Virtuais (PTV) ou o Método de Galerkin \cite{Sadd2009}. Multiplica-se a equação de equilíbrio por um campo arbitrário de deslocamentos virtuais (função teste) $\mathbf{v}$ pertencente ao espaço admissível $\mathbf{V}_0$ (onde $\mathbf{v} = \mathbf{0}$ sobre a fronteira de Dirichlet $\Gamma_u$), integrando-se sobre todo o volume do corpo \cite{logg2012automated}:
 \end{equation} - integral_Omega (bold(nabla) dot bold(sigma)) dot bold(v) d Omega = 0 \begin{equation}
   Aplicando o teorema da divergência de Gauss e a integração por partes no termo de maior ordem (para reduzir a exigência de diferenciabilidade da solução de $C^2$ para $C^1$), obtém-se a \textbf{Formulação Fraca Clássica} da elasticidade linear \cite{Sadd2009}:
-\end{equation} integral\textit{Omega bold(sigma)(bold(u)) : bold(epsilon)(bold(v)) d Omega = integral}(Gamma_t) bold(t)^T bold(v) d S \begin{equation}
+\end{equation} $\int_\Omega \boldsymbol{\sigma}(\mathbf{u}) : \boldsymbol{\epsilon}(\mathbf{v}) \, d\Omega = \int_{\Gamma_t} \mathbf{t}^T \mathbf{v} \, dS$ \begin{equation}
   onde $\mathbf{\sigma}(\mathbf{u}) = \mathbf{\mathcal{C}} : \mathbf{\epsilon}(\mathbf{u})$ é a relação constitutiva governada pela Lei de Hooke e $\mathbf{\epsilon}(\mathbf{v}) = 1/2 (\mathbf{nabla} \mathbf{v} + \mathbf{nabla} \mathbf{v}^T)$ é o tensor de deformações virtuais simétrico \cite{Sadd2009}.
 
 No caso específico de vasos de pressão cilíndricos longos sob carregamento puramente radial, a simetria de revolução em torno do eixo de rotação $z$ estabelece um estado de \textbf{elasticidade axissimétrica} \cite{Timoshenko_1951}. Sob esta hipótese física, os campos de deslocamento e tensão tornam-se independentes da coordenada angular $\theta$ ($partial\textit{\theta (\cdot) = 0$), e a componente circunferencial do deslocamento é nula ($u}\theta = 0$), reduzindo o problema elástico tridimensional (3D) para um domínio de seção transversal bidimensional (2D) no plano radial-axial $r-z$ \cite{logg2012automated}.

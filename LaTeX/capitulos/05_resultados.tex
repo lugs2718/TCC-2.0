@@ -64,7 +64,7 @@ Para a validação computacional, considerou-se um vaso de pressão cilíndrico 
   \centering
   \caption{Parâmetros geométricos e mecânicos em escala milimétrica para validação do modelo cilíndrico homogêneo.}
   \label{tab:parametros_validacao_v3}
-  \begin{tabular}{|l|c|c|}
+  \begin{tabular}{l c c}
     \hline
     \textbf{Parâmetro} & \textbf{Símbolo} & \textbf{Valor Adotado (mm--N--MPa)} \\ \hline
     Raio Interno & $R_{\text{int}}$ & $9,0 \, \text{mm}$ \\ \hline
@@ -276,7 +276,7 @@ Estes resultados numéricos validam plenamente a viabilidade estrutural do reser
   \centering
   \caption{Distribuições e saltos de tensões principais radiais, circunferenciais e Von Mises na parede bimetálica sob pressão interna de 30 MPa.}
   \label{tab:tensoes_r_int_r_ext}
-  \begin{tabular}{|l|l|c|c|c|}
+  \begin{tabular}{l l c c c}
     \hline
     \textbf{Coordenada} & \textbf{Material / Fase} & \textbf{Tensão Radial $\sigma_{rr}$} & \textbf{Tensão Hoop $\sigma_{\theta\theta}$} & \textbf{Von Mises $\sigma_{\text{VM}}$} \\ \hline
     Parede Interna ($r=9,0 \, \text{mm}$) & Aço (Fase 1) & $-30,00 \, \text{MPa}$ & $231,33 \, \text{MPa}$ & $229,87 \, \text{MPa}$ \\ \hline
@@ -314,7 +314,7 @@ As simulações numéricas foram conduzidas para uma varredura paramétrica de p
   \centering
   \caption{Análise quantitativa de erros locais e globais na parede do vaso cilíndrico para diferentes níveis de periodicidade microestrutural sob pressão interna de $30 \, \text{MPa}$.}
   \label{tab:convergencia_erros}
-  \begin{tabular}{|c|c|c|c|c|}
+  \begin{tabular}{c c c c c}
     \hline
     \textbf{Células ($N_{\text{cel}}$)} & \textbf{Camadas ($N_{\text{cam}}$)} & \textbf{Espessura da célula $l$ ($\text{mm}$)} & \textbf{Erro Máximo $E_{L^\infty}$ ($\text{mm}$)} & \textbf{Erro Relativo $E_{L^2}$ (\%)} \\ \hline
     $10$ & $20$ & $0,200$ & $5,7688 \times 10^{-5}$ & $0,4968$ \\ \hline
@@ -412,11 +412,11 @@ Para comparar o aproveitamento mecânico da matéria-prima em cada configuraçã
 
 em que $\sigma_{y,k}$ é o limite de escoamento e $\sigma_{\text{VM},k}^{\text{máx}}$ a tensão equivalente de Von Mises máxima da fase $k$ sob a pressão de projeto $p$. A Tabela~\ref{tab:comparativo_eficiencia} apresenta o estudo comparativo das métricas de desempenho elástico, tensões de Von Mises máximas, fatores de segurança locais contra escoamento e massas lineares, e a Tabela~\ref{tab:indice_eficiencia_massa} consolida o índice $W_{\text{ef}}$ resultante para as três configurações de vaso de pressão sob estudo.
 
-\begin{table}[htbp]
+\begin{quadro}[htbp]
   \centering
   \caption{Estudo comparativo de eficiência estrutural, tensões equivalentes de Von Mises, fatores de segurança e alívio de massa sob pressão de projeto de $30 \, \text{MPa}$.}
   \label{tab:comparativo_eficiencia}
-  \begin{tabular}{|l|c|c|c|c|}
+  \begin{tabular}{l c c c c}
     \hline
     \textbf{Configuração Estrutural} & \textbf{Densidade ($\text{kg/m}^3$)} & \textbf{Massa Linear ($\text{kg/m}$)} & \textbf{Tensão $\sigma_{\text{VM}}^{\text{máx}}$ ($\text{MPa}$)} & \textbf{Fator de Segurança ($\text{FS}$)} \\ \hline
     100\% Aço Carbono & $7800$ & $0,9802$ & $159,05$ & $2,51$ \\ \hline
@@ -424,13 +424,13 @@ em que $\sigma_{y,k}$ é o limite de escoamento e $\sigma_{\text{VM},k}^{\text{m
     Bimetálico (Camada Aço) & $5250$ & $0,6597$ & $229,87$ & $1,74$ \\ \hline
     Bimetálico (Camada Alumínio) & $5250$ & $0,6597$ & $89,07$ & $3,03$ \\ \hline
   \end{tabular}
-\end{table}
+\end{quadro}
 
 \begin{table}[htbp]
   \centering
   \caption{Pressão de início de escoamento ($P_y$) e índice de eficiência de suporte de carga por unidade de massa ($W_{\text{ef}}$) para as três configurações estruturais.}
   \label{tab:indice_eficiencia_massa}
-  \begin{tabular}{|l|c|c|c|c|}
+  \begin{tabular}{l c c c c}
     \hline
     \textbf{Configuração Estrutural} & \textbf{$M_{\text{linear}}$ ($\text{kg/m}$)} & \textbf{$\text{FS}_{\min}$} & \textbf{$P_y$ ($\text{MPa}$)} & \textbf{$W_{\text{ef}}$ ($\text{MPa} \cdot \text{m/kg}$)} \\ \hline
     100\% Aço Carbono & $0,9802$ & $2,51$ & $75,45$ & $76,97$ \\ \hline

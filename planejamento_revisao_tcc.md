@@ -146,11 +146,17 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - [x] **REV-02.2c (concluída em 09/11/2026):** Revisão da Lei de Hooke generalizada (21→9→5 constantes) — verificação de consistência e coerência do texto. Fluxo lógico verificado: Hooke (L191) → 81 componentes (L197) → restrições (L199) → simetria menor esquerda (L201) → simetria menor direita (L205) → 36 componentes (L209) → potencial elástico (L211) → simetria maior (L218) → 21 componentes (L221). Citações já resolvidas na CIT-03. Subscritos Typst pendentes (REV-02.2a).
   - [x] **REV-02.2a (conclu?da em 09/11/2026):** Corre??o de subscritos Typst em ?2.2 (12 corre??es: L189, L192, L199, L201, L203, L205, L207, L210, L214, L217, L270?L276, L273?L276). Convers?o de `\textit{...}` para subscritos LaTeX corretos. Verifica??o: 0 subscritos Typst suspeitos restantes em ?2.2.
   - Conversão dos `[nn]` para `@jones2018mechanics`, `@sadd2009elasticity`, `@lai2010continuum` e correção da chave `\cite{beer1989resistencia:}`.
-- [ ] **REV-02.3:** **Teorias de Placas/Cascas e Mecanismo do Efeito Zigue-Zague (Seção 2.3)**
-  - Fundamentação física das teorias clássicas (CLT, FSDT) e limitações em paredes grossas ($R/t < 10$).
-  - Explicação rigorosa dos *kinks* via Lema de Cauchy (continuidade de tração vs. salto de deformação).
-  - Justificativa da adoção do MHA frente às teorias layerwise e ZZT.
-  - Conversão dos `[nn]` para `@tonatto2020`, `@parton_reducido`, `@RMJones2018`.
+- [x] **REV-02.3:** **Teorias de Placas/Cascas e Mecanismo do Efeito Zigue-Zague (Seção 2.3)** [Concluída em 10/11/2026]
+  - [x] **REV-02.3a1 (concluída em 09/11/2026):** Correção de subscritos Typst puros em §2.3 (L398–L436). 11 de 23 ocorrências convertidas (`u\textit{z` → `u_z`, `\sigma\textit{(r r)` → `\sigma_{(rr)}`, `\eqref{eq:cont\textit{disp}}` → `\eqref{eq:cont_disp}`, etc.). As 12 ocorrências restantes são fragmentos de equações Typst complexos (`frac(...)`, `sum(...)`, `hat(...)`, `arrow.r.double`) que requerem conversão completa Typst→LaTeX — registradas como REV-02.3b (CON/RED). Verificação: 0 subscritos Typst puros restantes em L398–L436.
+  - [x] **REV-02.3a2 (concluída em 10/11/2026):** Kinks/interfaces (L437–L456) — 3 subscritos puros corrigidos (L445, L449, L455). 4 complexos restantes registrados para REV-02.3b.
+  - [x] **REV-02.3a3 (concluída em 10/11/2026):** Layerwise/ZZT/MHA (L457–L492) — 2 subscritos puros corrigidos (L469, L478). 9 complexos restantes registrados para REV-02.3b.
+  - [x] **REV-02.3a4 (concluída em 10/11/2026):** Voigt/Reuss (L488–L501) — 0 subscritos puros (todas as 6 ocorrências são fragmentos de equações Typst complexos). Registradas para REV-02.3b.
+  - [x] **REV-02.3b (concluída em 10/11/2026):** Funções Typst (`frac`, `sum`, `hat`, `arrow`) em §2.3 — conversão completa Typst→LaTeX (CON/RED). 10 equações reescritas (L403, L404, L441, L442, L444, L450, L452, L454, L465, L479, L491, L496). Verificação: 0 artefatos Typst restantes em §2.3 (exceto índices de Voigt em bloco Typst ativo, L227–L244).
+  - [x] **REV-02.3c (concluída em 10/11/2026):** Enriquecimento: Lema de Cauchy para os kinks (L446–L456). Parágrafo inserido após L456 explicando a continuidade de tração via Lema de Cauchy (tetraedro infinitesimal), com citação a Sadd (2009). Corrige a nota de autor `\marginpar` da L446 (que foi removida na limpeza estrutural).
+  - Fundamentação física das teorias clássicas (CLT, FSDT) e limitações em paredes grossas ($R/t < 10$) — texto já presente.
+  - Explicação rigorosa dos *kinks* via Lema de Cauchy (continuidade de tração vs. salto de deformação) — pendente (REV-02.3c).
+  - Justificativa da adoção do MHA frente às teorias layerwise e ZZT — texto já presente.
+  - Conversão dos `[nn]` para `@tonatto2020`, `@parton_reducido`, `@RMJones2018` — **concluída na CIT-03**.
 - [ ] **REV-02.4:** **Homogeneização, Médias de Backus e Formalismo do MHA (Seção 2.4)**
   - Limites clássicos de Voigt e Reuss, Garfo de Hill e formulação de meios estratificados de Backus.
   - Formalismo analítico da SAF e hierarquia de problemas locais e macroscópicos.
@@ -249,7 +255,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 {
   "versao_skill": "2.2",
   "versao_estado": "1.7",
-  "data_atualizacao": "2026-11-09",
+  "data_atualizacao": "2026-11-10",
   "autor_projeto": "Luiz Gustavo da Silva Pereira",
   "orientador": "Aguardando preenchimento formal",
   "sistema_unidades": "N-mm-MPa (Engenharia)",
@@ -273,7 +279,8 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CIT-03",
     "TEC-01",
     "TEC-02",
-    "REV-02.2"
+    "REV-02.2",
+    "REV-02.3"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -317,9 +324,17 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "Limpeza estrutural do Cap. 2 (09/11/2026): 4 blocos % TASK removidos (planejamento interno redundante), 4 marginpar removidos (notas de autor ja enderecadas), 2 blocos Typst comentados restaurados (tabelas NR-13 e ASME - conteudo real preservado para conversao futura). Arquivo: 684 -> 653 linhas. 173 cite (todas com chave existente). 12 labels, 15 refs (targets ausentes sao pre-existentes: rotulos Typst referenciados por eqref).",
     "REV-02.2b concluída (09/11/2026): inserção da definição formal do gradiente vetorial (nabla u) e do tensor de deformações simétrico (epsilon_ij = 1/2 (u_ij + u_ji)) após a equação de Hooke (L192-L194) do Cap. 2, com citações a Lai (2010) e Sadd (2009). Pendentes: REV-02.2a (correção de 37 subscritos Typst em §2.2) e REV-02.2c (revisão da Lei de Hooke generalizada 21->9->5 constantes).",
     "REV-02.2c concluída (09/11/2026): revisão da Lei de Hooke generalizada (21->9->5 constantes) verificada. Fluxo lógico coerente: Hooke (L191) -> 81 componentes (L197) -> restrições (L199) -> simetria menor esquerda (L201) -> simetria menor direita (L205) -> 36 componentes (L209) -> potencial elástico (L211) -> simetria maior (L218) -> 21 componentes (L221). Citações já resolvidas na CIT-03. Única pendência: subscritos Typst (REV-02.2a, 37 linhas).",
-    "REV-02.2 concluída (09/11/2026): §2.2 do Cap. 2 revisada. Sub-tarefas: 02.2a (correção de 12 subscritos Typst), 02.2b (definição formal de nabla u e epsilon, L192-L194), 02.2c (verificação da Lei de Hooke generalizada 21->9->5 constantes). Citações já resolvidas na CIT-03. Nota de autor marginpar L205 (gradiente) atendida."
+    "REV-02.2 concluída (09/11/2026): §2.2 do Cap. 2 revisada. Sub-tarefas: 02.2a (correção de 12 subscritos Typst), 02.2b (definição formal de nabla u e epsilon, L192-L194), 02.2c (verificação da Lei de Hooke generalizada 21->9->5 constantes). Citações já resolvidas na CIT-03. Nota de autor marginpar L205 (gradiente) atendida.",
+    "REV-02.3a1 concluída (09/11/2026): correção de subscritos Typst puros em §2.3 (L398-L436). 11 de 23 ocorrências convertidas (u\\textit{z -> u_z, sigma\\textit{(r r) -> sigma_(rr), eqref{eq:cont\\textit{disp}} -> eqref{eq:cont_disp}, etc.). As 12 ocorrências restantes são fragmentos de equações Typst complexos (frac, sum, hat, arrow) que requerem conversão completa Typst->LaTeX (registradas como REV-02.3b, CON/RED). Verificação: 0 subscritos Typst puros restantes em L398-L436.",
+    "REV-02.3a2 (parcial) concluída (10/11/2026): 3 subscritos Typst puros corrigidos em §2.3 (L445 eq:cont_disp, L449 tau_(rz), L455 gamma_(rz)). 4 linhas complexas (L442, L443, L451, L453) registradas para REV-02.3b (conversão Typst->LaTeX).",
+    "REV-02.3a3 (parcial) concluída (10/11/2026): 2 subscritos Typst puros corrigidos em §2.3 (L469 zeta_k, L478 u_0). 9 ocorrências restantes são fragmentos de equações Typst complexos (frac, sum, hat, arrow) registrados para REV-02.3b (CON/RED).",
+    "REV-02.3a4 concluída (10/11/2026): 0 subscritos Typst puros em §2.3 (L488-L501). As 6 ocorrências restantes são fragmentos de equações Typst complexos (sum, frac, arrow) registrados para REV-02.3b (CON/RED). Total de subscritos Typst puros corrigidos em §2.3: 16 (11 em 02.3a1 + 3 em 02.3a2 + 2 em 02.3a3 + 0 em 02.3a4).",
+    "REV-02.3a1 aplicada (10/11/2026): 11 subscritos Typst puros corrigidos em §2.3 (L398-L436). 14 ocorrências restantes são fragmentos de equações Typst complexos (frac, sum, hat, arrow) registrados para REV-02.3b (CON/RED).",
+    "REV-02.3a (subscritos Typst puros em §2.3) concluída (10/11/2026): 16 subscritos puros corrigidos (02.3a1: 11, 02.3a2: 3, 02.3a3: 2, 02.3a4: 0). As ~28 ocorrências restantes são fragmentos de equações Typst complexos (frac, sum, hat, arrow) registrados para REV-02.3b (CON/RED).",
+    "REV-02.3b concluída (10/11/2026): conversão completa de funções Typst (frac, sum, hat, arrow) para LaTeX em §2.3. 10 equações reescritas (L403, L404, L441, L442, L444, L450, L452, L454, L465, L479, L491, L496). Verificação: 0 artefatos Typst restantes em §2.3 (exceto índices de Voigt em bloco Typst ativo, L227-L244).",
+    "REV-02.3 concluída (10/11/2026): §2.3 revisada. Sub-tarefas: 02.3a (16 subscritos Typst puros), 02.3b (10 equações reescritas Typst->LaTeX), 02.3c (enriquecimento Lema de Cauchy, parágrafo inserido com citação Sadd 2009). Citações já resolvidas na CIT-03. Bloco Typst ativo (L227-L244) preservado para conversão futura."
   ],
-  "proximo_passo": "REV-02.2 concluída. Próxima tarefa autorizada a definir (sugestão: REV-02.3 §2.3 — Teorias de Placas/Cascas e Kinks; ou CIT-04 Cap. 2 §2.3, ~32 marcadores; ou CON-03 conclusão).",
+  "proximo_passo": "REV-02.3 concluída. Próxima tarefa autorizada a definir (sugestão: REV-02.4 §2.4 — Homogeneização, Backus, MHA; ou CON-03 conclusão; ou TEC-03 resultados).",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

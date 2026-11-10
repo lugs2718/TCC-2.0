@@ -398,15 +398,15 @@ A Teoria Clássica de Laminação (CLT — \textbf{Classical Lamination Theory})
 2. Normal à superfície deformada;
 3. Inalterada em seu comprimento (extensão vertical nula, $epsilon_z = 0$).
 
-Sob estas premissas cinemáticas, o campo de deslocamentos axial $u\textit{z$ e circunferencial $u}\theta$ a uma coordenada radial $r$ (adotando a superfície média como referência de espessura $z$) é escrito como \cite{RMJones2018}:
+Sob estas premissas cinemáticas, o campo de deslocamentos axial $u_z$ e circunferencial $u_\theta$ a uma coordenada radial $r$ (adotando a superfície média como referência de espessura $z$) é escrito como \cite{RMJones2018}:
 
-$ u\textit{z (r, \theta, z) = u}z^0 (r, \theta) - z frac(partial w, partial z) $ <eq:clt_disp1>
-$ u\textit{\theta (r, \theta, z) = u}\theta^0 (r, \theta) - z frac(partial w, r partial \theta) $ <eq:clt_disp2>
-$ u\textit{r (r, \theta, z) = w(r, \theta) $ <eq:clt}disp3>
+$ u_z(r, \theta, z) = u_z^0(r, \theta) - z \frac{\partial w}{\partial z} $ <eq:clt_disp1>
+$ u_\theta(r, \theta, z) = u_\theta^0(r, \theta) - z \frac{\partial w}{r \partial \theta} $ <eq:clt_disp2>
+$ u_r(r, \theta, z) = w(r, \theta) $ <eq:clt}disp3>
 
-onde $u\textit{z^0$ e $u}\theta^0$ são os deslocamentos no plano médio e $w$ é o deslocamento radial. A principal implicação física da \eqref{eq:clt\textit{disp1} e \eqref{eq:clt}disp2} é a anulação das deformações por cisalhamento transversal elástico \cite{RMJones2018}:
+onde $u_z^0$ e $u_\theta^0$ são os deslocamentos no plano médio e $w$ é o deslocamento radial. A principal implicação física da \eqref{eq:clt_disp1} e \eqref{eq:clt_disp2} é a anulação das deformações por cisalhamento transversal elástico \cite{RMJones2018}:
 
-$ \gamma\textit{(r z) = 2 \epsilon}(r z) = 0, \quad \gamma\textit{(r \theta) = 2 \epsilon}(r \theta) = 0 $ <eq:clt_shear>
+$ \gamma_{(rz)} = 2\epsilon_{(rz)} = 0, \quad \gamma_{(r\theta)} = 2\epsilon_{(r\theta)} = 0 $ <eq:clt_shear>
 
 A ausência de deformação de cisalhamento transversal restringe a aplicabilidade da CLT estritamente a cascas muito finas ($R_"int"/t \ge  10$), uma vez que o erro introduzido ao ignorar a flexibilidade ao cisalhamento se propaga rapidamente para o cálculo de deflexões e frequências naturais à medida que a espessura aumenta \cite{RMJones2018}.
 
@@ -414,20 +414,21 @@ A ausência de deformação de cisalhamento transversal restringe a aplicabilida
 
 Para contornar a rigidez excessiva da CLT, a Teoria de Deformação por Cisalhamento de Primeira Ordem (FSDT — \textbf{First-Order Shear Deformation Theory}), baseada no modelo de Mindlin-Reissner, relaxa a hipótese de normalidade. As seções retas e normais permanecem retas, mas não necessariamente perpendiculares à superfície média após a deformação \cite{RMJones2018}. O campo de deslocamentos é expandido linearmente com a coordenada de espessura $z$ \cite{RMJones2018}:
 
-$ u\textit{z (r, \theta, z) = u}z^0 (r, \theta) + z \phi\textit{z (r, \theta) $ <eq:fsdt}disp1>
-$ u\textit{\theta (r, \theta, z) = u}\theta^0 (r, \theta) + z \phi\textit{\theta (r, \theta) $ <eq:fsdt}disp2>
+$ u_z(r, \theta, z) = u_z^0(r, \theta) + z \phi_z(r, \theta) $ <eq:fsdt}disp1>
+$ u_\theta(r, \theta, z) = u_\theta^0(r, \theta) + z \phi_\theta(r, \theta) $ <eq:fsdt}disp2>
 
-onde $\phi\textit{z$ e $\phi}\theta$ representam as rotações das seções transversais em torno dos eixos circunferenciais e axiais. Sob esta formulação, as deformações de cisalhamento transversal são constantes ao longo da espessura \cite{RMJones2018}:
+onde $\phi_z$ e $\phi_\theta$ representam as rotações das seções transversais em torno dos eixos circunferenciais e axiais. Sob esta formulação, as deformações de cisalhamento transversal são constantes ao longo da espessura \cite{RMJones2018}:
 
-$ \gamma\textit{(r z) (z) = \phi}z + frac(partial w, partial z) = "constante" $ <eq:fsdt_shear>
+$ \gamma_{(rz)}(z) = \phi_z + \frac{\partial w}{\partial z} = "constante" $ <eq:fsdt_shear>
 
-Embora a FSDT capture a flexibilidade global ao cisalhamento, a premissa de deformação cisalhante constante ao longo da espessura viola a condição física de contorno de tensão nula nas superfícies livres superior e inferior do cilindro ($\tau\textit{(r z)|}(z = p m h/2) = 0$) \cite{RMJones2018}. Na realidade mecânica de um meio homogêneo, a distribuição de tensão de cisalhamento transversal assume um perfil parabólico. Para corrigir essa discrepância energética, a FSDT necessita da introdução de um fator de correção de cisalhamento ($\kappa$), tipicamente adotado como $\kappa = 5/6$ para seções retangulares homogêneas, o qual se torna altamente complexo e impreciso quando aplicado a laminados compostos heterogêneos \cite{RMJones2018}.
+Embora a FSDT capture a flexibilidade global ao cisalhamento, a premissa de deformação cisalhante constante ao longo da espessura viola a condição física de contorno de tensão nula nas superfícies livres superior e inferior do cilindro ($\tau_{(rz)}|(z = p m h/2) = 0$) \cite{RMJones2018}. Na realidade mecânica de um meio homogêneo, a distribuição de tensão de cisalhamento transversal assume um perfil parabólico. Para corrigir essa discrepância energética, a FSDT necessita da introdução de um fator de correção de cisalhamento ($\kappa$), tipicamente adotado como $\kappa = 5/6$ para seções retangulares homogêneas, o qual se torna altamente complexo e impreciso quando aplicado a laminados compostos heterogêneos \cite{RMJones2018}.
+
 
 \subsection{Limitações de Aplicação em Cilindros de Parede Grossa e Meios de Alto Contraste}
 
-No estudo mecânico de vasos de pressão como o analisado neste trabalho — que apresenta uma espessura de parede $t = 2" mm"$ e raio interno $R\textit{"int" = 9" mm"$, resultando em uma relação geométrica de parede grossa $R}"int"/t = 4,5$ — as teorias de ESL clássicas (CLT e FSDT) tornam-se completamente inadequadas devido a três fatores impeditivos \cite{Sadd2009}:
+No estudo mecânico de vasos de pressão como o analisado neste trabalho — que apresenta uma espessura de parede $t = 2" mm"$ e raio interno $R_{\text{int}} = 9 \text{ mm}$, resultando em uma relação geométrica de parede grossa $R}"int"/t = 4,5$ — as teorias de ESL clássicas (CLT e FSDT) tornam-se completamente inadequadas devido a três fatores impeditivos \cite{Sadd2009}:
 
-1. \textbf{Inadmissibilidade de Tensão Radial Nula ($\sigma\textit{(r r) = 0$):} Ambas as teorias clássicas de placa assumem um estado plano de tensões, impondo $\sigma}(r r) = 0$. Em vasos de parede grossa sob pressão interna $P\textit{i = 10" MPa"$, a tensão radial $\sigma}(r r)$ varia fortemente de $-10" MPa"$ na parede interna até atingir $0$ na face externa, atuando diretamente no escoamento plástico local e nas condições de contorno de equilíbrio \cite{Sadd2009}.
+1. \textbf{Inadmissibilidade de Tensão Radial Nula ($\sigma_{(rr)} = 0$):} Ambas as teorias clássicas de placa assumem um estado plano de tensões, impondo $\sigma}(r r) = 0$. Em vasos de parede grossa sob pressão interna $P_i = 10 \text{ MPa}$, a tensão radial $\sigma}(r r)$ varia fortemente de $-10" MPa"$ na parede interna até atingir $0$ na face externa, atuando diretamente no escoamento plástico local e nas condições de contorno de equilíbrio \cite{Sadd2009}.
 2. \textbf{Ausência do Efeito de Compressibilidade:} As teorias ESL desprezam a deformação normal radial ($epsilon_(r r) = 0$). Em cilindros espessos bimetálicos, o contraste de coeficiente de Poisson induz efeitos de expansão diferencial localizados ao longo do raio que não podem ser negligenciados.
 3. \textbf{Omissão das Deformações Interlaminares:} O salto de propriedades mecânicas entre o aço carbono e a liga de alumínio gera altas taxas de cisalhamento interlaminar concentradas junto às interfaces de colagem, fenômeno invisível às abordagens que suavizam as propriedades ao longo da espessura \cite{PartonReport}.
 
@@ -437,22 +438,25 @@ Quando um cilindro ou casca multicamadas é composto por materiais com proprieda
 
 Considere a interface perfeitamente aderida entre a camada $k$ e a camada $k+1$ localizada em uma coordenada radial $r = r_k$. As condições físicas de compatibilidade de deslocamento e continuidade de tração (ação e reação) exigem que \cite{RMJones2018}:
 
-$ [[ u\textit{i ]] = u}i^((k+1)) (r\textit{k) - u}i^((k)) (r\textit{k) = 0 $ <eq:cont}disp>
-$ [[ \sigma\textit{(r i) ]] = \sigma}(r i)^((k+1)) (r\textit{k) - \sigma}(r i)^((k)) (r\textit{k) = 0, \quad (i = r, \theta, z) $ <eq:cont}stress>
+$ [[ u_i ]] = u_i^{(k+1)}(r_k) - u_i^{(k)}(r_k) = 0 $ <eq:cont_disp>
+$ [[ \sigma_{(ri)} ]] = \sigma_{(ri)}^{(k+1)}(r_k) - \sigma_{(ri)}^{(k)}(r_k) = 0, \quad (i = r, \theta, z) $ <eq:cont_stress>
 
-A \eqref{eq:cont\textit{disp} impõe que o vetor de deslocamento seja contínuo ao longo de toda a espessura para evitar a abertura de vazios ou o escorregamento entre as fases. Da mesma forma, a \eqref{eq:cont}stress} exige que a tensão normal radial ($\sigma\textit{(r r)$) e as tensões de cisalhamento transversal ($\tau}(r z), tau_(r \theta)$) sejam estritamente contínuas na interface para satisfazer o equilíbrio infinitesimal \cite{RMJones2018}.
+A \eqref{eq:cont_disp} impõe que o vetor de deslocamento seja contínuo ao longo de toda a espessura para evitar a abertura de vazios ou o escorregamento entre as fases. Da mesma forma, a \eqref{eq:cont_stress} exige que a tensão normal radial ($\sigma_{(rr)}$) e as tensões de cisalhamento transversal ($\tau_{(rz)}, \tau_{(r\theta)}$) sejam estritamente contínuas na interface para satisfazer o equilíbrio infinitesimal \cite{RMJones2018}.
 
-Contudo, os módulos de elasticidade e cisalhamento das fases sofrem saltos bruscos na transição das camadas (por exemplo, o módulo de cisalhamento do aço é cerca de três vezes superior ao do alumínio, $G\textit{"aço" approx 77" GPa"$ vs $G}"alu" approx 26" GPa"$). Aplicando-se a Lei de Hooke para o cisalhamento transversal, temos \cite{RMJones2018}:
+Contudo, os módulos de elasticidade e cisalhamento das fases sofrem saltos bruscos na transição das camadas (por exemplo, o módulo de cisalhamento do aço é cerca de três vezes superior ao do alumínio, $G_{\text{aço}} \approx 77 \text{ GPa}$ vs $G_{\text{alu}} \approx 26 \text{ GPa}$). Aplicando-se a Lei de Hooke para o cisalhamento transversal, temos \cite{RMJones2018}:
 
-$ \tau\textit{(r z) = G(r) \gamma}(r z) (r) $ <eq:hooke_shear>
+$ \tau_{(rz)} = G(r) \gamma(r z) (r) $ <eq:hooke_shear>
 
-Para garantir a continuidade da tensão de cisalhamento ($\tau\textit{(r z)^((k)) = \tau}(r z)^((k+1))$) sob a descontinuidade abrupta do módulo de cisalhamento ($G^((k)) \neq  G^((k+1))$), a deformação por cisalhamento transversal ($gamma_(r z)$) obrigatoriamente sofre um salto abrupto na interface \cite{RMJones2018}:
+Para garantir a continuidade da tens?o de cisalhamento ($\tau_{(rz)}^{(k)} = \tau_{(rz)}^{(k+1)}$) sob a descontinuidade abrupta do m?dulo de cisalhamento ($G^{(k)} \neq G^{(k+1)}$), a deforma??o por cisalhamento transversal ($\gamma_{(rz)}$) obrigatoriamente sofre um salto abrupto na interface \cite{RMJones2018}:
 
-$ [[ \gamma\textit{(r z) ]] = \tau}(r z) (r\textit{k) ( frac(1, G^((k+1))) - frac(1, G^((k))) ) \neq  0 $ <eq:jump}shear>
+$ [[ \gamma_{(rz)} ]] = \tau_{(rz)}(r_k) \left( \frac{1}{G^{(k+1)}} - \frac{1}{G^{(k)}} \right) \neq 0 $ <eq:jump_shear>
 
-Como a deformação por cisalhamento transversal $\gamma\textit{(r z)$ é diretamente proporcional à derivada do deslocamento longitudinal em relação ao raio ($partial}r u\textit{z$), o salto na deformação manifesta-se matematicamente como uma \textbf{descontinuidade na primeira derivada do campo de deslocamentos} ($partial}r u_i$) \cite{RMJones2018}.
+Como a deformação por cisalhamento transversal $\gamma_{(rz)}$ é diretamente proporcional à derivada do deslocamento longitudinal em relação ao raio ($\partial_r u_z$), o salto na deformação manifesta-se matematicamente como uma \textbf{descontinuidade na primeira derivada do campo de deslocamentos} ($\partial_r u_i$) \cite{RMJones2018}.
 
 Graficamente, esse fenômeno traduz-se em mudanças súbitas e localizadas de inclinação nas curvas de deslocamento radial ou axial exatamente nos pontos das interfaces elásticas, gerando o formato geométrico de "cotovelos" ou \textbf{"kinks"} conhecido na literatura científica de compósitos laminados como \textbf{comportamento em zigue-zague} (\textbf{zig-zag effect}) \cite{RMJones2018}. As teorias ESL, por assumirem aproximações polinomiais contínuas (C¹-contínuas) de deslocamento ao longo de toda a espessura, são matematicamente incapazes de reproduzir esses kinks elásticos locais, resultando em subestimação severa das deformações interlaminares de cisalhamento \cite{RMJones2018}.
+
+A continuidade da tensão normal radial $\sigma_{rr}$ e das tensões de cisalhamento transversal $\tau_{rz}$, $\tau_{r\theta}$ na interface segue diretamente do \textbf{Lema de Cauchy} (equilíbrio de um tetraedro infinitesimal na superfície de descontinuidade): o vetor de tração $\mathbf{t} = \boldsymbol{\sigma}\cdot\mathbf{n}$ deve ser contínuo através de qualquer superfície, e como a normal $\mathbf{n}$ é a mesma (em módulo) nos dois lados da interface, as componentes de tensão que atuam sobre a normal devem coincidir. Isso é o que permite afirmar que $\sigma_{rr}^{(k)} = \sigma_{rr}^{(k+1)}$ e $\tau_{rz}^{(k)} = \tau_{rz}^{(k+1)}$ na interface $r = r_k$, mesmo quando o módulo de cisalhamento $G$ sofre salto \cite{Sadd2009}.
+
 
 \subsection{Teorias Camada a Camada (\textbf{Layerwise}) e Teorias Zigue-Zague (ZZT)}
 
@@ -461,11 +465,11 @@ Para representar com precisão física o efeito zigue-zague sem recorrer a simul
 1. \textbf{Teorias Camada a Camada (Layerwise):} Nesta abordagem, as equações de deslocamento 2D são formuladas de forma independente para cada uma das $N$ camadas do laminado, conectando as variáveis nas interfaces por equações de restrição de continuidade \cite{PartonReport}. Embora extremamente precisas para capturar os "kinks" e as tensões interlaminares de borda livre, as teorias \textbf{layerwise} possuem a severa desvantagem de que o número total de variáveis de deslocamento (graus de liberdade) da estrutura cresce linearmente com o número de camadas ($N$), tornando o método proibitivo para cilindros de múltiplos períodos ou COPVs de dezenas de lâminas.
 2. \textbf{Teorias Zigue-Zague (ZZT — Zig-Zag Theories):} As ZZT superam essa limitação ao enriquecer as teorias de camada única equivalente (como a FSDT) através da superposição de uma função em zigue-zague contínua por partes ($zeta_i (z)$) de amplitude variável, de modo a induzir de forma analítica a descontinuidade de derivada desejada nas interfaces \cite{PartonReport}:
   \begin{equation}
-  u\textit{z (r, \theta, z) = u}z^0 (r, \theta) + z \phi\textit{z (r, \theta) + sum}(k=1)^(N-1) \zeta\textit{k (z) hat(\phi)}z^k (r, \theta)
+  u_z(r, \theta, z) = u_z^0(r, \theta) + z \phi_z(r, \theta) + \sum_{k=1}^{N-1} \zeta_k(z) \hat{\phi}_z^k(r, \theta)
   \label{eq:zzt_disp}
 \end{equation}
 
-As funções de enriquecimento $\zeta\textit{k (z)$ são pré-calculadas analiticamente de forma a satisfazer a priori as condições de continuidade de tensões interlaminares na interface (\eqref{eq:cont}stress}). Como resultado prático, as Teorias Zigue-Zague conseguem capturar com precisão cirúrgica os "kinks" nos deslocamentos e prever o início de falhas por delaminação interlaminares mantendo o número total de graus de liberdade do modelo matemático independente do número de camadas do compósito, oferecendo uma excelente alternativa computacional para análises mecânicas locais \cite{PartonReport}.
+As funções de enriquecimento $\zeta_k(z)$ são pré-calculadas analiticamente de forma a satisfazer a priori as condições de continuidade de tensões interlaminares na interface (\eqref{eq:cont}stress}). Como resultado prático, as Teorias Zigue-Zague conseguem capturar com precisão cirúrgica os "kinks" nos deslocamentos e prever o início de falhas por delaminação interlaminares mantendo o número total de graus de liberdade do modelo matemático independente do número de camadas do compósito, oferecendo uma excelente alternativa computacional para análises mecânicas locais \cite{PartonReport}.
 
 \subsection{Justificativa para a Adoção da Homogeneização Assintótica (MHA) frente às ZZT}
 
@@ -474,8 +478,8 @@ Embora as Teorias Zigue-Zague (ZZT) representem um avanço cinematográfico sign
 1. \textbf{Inviabilidade Algébrica sob Alta Periodicidade:} Nas ZZT, as funções de enriquecimento local $zeta_k (z)$ e os coeficientes de acoplamento precisam ser formulados e pré-calculados analiticamente de interface em interface ($N-1$ interfaces) \cite{bakhvalov1989}. Para cilindros bimetálicos de alta densidade periódica ou estruturas com centenas de microcamadas (em que $N$ cresce consideravelmente), a montagem desse sistema algébrico de enriquecimento torna-se altamente complexa, onerosa e propensa a erros numéricos de condicionamento. O MHA contorna isso completamente ao desacoplar as escalas de análise: o problema físico global é resolvido como um contínuo perfeitamente homogêneo, cuja complexidade matemática é invariante em relação ao número real de camadas \cite{bakhvalov1989}.
 2. \textbf{Rigor Matemático e Convergência Provada:} Ao contrário das ZZT, que se baseiam em aproximações cinemáticas ad hoc (ou \textbf{ansatz} físicos), o MHA é ancorado no rigor da análise assintótica clássica e na teoria da $H$-convergência elíptica \cite{bakhvalov1989}. Ele fornece uma prova formal de consistência matemática na qual, por meio do Teorema da Relação de Proximidade em espaços de Sobolev ($L^2$ e $H^1$), a diferença entre a solução heterogênea do MEF e a aproximação homogeneizada decresce de forma estritamente linear com o parâmetro de escala pequena ($\epsilon = l/L -> 0$) \cite{bakhvalov1989}. Isso garante que, quanto maior for a densidade de camadas do vaso, mais exata e robusta é a resposta fornecida pelo MHA.
 3. \textbf{Acoplamento Direto e Simplicidade em Solvers de Elementos Finitos (FEniCS):} A implementação numérica de elementos finitos enriquecidos baseados em ZZT exige o desenvolvimento de elementos customizados não padronizados e formulações variacionais complexas (geralmente indisponíveis em pacotes de MEF comerciais ou open-source) \cite{logg2012automated}. Por outro lado, o MHA permite utilizar elementos lagrangeanos quadráticos clássicos em malhas bidimensionais axissimétricas comuns. O solver do FEniCS resolve o equilíbrio global sem qualquer modificação em suas matrizes de rigidez elástica homogêneas nativas, e o problema de célula local (1D) é resolvido de forma independente e direta, simplificando enormemente a programação e estabilidade numérica do código \cite{logg2012automated}.
-4. \textbf{Capacidade de Reconstrução de Campos Locais e Interlaminares:} Uma das maiores vantagens do MHA é o seu caráter de modelagem multiescala bidirecional. Após obter a solução macroscópica homogeneizada suave $u\textit{0(r)$, o comportamento local em zigue-zague dos deslocamentos e as flutuações das tensões interlaminares em cada camada individual podem ser reconstruídos com exatidão analítica }a posteriori\textit{ em qualquer ponto através dos corretores locais elásticos (incluindo a função de perturbação local $N}1(y)$) \cite{bakhvalov1989}:
-  $ u\textit{i^\epsilon (r) approx u}{0,i}(r) + \epsilon N\textit{{1,i j}(y) frac(partial u}{0,j}, partial r) $ <eq:correction_mha>
+4. \textbf{Capacidade de Reconstrução de Campos Locais e Interlaminares:} Uma das maiores vantagens do MHA é o seu caráter de modelagem multiescala bidirecional. Após obter a solução macroscópica homogeneizada suave $u_0(r)$, o comportamento local em zigue-zague dos deslocamentos e as flutuações das tensões interlaminares em cada camada individual podem ser reconstruídos com exatidão analítica }a posteriori\textit{ em qualquer ponto através dos corretores locais elásticos (incluindo a função de perturbação local $N}1(y)$) \cite{bakhvalov1989}:
+  $ u_i^\epsilon(r) \approx u_{0,i}(r) + \epsilon N_{1,ij}(y) \frac{\partial u_{0,j}}{\partial r} $ <eq:correction_mha>
   Dessa forma, o MHA recupera toda a física microscópica e as descontinuidades de derivada ("kinks") na interface sem sobrecarregar a cinemática global da estrutura \cite{bakhvalov1989}.
 
 \section{Métodos de Homogeneização e a Transição Micro-Macro (Objetivo B.4)}
@@ -487,12 +491,12 @@ A modelagem de materiais heterogêneos com microestrutura complexa impõe desafi
 Historicamente, o problema de determinar propriedades físicas efetivas para meios heterogêneos remonta a trabalhos fundamentais de Poisson, Maxwell, Rayleigh, Voigt e Reuss \cite{PartonReport}. No campo da mecânica dos sólidos, duas formulações fundamentais baseadas em médias volumétricas simples consolidaram-se como balizas analíticas:
 
 1. \textbf{Abordagem de Voigt (Média Aritmética):} Assume que o campo de deformações é perfeitamente uniforme em todo o composto (hipótese de isodeformação ou \textit{isostrain}). A rigidez efetiva equivalente $C_(i j)^V$ é calculada diretamente como a média aritmética ponderada pelas frações volumétricas das fases constituintes:
-  $ C\textit{(i j)^V = \langle C}(i j) (y) \rangle = sum\textit{(k=1)^(N) V}k C\textit{(i j)^((k)) $ <eq:voigt}mean>
+  $ C_{(ij)}^V = \langle C_{(ij)}(y) \rangle = \sum_{k=1}^{N} V_k C_{(ij)}^{(k)} $ <eq:voigt_mean>
   onde $V\textit{k$ representa a fração volumétrica da fase $k$ e $C}(i j)^((k))$ seu respectivo coeficiente elástico. Termodinamicamente, o modelo de Voigt estabelece o limite superior absoluto para a rigidez do composto \cite{bakhvalov1989}.
 
 2. \textbf{Abordagem de Reuss (Média Harmônica):} Assume que o campo de tensões é uniforme ao longo de todo o domínio (hipótese de isotensão ou \textit{isostress}). A compliância efetiva equivalente $S_(i j)^R$ (inverso da rigidez) é expressa como a média ponderada das compliâncias locais:
   \begin{equation}
-  S\textit{(i j)^R = \langle S}(i j) (y) \rangle = sum\textit{(k=1)^(N) V}k S\textit{(i j)^((k)) \quad arrow.r.double \quad C}(i j)^R = \langle C_(i j)^(-1)(y) \rangle^(-1)
+  S_{(ij)}^R = \langle S_{(ij)}(y) \rangle = \sum_{k=1}^{N} V_k S_{(ij)}^{(k)} \quad \Leftrightarrow \quad C_{(ij)}^R = \langle C_{(ij)}^{-1}(y) \rangle^{-1}
   \label{eq:reuss_mean}
 \end{equation}
   A média de Reuss representa o limite inferior elástico da estrutura heterogênea \cite{bakhvalov1989}.

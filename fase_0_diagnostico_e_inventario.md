@@ -60,6 +60,15 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 - **Resultado:** arquivo merged com 753 linhas, 1 `\chapter`, 10 `\section`, 14 `\subsection`. `main.tex` atualizado (03_2 comentado). 3 `\marginpar` removidos (lei de Hooke local, tensor de elasticidade reduzido, regra da cadeia — conteúdo ao redor os endereça). Conferência estrutural: 77 labels (0 duplicados), 46 refs/eqrefs (0 targets ausentes), 86 `\cite` (0 chaves ausentes). Equações do problema local (χ¹, χ²) e constantes efetivas (Ĉ₁₁, Ĉ₁₂, Ĉ₂₂, Ĝ) na parte merged são consistentes com a formulação do Cap. 3.
 - **Arquivos:** `03_1_equilibrio.tex` (merged), `main.tex`.
 
+### 1.13 Capítulo 2 (§2.2) — Tarefa REV-02.2 Concluída (09/11/2026)
+- **Escopo:** revisão de conteúdo e consistência técnica da §2.2 (Mecânica dos Compósitos, Notação de Voigt, Simetrias Elásticas).
+- **Sub-tarefas concluídas:**
+  - REV-02.2a: correção de 12 subscritos Typst em §2.2 (L189, L192, L199, L201, L203, L205, L207, L210, L214, L217, L270→L276, L273→L276). Conversão de `\textit{...}` para subscritos LaTeX corretos. Verificação: 0 subscritos Typst suspeitos restantes em §2.2.
+  - REV-02.2b: inserção da definição formal do gradiente vetorial ($\nabla \mathbf{u}$) e do tensor de deformações simétrico ($\epsilon_{ij} = \frac{1}{2}(u_{i,j} + u_{j,i})$) após a equação de Hooke (L192–L194), com citações a Lai (2010) e Sadd (2009).
+  - REV-02.2c: revisão da Lei de Hooke generalizada (21→9→5 constantes) — verificação de consistência e coerência do texto. Fluxo lógico verificado: Hooke (L191) → 81 componentes (L197) → restrições (L199) → simetria menor esquerda (L201) → simetria menor direita (L205) → 36 componentes (L209) → potencial elástico (L211) → simetria maior (L218) → 21 componentes (L221). Citações já resolvidas na CIT-03.
+- **Citações:** já resolvidas na CIT-03 (11 `\cite` na §2.2: lai2010continuum ×6, Sadd2009 ×2, Timoshenko_1951 ×2, RMJones2018 ×1).
+- **Arquivos:** `02_revisao_bibliografica.tex`.
+
 ---
 
 ## 2. Inventário Documental dos Ativos do Projeto
@@ -113,9 +122,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - [ ] Sub-bloco D.3 (Citações Numéricas e Quadros Normativos):
     - Conversão das chamadas estáticas `[nn]` para as chaves BibTeX reais (`@asme_sec8_div1_2019`, `@brasil_nr13_2022`, `@sadd2009elasticity`, etc.).
     - Descomentar e converter os Quadros Typst da NR-13 (Tabela 1) e ASME (Div. 1 vs Div. 2) para o ambiente LaTeX `quadro` com legenda e fonte ABNT.
-- [ ] **REV-02.2:** **Mecânica dos Compósitos, Notação de Voigt e Simetrias Elásticas (Seção 2.2)**
-  - Inserção da definição matemática formal do gradiente vetorial ($\nabla \mathbf{u}$) e tensor simétrico $\boldsymbol{\varepsilon}$ (nota da linha 233).
-  - Revisão da lei de Hooke generalizada (21 constantes) até ortotropia curvilínea (5 constantes de Backus).
+- [x] **REV-02.2:** **Mecânica dos Compósitos, Notação de Voigt e Simetrias Elásticas (Seção 2.2)** [Concluída em 09/11/2026]
+  - [x] **REV-02.2b (concluída em 09/11/2026):** Inserção da definição formal do gradiente vetorial ($\nabla \mathbf{u}$) e do tensor de deformações simétrico ($\epsilon_{ij} = \frac{1}{2}(u_{i,j} + u_{j,i})$) após a equação de Hooke (L192–L194), com citações a Lai (2010) e Sadd (2009).
+  - [x] **REV-02.2c (concluída em 09/11/2026):** Revisão da Lei de Hooke generalizada (21→9→5 constantes) — verificação de consistência e coerência do texto. Fluxo lógico verificado: Hooke (L191) → 81 componentes (L197) → restrições (L199) → simetria menor esquerda (L201) → simetria menor direita (L205) → 36 componentes (L209) → potencial elástico (L211) → simetria maior (L218) → 21 componentes (L221). Citações já resolvidas na CIT-03. Subscritos Typst pendentes (REV-02.2a).
+  - [x] **REV-02.2a (conclu?da em 09/11/2026):** Corre??o de subscritos Typst em ?2.2 (12 corre??es: L189, L192, L199, L201, L203, L205, L207, L210, L214, L217, L270?L276, L273?L276). Convers?o de `\textit{...}` para subscritos LaTeX corretos. Verifica??o: 0 subscritos Typst suspeitos restantes em ?2.2.
   - Conversão dos `[nn]` para `@jones2018mechanics`, `@sadd2009elasticity`, `@lai2010continuum` e correção da chave `\cite{beer1989resistencia:}`.
 - [ ] **REV-02.3:** **Teorias de Placas/Cascas e Mecanismo do Efeito Zigue-Zague (Seção 2.3)**
   - Fundamentação física das teorias clássicas (CLT, FSDT) e limitações em paredes grossas ($R/t < 10$).
@@ -139,10 +149,12 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - Conversão das chamadas numéricas nas equações diferenciais em coordenadas cilíndricas para as referências canônicas (Lai, Sadd, Timoshenko, Bakhvalov).
 
 #### Capítulo 4 — Metodologia e Simulação Numérica (MEF / FEniCS)
-- [ ] **TEC-02:** **Consistência Físico-Matemática e Dimensional do MEF**
-  - Harmonização dimensional estrita para a escala de engenharia **mm-N-MPa** sincronizada com o código `Códigos/main.py`.
-  - Revisão da formulação variacional axissimétrica, destacando o papel crítico do peso do raio $r$ no integrando bidimensional.
-  - Fundamentação da escolha do elemento finito de Lagrange linear ($P_1$) e do alinhamento geométrico estrito nó-interface.
+- [x] **TEC-02:** **Consistência Físico-Matemática e Dimensional do MEF** [Concluída em 08/11/2026]
+  - Harmonização dimensional estrita para a escala N-mm-MPa sincronizada com `Códigos/main.py` (TEC-04, commit d4a6de0).
+  - Revisão da formulação variacional axissimétrica: referência à Seção 3.4 do Cap. 3 verificada e consistente (peso do raio $r$ em L550–L653). Equação de integração por revolução ($2\pi \int_\Omega f\, r\, dr\, dz$) coerente com a implementação no FEniCS.
+  - Fundamentação da escolha do elemento P1 (Lagrange de grau 1 / CST): justificada por custo computacional (L72) e resolução radial (L73), com citação a Sadd (2009). Correto: P1 tem deformação constante por elemento.
+  - Alinhamento geométrico estrito nó-interface: `nel1 = int(V1 * resolucao_malha)`, `nel2 = int(V2 * resolucao_malha)` garantem que a espessura de cada camada seja múltiplo inteiro de $h_r = t/N_r$. Consistente com `Códigos/main.py`.
+  - Notas de autor (L40, 58, 60, 79, 118, 140, 144) registradas como residuais para tarefas CON/RED/NOR futuras.
 - [ ] **CIT-06 (legado) → CIT-01:** **Auditoria de Citações e Implementação Computacional do MEF**
   - Conversão dos `[nn]` para as referências da biblioteca FEniCS (`@fenics2012` / Logg) e artigos de métodos numéricos.
 
@@ -218,7 +230,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 {
   "versao_skill": "2.2",
   "versao_estado": "1.7",
-  "data_atualizacao": "2026-11-07",
+  "data_atualizacao": "2026-11-09",
   "autor_projeto": "Luiz Gustavo da Silva Pereira",
   "orientador": "Aguardando preenchimento formal",
   "sistema_unidades": "N-mm-MPa (Engenharia)",
@@ -240,7 +252,9 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "REF-01",
     "NOR-03",
     "CIT-03",
-    "TEC-01"
+    "TEC-01",
+    "TEC-02",
+    "REV-02.2"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -279,9 +293,14 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CIT-03: fatias 03.01-03.12 concluídas (95 marcadores). 90 marcadores restantes em 2 fatias (03.13, 03.14a, 03.14b). Variedade: brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, lai2010continuum x13, Sadd2009 x14, Backus1962 x11, Timoshenko_1951 x3, bakhvalov1989 x4, PartonReport x2, logg2012automated x1, leitzke2017 x1, Guinovart2024 x1, RMJones2018 x1.",
     "CIT-03: fatias 03.01-03.13 concluídas (107 marcadores). 78 marcadores restantes (fatia 03.14). Variedade: brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, lai2010continuum x13, Sadd2009 x17, Backus1962 x11, Timoshenko_1951 x4, bakhvalov1989 x4, PartonReport x2, logg2012automated x7, leitzke2017 x1, Guinovart2024 x1, RMJones2018 x1.",
     "CIT-03 concluída (07/11/2026): 185 marcadores numéricos removidos em 02_revisao_bibliografica.tex (0 restantes, excl. índices de Voigt em bloco Typst comentado L227-L244). 184 chamadas \\cite (brasil_nr13_2022 x25, asme_sec8_div1_2019 x21, RMJones2018 x11, lai2010continuum x13, Sadd2009 x24, Backus1962 x11, Timoshenko_1951 x4, bakhvalov1989 x4, PartonReport x2, logg2012automated x16, leitzke2017 x1, Guinovart2024 x1, beer1989resistencia x1). Correções incidentais: cite malformado (L110, L23, L27). Compilação não executada (Overleaf).",
-    "TEC-01 concluída (07/11/2026): fusão de 03_1_equilibrio.tex e 03_2_homogeneizacao.tex sob um único \\chapter (753 linhas, 10 sections, 14 subsections). main.tex atualizado (03_2 comentado). 3 marginpar removidos (lei de Hooke local, tensor reduzido, regra da cadeia). Conferência estrutural: 77 labels (0 duplicados), 46 refs (0 ausentes), 86 cites (0 chaves ausentes)."
+    "TEC-01 concluída (07/11/2026): fusão de 03_1_equilibrio.tex e 03_2_homogeneizacao.tex sob um único \\chapter (753 linhas, 10 sections, 14 subsections). main.tex atualizado (03_2 comentado). 3 marginpar removidos (lei de Hooke local, tensor reduzido, regra da cadeia). Conferência estrutural: 77 labels (0 duplicados), 46 refs (0 ausentes), 86 cites (0 chaves ausentes).",
+    "TEC-02 concluída (08/11/2026): consistência físico-matemática e dimensional do MEF verificada no Cap. 4. Referência à Seção 3.4 (Cap. 3) consistente. Peso do raio r coerente com a implementação FEniCS. Elemento P1 (CST) justificado por Sadd (2009). Alinhamento nó-interface (int() de nel1/nel2) consistente com Códigos/main.py. Dimensões harmonizadas (TEC-04, d4a6de0). 7 notas de autor registradas como residuais (figuras, unidades, P1, nel_celula, Mapeamento Implícito, VERIFY seção).",
+    "Limpeza estrutural do Cap. 2 (09/11/2026): 4 blocos % TASK removidos (planejamento interno redundante), 4 marginpar removidos (notas de autor ja enderecadas), 2 blocos Typst comentados restaurados (tabelas NR-13 e ASME - conteudo real preservado para conversao futura). Arquivo: 684 -> 653 linhas. 173 cite (todas com chave existente). 12 labels, 15 refs (targets ausentes sao pre-existentes: rotulos Typst referenciados por eqref).",
+    "REV-02.2b concluída (09/11/2026): inserção da definição formal do gradiente vetorial (nabla u) e do tensor de deformações simétrico (epsilon_ij = 1/2 (u_ij + u_ji)) após a equação de Hooke (L192-L194) do Cap. 2, com citações a Lai (2010) e Sadd (2009). Pendentes: REV-02.2a (correção de 37 subscritos Typst em §2.2) e REV-02.2c (revisão da Lei de Hooke generalizada 21->9->5 constantes).",
+    "REV-02.2c concluída (09/11/2026): revisão da Lei de Hooke generalizada (21->9->5 constantes) verificada. Fluxo lógico coerente: Hooke (L191) -> 81 componentes (L197) -> restrições (L199) -> simetria menor esquerda (L201) -> simetria menor direita (L205) -> 36 componentes (L209) -> potencial elástico (L211) -> simetria maior (L218) -> 21 componentes (L221). Citações já resolvidas na CIT-03. Única pendência: subscritos Typst (REV-02.2a, 37 linhas).",
+    "REV-02.2 concluída (09/11/2026): §2.2 do Cap. 2 revisada. Sub-tarefas: 02.2a (correção de 12 subscritos Typst), 02.2b (definição formal de nabla u e epsilon, L192-L194), 02.2c (verificação da Lei de Hooke generalizada 21->9->5 constantes). Citações já resolvidas na CIT-03. Nota de autor marginpar L205 (gradiente) atendida."
   ],
-  "proximo_passo": "TEC-01 concluída. Próxima tarefa autorizada a definir (sugestão: TEC-02 Cap. 4 — consistência físico-matemática do MEF; ou CIT-04 Cap. 2 §2.3, ~32 marcadores; ou CON-03 conclusão).",
+  "proximo_passo": "REV-02.2 concluída. Próxima tarefa autorizada a definir (sugestão: REV-02.3 §2.3 — Teorias de Placas/Cascas e Kinks; ou CIT-04 Cap. 2 §2.3, ~32 marcadores; ou CON-03 conclusão).",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

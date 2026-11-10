@@ -24,7 +24,7 @@ De modo similar, a tensão longitudinal (ou axial), denotada por $sigma_2$, atua
 
 $ \sigma_2 = (p r) / (2 t). $ <eq-tensao-longitudinal>
 
-Comparando-se as equações \eqref{eq-tensao-circunferencial} e \eqref{eq-tensao-longitudinal}, observa-se que a tensão circunferencial é exatamente o dobro da tensão longitudinal ($\sigma_2 = 2 \sigma_1$). Essa relação física possui uma implicação mecânica fundamental de falha: ao pressurizar excessivamente um tubo ou cilindro metálico homogêneo, a parede falhará primeiro por tração ao longo das juntas longitudinais, gerando uma fissura linear paralela ao eixo de comprimento do cilindro. Por essa razão, juntas de solda longitudinais em cascos cilíndricos calandrados devem ser dimensionadas e inspecionadas para suportar o dobro do carregamento em relação às juntas circunferenciais. \marginpar{\tiny Não acho que esse trecho precise de citações, pois o conteúdo está claro pelas próprias equações e pelo que foi explicado.}
+Comparando-se as equações \eqref{eq-tensao-circunferencial} e \eqref{eq-tensao-longitudinal}, observa-se que a tensão circunferencial é exatamente o dobro da tensão longitudinal ($\sigma_2 = 2 \sigma_1$). Essa relação física possui uma implicação mecânica fundamental de falha: ao pressurizar excessivamente um tubo ou cilindro metálico homogêneo, a parede falhará primeiro por tração ao longo das juntas longitudinais, gerando uma fissura linear paralela ao eixo de comprimento do cilindro. Por essa razão, juntas de solda longitudinais em cascos cilíndricos calandrados devem ser dimensionadas e inspecionadas para suportar o dobro do carregamento em relação às juntas circunferenciais. 
 
 Em contrapartida, para reservatórios esféricos de parede fina, \cite[p.~652]{beer1989resistencia} ressaltam que a perfeita simetria esférica do domínio faz com que as tensões circunferenciais e longitudinais sejam idênticas ($\sigma_1 = \sigma_2$), resultando em:
 
@@ -96,6 +96,8 @@ Cruzando-se as matrizes de Classe de Fluido com o Grupo de Potencial de Risco, a
 %   [\textbf{Classe D} \ \textit{(Outros Fluidos)}], [\textbf{II}], % [\textbf{III}], [\textbf{IV}], [\textbf{V}], [\textbf{V}],
 % )
 
+
+
 Mecanicamente, para que um vaso de pressão seja operado legalmente em território nacional, a NR-13 exige que o estabelecimento industrial mantenha um conjunto de documentações técnicas atualizadas e prontamente acessíveis para a auditoria de fiscais do trabalho e do Ministério Público \cite{brasil_nr13_2022}. Essa pasta de integridade inclui obrigatoriamente \cite{brasil_nr13_2022}:
 1. \textbf{Prontuário do Vaso de Pressão:} Emitido e assinado pelo fabricante, contendo o código de construção (como o ASME), especificação dos materiais de retenção de pressão, procedimentos de fabricação, qualificação de soldagem e relatórios de exames e inspeção final \cite{brasil_nr13_2022};
 2. \textbf{Registro de Segurança:} Livro de ocorrências físicas onde são registradas as inspeções de segurança, calibrações de instrumentos e anomalias operacionais \cite{brasil_nr13_2022};
@@ -110,6 +112,7 @@ Adicionalmente, cada vaso de pressão deve possuir afixado em seu corpo, em loca
 Para garantir a segurança operacional e mitigar os riscos de falhas explosivas catastróficas, o projeto e a fabricação de vasos de pressão industriais são rigorosamente regidos por códigos normativos internacionais, dos quais o mais amplamente utilizado globalmente e no Brasil é o Código ASME Seção VIII (\textbf{Boiler and Pressure Vessel Code}, BPVC), desenvolvido pela %\#pag(<asme_sec8_div1_2019>) (\textbf{American Society of Mechanical Engineers}).
 
 O Código ASME Seção VIII divide-se em três divisões com filosofias de projeto, fatores de segurança e limites de pressão distintos \cite{asme_sec8_div1_2019}:
+
 
 %#table(
 %  columns: (1fr, 2fr, 2fr),
@@ -142,6 +145,7 @@ O Código ASME Seção VIII divide-se em três divisões com filosofias de proje
 %  [Aplicável a pressões elásticas de projeto de até $10.000$ psi %($70$ MPa) \cite{asme_sec8_div1_2019}.],
 %) \marginpar{\tiny Coloar legenda (Quadro) e refenciá-lo no texto}
 
+
 Conforme a Subseção A, Parte UG do ASME Seção VIII Divisão 1, as fórmulas utilizadas para o cálculo da espessura mínima requerida ($t$) e da Pressão Máxima de Trabalho Admissível (PMTA, ou $P$) de cascos cilíndricos sob pressão interna são baseadas na tensão circunferencial solicitando as juntas soldadas longitudinais \cite{asme_sec8_div1_2019}. Quando a espessura do costado não excede a metade do raio interno, ou quando a pressão interna não ultrapassa o limite elástico $0,385 S E$, aplicam-se as seguintes expressões de projeto (UG-27) \cite{asme_sec8_div1_2019}:
 $ t = (P R) / (S E - 0,6 P) \quad text("ou") \quad P = (S E t) / (R + 0,6 t) $ <eq-asme-circunferencial>
 
@@ -173,15 +177,6 @@ $ t = (P R) / (2 S E + 0,4 P) \quad text("ou") \quad P = (2 S E t) / (R - 0,4 t)
 O código estabelece de forma rigorosa que a espessura mínima nominal a ser adotada para a fabricação de cascos e tampos de aço carbono e baixa liga, independentemente do cálculo por pressão, é o maior valor entre $4,8$ mm ou a relação baseada no diâmetro interno com tolerância à corrosão (UG-16), visando garantir estabilidade dimensional e facilidade de fabricação na caldeiraria \cite{asme_sec8_div1_2019}.
 % ====================================================
 
-% TASK: 
-\begin{itemize}
-  \item Objetivo B.2: Mecânica dos Materiais Compósitos e Simetrias Elásticas:
-    \textbf{ O que abordar:} Introduzir os conceitos de materiais compostos (matriz, reforço e fases constitutivas) e os diferentes níveis de comportamento elástico.
-    \textbf{ Rigor técnico:} Explicar a Lei de Hooke generalizada e a transição das propriedades constitutivas partindo do caso anisotrópico mais geral (21 constantes) até a redução para materiais ortotrópicos (9 constantes) e transversalmente isotrópicos (5 constantes) na Notação de Voigt, justificando como o layout de múltiplas camadas cilíndricas induz a ortotropia curvilínea.
-    \textbf{ Fontes-chave:} Robert M. Jones (1999), Parton \& Kudryavtsev (1993), e Review on laminated composites (Liew, 2019).
-\end{itemize}
-
-
 \section{Mecânica dos Materiais Compósitos e Simetrias Elásticas (Objetivo B.2)}
 
 O estudo do comportamento mecânico de estruturas cilíndricas multicamadas e vasos de pressão avançados requer uma base conceitual sólida da mecânica dos meios anisotrópicos. Ao contrário dos materiais convencionais, cuja isotropia simplifica as relações constitutivas, os compósitos exibem propriedades físicas que dependem da direção analisada. Esta seção apresenta o formalismo matemático da Lei de Hooke Generalizada, o método de redução de constantes elásticas através das simetrias elásticas e a Notação de Voigt, culminando na justificativa física de como cilindros formados por camadas isotrópicas apresentam um comportamento macroscopicamente ortotrópico curvilíneo \cite{RMJones2018}.
@@ -191,32 +186,34 @@ O estudo do comportamento mecânico de estruturas cilíndricas multicamadas e va
 No âmbito da elasticidade linear tridimensional, a relação entre o tensor de tensões de segunda ordem $\mathbf{\sigma}$ e o tensor de deformações infinitesimais de segunda ordem $\mathbf{\epsilon}$ é regida pela Lei de Hooke Generalizada, expressa em notação de índices como \cite{lai2010continuum}:
 
 \begin{equation} 
-    \sigma\textit{(i j) = C}{i j k l} \epsilon\textit{(k l) , \quad (i, j, k, l = 1, 2, 3),
+    \sigma_{ij} = C_{ijkl} \epsilon_{kl} , \quad (i, j, k, l = 1, 2, 3),
 \end{equation}\label{eq:hooketensor}
 
-onde $C\textit{{i j k l}}$ representa o tensor de elasticidade (ou rigidez elástica) de quarta ordem. De acordo com a análise dimensional e a álgebra tensorial, o tensor $C_{i j k l}$ possui $3^4 = 81$ componentes independentes na ausência de simetrias \cite{lai2010continuum}.
+onde $C_{ijkl}$ representa o tensor de elasticidade (ou rigidez elástica) de quarta ordem. De acordo com a análise dimensional e a álgebra tensorial, o tensor $C_{i j k l}$ possui $3^4 = 81$ componentes independentes na ausência de simetrias \cite{lai2010continuum}.
+
+O tensor de deformações infinitesimais $\mathbf{\epsilon}$ é definido como a parte simétrica do gradiente do campo de deslocamentos $\mathbf{u}$, ou seja, $\epsilon_{ij} = \frac{1}{2}(u_{i,j} + u_{j,i})$, onde $u_{i,j} = \partial u_i / \partial x_j$ denota a derivada parcial do componente $i$ do deslocamento em relação à coordenada $j$ \cite{lai2010continuum, Sadd2009}. O gradiente do vetor deslocamento $\nabla \mathbf{u}$ é o tensor de segunda ordem cujas componentes são $u_{i,j}$; sua parte antissimétrica corresponde à rotaçãoo infinitesimal do meio, de modo que apenas a parte simétrica (a deformaçao) contribui para o trabalho de deformação elástica.
 
 Contudo, a física dos meios contínuos impõe restrições severas a essas componentes devido às simetrias físicas dos tensores de tensão e deformação, bem como a princípios termodinâmicos \cite{lai2010continuum}:
 
-1. \textbf{Simetria do Tensor de Tensões:} Em virtude da conservação do momento angular (e na ausência de momentos de corpo distribuídos), o tensor de tensões de Cauchy é simétrico ($\sigma_\textit{(ij)} = \sigma_{(ji)}$). Isto resulta na simetria menor esquerda do tensor de rigidez \cite{Sadd2009}:
+1. \textbf{Simetria do Tensor de Tensões:} Em virtude da conservação do momento angular (e na ausência de momentos de corpo distribuídos), o tensor de tensões de Cauchy é simétrico ($\sigma_{(ij)} = \sigma_{(ji)}$). Isto resulta na simetria menor esquerda do tensor de rigidez \cite{Sadd2009}:
 
-$ C\textit{{i j k l} = C}{j i k l} $ <eq:sym_left>
+$ C_{ijkl} = C_{jikl} $ <eq:sym_left>
 
-2. \textbf{Simetria do Tensor de Deformações:} Por definição cinemática, o tensor de pequenas deformações é a parte simétrica do gradiente do vetor deslocamento ($\epsilon\textit{(k l) = 1/2 (u}(k,l) + u_(l,k))$)\marginpar{\tiny Definir o conceito de gradiente de um campo vetorial}. Isto implica na simetria menor direita \cite{Sadd2009}:
+2. \textbf{Simetria do Tensor de Deformações:} Por definição cinemática, o tensor de pequenas deformações é a parte simétrica do gradiente do vetor deslocamento ($\epsilon_{(kl)} = \frac{1}{2}(u_{(k,l)} + u_{(l,k)})$). Isto implica na simetria menor direita \cite{Sadd2009}:
 
-$ C\textit{{i j k l} = C}{i j l k} $ <eq:sym_right>
+$ C_{ijkl} = C_{ijlk} $ <eq:sym_right>
 
-A aplicação conjunta das simetrias menores dadas pelas \eqref{eq:sym\textit{left} e \eqref{eq:sym}right} reduz o número de componentes elásticas independentes de 81 para 36 componentes \cite{lai2010continuum}.
+A aplicação conjunta das simetrias menores dadas pelas \eqref{eq:sym_left} e \eqref{eq:sym_right} reduz o número de componentes elásticas independentes de 81 para 36 componentes \cite{lai2010continuum}.
 
 3. \textbf{Existência de um Potencial Elástico (Termodinâmica):} Para um material elástico hiperelástico, assume-se a existência de uma função de densidade de energia de deformação (ou potencial elástico $W$) por unidade de volume, de modo que as tensões sejam derivadas de $W$ por \cite{Timoshenko_1951}:
-  $ \sigma\textit{(i j) = frac(partial W, partial \epsilon}(i j)) $ <eq:potential_w>
+  $ \sigma_{(ij)} = \frac{\partial W}{\partial \epsilon_{(ij)}} $ <eq:potential_w>
 
 Diferenciando novamente a expressão anterior em relação às deformações, obtêm-se as componentes de rigidez \cite{lai2010continuum}:
 
-$ C\textit{{i j k l} = frac(partial^2 W, partial \epsilon}(i j) partial \epsilon\textit{(k l)) $ <eq:stiff}deriv>
+$ C_{ijkl} = \frac{\partial^2 W}{\partial \epsilon_{(ij)} \partial \epsilon_{(kl)}} $ <eq:stiff}deriv>
 
 Como a ordem de diferenciação parcial de uma função contínua de classe $C^2$ é imaterial (teorema de Clairaut-Schwarz), conclui-se que o tensor de rigidez possui simetria maior \cite{lai2010continuum}:
-$ C\textit{{i j k l} = C}{k l i j} $ <eq:sym_major>
+$ C_{ijkl} = C_{klij} $ <eq:sym_major>
 
 A introdução da simetria maior dada pela \eqref{eq:sym_major} impõe que a matriz elástica resultante seja simétrica, reduzindo o número máximo de constantes elásticas independentes para o caso de um material elástico anisotrópico tridimensional geral (triclínico) para exatamente \textbf{21 componentes} \cite{Timoshenko_1951}.
 
@@ -272,10 +269,10 @@ Aplicando a notação de Voigt, a Lei de Hooke tridimensional assume a forma mat
   \gamma}12
 \end{bmatrix}
   \end{aligned}
-  \label{eq:voigt\textit{matrix}anisotropic}
+  \label{eq:voigt_matrix_anisotropic}
 \end{equation}
 
-A equação \eqref{eq:voigt\textit{matrix}anisotropic} representa a relação constitutiva de um material triclínico genérico, caracterizado por 21 componentes de rigidez elástica independentes e acoplamento total entre deformações normais e tensões cisalhantes (e vice-versa) \cite{Sadd2009}.
+A equação \eqref{eq:voigt_matrix_anisotropic} representa a relação constitutiva de um material triclínico genérico, caracterizado por 21 componentes de rigidez elástica independentes e acoplamento total entre deformações normais e tensões cisalhantes (e vice-versa) \cite{Sadd2009}.
 
 \subsection{Classes de Simetria Elástica e Redução de Constantes}
 
@@ -386,15 +383,6 @@ Este desacoplamento de rigidez induz um comportamento macroscópico equivalente 
 
 Como consequência direta do MHA de camadas isotrópicas coaxiais periódicas, o cilindro homogêneo equivalente macroscópico passa a ser regido por um tensor de elasticidade efetivo $[hat(C)]$ contendo exatamente \textbf{5 coeficientes independentes} ($hat(C)\textit{{11}, hat(C)}{22}, hat(C)\textit{{12}, hat(C)}{23}$ e $hat(C)_{55}$), em substituição às propriedades locais rapidamente oscilantes do modelo original \cite{Backus1962}. O alinhamento natural dessas constantes com as coordenadas cilíndricas do costado do vaso ($r, \theta, z$) elimina a necessidade de transformações de coordenadas complexas e simplifica drasticamente o equilíbrio axissimétrico final estudado no TCC \cite{Backus1962}.
 
-% TASK: 
-\begin{itemize}
-  \item Objetivo B.3: Teorias de Deformação de Placas/Cascas e o Efeito Zig-Zag:
-    \textbf{ O que abordar:} Apresentar a evolução da modelagem mecânica de laminados ao longo da espessura.
-    \textbf{ Rigor técnico:} Diferenciar as teorias clássicas de laminação (CLT) e de primeira ordem (FSDT), que assumem seções planas, das Teorias Zig-Zag (ZZT) e modelos camada a camada (layerwise). Explicar fisicamente a necessidade dessas teorias avançadas para capturar as descontinuidades de derivadas (os famosos "kinks" ou cotovelos) nos deslocamentos interlaminares de materiais com alto contraste de rigidez.
-    \textbf{ Fontes-chave:} Review on laminated composites (Garg et al., 2020) e Robert M. Jones (1999).
-\end{itemize}
-
-
 \section{Teorias de Deformação de Placas/Cascas e o Efeito Zig-Zag (Objetivo B.3)}
 
 O projeto de vasos de pressão e cascas de parede espessa fabricados em materiais compósitos ou arranjos multicamadas exige teorias cinemáticas capazes de descrever com fidelidade a distribuição de deslocamentos e tensões ao longo da espessura. Esta seção aborda a evolução das formulações cinemáticas clássicas de camada única equivalente, as limitações intrínsecas que as tornam inadequadas para cilindros de parede grossa e o mecanismo físico-matemático que rege o efeito zigue-zague (\textbf{kinks}) nas interfaces das camadas com alto contraste de rigidez elástica \cite{RMJones2018}.
@@ -490,15 +478,6 @@ Embora as Teorias Zigue-Zague (ZZT) representem um avanço cinematográfico sign
   $ u\textit{i^\epsilon (r) approx u}{0,i}(r) + \epsilon N\textit{{1,i j}(y) frac(partial u}{0,j}, partial r) $ <eq:correction_mha>
   Dessa forma, o MHA recupera toda a física microscópica e as descontinuidades de derivada ("kinks") na interface sem sobrecarregar a cinemática global da estrutura \cite{bakhvalov1989}.
 
-% TASK: 
-\begin{itemize}
-  \item Objetivo B.4: Métodos de Homogeneização e a Transição Micro-Macro:
-    \textbf{ O que abordar:} Apresentar o conceito de representação homogênea equivalente para meios heterogêneos periódicos.
-    \textbf{ Rigor técnico:} Contrastar as abordagens clássicas de limites elásticos (médias de Voigt e Reuss) e a formulação de Backus para meios estratificados com o formalismo matemático do Método de Homogeneização Assintótica (MHA). Explicar os conceitos de célula unitária periódica (Y), parâmetro de escala espacial ($\epsilon$) e a hipótese de convergência fraca quando $\epsilon -> 0$.
-    \textbf{ Fontes-chave:} Bakhvalov & Panasenko (1989), Bruna Homogeneização (2017), David Guinovart (2015), e Parton & Kudryavtsev (1993).
-\end{itemize}
-
-
 \section{Métodos de Homogeneização e a Transição Micro-Macro (Objetivo B.4)}
 
 A modelagem de materiais heterogêneos com microestrutura complexa impõe desafios severos à análise mecânica clássica. A presença de fases distintas com propriedades mecânicas discrepantes resulta em coeficientes elétricos ou elásticos que oscilam de forma extremamente rápida na escala microscópica. Resolver as equações de equilíbrio elástico em domínios dessa natureza por meio de técnicas discretas diretas, como o Método dos Elementos Finitos (MEF), exige um refinamento de malha tão severo que o custo computacional torna-se proibitivo para estruturas de escala industrial \cite{bakhvalov1989}. Esta seção aborda a transição conceitual e matemática entre as escalas micro e macro, apresentando os limites elásticos clássicos, o modelo de médias de Backus para estratificados e o formalismo rigoroso do Método de Homogeneização Assintótica (MHA).
@@ -553,7 +532,7 @@ $ u^(oo)(r, \epsilon) = u\textit{0(x) + \epsilon u}1(x, y) + \epsilon^2 u\textit
 onde os termos de perturbação $u\textit{i (x, y)$ são funções $Y$-periódicas na variável rápida $y$ na escala da célula básica unitária $Y = [0, 1]$ \cite{bakhvalov1989}. Na teoria clássica do MHA, prova-se que o termo principal $u}0$ não depende de $y$, representando o deslocamento macroscópico puro e regular do meio homogêneo equivalente \cite{bakhvalov1989}.
 
 \subsection{Substituição e Recorrência de Problemas}
-\marginpar{\tiny Aqui já apresentamos parte da metodologia, mas não seria melhor deixar tirar essa parte e deixar para a própria metodologia?}
+
 Substituindo a SAF dada pela \eqref{eq:saf_disp} na equação governante do equilíbrio elástico radial e separando os coeficientes associados a cada potência de $\epsilon$, obtém-se uma sequência recorrente de equações diferenciais elípticas \cite{bakhvalov1989}:
 
 1. \textbf{Termos de Ordem $O(\epsilon^(-2))$:}
@@ -574,7 +553,7 @@ Substituindo a SAF dada pela \eqref{eq:saf_disp} na equação governante do equi
 3. \textbf{Termos de Ordem $O(\epsilon^0)$ (Problema Homogeneizado):}
   Coletando os termos de ordem neutra e aplicando o operador valor médio volumétrico $\langle dot \rangle$ na célula unitária, as oscilações microscópicas rápidas se anulam por periodicidade, gerando a \textbf{Equação Homogeneizada Macroscópica} \cite{bakhvalov1989}:
   $ C\textit{(11) (d^2 u}0(r))/(d r^2) + C\textit{(11)/r (d u}0(r))/(d r) - C\textit{(11)/r^2 u}0(r) = 0 $ <eq:homog_eq>
-  onde os coeficientes efetivos homogeneizados equivalentes $C\textit{(11)$ e $C}(12)$ do vaso de parede grossa são determinados analiticamente em termos das propriedades elásticas locais através de \cite{bakhvalov1989}: \marginpar{\tiny Vou colocar o problema da Bruna no lugar do meu na revisão}
+  onde os coeficientes efetivos homogeneizados equivalentes $C\textit{(11)$ e $C}(12)$ do vaso de parede grossa são determinados analiticamente em termos das propriedades elásticas locais através de \cite{bakhvalov1989}: 
   \begin{equation}
   C\textit{(11) = \langle C}(11)^(-1)(y) \rangle^(-1) , \quad C\textit{(12) = \langle C}(11)^(-1)(y) \rangle^(-1) \langle C\textit{(12)(y) C}(11)^(-1)(y) \rangle
   \label{eq:effective_coeffs}
@@ -595,15 +574,6 @@ Para quantificar o erro cometido pela simplificação macroscópica homogeneizad
 \end{equation}
 
 A \eqref{eq:closeness_error} fornece o rigor matemático definitivo do método: ela garante que o erro de modelagem decresce de forma puramente linear e monótona com a redução da espessura das camadas elásticas (aumento de periodicidade), provando que o MHA é uma ferramenta assintoticamente exata para o projeto e otimização mecânica de cascas concêntricas e vasos multicamadas.
-
-% TASK: 
-\begin{itemize}
-  \item Objetivo B.5: O Método dos Elementos Finitos (MEF) e Simulação Computacional:
-    \textbf{ O que abordar:} Fundamentar o método numérico utilizado para resolver as equações governantes do cilindro heterogêneo e homogeneizado.
-    \textbf{ Rigor técnico:} Apresentar os conceitos de discretização de domínio, funções de forma de Lagrange e o processo de projeção variacional (Formulação Fraca). Justificar a adoção de elementos axissimétricos bidimensionais em softwares de código aberto (FEniCS) para a otimização de tempo e custo de simulação de vasos de pressão bimetálicos ou compósitos.
-    \textbf{ Fontes-chave:} Revisão Bibliográfica: MEF, e Elasticidade Axissimétrica com FEniCS.
-\end{itemize}
-
 
 \section{O Método dos Elementos Finitos e Simulação Computacional (Objetivo B.5)}
 

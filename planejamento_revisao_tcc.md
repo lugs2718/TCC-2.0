@@ -277,7 +277,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   "objetivo": "Revisão integral de conteúdo, rigor técnico, citações e redação científica do TCC em LaTeX",
   "fase_atual": "plano_1_em_andamento",
   "tarefa_ativa": null,
-  "subetapa_ativa": null,
+  "subetapa_ativa": "NOR-02 parte 1 concluida; parte 2 pendente (compilacao Overleaf)",
   "tarefas_concluidas": [
     "DIA-01",
     "DIA-02",
@@ -303,7 +303,8 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CON-RED",
     "REF-01c",
     "CON-RED2",
-    "REV-02.1"
+    "REV-02.1",
+    "NOR-02"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -368,9 +369,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "REF-01 (continuacao) concluida (10/11/2026): Heyliger2003 author corrigido. Ruan2024 year=2024 adicionado e braces balanceados. astm_a516 mantida com nota a confirmar. 4 chaves orfanadas (nao citadas). Verificacao final: 44 entradas, braces 425/425.",
     "CON-RED2 registrada (10/11/2026): conversao dos Typst artifacts em L604-L634 (Cap. 2, sec 5, Formulacao Variacional Fraca). Sub-blocos: a (equacoes), b (operadores/subscritos), c (consistencia com Cap. 4).",
     "CON-RED2 concluida (11/11/2026): conversao completa dos Typst artifacts em Cap. 2. Sec 5 (Formulacao Variacional Fraca) convertida para LaTeX (11 equacoes). Sec Discretizacao de Galerkin convertida (4 equacoes). 2 artifacts residuais (L143, L168 text(ou)) corrigidos. Verificacao final: 0 artifacts Typst restantes no Cap. 2 (excl. comentarios).",
-    "REV-02.1 concluida (11/11/2026): Sec 2.1 revisada. D.1 (reorganizacao logica) concluida. D.2 (equacoes Typst->LaTeX) concluida: inline equations convertidas, ASME equations convertidas, itemize consolidado. D.3 (citacoes e quadros) concluida: 0 marcadores [nn], blocos Typst comentados removidos (conteudo ja apresentado em texto)."
+    "REV-02.1 concluida (11/11/2026): Sec 2.1 revisada. D.1 (reorganizacao logica) concluida. D.2 (equacoes Typst->LaTeX) concluida: inline equations convertidas, ASME equations convertidas, itemize consolidado. D.3 (citacoes e quadros) concluida: 0 marcadores [nn], blocos Typst comentados removidos (conteudo ja apresentado em texto).",
+    "NOR-02 (parte 1) concluida (11/11/2026): pre-textuais reordenados em main.tex — Sumario antes de Lista de Ilustracoes e Lista de Tabelas (EdUFF 2012). Parte 2 (inspecao visual final) pendente de compilacao no Overleaf."
   ],
-  "proximo_passo": "REV-02.1 concluida. Cap. 2 (secs 2.1-2.5) totalmente revisado. Tipos restantes: NOR-02 (pre-textual + inspecao visual). Proxima tarefa autorizada a definir.",
+  "proximo_passo": "NOR-02 parte 1 concluida. Parte 2 (inspecao visual final) pendente de compilacao no Overleaf. Todas as tarefas de conteudo concluidas. Projeto pronto para compilacao final.",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

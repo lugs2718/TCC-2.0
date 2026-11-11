@@ -140,7 +140,7 @@ O Código ASME Seção VIII divide-se em três divisões com filosofias de proje
 %) \marginpar{\tiny Coloar legenda (Quadro) e refenciá-lo no texto}
 
 Conforme a Subseção A, Parte UG do ASME Seção VIII Divisão 1, as fórmulas utilizadas para o cálculo da espessura mínima requerida ($t$) e da Pressão Máxima de Trabalho Admissível (PMTA, ou $P$) de cascos cilíndricos sob pressão interna são baseadas na tensão circunferencial solicitando as juntas soldadas longitudinais \cite{asme_sec8_div1_2019}. Quando a espessura do costado não excede a metade do raio interno, ou quando a pressão interna não ultrapassa o limite elástico $0,385 S E$, aplicam-se as seguintes expressões de projeto (UG-27) \cite{asme_sec8_div1_2019}:
-$ t = (P R) / (S E - 0,6 P) \quad text("ou") \quad P = (S E t) / (R + 0,6 t) $ <eq-asme-circunferencial>
+$ t = (P R) / (S E - 0,6 P) \quad \text{ou} \quad P = (S E t) / (R + 0,6 t) $ <eq-asme-circunferencial>
 
 Onde:
 
@@ -165,7 +165,7 @@ Onde:
 \end{itemize}
 
 Para as juntas circunferenciais solicitadas pela tensão longitudinal, sob as mesmas condições geométricas de parede fina (espessura menor que metade do raio interno e $P \le  1,25 S E$), as equações do parágrafo UG-27 do ASME Seção VIII Div. 1 resultam em \cite{asme_sec8_div1_2019}:
-$ t = (P R) / (2 S E + 0,4 P) \quad text("ou") \quad P = (2 S E t) / (R - 0,4 t) $ <eq-asme-longitudinal>
+$ t = (P R) / (2 S E + 0,4 P) \quad \text{ou} \quad P = (2 S E t) / (R - 0,4 t) $ <eq-asme-longitudinal>
 
 O código estabelece de forma rigorosa que a espessura mínima nominal a ser adotada para a fabricação de cascos e tampos de aço carbono e baixa liga, independentemente do cálculo por pressão, é o maior valor entre $4,8$ mm ou a relação baseada no diâmetro interno com tolerância à corrosão (UG-16), visando garantir estabilidade dimensional e facilidade de fabricação na caldeiraria \cite{asme_sec8_div1_2019}.
 % ====================================================
@@ -590,52 +590,83 @@ $ \Omega \approx \bigcup_e \Omega_e $
 
 \subsection{Formulação Variacional Fraca e a Métrica Axissimétrica}
 
-A equação governante do equilíbrio elástico tridimensional (equação de momento de Cauchy) na ausência de forças de corpo é expressa na forma forte como \cite{Sadd2009}:
-\end{equation} - bold(nabla) dot bold(sigma) = bold(0) , quad bold(x) in Omega \begin{equation}
-  Para transpor o problema do espaço diferencial de Sobolev para uma formulação integral solúvel numericamente, aplica-se o Princípio dos Trabalhos Virtuais (PTV) ou o Método de Galerkin \cite{Sadd2009}. Multiplica-se a equação de equilíbrio por um campo arbitrário de deslocamentos virtuais (função teste) $\mathbf{v}$ pertencente ao espaço admissível $\mathbf{V}_0$ (onde $\mathbf{v} = \mathbf{0}$ sobre a fronteira de Dirichlet $\Gamma_u$), integrando-se sobre todo o volume do corpo \cite{logg2012automated}:
-\end{equation} - integral_Omega (bold(nabla) dot bold(sigma)) dot bold(v) d Omega = 0 \begin{equation}
-  Aplicando o teorema da divergência de Gauss e a integração por partes no termo de maior ordem (para reduzir a exigência de diferenciabilidade da solução de $C^2$ para $C^1$), obtém-se a \textbf{Formulação Fraca Clássica} da elasticidade linear \cite{Sadd2009}:
-\end{equation} $\int_\Omega \boldsymbol{\sigma}(\mathbf{u}) : \boldsymbol{\epsilon}(\mathbf{v}) \, d\Omega = \int_{\Gamma_t} \mathbf{t}^T \mathbf{v} \, dS$ \begin{equation}
-  onde $\mathbf{\sigma}(\mathbf{u}) = \mathbf{\mathcal{C}} : \mathbf{\epsilon}(\mathbf{u})$ é a relação constitutiva governada pela Lei de Hooke e $\mathbf{\epsilon}(\mathbf{v}) = 1/2 (\mathbf{nabla} \mathbf{v} + \mathbf{nabla} \mathbf{v}^T)$ é o tensor de deformações virtuais simétrico \cite{Sadd2009}.
+A equação governante do equilíbrio elástico tridimensional (equação de Cauchy) na ausência de forças de corpo é expressa por:
 
-No caso específico de vasos de pressão cilíndricos longos sob carregamento puramente radial, a simetria de revolução em torno do eixo de rotação $z$ estabelece um estado de \textbf{elasticidade axissimétrica} \cite{Timoshenko_1951}. Sob esta hipótese física, os campos de deslocamento e tensão tornam-se independentes da coordenada angular $\theta$ ($partial\textit{\theta (\cdot) = 0$), e a componente circunferencial do deslocamento é nula ($u}\theta = 0$), reduzindo o problema elástico tridimensional (3D) para um domínio de seção transversal bidimensional (2D) no plano radial-axial $r-z$ \cite{logg2012automated}.
-
-Esta redução simplifica drasticamente o custo computacional, mas exige um tratamento matemático rigoroso na integração de volume \cite{logg2012automated}. O elemento de volume infinitesimal em coordenadas cilíndricas é definido como $d \Omega = r d r d \theta d z$. Como nenhum termo depende da variável angular $\theta$, a integração direta ao longo da circunferência ($0$ a $2 \pi$) resulta em uma constante multiplicadora de $2 \pi$. Assim, a integral tridimensional é convertida em uma integral bidimensional ponderada pelo raio $r$ \cite{logg2012automated}:
-\end{equation} integral\textit{Omega (dot) d Omega = 2 pi integral}(Omega_(r z)) (dot) r d r d z \begin{equation}
-  Omitindo-se o fator constante $2 \pi$ presente em ambos os lados da equação fraca, a forma bilinear $a(\mathbf{u}, \mathbf{v})$ e o funcional linear de carga $L(\mathbf{v})$ em coordenadas de revolução axissimétricas são redefinidos como \cite{logg2012automated}:
-\end{equation} a(bold(u), bold(v)) = integral\textit{(Omega}(r z)) bold(sigma)(bold(u)) : bold(epsilon)(bold(v)) r d r d z \begin{equation}
-  $ L(\mathbf{v}) = \integral\textit{(\Gamma}(i n t)) \mathbf{t}^T \mathbf{v} r d S $
-
-Nesta formulação, o tensor de deformações $\mathbf{\epsilon}$ em coordenadas axissimétricas deve incluir obrigatoriamente a \textbf{deformação circunferencial} (ou de expansão radial, \textit{hoop strain}), expressa como $\epsilon\textit{(\theta \theta) = u}r / r$ \cite{Sadd2009}:
+\begin{equation}
+  -\nabla \cdot \boldsymbol{\sigma} = \mathbf{0}, \quad \mathbf{x} \in \Omega
 \end{equation}
-  bold(epsilon)(bold(u)) = mat(
-    partial\textit{r u}r, 0, (partial\textit{z u}r + partial\textit{r u}z) / 2;
-    0, u_r / r, 0;
-    (partial\textit{z u}r + partial\textit{r u}z) / 2, 0, partial\textit{z u}z
-  )
-$<eq:WeakFormEquation>
 
-Note que o termo de expansão $u\textit{r/r$ introduz uma singularidade matemática intrínseca quando o raio $r -> 0$ \cite{Sadd2009}. No entanto, para o caso de vasos de pressão ocos com raio interno positivo ($R}{"int"} > 0$), a formulação permanece perfeitamente regular, suave e elíptica.
+Para transpor o problema do espaço diferencial de Sobolev para uma formulação integral solúvel numericamente, aplica-se o Princípio dos Trabalhos Virtuais (PTV), multiplicando a equação de equilíbrio por um campo de deslocamentos virtuais $\mathbf{v}$ e integrando sobre o domínio $\Omega$:
+
+\begin{equation}
+  -\int_\Omega (\nabla \cdot \boldsymbol{\sigma}) \cdot \mathbf{v} \, d\Omega = 0
+\end{equation}
+
+Aplicando o teorema da divergência de Gauss e a integração por partes no termo de maior ordem (para reduzir a exigência de diferenciabilidade), obtém-se a forma fraca (ou variações):
+
+\begin{equation}
+  \int_\Omega \boldsymbol{\sigma}(\mathbf{u}) : \boldsymbol{\epsilon}(\mathbf{v}) \, d\Omega = \int_{\Gamma_t} \mathbf{t}^T \mathbf{v} \, dS
+\end{equation}
+
+onde $\mathbf{\sigma}(\mathbf{u}) = \mathbf{\mathcal{C}} : \mathbf{\epsilon}(\mathbf{u})$ é a relação constitutiva governada pelo tensor de elasticidade.
+
+No caso específico de vasos de pressão cilíndricos longos sob carregamento puramente radial, a simetria de revolução em torno do eixo $z$ permite a redução do domínio tridimensional $\Omega$ para uma seção meridiana bidimensional $\Omega_{rz}$ no plano $r$-$z$. Esta redução simplifica drasticamente o custo computacional, mas exige um tratamento matemático rigoroso na integração de volume (fator $2\pi r$):
+
+\begin{equation}
+  \int_\Omega (\cdot) \, d\Omega = 2\pi \int_{\Omega_{rz}} (\cdot) \, r \, dr \, dz
+\end{equation}
+
+Omitindo-se o fator constante $2\pi$ presente em ambos os lados da equação fraca, a forma bilinear $a(\mathbf{u}, \mathbf{v})$ e o funcional linear $L(\mathbf{v})$ tornam-se:
+
+\begin{equation}
+  a(\mathbf{u}, \mathbf{v}) = \int_{\Omega_{rz}} \boldsymbol{\sigma}(\mathbf{u}) : \boldsymbol{\epsilon}(\mathbf{v}) \, r \, dr \, dz
+\end{equation}
+
+\begin{equation}
+  L(\mathbf{v}) = \int_{\Gamma_{int}} \mathbf{t}^T \mathbf{v} \, r \, dS
+\end{equation}
+
+Nesta formulação, o tensor de deformações $\mathbf{\epsilon}$ em coordenadas axissimétricas deve incluir obrigatoriamente a componente circunferencial (hoop) $\epsilon_{\theta\theta} = u_r / r$, evitando a singularidade quando $r \to 0$:
+
+\begin{equation}
+  \boldsymbol{\epsilon}(\mathbf{u}) = \begin{bmatrix}
+    \frac{\partial u_r}{\partial r} & 0 & \frac{1}{2}\left(\frac{\partial u_z}{\partial r} + \frac{\partial u_r}{\partial z}\right) \\
+    0 & \frac{u_r}{r} & 0 \\
+    \frac{1}{2}\left(\frac{\partial u_z}{\partial r} + \frac{\partial u_r}{\partial z}\right) & 0 & \frac{\partial u_z}{\partial z}
+  \end{bmatrix}
+\end{equation}
+
+Note que o termo de expansão $u_r/r$ introduz uma singularidade matemática intrínseca quando o raio $r \to 0$ \cite{Sadd2009}.
 
 \subsection{Discretização de Galerkin e a Matriz de Rigidez}
 
-Substituindo a aproximação discreta dos deslocamentos e deformações locais em nível de elemento finito ($Omega_e$), e adotando a notação matricial de Voigt para o produto interno duplo de tensores ($\mathbf{\sigma} : \mathbf{\epsilon} = \mathbf{\epsilon}^T \mathbf{\sigma}$), a integral bilinear interna do elemento resulta em \cite{Sadd2009}:
+Substituindo a aproximação discreta dos deslocamentos e deformações locais em nível de elemento finito ($\Omega_e$), e adotando a notação de Voigt para os vetores de deslocamentos nodais $\mathbf{c}^e$, a forma fraca discretizada torna-se:
 
 \begin{equation}
-  integral\textit{(\Omega}e) \mathbf{\sigma}(\mathbf{u}) : \mathbf{\epsilon}(\mathbf{v}) r d r d z = \mathbf{c}^e^T [ integral\textit{(\Omega}e) \mathbf{B}^T \mathbf{\mathcal{C}} \mathbf{B} r d r d z ] \mathbf{d}^e
+  \int_{\Omega_e} \boldsymbol{\sigma}(\mathbf{u}) : \boldsymbol{\epsilon}(\mathbf{v}) \, r \, dr \, dz = (\mathbf{c}^e)^T \left[ \int_{\Omega_e} \mathbf{B}^T \, \mathbf{\mathcal{C}} \, \mathbf{B} \, r \, dr \, dz \right] \mathbf{d}^e
 \end{equation}
 
-onde $\mathbf{B}$ representa a matriz cinemática (que relaciona as deformações com os deslocamentos nodais, contendo as derivadas das funções de forma e os termos de divisão $N_i/r$) e $\mathbf{\mathcal{C}}$ é a matriz de elasticidade constitutiva do material \cite{Sadd2009}.
+onde $\mathbf{B}$ representa a matriz cinemática (que relaciona as deformações com os deslocamentos nodais, contendo as derivadas das funções de forma) e $\mathbf{d}^e$ é o vetor de deslocamentos nodais do elemento.
 
-Como as variações virtuais nodais $\mathbf{c}^e$ são arbitrárias, o termo entre colchetes define a \textbf{Matriz de Rigidez Local do Elemento} $\mathbf{K}^e$ \cite{logg2012automated}:
+Como as variações virtuais nodais $\mathbf{c}^e$ são arbitrárias, o termo entre colchetes define a \textbf{Matriz de Rigidez Local} $\mathbf{K}^e$:
 
-$ bold(K)^e = integral\textit{(Omega}e) bold(B)^T bold(cal(C)) bold(B) r d r d z \begin{equation}
-  O sistema linear global é construído por meio do processo de montagem (\textit{assembly}), em que as matrizes de rigidez locais e os vetores de força nodais locais ($\mathbf{F}^e$) de todos os elementos são agregados nos respectivos graus de liberdade globais por meio do operador clássico de superposição \cite{logg2012automated}:
-\end{equation} bold(K) = bold(A)\textit{(e=1)^(N}{"el"}) bold(K)^e , quad bold(F) = bold(A)\textit{(e=1)^(N}{"el"}) bold(F)^e \begin{equation}
-  O equilíbrio final do sistema discreto resulta no sistema algébrico global \cite{logg2012automated}:
-\end{equation} bold(K) bold(D) = bold(F) $
+\begin{equation}
+  \mathbf{K}^e = \int_{\Omega_e} \mathbf{B}^T \, \mathbf{\mathcal{C}} \, \mathbf{B} \, r \, dr \, dz
+\end{equation}
 
-Uma vez resolvido o sistema para o vetor de deslocamentos globais $\mathbf{D}$, as deformações e tensões locais de Von Mises em cada ponto de integração Gaussiana são calculadas diretamente a partir das derivadas locais das funções de interpolação \cite{Sadd2009}.
+O sistema linear global é construído por meio do processo de montagem (\textit{assembly}), em que as matrizes de rigidez locais são somadas nas posições correspondentes aos graus de liberdade globais:
+
+\begin{equation}
+  \mathbf{K} = \sum_{e=1}^{N_{el}} \mathbf{K}^e, \quad \mathbf{F} = \sum_{e=1}^{N_{el}} \mathbf{F}^e
+\end{equation}
+
+O equilíbrio final do sistema discreto resulta no sistema algébrico global \cite{logg2012automated}:
+
+\begin{equation}
+  \mathbf{K} \, \mathbf{D} = \mathbf{F}
+\end{equation}
+
+Uma vez resolvido o sistema para o vetor de deslocamentos globais $\mathbf{D}$, as deformações e tensões locais de Von Mises em cada ponto do domínio são recuperadas por pós-processamento.
 
 \subsection{Justificativa de Uso da Plataforma Computacional FEniCS}
 

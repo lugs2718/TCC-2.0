@@ -270,7 +270,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 {
   "versao_skill": "2.2",
   "versao_estado": "1.7",
-  "data_atualizacao": "2026-11-10",
+  "data_atualizacao": "2026-11-11",
   "autor_projeto": "Luiz Gustavo da Silva Pereira",
   "orientador": "Aguardando preenchimento formal",
   "sistema_unidades": "N-mm-MPa (Engenharia)",
@@ -301,7 +301,8 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "TEC-03",
     "NOR-01",
     "CON-RED",
-    "REF-01c"
+    "REF-01c",
+    "CON-RED2"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -363,9 +364,11 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "TEC-03 concluida (10/11/2026): Cap. 5 integrado. Tabela mestre inserida via input (L367). 3 figuras incluidas (comparacao_perfis L171, convergencia_erro L348, bench_tempos L369). Valores ja em mm/MPa. Rastreabilidade Lamé verificada.",
     "NOR-01 concluida (10/11/2026): 2 tabelas comparativas convertidas para Quadro (tab:comparativo_eficiencia, tab:comparativo_mef_mha). 5 tabelas numericas convertidas para estilo IBGE (remocao de linhas verticais): tab:parametros_validacao_v3, tab:tensoes_r_int_r_ext, tab:convergencia_erros, tab:indice_eficiencia_massa, tab:resumo_conclusao.",
     "CON-RED concluida (10/11/2026): bloco Typst residual no Cap. 2 (Voigt notation) convertido. Tabela de Voigt -> LaTeX table (tab:voigt_notation). Subscritos Typst convertidos em equacoes matriciais (anisotropica, monoclinica, ortotropica, transversalmente isotropica). Betti reciprocity e Voigt/Reuss convertidos. Ressalva: Typst artifacts em L604-L634 (sec 5 do Cap. 2, Formulacao Variacional) permanecem para tarefa futura.",
-    "REF-01 (continuacao) concluida (10/11/2026): Heyliger2003 author corrigido. Ruan2024 year=2024 adicionado e braces balanceados. astm_a516 mantida com nota a confirmar. 4 chaves orfanadas (nao citadas). Verificacao final: 44 entradas, braces 425/425."
+    "REF-01 (continuacao) concluida (10/11/2026): Heyliger2003 author corrigido. Ruan2024 year=2024 adicionado e braces balanceados. astm_a516 mantida com nota a confirmar. 4 chaves orfanadas (nao citadas). Verificacao final: 44 entradas, braces 425/425.",
+    "CON-RED2 registrada (10/11/2026): conversao dos Typst artifacts em L604-L634 (Cap. 2, sec 5, Formulacao Variacional Fraca). Sub-blocos: a (equacoes), b (operadores/subscritos), c (consistencia com Cap. 4).",
+    "CON-RED2 concluida (11/11/2026): conversao completa dos Typst artifacts em Cap. 2. Sec 5 (Formulacao Variacional Fraca) convertida para LaTeX (11 equacoes). Sec Discretizacao de Galerkin convertida (4 equacoes). 2 artifacts residuais (L143, L168 text(ou)) corrigidos. Verificacao final: 0 artifacts Typst restantes no Cap. 2 (excl. comentarios)."
   ],
-  "proximo_passo": "REF-01 (continuacao) concluida. .bib verificado (44 entradas, braces balanceados). Proxima tarefa autorizada a definir (sugestao: NOR-02 pre-textual; ou Typst artifacts L604-L634; ou PDF-01).",
+  "proximo_passo": "CON-RED2 concluida. 0 artifacts Typst restantes no Cap. 2. Proxima tarefa autorizada a definir (sugestao: NOR-02 pre-textual; ou PDF-01 visual final; ou REF-01 continuacao).",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

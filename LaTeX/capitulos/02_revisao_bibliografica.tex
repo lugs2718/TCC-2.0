@@ -8,7 +8,7 @@ Sob o ponto de vista da mecânica do contínuo e da resistência dos materiais, 
 
 \textbf{Vasos de Parede Fina:} Ocorrem quando a relação geométrica satisfaz a desigualdade:
 
-$ r/t \ge  10. $ <eq-limite-parede-fina>
+$\frac{r}{t} \ge 10.$ \label{eq-limite-parede-fina}
 
 Nesta condição, assume-se que as tensões normais de tração atuantes na parede do vaso são uniformes ao longo de toda a espessura, sendo chamadas de tensões de membrana \cite[p.~415]{asme_sec8_div1_2019}.
 
@@ -16,7 +16,7 @@ Nesta condição, assume-se que as tensões normais de tração atuantes na pare
 
 A \cite[p.~19]{asme_sec8_div1_2019} cita também que as duas geometrias primárias mais difundidas na indústria para a contenção de fluidos pressurizados são os cilindros (verticais ou horizontais) e as esferas. Para reservatórios cilíndricos de parede fina sujeitos a uma pressão manométrica interna $p$, \cite[p.~159]{Sadd2009} afirma que o estado plano de tensões é governado por tensões principais normais sem componentes de cisalhamento, devido à simetria axial (axissimetria) do cilindro e do carregamento. \cite[p.~652]{beer1989resistencia} deduzem a tensão circunferencial (ou tangencial/hoop), denotada por $\sigma_1$, que atua no sentido tangencial ao longo do costado cilíndrico, sendo expressa como:
 
-$ sigma_1 = (p r) / t. $ <eq-tensao-circunferencial>
+$\sigma_1 = \frac{p \, r}{t}.$ \label{eq-tensao-circunferencial}
 
 De modo similar, a tensão longitudinal (ou axial), denotada por $sigma_2$, atua paralelamente ao eixo do cilindro e é gerada pelas forças de pressão que empurram os tampões de extremidade, sendo descrita por \cite{beer1989resistencia}
 
@@ -31,10 +31,11 @@ $ \sigma_1 = \sigma_2 = \frac{pr}{2t} $ <eq-tensao-esferica>
 No estado de tensões na parede de uma esfera, as tensões principais normais são iguais, o que faz com que o círculo de Mohr correspondente ao plano tangencial se reduza a um único ponto, zerando a tensão cisalhante máxima no plano ($tau_{\text{no plano}} = 0$). No entanto, a tensão cisalhante máxima absoluta (fora do plano) para cilindros e esferas é dada, respectivamente, por \cite[p.~656]{beer1989resistencia}:
 
 \begin{equation}
+\begin{equation}
   \begin{aligned}
-    \tau_\textit{("max, cilindro")} = \sigma_1 / 2 = (p r) / (2 t) \\
-    \tau_\textit{("max, esfera")} = \sigma_1 / 2 = (p r) / (4 t)
-\end{aligned}
+    \tau_{\max,\text{cilindro}} &= \frac{\sigma_1}{2} = \frac{p \, r}{2 \, t} \\
+    \tau_{\max,\text{esfera}} &= \frac{\sigma_1}{2} = \frac{p \, r}{4 \, t}
+  \end{aligned}
 \end{equation}
 
 Essa distribuição de tensões prova que, embora os vasos esféricos apresentem uma fabricação muito mais complexa e cara devido à necessidade de conformação tridimensional de gomos soldados, eles são mecanicamente muito mais eficientes, sendo capazes de suportar o dobro de pressão interna em relação a um vaso cilíndrico de mesmo diâmetro e espessura.
@@ -76,96 +77,22 @@ A NR-13 organiza os vasos de pressão em categorias de risco (de I a V, onde a C
 
 Cruzando-se as matrizes de Classe de Fluido com o Grupo de Potencial de Risco, a Tabela 1 da NR-13 define formalmente a Categoria do Vaso de Pressão \cite{brasil_nr13_2022}:
 
-% #table(
-%   columns: (1.5fr, 1.1fr, 1.1fr, 1.1fr, 1.1fr, 1.1fr),
-%   align: center + horizon,
-%   stroke: 0.5pt + luma(150),
-%   fill: (x, y) => if y == 0 { rgb("e6edf5") } else if x == 0 { % rgb("f8fafc") } else { none },
-%   [\textbf{Classe do Fluido}],
-%   [\textbf{Grupo 1} \ \textit{P.V >= 100}],
-%   [\textbf{Grupo 2} \ \textit{30 <= P.V < 100}],
-%   [\textbf{Grupo 3} \ \textit{2,5 <= P.V < 30}],
-%   [\textbf{Grupo 4} \ \textit{1 <= P.V < 2,5}],
-%   [\textbf{Grupo 5} \ \textit{P.V < 1}],
-% 
-%   [\textbf{Classe A} \ \textit{(Tóxicos, Inflamáveis, H₂)}], % [\textbf{I}], [\textbf{I}], [\textbf{II}], [\textbf{III}], % [\textbf{III}],
-%   [\textbf{Classe B} \ \textit{(Combustíveis < 200 ºC), Tóxicos >20 % ppm)}], [\textbf{I}], [\textbf{II}], [\textbf{III}], [\textbf{IV}], % [\textbf{IV}],
-%   [\textbf{Classe C} \ \textit{(Vapor, Ar Comprimido)}], % [\textbf{I}], [\textbf{II}], [\textbf{III}], [\textbf{IV}], % [\textbf{V}],
-%   [\textbf{Classe D} \ \textit{(Outros Fluidos)}], [\textbf{II}], % [\textbf{III}], [\textbf{IV}], [\textbf{V}], [\textbf{V}],
-% )
-
-Mecanicamente, para que um vaso de pressão seja operado legalmente em território nacional, a NR-13 exige que o estabelecimento industrial mantenha um conjunto de documentações técnicas atualizadas e prontamente acessíveis para a auditoria de fiscais do trabalho e do Ministério Público \cite{brasil_nr13_2022}. Essa pasta de integridade inclui obrigatoriamente \cite{brasil_nr13_2022}:
-1. \textbf{Prontuário do Vaso de Pressão:} Emitido e assinado pelo fabricante, contendo o código de construção (como o ASME), especificação dos materiais de retenção de pressão, procedimentos de fabricação, qualificação de soldagem e relatórios de exames e inspeção final \cite{brasil_nr13_2022};
-2. \textbf{Registro de Segurança:} Livro de ocorrências físicas onde são registradas as inspeções de segurança, calibrações de instrumentos e anomalias operacionais \cite{brasil_nr13_2022};
-3. \textbf{Projeto de Instalação:} Desenho de arranjo físico detalhando as condições de ventilação, distâncias de segurança e o livre acesso para rotas de fuga dos operadores \cite{brasil_nr13_2022};
-4. \textbf{Relatórios de Inspeção de Segurança:} Documentos gerados periodicamente por um Profissional Habilitado (PH) atestando que os exames internos, externos e testes não destrutivos comprovam a integridade estrutural do costado, tampos e bocais \cite{brasil_nr13_2022}.
-
-Adicionalmente, cada vaso de pressão deve possuir afixado em seu corpo, em local de fácil acesso e amplamente visível, uma placa de identificação indelével com informações fundamentais gravadas (fabricante, número de série, ano de fabricação, código de construção, PMTA, eficiência de junta soldada) e, pintada em destaque no costado, a identificação visível de sua categoria (por exemplo, "CAT I" ou "CAT III") para fins de fiscalização operacional rápida \cite{brasil_nr13_2022}.
-
-\subsection{Critérios de Projeto Conforme o Código ASME Seção VIII (Divisões 1 e 2)}
-
-Para garantir a segurança operacional e mitigar os riscos de falhas explosivas catastróficas, o projeto e a fabricação de vasos de pressão industriais são rigorosamente regidos por códigos normativos internacionais, dos quais o mais amplamente utilizado globalmente e no Brasil é o Código ASME Seção VIII (\textbf{Boiler and Pressure Vessel Code}, BPVC), desenvolvido pela %\#pag(<asme_sec8_div1_2019>) (\textbf{American Society of Mechanical Engineers}).
-
-O Código ASME Seção VIII divide-se em três divisões com filosofias de projeto, fatores de segurança e limites de pressão distintos \cite{asme_sec8_div1_2019}:
-
-%#table(
-%  columns: (1fr, 2fr, 2fr),
-%  align: left + horizon,
-%  stroke: 0.5pt + luma(150),
-%  fill: (x, y) => if y == 0 { rgb("e6edf5") } else { none },
-%  [\textbf{Critério Comparativo}], [\textbf{ASME Seção VIII - Divisão %1}], [\textbf{ASME Seção VIII - Divisão 2}],
-%  [\textbf{Filosofia de Projeto}],
-%  [Projeto por Regras Práticas (\textbf{Design-by-Rules}) \cite{asme_sec8_div1_2019}.],
-%  [Projeto por Análise Detalhada (\textbf{Design-by-Analysis}) [18, %24].],
-%
-%  [\textbf{Análise de Tensões}],
-%  [Não exige modelagem analítica ou numérica detalhada de todas as %tensões locais; foca no controle de tensões globais de membrana via %equações práticas simplificadas \cite{asme_sec8_div1_2019}.],
-%  [Exige a análise rigorosa de todas as categorias de tensões %combinadas (primárias, secundárias e locais de descontinuidade) %\cite{asme_sec8_div1_2019}.],
-%
-%  [\textbf{Fator de Segurança}],
-%  [Fator de segurança elevado. As tensões admissíveis do material %($S$) são conservadoras (menores) \cite{asme_sec8_div1_2019}.],
-%  [Fator de segurança reduzido. Permite tensões admissíveis %superiores devido ao rigor das análises de engenharia \cite{asme_sec8_div1_2019}.],
-%
-%  [\textbf{Espessura de Parede}],
-%  [Paredes mais espessas e pesadas para resistir à mesma pressão %interna de projeto \cite{asme_sec8_div1_2019}.],
-%  [Paredes mais finas e vasos consideravelmente mais leves \cite{asme_sec8_div1_2019}.],
-%
-%  [\textbf{Exigências de Fabricação}],
-%  [Padrão convencional de inspeção, exames não destrutivos e ensaios %\cite{asme_sec8_div1_2019}.],
-%  [Altas exigências de qualificação de materiais, exames não %destrutivos severos, tratamentos térmicos e testes detalhados de %impacto \cite{asme_sec8_div1_2019}.],
-%
-%  [\textbf{Limites de Pressão}],
-%  [Aplicável a pressões de projeto acima de $15$ psi ($0,1$ MPa) até %$3.000$ psi ($20$ MPa) \cite{asme_sec8_div1_2019}.],
-%  [Aplicável a pressões elásticas de projeto de até $10.000$ psi %($70$ MPa) \cite{asme_sec8_div1_2019}.],
-%) \marginpar{\tiny Coloar legenda (Quadro) e refenciá-lo no texto}
 
 Conforme a Subseção A, Parte UG do ASME Seção VIII Divisão 1, as fórmulas utilizadas para o cálculo da espessura mínima requerida ($t$) e da Pressão Máxima de Trabalho Admissível (PMTA, ou $P$) de cascos cilíndricos sob pressão interna são baseadas na tensão circunferencial solicitando as juntas soldadas longitudinais \cite{asme_sec8_div1_2019}. Quando a espessura do costado não excede a metade do raio interno, ou quando a pressão interna não ultrapassa o limite elástico $0,385 S E$, aplicam-se as seguintes expressões de projeto (UG-27) \cite{asme_sec8_div1_2019}:
-$ t = (P R) / (S E - 0,6 P) \quad \text{ou} \quad P = (S E t) / (R + 0,6 t) $ <eq-asme-circunferencial>
+$t = \frac{P \, R}{S \, E - 0{,}6 \, P} \quad \text{ou} \quad P = \frac{S \, E \, t}{R + 0{,}6 \, t}$ \label{eq-asme-circunferencial}
 
 Onde:
 
 \begin{itemize}
   \item $t$ é a espessura mínima de parede requerida (excluindo sobrespessuras de corrosão), em milímetros ($"mm"$) \cite{asme_sec8_div1_2019};
-\end{itemize}
-
-\begin{itemize}
   \item $P$ é a pressão interna de projeto ou a PMTA, em megapascais ($"MPa"$) \cite{asme_sec8_div1_2019};
-\end{itemize}
-
-\begin{itemize}
   \item $R$ é o raio interno do casco cilíndrico na condição corroída, em milímetros ($"mm"$) \cite{asme_sec8_div1_2019};
-\end{itemize}
-
-\begin{itemize}
   \item $S$ é o valor máximo da tensão de tração admissível do material na temperatura de projeto, obtido nas tabelas da Seção II Parte D do Código ASME, em megapascais ($"MPa"$) \cite{asme_sec8_div1_2019};
-\end{itemize}
-
-\begin{itemize}
   \item $E$ é a eficiência de junta soldada circunferencial ou longitudinal, que varia de $0,70$ a $1,00$ em função da extensão dos exames radiográficos realizados na junta (conforme parágrafos UW-11 e UW-12) \cite{asme_sec8_div1_2019}.
 \end{itemize}
 
 Para as juntas circunferenciais solicitadas pela tensão longitudinal, sob as mesmas condições geométricas de parede fina (espessura menor que metade do raio interno e $P \le  1,25 S E$), as equações do parágrafo UG-27 do ASME Seção VIII Div. 1 resultam em \cite{asme_sec8_div1_2019}:
-$ t = (P R) / (2 S E + 0,4 P) \quad \text{ou} \quad P = (2 S E t) / (R - 0,4 t) $ <eq-asme-longitudinal>
+$t = \frac{P \, R}{2 \, S \, E + 0{,}4 \, P} \quad \text{ou} \quad P = \frac{2 \, S \, E \, t}{R - 0{,}4 \, t}$ \label{eq-asme-longitudinal}
 
 O código estabelece de forma rigorosa que a espessura mínima nominal a ser adotada para a fabricação de cascos e tampos de aço carbono e baixa liga, independentemente do cálculo por pressão, é o maior valor entre $4,8$ mm ou a relação baseada no diâmetro interno com tolerância à corrosão (UG-16), visando garantir estabilidade dimensional e facilidade de fabricação na caldeiraria \cite{asme_sec8_div1_2019}.
 % ====================================================

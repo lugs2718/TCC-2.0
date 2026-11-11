@@ -60,7 +60,7 @@ Reducao de DOFs & $> 96\%$ & Cap. 5, \S5.4 \\ \hline
 % Dados-chave: validação Lamé (erro < 10^{-12} mm); convergência L² (2,47% → 0,05% → 0,02%); taxa O(ε);
 % tensões: σ_rr contínua (-30 a 0 MPa), σ_θθ saltos no MEF-D / média contínua no MHA;
 % σ_vM max: aço 229,87 MPa (FS 1,74), alu 89,07 MPa (FS 3,03);
-% alívio de massa 32,69% (0,6597 vs 0,9802 kg/m); W_ef: aço 76,97, alu 150,59, bimetálico 79,13;
+% alívio de massa 32,69% (0,6597 vs 0,9802 kg/m); $W_{\text{ef}}$: aço 76,97, alu 150,59, bimetálico 79,13;
 % rigidez específica: 99,84% preservada; 32,9% mais rígido que alu puro; speedup 25,1×.
 
 \section{Limitações do Modelo}\label{sec:conclusao_limitacoes}
@@ -68,10 +68,10 @@ Reducao de DOFs & $> 96\%$ & Cap. 5, \S5.4 \\ \hline
 O modelo desenvolvido neste trabalho apresenta as seguintes limitacoes, que devem ser consideradas na interpretacao dos resultados:
 \begin{itemize}
 \item Regime elástico linear, deformações infinitesimais.
-\item Estado plano de deformação generalizada (ε_zz = constante).
+\item Estado plano de deformação generalizada ($\epsilon_{zz}$ = constante).
 \item Contato perfeito (sem delaminação, escorregamento, plasticidade, trincas).
 \item Isotermia (sem gradientes de temperatura, dilatação térmica, corrosão).
-\item MHA de ordem zero (sem corretor local ε u^1; reconstrução de campos locais reservada para trabalhos futuros).
+\item MHA de ordem zero (sem corretor local $\epsilon \mathbf{u}^1$; reconstrução de campos locais reservada para trabalhos futuros).
 \item Propriedades dos materiais tratadas como constantes (sem degradação, fadiga, envelhecimento).
 \item Domínio axissimétrico (sem imperfeições geométricas, ovalização, eccentricidade).
 \end{itemize}
@@ -80,13 +80,13 @@ O modelo desenvolvido neste trabalho apresenta as seguintes limitacoes, que deve
 
 Com base nas limitacoes identificadas, propoem-se as seguintes direcoes para trabalhos futuros:
 \begin{itemize}
-\item Implementação computacional da reconstrução analítica ponto a ponto das flutuações locais via ε u^1 (corretor de primeira ordem).
+\item Implementação computacional da reconstrução analítica ponto a ponto das flutuações locais via $\epsilon \mathbf{u}^1$ (corretor de primeira ordem).
 \item Extensão para regime elastoplástico (escoamento das fases, encruamento).
 \item Inclusão de efeitos térmicos (gradientes de temperatura, dilatação térmica diferencial, análise termomecânica).
 \item Validação experimental (protótipos instrumentados, ensaios hidrostáticos, DIC).
-\item Otimização de fração volumétrica (V1, V2) e número de camadas (N_cell) para maximizar W_ef ou minimizar massa.
+\item Otimização de fração volumétrica (V1, V2) e número de camadas ($N_{\text{cell}}$) para maximizar $W_{\text{ef}}$ ou minimizar massa.
 \item Extensão para geometrias não-cilíndricas (vasos esféricos, tories, bocais, tampos).
-\item MHA de segunda ordem (SAF de segunda ordem, correção do erro O(ε²)).
+\item MHA de segunda ordem (SAF de segunda ordem, correção do erro O($\epsilon^2$)).
 \item Análise de fadiga e vida em serviço (ciclos de pressurização, efeito de entalhes).
 \end{itemize}
 

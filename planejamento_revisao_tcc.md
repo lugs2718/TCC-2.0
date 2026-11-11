@@ -79,6 +79,30 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 - **Resultado:** arquivo merged com 753 linhas, 1 `\chapter`, 10 `\section`, 14 `\subsection`. `main.tex` atualizado (03_2 comentado). 3 `\marginpar` removidos (lei de Hooke local, tensor de elasticidade reduzido, regra da cadeia — conteúdo ao redor os endereça). Conferência estrutural: 77 labels (0 duplicados), 46 refs/eqrefs (0 targets ausentes), 86 `\cite` (0 chaves ausentes). Equações do problema local (χ¹, χ²) e constantes efetivas (Ĉ₁₁, Ĉ₁₂, Ĉ₂₂, Ĝ) na parte merged são consistentes com a formulação do Cap. 3.
 - **Arquivos:** `03_1_equilibrio.tex` (merged), `main.tex`.
 
+### 1.14 Compilação Local e Correções de Erros (11/11/2026)
+
+**Problemas encontrados e soluções aplicadas:**
+
+| # | Problema | Causa | Solução |
+|---|---|---|---|
+| 1 | `\includeonly{}` com todas as linhas comentadas | Configuração de desenvolvimento (compilação parcial) | Descomentadas as 7 linhas de capítulos (exceto `03_2_homogeneizacao`, merged) |
+| 2 | `\input{Tabelas/...}` não encontrado | Caminho relativo incorreto (Tabelas está na raiz, não em LaTeX/) | Alterado para `\input{../Tabelas/...}` |
+| 3 | Imagens não encontradas (`Imagens/...`) | Caminho relativo incorreto (Imagens está na raiz) | Alterado para `../Imagens/...` em 05_resultados.tex |
+| 4 | Ambiente `quadro` não definido | abntex2 não define `\begin{quadro}` nativamente | Adicionado `\usepackage{newfloat}` + `\DeclareFloatingEnvironment` em main.tex |
+| 5 | Equação órfã (`\end{equation}` solto) em §2.1 | Typst residual não convertido | Reescrita como `\begin{equation}...\end{equation}` |
+| 6 | `$sigma_2$` (Typst) em §2.1 | Typst residual | Convertido para `$\sigma_2$` |
+7 | `N_cell` e `W_ef` sem `$` em §6 | Underscore em modo texto | Convertido para `$N_{\text{cell}}$` e `$W_{\text{ef}}$` |
+8 | `Backus1962` duplicado no `.bib` | Entrada antiga (minúscula) + nova (maiúscula) | Removida a entrada antiga (L10–L19) |
+9 | `\epsilon` unicode em 06_conclusao.tex | Caractere unicode em modo texto | Convertido para `$\epsilon$` |
+10 | `<eq:...>` Typst labels (26 ocorrências) em §2.2 | Labels Typst não convertidos | Convertidos para `\label{eq:...}` |
+11 | `\eqref{eq:cont}stress}` malformado | Typst residual | Corrigido para `\eqref{eq:cont_stress}` |
+12 | `\begin{equation}` duplicado em §2.1 | Typst residual | Removida a duplicata |
+13 | `\end{equation}` solto em §2.1 (L511) | Typst residual | Reescrito como ambiente completo |
+14 | `W_ef` em texto (§6) | Underscore em modo texto | Convertido para `$W_{\text{ef}}$` |
+15 | `\bfseries` em modo matemático | `\textbf` dentro de `$...$` em tabela Voigt | (resolvido indiretamente pela correção do delimitador) |
+16 | 10 referências de equação não definidas | Labels perdidos na conversão Typst→LaTeX | Todos os `\label{eq:...}` adicionados via conversão de `<eq:...>` |
+
+**Resultado final:** 0 erros, 0 referências não definidas, 0 citações não resolvidas. PDF de 98 páginas gerado com sucesso.","oldString">
 ### 1.13 Capítulo 2 (§2.2) — Tarefa REV-02.2 Concluída (09/11/2026)
 - **Escopo:** revisão de conteúdo e consistência técnica da §2.2 (Mecânica dos Compósitos, Notação de Voigt, Simetrias Elásticas).
 - **Sub-tarefas concluídas:**
@@ -277,7 +301,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   "objetivo": "Revisão integral de conteúdo, rigor técnico, citações e redação científica do TCC em LaTeX",
   "fase_atual": "plano_1_em_andamento",
   "tarefa_ativa": null,
-  "subetapa_ativa": "NOR-02 parte 1 concluida; parte 2 pendente (compilacao Overleaf)",
+  "subetapa_ativa": "compilacao local concluida (0 erros, 98 paginas)",
   "tarefas_concluidas": [
     "DIA-01",
     "DIA-02",
@@ -370,9 +394,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CON-RED2 registrada (10/11/2026): conversao dos Typst artifacts em L604-L634 (Cap. 2, sec 5, Formulacao Variacional Fraca). Sub-blocos: a (equacoes), b (operadores/subscritos), c (consistencia com Cap. 4).",
     "CON-RED2 concluida (11/11/2026): conversao completa dos Typst artifacts em Cap. 2. Sec 5 (Formulacao Variacional Fraca) convertida para LaTeX (11 equacoes). Sec Discretizacao de Galerkin convertida (4 equacoes). 2 artifacts residuais (L143, L168 text(ou)) corrigidos. Verificacao final: 0 artifacts Typst restantes no Cap. 2 (excl. comentarios).",
     "REV-02.1 concluida (11/11/2026): Sec 2.1 revisada. D.1 (reorganizacao logica) concluida. D.2 (equacoes Typst->LaTeX) concluida: inline equations convertidas, ASME equations convertidas, itemize consolidado. D.3 (citacoes e quadros) concluida: 0 marcadores [nn], blocos Typst comentados removidos (conteudo ja apresentado em texto).",
-    "NOR-02 (parte 1) concluida (11/11/2026): pre-textuais reordenados em main.tex — Sumario antes de Lista de Ilustracoes e Lista de Tabelas (EdUFF 2012). Parte 2 (inspecao visual final) pendente de compilacao no Overleaf."
+    "NOR-02 (parte 1) concluida (11/11/2026): pre-textuais reordenados em main.tex — Sumario antes de Lista de Ilustracoes e Lista de Tabelas (EdUFF 2012). Parte 2 (inspecao visual final) pendente de compilacao no Overleaf.",
+    "Compilacao local concluida (11/11/2026): MiKTeX instalado e configurado. 16 correcoes aplicadas (includeonly, caminhos relativos, quadro env, Typst residuais, Backus1962 duplicado, eq labels). Resultado: 0 erros, 0 refs indefinidas, 0 cites indefinidas. PDF 98 paginas."
   ],
-  "proximo_passo": "NOR-02 parte 1 concluida. Parte 2 (inspecao visual final) pendente de compilacao no Overleaf. Todas as tarefas de conteudo concluidas. Projeto pronto para compilacao final.",
+  "proximo_passo": "Compilacao local concluida com sucesso (0 erros, 98 paginas). Todas as tarefas de conteudo e normas concluidas. Pendente: NOR-02 parte 2 (inspecao visual final) e push para origin.",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

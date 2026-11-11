@@ -121,18 +121,23 @@
 % Comente ou remova as linhas dos capítulos que NÃO quer compilar agora.
 % Deixe apenas o capítulo que você está editando ativado.
 \includeonly{
-  %capitulos/01_introducao,
- %capitulos/02_revisao_bibliografica,
-  %capitulos/03_1_equilibrio,
-  %capitulos/03_2_homogeneizacao,
-  %capitulos/04_mef,
-  %capitulos/05_resultados,
-  %capitulos/06_conclusao,
+capitulos/01_introducao,
+capitulos/02_revisao_bibliografica,
+capitulos/03_1_equilibrio,
+%capitulos/03_2_homogeneizacao,
+capitulos/04_mef,
+capitulos/05_resultados,
+capitulos/06_conclusao,
 }
 
 % ------------------------------------------------------------------------
 % INÍCIO DO DOCUMENTO
 % ------------------------------------------------------------------------
+
+% Ambiente Quadro (matrizes comparativas, bordas fechadas)
+\usepackage{newfloat}
+\DeclareFloatingEnvironment[name=Quadro, listname={Lista de quadros}]{quadro}
+
 \begin{document}
 
 % Seleciona o idioma do documento

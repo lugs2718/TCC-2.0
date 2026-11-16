@@ -1,0 +1,63 @@
+\section{Conceitos Fundamentais}
+
+% Deve ser mais específico, focando nos conceitos que serão utilizados no trabalho.
+\subsection{Materiais compósitos}
+Conforme descrito por %\cite{Reviewonlaminatedcompositeplate}, 
+% Definição de materiais compósitos
+os compósitos são materiais que combinam duas ou mais fases distintas, de modo a obter propriedades mecânicas superiores às dos materiais individuais, como maior dureza, deformação no regime elástico/plástico, flexão, etc.
+
+Por esse motivo, são materiais amplamente utilizados em componentes estruturais em setores como a indústria aeroespacial e mecânica %(\cite{CompositesinAerospace}) devido à sua alta resistência e baixo peso.
+
+% Compósitos laminados
+
+Os compósitos laminados, por exemplo, são formados por camadas sobrepostas de materiais distintos, podendo assumir diversas configurações e geometrias, como placas, painéis ou tubos, um exemplo é mostrado na Figura %\ref{fig:comp_laminados}. Além disso, cada material pode conter um ou mais tipos de fibras, orientadas em diferentes direções.
+
+% Sustentabilidade
+
+Além de suas propriedades mecânicas superiores, os compósitos têm atraído atenção devido à contínua busca dos setores produtivos para maiores níveis de eficiência e sustentabilidade. UM exemplo disso são os compósitos baseados em fibras de carbono, que causaram grandes mudanças em peças de aviões. Sendo mais leves, diminuíram os gastos de combustível e, por sua vez, as emissões de CO$_2$%\cite{3Dprintingwithcompositematerials}.
+
+\begin{figure}
+    \includegraphics{}
+\end{figure}
+
+\subsubsection{Exemplos de materiais compósitos}
+Um exemplo comum de compósito é o concreto reforçado com fibras, onde fibras de aço ou vidro são incorporadas à matriz de concreto, 
+resultando em propriedades mecânicas aprimoradas. Outro exemplo são os compósitos de matriz polimérica reforçados com fibras de carbono, 
+amplamente utilizados na indústria aeroespacial devido à sua alta resistência e leveza%\cite{oliveira2020}.
+
+\subsubsection{Compósitos micro-periódicos}
+
+Os compósitos micro-periódicos, por sua vez, são uma classe de compósitos cujas propriedades físicas variam de forma rápida em uma escala muito pequena (microescala), 
+embora possam parecer homogêneos a olho nu (macroescala). 
+Essa característica permite obter propriedades físicas melhoradas em comparação com as de materiais homogêneos. 
+Exemplos incluem tanto estruturas naturais (osso, madeira) quanto as fabricadas pelo homem (compósitos bifásicos, cerâmicas)
+
+% Dificuldades na modelagem
+A modelagem desses materiais apresenta desafios significativos, devido à complexidade de suas microestruturas e à interação entre as diferentes fases.
+Pelo método dos elementos finitos, por exemplo, é possível simular o comportamento mecânico dos compósitos,
+mas a precisão dos resultados é comprometida pela necessidade de um detalhamento muito fino da malha, o que aumenta o custo computacional %\cite{oliveira2020}.
+
+% Modelos desenvolvidos por causa dessa dificuldade
+Por esse motivo, foram desenvolvidos modelos de simplificação que buscam capturar o comportamento global dos compósitos sem a necessidade de um detalhamento excessivo da malha.
+Um desses métodos é o \textbf{Método da Homogeneização Assintótica} que busca tornar o meio oscilatório do compósito em um meio homogêneo com resistência mecânica equivalente,
+ com propriedades efetivas calculadas a partir das propriedades das fases constituintes %\cite{pereira2021}.
+
+% Métodos de modelagem
+
+Diversos métodos têm sido propostos para a modelagem de compósitos, incluindo abordagens analíticas, numéricas e experimentais. As simulações computacionais, por exemplo, permitem a análise do comportamento dos materiais em condições específicas, enquanto os testes experimentais fornecem dados valiosos para a validação dos modelos.
+
+\subsection{Equilíbrio mecânico}
+
+% Tabela com módulos de elasticidade (Tem em outro trabalho)
+
+\subsection{Método da Homogeneização Assintótica}
+
+% Contextualização
+Conforme o que foi citado na revisão bibliográfica, o presente trabalho aborda o método de homogeneização assintótica de duas escalas (AHM). Esta abordagem permite a determinação de propriedades efetivas para materiais microperiódicos {(Bakhvalov e Panasenko, 1989)} através da decomposição do problema nas escalas micro e macroscópicas, resolvendo-as independentemente e levando em consideração as contribuições de cada material. Este estudo foca na análise do problema heterogêneo de elasticidade linear estática através de equações diferenciais parciais, considerando condições de contorno e condições de contato de interface perfeita.
+
+% Separação de escalas
+
+O método assume que a microestrutura do material é periódica e que existe uma separação clara entre as escalas micro e macroscópicas. A escala microscópica é caracterizada por variações rápidas nas propriedades do material, enquanto a escala macroscópica descreve o comportamento global do compósito. A relação entre essas escalas é definida por um parâmetro pequeno $\epsilon$, que representa a razão entre o tamanho da microestrutura e o tamanho do domínio macroscópico.
+
+% Passo a passo
+

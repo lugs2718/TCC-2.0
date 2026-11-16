@@ -1,0 +1,65 @@
+% This file should only contain \usepackage commands.
+% Make sure to \input or \include this file after \documentclass in your main .tex file.
+
+% =========================================================================
+% PREÂMBULO DO DOCUMENTO
+% =========================================================================
+
+
+% --- PACOTES ESSENCIAIS ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{indentfirst} % Garante indentação no primeiro parágrafo de cada seção
+
+% --- CONFIGURAÇÃO DAS MARGENS (NBR 14724:2011) ---
+% Anverso: Superior 3cm, Esquerda 3cm, Inferior 2cm, Direita 2cm
+% Verso:   Superior 3cm, Esquerda 2cm, Inferior 2cm, Direita 3cm
+% A opção 'twoside' na classe do documento é crucial para isso funcionar.
+\usepackage[
+    a4paper,
+    top=3cm,
+    bottom=2cm,
+    left=3cm,
+    right=2cm,
+    bindingoffset=0cm, % twoside já ajusta as margens internas/externas
+    headsep=2cm, % Distância do cabeçalho ao texto (ajuda na paginação)
+    footskip=1.5cm % Distância do rodapé ao texto
+]{geometry}
+
+% --- CONFIGURAÇÃO DAS SEÇÕES ---
+
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{}{0pt}{\MakeUppercase}
+
+% --- CONFIGURAÇÃO DE ESPAÇAMENTO E PARÁGRAFO ---
+\usepackage{setspace}
+\onehalfspacing % Espaçamento 1,5 para o corpo do texto [9]
+\setlength{\parindent}{1.5cm} % Recuo do parágrafo [8]
+
+% --- PACOTES PARA CITAÇÕES E REFERÊNCIAS ---
+% Usando o abntex2, um conjunto de classes e pacotes muito popular para normas ABNT.
+% Se não puder usar abntex2, pacotes como 'apacite' ou 'natbib' podem ser configurados.
+\usepackage[alf,abnt-emphasize=bf,abnt-etal-cite=3,abnt-etal-list=3]{abntex2cite}
+
+% --- OUTROS PACOTES ÚTEIS ---
+\usepackage{graphicx}   % Para incluir imagens
+\usepackage{amsmath}    % Para equações matemáticas
+\usepackage{booktabs}   % Para tabelas com melhor aparência
+\usepackage{hyperref}   % Para links clicáveis (sumário, citações)
+\usepackage{lipsum}     % Apenas para gerar texto de exemplo (remover no trabalho final)
+
+% --- CONFIGURAÇÕES ADICIONAIS ---
+% Configuração para citações longas (mais de 3 linhas)
+% Recuo de 4cm, fonte menor, espaçamento simples [10]
+\newenvironment{citacao}
+  {\begin{quote}\small\singlespacing\setlength{\parindent}{0cm}}
+  {\end{quote}}
+%\setcitacaolength{4cm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=blue
+}

@@ -244,6 +244,33 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - [ ] **CON-03c:** Síntese dos resultados quantitativos (tabela resumo).
   - [ ] **CON-03d:** Limitações e trabalhos futuros (redação final dos placeholders).
 
+
+#### Coesão Inter-Capítulos
+- [ ] **COE-01:** **Coesão e Cross-Referências entre Capítulos**
+  - Cap. 1 (Introdução) e Cap. 2 (Revisão Bibliográfica) mencionam a SAF (Solução Assintótica Formal) de forma independente, sem cross-reference.
+  - Garantir que cada capítulo cite o outro onde apropriado (ex.: "conforme desenvolvido no Cap. 3" ou "conforme discutido na Seção 2.4").
+  - Eliminar redundâncias de definição (ex.: SAF definida em dois lugares).
+  - Verificar fluxo lógico: Cap. 1 (objetivos) → Cap. 2 (literatura) → Cap. 3 (formulação) → Cap. 4 (MEF) → Cap. 5 (resultados) → Cap. 6 (conclusão).
+
+#### Capítulo 2 — Revisão Bibliográfica (continuação)
+- [ ] **REV-02.5:** **Homogeneização na Revisão Bibliográfica — Citar Literatura em Vez de Cálculos Próprios (Seção 2.4)**
+  - A §2.4 apresenta os coeficientes efetivos (Ĉ_11, Ĉ_12, etc.) como se fossem da literatura, mas são cálculos próprios do TCC.
+  - Reformular para citar a literatura (Bruna Leitzke 2017, Guinovart 2015, Bakhvalov & Panasenko 1989, Cioranescu & Donato 1999) e referenciar o Cap. 3 para os cálculos próprios.
+  - Garantir que a revisão bibliográfica não apresente resultados do próprio trabalho como se fossem de terceiros.
+
+#### Capítulo 3 — Formulação Matemática e Homogeneização (continuação)
+- [ ] **TEC-05:** **Completude e Reordenação da Homogeneização no Cap. 3**
+  - A seção "Propriedades Efetivas Transversais" (L386) precede a seção "Método de Homogeneização Assintótica" (L670) — ordem invertida.
+  - O formalismo MHA (L670+) chega apenas até o problema local e normalização; faltam: (a) dedução do problema homogeneizado (equação macroscópica de equilíbrio), (b) expressão final dos coeficientes efetivos em função dos corretors.
+  - Reordenar: MHA formalism → local problem → effective coefficients → homogenized problem.
+  - Garantir que os coeficientes efetivos (§3.3) sejam derivados do formalismo (§3.2), não apresentados de forma independente.
+
+#### Capítulo 4 — Metodologia e Simulação Numérica (continuação)
+- [ ] **CON/RED3:** **Limpeza e Coerência da Descrição de Implementação (Caps. 4 e 5)**
+  - A descrição do código (classe PeriodicProperty, instanciação, degree=0) está em §4.3, mas resultados de eficiência computacional (speedup, DOFs) estão em §5.4.
+  - Verificar redundâncias e garantir que a descrição técnica seja coerente e não duplicada.
+  - Considerar mover a descrição de implementação para um apêndice ou consolidar em uma única seção.
+
 ---
 
 ### Plano 2 — Normas Institucionais UFF e Apresentação Gráfica
@@ -294,14 +321,14 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 {
   "versao_skill": "2.2",
   "versao_estado": "1.7",
-  "data_atualizacao": "2026-11-11",
+  "data_atualizacao": "2026-11-16",
   "autor_projeto": "Luiz Gustavo da Silva Pereira",
   "orientador": "Aguardando preenchimento formal",
   "sistema_unidades": "N-mm-MPa (Engenharia)",
   "objetivo": "Revisão integral de conteúdo, rigor técnico, citações e redação científica do TCC em LaTeX",
   "fase_atual": "plano_1_em_andamento",
   "tarefa_ativa": null,
-  "subetapa_ativa": "compilacao local concluida (0 erros, 98 paginas)",
+  "subetapa_ativa": "novas tarefas registradas: COE-01, REV-02.5, TEC-05, CON/RED3",
   "tarefas_concluidas": [
     "DIA-01",
     "DIA-02",
@@ -395,9 +422,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CON-RED2 concluida (11/11/2026): conversao completa dos Typst artifacts em Cap. 2. Sec 5 (Formulacao Variacional Fraca) convertida para LaTeX (11 equacoes). Sec Discretizacao de Galerkin convertida (4 equacoes). 2 artifacts residuais (L143, L168 text(ou)) corrigidos. Verificacao final: 0 artifacts Typst restantes no Cap. 2 (excl. comentarios).",
     "REV-02.1 concluida (11/11/2026): Sec 2.1 revisada. D.1 (reorganizacao logica) concluida. D.2 (equacoes Typst->LaTeX) concluida: inline equations convertidas, ASME equations convertidas, itemize consolidado. D.3 (citacoes e quadros) concluida: 0 marcadores [nn], blocos Typst comentados removidos (conteudo ja apresentado em texto).",
     "NOR-02 (parte 1) concluida (11/11/2026): pre-textuais reordenados em main.tex — Sumario antes de Lista de Ilustracoes e Lista de Tabelas (EdUFF 2012). Parte 2 (inspecao visual final) pendente de compilacao no Overleaf.",
-    "Compilacao local concluida (11/11/2026): MiKTeX instalado e configurado. 16 correcoes aplicadas (includeonly, caminhos relativos, quadro env, Typst residuais, Backus1962 duplicado, eq labels). Resultado: 0 erros, 0 refs indefinidas, 0 cites indefinidas. PDF 98 paginas."
+    "Compilacao local concluida (11/11/2026): MiKTeX instalado e configurado. 16 correcoes aplicadas (includeonly, caminhos relativos, quadro env, Typst residuais, Backus1962 duplicado, eq labels). Resultado: 0 erros, 0 refs indefinidas, 0 cites indefinidas. PDF 98 paginas.",
+    "Novas tarefas registradas (16/11/2026): COE-01 (coesao inter-capitulos), REV-02.5 (homogeneizacao na revisao bibliografica citar literatura), TEC-05 (completude/reordenacao homogeneizacao Cap. 3), CON/RED3 (limpeza descricao implementacao Caps. 4 e 5). Identificadas pelo usuario apos compilacao local."
   ],
-  "proximo_passo": "Compilacao local concluida com sucesso (0 erros, 98 paginas). Todas as tarefas de conteudo e normas concluidas. Pendente: NOR-02 parte 2 (inspecao visual final) e push para origin.",
+  "proximo_passo": "Novas tarefas registradas: COE-01, REV-02.5, TEC-05, CON/RED3. Proxima tarefa autorizada a definir. NOR-02 parte 2 (inspecao visual) pendente de compilacao.",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

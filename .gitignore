@@ -71,3 +71,6 @@ Códigos/Plotagem do cilindro com Paraview/ParaView*
 
 # Arquivos zip
 *.zip
+# Backup files
+backup/
+LaTeX/backup/

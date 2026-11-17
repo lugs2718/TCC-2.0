@@ -31,6 +31,8 @@ A modelagem numérica de estruturas elásticas microperiódicas com alto contras
 
 \section{Discretização e Configuração da Malha}\label{sec:discretizacao_malha}
 
+
+A formulação variacional axissimétrica que fundamenta esta discretização é apresentada no Capítulo 3 (Seção 3.4).
 A precisão de um solucionador de elementos finitos para problemas com heterogeneidades de alta frequência e gradientes de tensão severos é governada pelas características geométricas do domínio computacional e pelo refinamento espacial da malha de discretização \cite{Sadd2009}. Esta seção detalha a definição do domínio, a escolha da classe de elementos finitos e o equacionamento para o posicionamento exato dos nós nas interfaces de transição elástica.
 
 \subsection{Geometria do Domínio Computacional Axissimétrico}
@@ -225,13 +227,15 @@ class PeriodicProperty(UserExpression):
 
 Durante a execução do solver, as instâncias de \texttt{PeriodicProperty} são utilizadas para construir os campos escalares do Módulo de Young e do Coeficiente de Poisson no domínio discreto, escrevendo-se:
 
-\begin{lstlisting}[language=Python, caption={Instanciação dos campos de propriedades no script FEniCS.}]
+\begin{verbatim}[language=Python, caption={Instanciação dos campos de propriedades no script FEniCS.}]
 E_func = PeriodicProperty(E1, E2, interfaces, degree=0)
 nu_func = PeriodicProperty(nu1, nu2, interfaces, degree=0)
-\end{lstlisting}
+\end{verbatim}
 
 Adota-se o parâmetro \texttt{degree=0} (interpolação constante por trecho) para garantir que a propriedade mude de forma abrupta e descontínua exatamente nas coordenadas das interfaces físicas, simulando com fidelidade a transição bimetálica real sem suavizações artificiais indesejadas.
 
+
+Os resultados de eficiência computacional (tempo de execução, redução de DOFs e speedup) obtidos com esta implementação são apresentados na Seção 5.4 do Capítulo 5.
 \subsection{Transição Sem Costura entre o Modelo Detalhado e o Modelo Homogeneizado (MHA)}
 
 A grande elegância metodológica desta arquitetura de programação é a facilidade de transição entre o modelo microscópico detalhado (altamente heterogêneo e oscilatório) e o modelo macroscópico equivalente homogeneizado pelo MHA.

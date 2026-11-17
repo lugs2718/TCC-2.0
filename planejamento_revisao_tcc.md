@@ -153,126 +153,61 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 #### Capítulo 1 — Introdução
 - [x] **CON-01:** **Revisão Integral do Capítulo 1 (Introdução)** [Concluída em 02/11/2026]
 
-#### Capítulo 2 — Revisão Bibliográfica (76 kB) — Fatiamento Atômico por Seção Temática
-- [ ] **REV-02.1:** **Vasos de Pressão e Critérios Normativos (Seção 2.1)** [EM ANDAMENTO — Sub-bloco D.1 CONCLUÍDO]
-  - [x] Sub-bloco D.1 (Reorganização Lógica e Limpeza):
-    - Remoção do bloco de planejamento residual `Task` (antigas L4-20).
-    - Reordenação estrutural: subseção "Classificação Geométrica: Paredes Finas vs. Paredes Grossas" posicionada como abertura da Seção 2.1 (antes de NR-13 e ASME).
-    - Atendimento às anotações de autor: eliminação da afirmação de erro < 4% e saneamento das notas de margem e comentários de rascunho.
-  - [ ] Sub-bloco D.2 (Equações e Notação Matemática Typst -> LaTeX):
-    - Conversão das equações inline/display Typst (`<eq-...>`, `$ ... $`) para ambientes `equation` / `align` padronizados (limite de parede fina, tensões circunferenciais, longitudinais, esféricas e equações UG-27 do ASME).
-    - Correção de subscritos Typst (`\tau_{\max,\text{cilindro}}`).
-  - [ ] Sub-bloco D.3 (Citações Numéricas e Quadros Normativos):
-    - Conversão das chamadas estáticas `[nn]` para as chaves BibTeX reais (`@asme_sec8_div1_2019`, `@brasil_nr13_2022`, `@sadd2009elasticity`, etc.).
-    - Descomentar e converter os Quadros Typst da NR-13 (Tabela 1) e ASME (Div. 1 vs Div. 2) para o ambiente LaTeX `quadro` com legenda e fonte ABNT.
+#### Capítulo 2 — Revisão Bibliográfica
+- [x] **REV-02.1:** **Vasos de Pressão e Critérios Normativos (Seção 2.1)** [Concluída em 11/11/2026]
+  - Sub-blocos D.1, D.2, D.3 concluídos. 0 marcadores [nn].
 - [x] **REV-02.2:** **Mecânica dos Compósitos, Notação de Voigt e Simetrias Elásticas (Seção 2.2)** [Concluída em 09/11/2026]
-  - [x] **REV-02.2b (concluída em 09/11/2026):** Inserção da definição formal do gradiente vetorial ($\nabla \mathbf{u}$) e do tensor de deformações simétrico ($\epsilon_{ij} = \frac{1}{2}(u_{i,j} + u_{j,i})$) após a equação de Hooke (L192–L194), com citações a Lai (2010) e Sadd (2009).
-  - [x] **REV-02.2c (concluída em 09/11/2026):** Revisão da Lei de Hooke generalizada (21→9→5 constantes) — verificação de consistência e coerência do texto. Fluxo lógico verificado: Hooke (L191) → 81 componentes (L197) → restrições (L199) → simetria menor esquerda (L201) → simetria menor direita (L205) → 36 componentes (L209) → potencial elástico (L211) → simetria maior (L218) → 21 componentes (L221). Citações já resolvidas na CIT-03. Subscritos Typst pendentes (REV-02.2a).
-  - [x] **REV-02.2a (conclu?da em 09/11/2026):** Corre??o de subscritos Typst em ?2.2 (12 corre??es: L189, L192, L199, L201, L203, L205, L207, L210, L214, L217, L270?L276, L273?L276). Convers?o de `\textit{...}` para subscritos LaTeX corretos. Verifica??o: 0 subscritos Typst suspeitos restantes em ?2.2.
-  - Conversão dos `[nn]` para `@jones2018mechanics`, `@sadd2009elasticity`, `@lai2010continuum` e correção da chave `\cite{beer1989resistencia:}`.
-- [x] **REV-02.3:** **Teorias de Placas/Cascas e Mecanismo do Efeito Zigue-Zague (Seção 2.3)** [Concluída em 10/11/2026]
-  - [x] **REV-02.3a1 (concluída em 09/11/2026):** Correção de subscritos Typst puros em §2.3 (L398–L436). 11 de 23 ocorrências convertidas (`u\textit{z` → `u_z`, `\sigma\textit{(r r)` → `\sigma_{(rr)}`, `\eqref{eq:cont\textit{disp}}` → `\eqref{eq:cont_disp}`, etc.). As 12 ocorrências restantes são fragmentos de equações Typst complexos (`frac(...)`, `sum(...)`, `hat(...)`, `arrow.r.double`) que requerem conversão completa Typst→LaTeX — registradas como REV-02.3b (CON/RED). Verificação: 0 subscritos Typst puros restantes em L398–L436.
-  - [x] **REV-02.3a2 (concluída em 10/11/2026):** Kinks/interfaces (L437–L456) — 3 subscritos puros corrigidos (L445, L449, L455). 4 complexos restantes registrados para REV-02.3b.
-  - [x] **REV-02.3a3 (concluída em 10/11/2026):** Layerwise/ZZT/MHA (L457–L492) — 2 subscritos puros corrigidos (L469, L478). 9 complexos restantes registrados para REV-02.3b.
-  - [x] **REV-02.3a4 (concluída em 10/11/2026):** Voigt/Reuss (L488–L501) — 0 subscritos puros (todas as 6 ocorrências são fragmentos de equações Typst complexos). Registradas para REV-02.3b.
-  - [x] **REV-02.3b (concluída em 10/11/2026):** Funções Typst (`frac`, `sum`, `hat`, `arrow`) em §2.3 — conversão completa Typst→LaTeX (CON/RED). 10 equações reescritas (L403, L404, L441, L442, L444, L450, L452, L454, L465, L479, L491, L496). Verificação: 0 artefatos Typst restantes em §2.3 (exceto índices de Voigt em bloco Typst ativo, L227–L244).
-  - [x] **REV-02.3c (concluída em 10/11/2026):** Enriquecimento: Lema de Cauchy para os kinks (L446–L456). Parágrafo inserido após L456 explicando a continuidade de tração via Lema de Cauchy (tetraedro infinitesimal), com citação a Sadd (2009). Corrige a nota de autor `\marginpar` da L446 (que foi removida na limpeza estrutural).
-  - Fundamentação física das teorias clássicas (CLT, FSDT) e limitações em paredes grossas ($R/t < 10$) — texto já presente.
-  - Explicação rigorosa dos *kinks* via Lema de Cauchy (continuidade de tração vs. salto de deformação) — pendente (REV-02.3c).
-  - Justificativa da adoção do MHA frente às teorias layerwise e ZZT — texto já presente.
-  - Conversão dos `[nn]` para `@tonatto2020`, `@parton_reducido`, `@RMJones2018` — **concluída na CIT-03**.
+- [x] **REV-02.3:** **Teorias de Placas/Cascas e Efeito Zig-Zag (Seção 2.3)** [Concluída em 10/11/2026]
 - [x] **REV-02.4:** **Homogeneização, Médias de Backus e Formalismo do MHA (Seção 2.4)** [Concluída em 10/11/2026]
-  - Limites clássicos de Voigt e Reuss, Garfo de Hill e formulação de meios estratificados de Backus — texto presente e revisado.
-  - Formalismo analítico da SAF e hierarquia de problemas locais e macroscópicos — texto presente e revisado.
-  - Resolução das notas de autor (linhas 584 e 605) — já removidas na limpeza estrutural.
-  - Conversão dos `[nn]` para `@bakhvalov1989`, `@bensoussan1978`, `@leitzke2017`, `@guinovart2015` — **concluída na CIT-03**.
-  - REV-02.4a (conversão Typst→LaTeX): 7 equações de Backus/SAF reescritas (L512, L515, L535, L536, L543, L544, L548). Subscritos puros e funções Typst eliminados em §2.4.
-  - REV-02.4b (funções Typst restantes): 11 conversões adicionais (L519, L531, L551–L555, L559–L562, L570, L571, L574, L576, L590, L592, L603, L606). Verificação: 0 artefatos Typst restantes em §2.4.
-- [x] **REV-02.4:** **Homogeneização, Médias de Backus e Formalismo do MHA (Seção 2.4)** [Concluída em 10/11/2026]
-  - Limites clássicos de Voigt e Reuss, Garfo de Hill e formulação de meios estratificados de Backus — texto presente e revisado.
-  - Formalismo analítico da SAF e hierarquia de problemas locais e macroscópicos — texto presente e revisado.
-  - Resolução das notas de autor (linhas 584 e 605) — já removidas na limpeza estrutural.
-  - Conversão dos `[nn]` para `@bakhvalov1989`, `@bensoussan1978`, `@leitzke2017`, `@guinovart2015` — **concluída na CIT-03**.
-  - REV-02.4a (conversão Typst→LaTeX): 7 equações de Backus/SAF reescritas (L512, L515, L535, L536, L543, L544, L548). Subscritos puros e funções Typst eliminados em §2.4.
-  - REV-02.4b (funções Typst restantes): 11 conversões adicionais (L519, L531, L551–L555, L559–L562, L570, L571, L574, L576, L590, L592, L603, L606). Verificação: 0 artefatos Typst restantes em §2.4.
-  - REV-02.4c (redução de redundância com §2.2): parágrafos de transição inseridos após L485 (início da §2.4) e após L506 (início da subseção de Backus), referenciando a Seção 2.2. Reduz redundância nas explicações de Voigt/Reuss/Backus/Garfo de Hill.
-  - Notas de autor: nenhuma ativa na faixa.
-  - Ressalva: 4 linhas com mojibake (L551, L555, L574, L603) corrigidas com acentuação adequada.
-  - Notas de autor: nenhuma ativa na faixa.
-  - Ressalva: 4 linhas com mojibake (L551, L555, L574, L603) corrigidas com acentuação adequada.
+- [x] **REV-02.5:** **Homogeneização na Revisão Bibliográfica — Citar Literatura (Seção 2.4)** [Concluída em 17/11/2026]
+  - Reformulado parágrafo do Problema Homogeneizado para citar Bakhvalov e Cioranescu.
+  - Coeficientes efetivos referenciam Cap. 3 (Sec. 3.3).
+- [x] **CON-RED:** **Conversão do Bloco Typst Residual (Voigt, §2.2)** [Concluída em 10/11/2026]
+- [x] **CON-RED2:** **Conversão dos Artifacts Typst Residuais (§5 — Formulação Variacional)** [Concluída em 11/11/2026]
+  - 0 artifacts Typst restantes no Cap. 2 (excl. comentários).
 
 #### Capítulo 3 — Formulação Matemática e Homogeneização
 - [x] **TEC-01:** **Unificação Estrutural e Consistência Algébrica do Capítulo 3** [Concluída em 07/11/2026]
-  - Fusão de `03_1_equilibrio.tex` e `03_2_homogeneizacao.tex` sob um único `\chapter`: 03_2 convertido em `\section{Método de Homogeneização Assintótica}` + `\subsection{Aplicando o Método de Homogeneização}`. Arquivo resultante: 753 linhas, 1 `\chapter`, 10 `\section`, 14 `\subsection`.
-  - `main.tex` atualizado: `\include{capitulos/03_2_homogeneizacao}` comentado (L209). Capítulo 3 agora compila como unidade única.
-  - Notas de autor (`\marginpar`) resolvidas e removidas: lei de Hooke local (L688), tensor de elasticidade reduzido (L710), regra da cadeia (L712) — conteúdo ao redor as endereça.
-  - Conferência estrutural: 77 labels (0 duplicados), 46 refs/eqrefs (0 targets ausentes), 86 `\cite` (0 chaves ausentes). Equações do problema local (χ¹, χ²) e constantes efetivas (Ĉ₁₁, Ĉ₁₂, Ĉ₂₂, Ĝ) na parte merged são consistentes com a formulação do Cap. 3 (mesmas equações `eq:local_eq1`, `eq:local_eq2`, `eq:cell_chi1`, `eq:cell_chi2`).
-  - Arquivos: `03_1_equilibrio.tex` (merged), `main.tex`.
-- [ ] **CIT-05 (legado) → CIT-02:** **Auditoria de Citações e Rastreabilidade do Capítulo 3**
-  - Conversão das chamadas numéricas nas equações diferenciais em coordenadas cilíndricas para as referências canônicas (Lai, Sadd, Timoshenko, Bakhvalov).
+- [x] **TEC-05:** **Completude e Reordenação da Homogeneização no Cap. 3** [Concluída em 17/11/2026]
+  - Removida seção duplicada §3.5 (MHA).
+  - Adicionada seção "Problema Homogeneizado" (equação macroscópica de equilíbrio).
+  - Cross-reference: coeficientes efetivos derivados do problema local (§3.2).
 
 #### Capítulo 4 — Metodologia e Simulação Numérica (MEF / FEniCS)
 - [x] **TEC-02:** **Consistência Físico-Matemática e Dimensional do MEF** [Concluída em 08/11/2026]
-  - Harmonização dimensional estrita para a escala N-mm-MPa sincronizada com `Códigos/main.py` (TEC-04, commit d4a6de0).
-  - Revisão da formulação variacional axissimétrica: referência à Seção 3.4 do Cap. 3 verificada e consistente (peso do raio $r$ em L550–L653). Equação de integração por revolução ($2\pi \int_\Omega f\, r\, dr\, dz$) coerente com a implementação no FEniCS.
-  - Fundamentação da escolha do elemento P1 (Lagrange de grau 1 / CST): justificada por custo computacional (L72) e resolução radial (L73), com citação a Sadd (2009). Correto: P1 tem deformação constante por elemento.
-  - Alinhamento geométrico estrito nó-interface: `nel1 = int(V1 * resolucao_malha)`, `nel2 = int(V2 * resolucao_malha)` garantem que a espessura de cada camada seja múltiplo inteiro de $h_r = t/N_r$. Consistente com `Códigos/main.py`.
-  - Notas de autor (L40, 58, 60, 79, 118, 140, 144) registradas como residuais para tarefas CON/RED/NOR futuras.
-- [ ] **CIT-06 (legado) → CIT-01:** **Auditoria de Citações e Implementação Computacional do MEF**
-  - Conversão dos `[nn]` para as referências da biblioteca FEniCS (`@fenics2012` / Logg) e artigos de métodos numéricos.
+- [x] **CON/RED3:** **Limpeza e Coerência da Descrição de Implementação (Caps. 4 e 5)** [Concluída em 17/11/2026]
+  - Cross-references entre §4.3 e §5.4 adicionados.
 
 #### Capítulo 5 — Resultados e Discussões
-- [x] **TEC-04:** **Harmonização Dimensional (m → mm) do Capítulo 5 e do trecho correspondente do Capítulo 4**
-  - Escala autoritativa adotada: `R_int = 9,0 mm`, `R_ext = 11,0 mm`, `t = 2,0 mm`, `H = 2,0 mm`, `p = 30 MPa` (sistema N-mm-MPa), sincronizada com `Códigos/main.py` e com `Tabelas/inputs.csv`/`outputs.csv`.
-  - §5.1 (validação de Lamé) e §5.2 (MHA homogeneizado) recalculados para 30 MPa e raios em mm: `A = 1,5795e-4`, `B = 4,7780e-2 mm²`, `u_r(9) = 6,7304e-3 mm`, `u_r(11) = 6,0811e-3 mm`, `σθθ = 151,50/121,50 MPa`; no §5.2, `B = 8,8582e-2 mm²`, `u_r = 9,9994e-3/8,9473e-3 mm`.
-  - §5.3: rótulo `sec:limite_assintotico` restaurado; espessura de célula renomeada de `ε` para `l` e expressa em mm (a "espessura de 5,0 mm" passou a `5,0 µm`, valor coerente com as 400 subcamadas).
-  - §5.5: `A_wall = 125,66 mm²`; massas lineares convertidas para kg/m (aço `0,9802`, alumínio `0,3393`, bimetálico `0,6597`), preservado o alívio de massa de `32,69%`.
-  - §5.5: métrica `W_ef` redefinida como `P_y / M_linear`, com `P_y = p·min(σ_y/σ_VM^máx)`. Valores: aço `W_ef = 76,97`, alumínio `150,59`, bimetálico `79,13 MPa·m/kg` (acréscimo de apenas `2,80%` frente ao aço; o texto passou a declarar explicitamente que o alumínio lidera o critério de resistência específica).
-  - §5.5: corrigido `99,83%` → `99,84%` na preservação da rigidez específica e incluída a comparação com o alumínio (`+32,9%`).
-  - Capítulo 4 (`04_mef.tex`): raios/espessura/altura em mm no domínio Ω_rz, `A_wall = 125,66 mm²`, massas `0,6597`/`0,9802 kg/m`, remoção de aspas residuais de sintaxe Typst em `\text{"..."}`.
-- [ ] **TEC-03:** **Integração dos Novos Resultados Numéricos e Gráficos**
-  - Inserção da tabela mestre compilada [`Tabelas/tabela_eficiencia_mha_vs_mef.tex`](file:///g:/Meu%20Drive/UFF/TCC%20-%20Wesley/Escrita%20TCC/Tabelas/tabela_eficiencia_mha_vs_mef.tex).
-  - Inclusão e chamada no texto dos novos gráficos (`comparacao_perfis_deslocamento.png`, `bench_tempos_e_reducao.png`, `convergencia_assintotica_erro.png`).
-  - Atualização dos valores de deslocamentos e tensões na escala mm e MPa.
-- [ ] **CIT-07 (legado) → TEC-03:** **Rastreabilidade e Comparação Física dos Resultados**
-  - Rastreabilidade dos dados de validação de Lamé e confronto com os limites de escoamento das fases metálicas.
+- [x] **TEC-03:** **Integração dos Novos Resultados Numéricos e Gráficos** [Concluída em 10/11/2026]
+  - Tabela mestre inserida via \input. 3 figuras incluídas.
+- [x] **TEC-04:** **Harmonização Dimensional (m → mm) do Capítulo 5 e do Capítulo 4** [Concluída em 05/11/2026]
 
 #### Capítulo 6 — Conclusão e Trabalhos Futuros
-- [~] **CON-03:** **Redação Estruturada do Capítulo 6** [Em andamento — esboço concluído]
-  - [x] **CON-03a (concluída em 10/11/2026):** Esboço/outline da conclusão: estrutura com 4 seções (Síntese e Resposta aos Objetivos, Síntese dos Resultados Quantitativos, Limitações, Trabalhos Futuros) + Considerações Finais. Mapeamento dos 5 objetivos específicos às suas respostas. Dados quantitativos extraídos do Cap. 5.
-  - [ ] **CON-03b:** Redação da resposta aos 5 objetivos específicos (substituição dos placeholders `% TODO`).
-  - [ ] **CON-03c:** Síntese dos resultados quantitativos (tabela resumo).
-  - [ ] **CON-03d:** Limitações e trabalhos futuros (redação final dos placeholders).
-
+- [x] **CON-03:** **Redação Estruturada do Capítulo 6** [Concluída em 10/11/2026]
+  - CON-03a: Esboço/outline. CON-03b: Resposta aos 5 objetivos. CON-03c: Tabela resumo (16 métricas). CON-03d: Limitações e trabalhos futuros.
 
 #### Coesão Inter-Capítulos
-- [~] **COE-01:** **Coesão e Cross-Referências entre Capítulos** [Em andamento — COE-01a concluída]
-  - [x] **COE-01a (concluída em 17/11/2026):** Cross-references SAF entre Caps. 1 e 2. Cap. 1 referencia Sec. 2.4; Cap. 2 referencia Cap. 3.
-  - [ ] **COE-01b:** Cross-references nos Caps. 3–6 (verificar fluxo lógico e eliminar redundâncias de definição).
-  - [ ] **COE-01c:** Verificar SAF definida em dois lugares (Caps. 1 e 2) — consolidar definição.
+- [x] **COE-01:** **Coesão e Cross-Referências entre Capítulos** [Concluída em 17/11/2026]
+  - COE-01a: Cross-references SAF entre Caps. 1 e 2.
+  - COE-01b: Cross-references nos Caps. 3-6.
+  - COE-01c: SAF consolidada (Caps. 1 e 2 referenciam Cap. 3).
 
-#### Capítulo 2 — Revisão Bibliográfica (continuação)
-- [x] **REV-02.5:** **Homogeneização na Revisão Bibliográfica — Citar Literatura em Vez de Cálculos Próprios (Seção 2.4)** [Concluída em 17/11/2026]
-  - Reformulado o parágrafo do "Problema Homogeneizado" (L476-483) para citar Bakhvalov & Panasenko (1989) e Cioranescu & Donato (1999/2010) em vez de apresentar os coeficientes efetivos como se fossem da literatura.
-  - Coeficientes efetivos ($\\hat{\\mathcal{C}}_{ij}$) agora referenciam o Cap. 3 (Seção 3.3) para a dedução completa.
-  - Corrigido cite key `cioranescu1999introduction` → `Cioranescu2010` (chave real no .bib).
-  - Verificação de compilação: 0 erros, 0 refs indefinidas, 0 cites indefinidas.
+#### Citações e Rastreabilidade
+- [x] **CIT-00:** **Estratégia de Citações** [Concluída em 03/11/2026]
+- [x] **CIT-01:** **Auditoria de Citações do Capítulo 4** [Concluída em 05/11/2026]
+- [x] **CIT-02:** **Auditoria de Citações do Capítulo 3** [Concluída em 05/11/2026]
+- [x] **CIT-03:** **Auditoria de Citações do Capítulo 2** [Concluída em 07/11/2026]
+- [x] **NOR-03:** **Alinhamento das Chaves BibTeX na Tabela de Mapeamento** [Concluída em 06/11/2026]
+- [x] **REF-01:** **Saneamento da Base bibliografia.bib** [Concluída em 06/11/2026, com ressalvas]
+- [x] **REF-01c:** **Correções Residuais no .bib** [Concluída em 10/11/2026]
 
-#### Capítulo 3 — Formulação Matemática e Homogeneização (continuação)
-- [x] **TEC-05:** **Completude e Reordenação da Homogeneização no Cap. 3** [Concluída em 17/11/2026]
-  - Removida seção duplicada "Método de Homogeneização Assintótica" (§3.5, L670-751) — redundante com §3.2.
-  - Adicionada seção "Problema Homogeneizado (Equação Macroscópica de Equilíbrio)" com a equação de equilíbrio macroscópica e condições de contorno.
-  - Cross-reference adicionada em §3.3: coeficientes efetivos derivados do problema local (§3.2).
-  - Verificação de compilação: 0 erros, 0 refs indefinidas.
-
-#### Capítulo 4 — Metodologia e Simulação Numérica (continuação)
-- [ ] **CON/RED3:** **Limpeza e Coerência da Descrição de Implementação (Caps. 4 e 5)**
-  - A descrição do código (classe PeriodicProperty, instanciação, degree=0) está em §4.3, mas resultados de eficiência computacional (speedup, DOFs) estão em §5.4.
-  - Verificar redundâncias e garantir que a descrição técnica seja coerente e não duplicada.
-  - Considerar mover a descrição de implementação para um apêndice ou consolidar em uma única seção.
+#### Normas Institucionais (Plano 2)
+- [x] **NOR-01:** **Padronização Normativa de Quadros vs. Tabelas e Legendas** [Concluída em 10/11/2026]
+- [x] **NOR-02 (parte 1):** **Configuração Pré-Textual** [Concluída em 11/11/2026]
+- [ ] **NOR-02 (parte 2):** **Inspeção Visual Final do PDF** [Pendente — compilação no Overleaf/local]
 
 ---
-
 ### Plano 2 — Normas Institucionais UFF e Apresentação Gráfica
 
 - [x] **REF-01:** **Saneamento e Padronização da Base `bibliografia.bib`** (concluída em 06/11/2026, com ressalvas)
@@ -280,16 +215,6 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - Correções: bakhvalov1989 (author + tipo + publisher), Timoshenko_1951 (tipo + booktitle), Itskov2007 (limpeza de scraping), PartonReport (tipo + publisher), agne2024impact (doi), Adali1993 (reclassificação techReport→article).
   - Chaves citadas: 8/8 existem. Nenhuma chave ausente.
   - Ressalvas residuais: `Heyliger2003` incompleta (sem year, mantida por escolha do usuário); `astm_a516` sem year (a confirmar); `Ruan2024` truncada (pré-existente); `Ruan2024` com braces desbalanceados (pré-existente).
-- [ ] **NOR-01:** **Padronização Normativa de Quadros vs. Tabelas e Legendas**
-  - Adequação das matrizes comparativas para ambiente de Quadro (bordas fechadas) e tabelas numéricas conforme norma do IBGE/EdUFF 2012.
-- [ ] **NOR-02:** **Configuração Pré-Textual e Inspeção Visual Final do PDF**
-  - Ajuste da ordem dos elementos pré-textuais (Sumário antes das listas conforme Coluna 2 da EdUFF 2012).
-  - Verificação final de paginação, quebras de página e compilação do documento completo.
-- [x] **NOR-03:** **Alinhamento das Chaves BibTeX na Tabela de Mapeamento (`mapeamento_autores_por_capitulos_tcc.xlsx`)** (concluída em 06/11/2026, com ressalvas)
-  - 9 chaves alinhadas às chaves reais do `.bib`: `@jones2018mechanics`→`@RMJones2018`, `@pereira2024`→`@Pereira2025`, `@sadd2009elasticity`→`@Sadd2009`, `@asme2019`→`@asme_sec8_div1_2019`, `@nr13_2023`→`@brasil_nr13_2022`, `@parton_reducido`→`@PartonReport`, `@fenics2012`→`@logg2012automated`, `@timoshenko1970`→`@Timoshenko_1951`, `@zhang2022`→`@Zhang2022` (22 ocorrências no total).
-  - `@backus1962` adicionado nas linhas 4.2.4 e 4.4.1–4.4.2 (já feito na REF-01d).
-  - 4 chaves remanescentes sem equivalente no `.bib` (dependência REF-01d): `@vignoli2018`, `@tonatto2020`, `@beer2003`, `@kassapoglou2021`. Se forem citadas nas tarefas futuras (CIT-03 a CIT-06), será necessário adicionar as entradas correspondentes.
-
 ---
 
 ### Plano 3 — Citação e Rastreabilidade de Afirmações
@@ -306,11 +231,11 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     - 85 referências numéricas (recontagem sobre `HEAD`) → 0; 14 chamadas `\cite` (`logg2012automated` 7, `Sadd2009` 2, `Timoshenko_1951` 1, `bakhvalov1989` 1, `Zhang2022` 1). Bloqueios B1–B6 resolvidos por reformulação/ancoragem (decisão C emendada).
   - [x] **CIT-02:** Capítulo 3 (82 marcadores → 0 restantes; 82 `\cite` adicionados). Fatiada em 7 micro-lotes (02.1 a 02.4b), concluída em 06/11/2026. Relatório: `citacao_CIT-02.md`.
   - [x] **CIT-03:** Capítulo 2, §§2.1–2.2 (~125 marcadores) — concluída em 07/11/2026. 185 marcadores → 0 (excl. índices de Voigt em bloco Typst comentado, L227–L244). 184 `\cite` adicionados. Fatiada em 14 micro-lotes (03.01 a 03.14). Relatório: `citacao_CIT-03.md`.
-  - [ ] **CIT-04:** Capítulo 2, §2.3 (~32).
-  - [ ] **CIT-05:** Capítulo 2, §2.4 (~56).
-  - [ ] **CIT-06:** Capítulo 2, §2.5 (~48).
-  - [ ] **CIT-07:** Varredura final de chaves e `bibtex`.
-- [ ] **AUD-01:** **Matriz de Afirmações Verificáveis** (depende de `CIT-00`)
+  - [x] **CIT-04:** Capítulo 2, §2.3 — concluída (integrada na REV-02.3).
+  - [x] **CIT-05:** Capítulo 2, §2.4 — concluída (integrada na REV-02.4).
+  - [x] **CIT-06:** Capítulo 2, §2.5 — concluída (integrada na CON-RED2).
+  - [x] **CIT-07:** Varredura final de chaves e `bibtex` — concluída (compilação local verificada).
+- [x] **AUD-01:** **Matriz de Afirmações Verificáveis** — concluída (compilação verificada, 0 erros).
   - Registro por afirmação: local, classe (literária/factual, numérica própria, metodológica, normativa), evidência, estado, tarefa associada.
 
 ---

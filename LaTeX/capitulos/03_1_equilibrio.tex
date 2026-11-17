@@ -205,7 +205,7 @@ onde $p$ representa a pressão manométrica interna atuando no vaso \cite{Sadd20
 
 % CHECK: Trecho 183-206 verificado pelo autor
 
-\section{O Formalismo do Método de Homogeneização Assintótica (MHA) no Cilindro (Objetivo C.2)}
+\section{O Formalismo do Método de Homogeneização Assintótica (MHA) no Cilindro (Objetivo C.2)} Este formalismo complementa a fundamentacao teorica apresentada no Capítulo 2 (Secao 2.4), onde os limites classicos de Voigt e Reuss e a formulacao de Backus para meios estratificados sao discutidos.
 
 A modelagem mecânica de cilindros de parede grossa compostos por múltiplos períodos de camadas concêntricas alternadas (aço e alumínio) é resolvida analiticamente por meio do Método de Homogeneização Assintótica (MHA). Este método permite desacoplar a resposta global do vaso de pressão dos gradientes de tensão microscópicos altamente oscilatórios de interface em interface, tratando as equações diferenciais parciais com coeficientes rapidamente oscilantes de forma rigorosa e sistemática \cite{bakhvalov1989}.
 
@@ -569,6 +569,8 @@ Esta formulação homogeneizada reduz o problema original (com $N$ camadas e $N$
 
 \section{Formulação Variacional Fraca Axissimétrica (Seção 3.4)}
 
+
+Esta formulacao e a base do solucionador numerico implementado no FEniCS, descrito no Capítulo 4.
 A resolução de problemas de elasticidade linear anisotrópica em domínios cilíndricos multicamadas por meio do Método dos Elementos Finitos (MEF) requer a transição da equação diferencial governante (forma forte) para a sua representação integral equivalente (forma fraca ou variacional). Esta seção apresenta a dedução matemática rigorosa da forma fraca axissimétrica baseada no Princípio dos Trabalhos Virtuais (PTV), detalhando a integração de volume no sistema de coordenadas cilíndricas e justificando a inclusão explícita do raio $r$ no domínio bidimensional de integração para simulação no solver FEniCS \cite{logg2012automated}.
 
 \section{O Princípio dos Trabalhos Virtuais (PTV)}

@@ -24,9 +24,9 @@ Como alternativa analítica rigorosa a este gargalo computacional, o Método de 
 
 \subsection{Problema multiescala e o princípio de separação de escalas}
 
-A modelagem analítica de componentes micro-heterogêneos fundamenta-se no \textbf{princípio da separação de escalas} e na \textbf{hipótese do contínuo}. O princípio de separação de escalas postula que haja uma distinção nítida entre as dimensões microscópica e macroscópica, expressa pelo parâmetro geométrico adimensional $\epsilon$, definido por \cite[p.~17]{bakhvalov1989} como a razão entre os comprimentos característicos da microescala $l$ (associado ao período da célula unitária) e da macroescala $L$ (associado à espessura da parede do vaso de pressão):
+A modelagem analítica de componentes micro-heterogêneos fundamenta-se no \textbf{princípio da separação de escalas} e na \textbf{hipótese do contínuo}. O princípio de separação de escalas postula que haja uma distinção nítida entre as dimensões microscópica e macroscópica, expressa pelo parâmetro geométrico adimensional $\varepsilon$, definido por \cite[p.~17]{bakhvalov1989} como a razão entre os comprimentos característicos da microescala $l$ (associado ao período da célula unitária) e da macroescala $L$ (associado à espessura da parede do vaso de pressão):
 \begin{equation}
-  \epsilon = \frac{l}{L}
+  \varepsilon = \frac{l}{L}
   \label{eq:epsilon_definicao}
 \end{equation}
 
@@ -35,25 +35,25 @@ A \autoref{fig:separacao_escalas} ilustra esquematicamente o conceito de transi�
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.75\linewidth]{capitulos/imagens/Separação de escalas.png}
-    \caption{Representação esquemática do princípio da separação de escalas e do parâmetro geométrico adimensional $\epsilon$.}
+    \caption{Representação esquemática do princípio da separação de escalas e do parâmetro geométrico adimensional $\varepsilon$.}
     \label{fig:separacao_escalas}
 \end{figure}
 
-A validade física e matemática das abordagens multiescala repousa sobre a condição $0 < \epsilon \ll 1$. Quando o parâmetro $\epsilon$ é suficientemente pequeno, torna-se possível desacoplar os problemas nas duas escalas espaciais: a coordenada macroscópica lenta $\mathbf{x}$ e a coordenada microscópica rápida $\mathbf{y} = \mathbf{x}/\epsilon$, responsável por descrever as oscilações periódicas locais da solução dentro da célula unitária \cite{bakhvalov1989}. 
+A validade física e matemática das abordagens multiescala repousa sobre a condição $0 < \varepsilon \ll 1$. Quando o parâmetro $\varepsilon$ é suficientemente pequeno, torna-se possível desacoplar os problemas nas duas escalas espaciais: a coordenada macroscópica lenta $\mathbf{x}$ e a coordenada microscópica rápida $\mathbf{y} = \mathbf{x}/\varepsilon$, responsável por descrever as oscilações periódicas locais da solução dentro da célula unitária \cite{bakhvalov1989}. 
 
-Para a condução da modelagem analítica, postula-se uma \textit{Solução Assintótica Formal} (SAF) expressa como uma série de potências do parâmetro $\epsilon$: (conforme desenvolvido no Capítulo 3, Seção 3.2).
+Para a condução da modelagem analítica, postula-se uma \textit{Solução Assintótica Formal} (SAF) expressa como uma série de potências do parâmetro $\varepsilon$: (conforme desenvolvido no Capítulo 3, Seção 3.2).
 \begin{equation}
-  \mathbf{u}^{(\infty)}(\mathbf{x}, \epsilon) = \mathbf{u}^0(\mathbf{x}) + \epsilon \mathbf{u}^1(\mathbf{x}, \mathbf{y}) + \epsilon^2 \mathbf{u}^2(\mathbf{x}, \mathbf{y}) + \dots
+  \mathbf{u}^{(\infty)}(\mathbf{x}, \varepsilon) = \mathbf{u}^0(\mathbf{x}) + \varepsilon \mathbf{u}^1(\mathbf{x}, \mathbf{y}) + \varepsilon^2 \mathbf{u}^2(\mathbf{x}, \mathbf{y}) + \dots
   \label{eq:saf_expansao}
 \end{equation}
 
-A substituição desta expansão nas equações governantes de equilíbrio mecânico e a segregação dos termos por ordens de magnitude em $\epsilon$ decompõem o problema original em uma hierarquia bem definida:
+A substituição desta expansão nas equações governantes de equilíbrio mecânico e a segregação dos termos por ordens de magnitude em $\varepsilon$ decompõem o problema original em uma hierarquia bem definida:
 \begin{enumerate}
     \item Um \textit{problema local sobre a célula unitária}, que fornece as funções de perturbação elástica e permite calcular de forma analítica fechada os \textbf{coeficientes elásticos efetivos} do cilindro homogeneizado;
     \item Um \textit{problema macroscópico equivalente}, formulado sobre o domínio contínuo global e governado pelas propriedades homogeneizadas.
 \end{enumerate}
 
-No formalismo do MHA, a aproximação de ordem zero ($\mathbf{u}^0$) descreve com precisão a resposta macroscópica média de deslocamentos da estrutura. O termo corretor de primeira ordem $\epsilon \mathbf{u}^1(\mathbf{x}, \mathbf{y})$, por sua vez, é responsável por capturar as flutuações e os gradientes locais decorrentes da heterogeneidade. No presente trabalho, a formulação analítica do MHA é desenvolvida até a determinação fechada das propriedades constitutivas efetivas e a resolução do campo macroscópico $\mathbf{u}^0$, enquanto a implementação computacional da reconstrução analítica ponto a ponto das flutuações locais via $\epsilon \mathbf{u}^1$ é delineada formalmente como etapa de extensão em trabalhos futuros, sendo a validação dos campos locais conduzida comparativamente frente ao modelo detalhado em elementos finitos.
+No formalismo do MHA, a aproximação de ordem zero ($\mathbf{u}^0$) descreve com precisão a resposta macroscópica média de deslocamentos da estrutura. O termo corretor de primeira ordem $\varepsilon \mathbf{u}^1(\mathbf{x}, \mathbf{y})$, por sua vez, é responsável por capturar as flutuações e os gradientes locais decorrentes da heterogeneidade. No presente trabalho, a formulação analítica do MHA é desenvolvida até a determinação fechada das propriedades constitutivas efetivas e a resolução do campo macroscópico $\mathbf{u}^0$, enquanto a implementação computacional da reconstrução analítica ponto a ponto das flutuações locais via $\varepsilon \mathbf{u}^1$ é delineada formalmente como etapa de extensão em trabalhos futuros, sendo a validação dos campos locais conduzida comparativamente frente ao modelo detalhado em elementos finitos.
 
 \section{Objetivo geral}
 

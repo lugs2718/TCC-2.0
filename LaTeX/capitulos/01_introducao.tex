@@ -42,13 +42,15 @@ A \autoref{fig:separacao_escalas} ilustra esquematicamente o conceito de transi�
 
 A validade física e matemática das abordagens multiescala repousa sobre a condição $0 < \varepsilon \ll 1$. Quando o parâmetro $\varepsilon$ é suficientemente pequeno, torna-se possível desacoplar os problemas nas duas escalas espaciais: a coordenada macroscópica lenta $\mathbf{x}$ e a coordenada microscópica rápida $\mathbf{y} = \mathbf{x}/\varepsilon$, responsável por descrever as oscilações periódicas locais da solução dentro da célula unitária \cite{bakhvalov1989}. 
 
-Para a condução da modelagem analítica, postula-se uma \textit{Solução Assintótica Formal} (SAF) expressa como uma série de potências do parâmetro $\varepsilon$ (conforme desenvolvido no Capítulo 3, Seção 3.2):
+Para a condução da modelagem analítica, postula-se uma \textit{Solução Assintótica Formal} (SAF) expressa como uma série de potências do parâmetro $\varepsilon$ (conforme desenvolvido no Capítulo \ref{sec:formulacao_matematica}, Seção \ref{subsec:formalismo_mha}):
+
 \begin{equation}
   \mathbf{u}^{(\infty)}(\mathbf{x}, \varepsilon) = \mathbf{u}^0(\mathbf{x}) + \varepsilon \mathbf{u}^1(\mathbf{x}, \mathbf{y}) + \varepsilon^2 \mathbf{u}^2(\mathbf{x}, \mathbf{y}) + \dots
   \label{eq:saf_expansao}
 \end{equation}
 
 A substituição desta expansão nas equações governantes de equilíbrio mecânico e a segregação dos termos por ordens de magnitude em $\varepsilon$ decompõem o problema original em uma hierarquia bem definida:
+
 \begin{enumerate}
     \item Um \textit{problema local sobre a célula unitária}, que fornece as funções de perturbação elástica e permite calcular de forma analítica fechada os \textbf{coeficientes elásticos efetivos} do cilindro homogeneizado;
     \item Um \textit{problema macroscópico equivalente}, formulado sobre o domínio contínuo global e governado pelas propriedades homogeneizadas.
@@ -58,7 +60,7 @@ No formalismo do MHA, a aproximação de ordem zero ($\mathbf{u}^0$) descreve co
 
 \section{Objetivo geral}
 
-O objetivo geral deste trabalho é realizar uma análise mecânica multiescala de vasos de pressão cilíndricos multicamadas com periodicidade radial, estabelecendo uma comparação sistemática e quantitativa de precisão e eficiência computacional entre o Método dos Elementos Finitos (MEF), empregado como modelo detalhado de referência, e o Método de Homogeneização Assintótica (MHA), empregado como formulação analítica equivalente, tendo a clássica solução analítica exata de Lamé como padrão fundamental de calibração e verificação do solucionador numérico para o caso homogêneo.
+O objetivo geral deste trabalho é realizar uma análise mecânica multiescala de vasos de pressão cilíndricos multicamadas com periodicidade radial, estabelecendo uma comparação sistemática e quantitativa de precisão e eficiência computacional entre a aplicação direta do Método dos Elementos Finitos (MEF), empregado como modelo de referência, com um modelo que aplica previamente o Método de Homogeneização Assintótica (MHA), para uma formulação analítica equivalente, seguida de uma uma análise MEF nesse mesmo modelo, tendo a clássica solução analítica exata de Lamé como padrão fundamental de calibração e verificação do solucionador numérico para o caso homogêneo.
 
 \section{Objetivos específicos}
 
@@ -69,7 +71,7 @@ Para atingir o objetivo geral, definem-se os seguintes objetivos específicos:
   \item \textbf{Aplicar o formalismo do MHA ao problema formulado}, deduzindo as equações diferenciais recorrentes, as condições de contorno de célula unitária, as funções corretoras locais e a equação governante homogeneizada macroscópica;
   \item \textbf{Deduzir analiticamente os coeficientes elásticos efetivos} para a configuração cilíndrica bilaminada bimetálica (aço--alumínio), correlacionando os resultados obtidos com os limites clássicos de Reuss (média harmônica radial) e a formulação de meios estratificados de Backus (rigidez circunferencial e módulo de cisalhamento efetivo);
   \item \textbf{Implementar e calibrar um solucionador numérico axissimétrico} baseado na plataforma de elementos finitos em código aberto FEniCS, validando a formulação variacional fraca através da clássica solução analítica de Lamé para cilindros homogêneos de parede grossa;
-  \item \textbf{Comparar quantitativamente a precisão e a eficiência computacional} entre a solução macroscópica homogeneizada pelo MHA e a solução numérica detalhada do MEF, avaliando o comportamento assintótico das descontinuidades de gradiente nas interfaces, a redução dos erros numéricos e o ganho de tempo de processamento (\textit{speedup}) em função do aumento do número de camadas do vaso.
+  \item \textbf{Comparar quantitativamente a precisão e a eficiência computacional} entre a solução numérica detalhada do MEF e a solução macroscópica homogeneizada pelo MHA, avaliando o comportamento assintótico das descontinuidades de gradiente nas interfaces, a redução dos erros numéricos e o ganho de tempo de processamento (\textit{speedup}) em função do aumento do número de camadas do vaso.
 \end{enumerate}
 
 \section{Organização e limitações do trabalho}
@@ -81,7 +83,7 @@ O presente trabalho está estruturado em seis capítulos:
     \item O \textbf{Capítulo 3 (Formulação Matemática e Homogeneização)} apresenta o equacionamento analítico do equilíbrio axissimétrico em coordenadas cilíndricas e desenvolve a dedução detalhada do MHA e dos coeficientes constitutivos efetivos;
     \item O \textbf{Capítulo 4 (Metodologia e Simulação Numérica)} descreve a implementação computacional do modelo de elementos finitos axissimétrico no ambiente FEniCS, detalhando a discretização da malha estruturada, as funções de interpolação e o mapeamento periódico das propriedades mecânicas;
     \item O \textbf{Capítulo 5 (Resultados e Discussões)} expõe a validação analítica via solução de Lamé, a análise comparativa de deslocamentos e tensões entre MEF e MHA, o comportamento assintótico de convergência e a avaliação de eficiência computacional e alívio de peso estrutural;
-    \item O \textbf{Capítulo 6 (Conclusões e Trabalhos Futuros)} sintetiza as principais contribuições técnicas do estudo e delineia propostas para extensões da pesquisa.
+    \item O \textbf{Capítulo 6 (Conclusão e Trabalhos Futuros)} sintetiza as principais contribuições técnicas do estudo e delineia propostas para extensões da pesquisa.
 \end{itemize}
 
 \subsection{Delimitação do escopo e limitações do modelo}

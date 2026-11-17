@@ -180,7 +180,7 @@ onde $E^\varepsilon (r)$ representa o módulo de Young e $\nu^\varepsilon (r)$ o
 
 % CHECK: Trecho 168-180 verificado pelo autor
 
-\subsection{Equação Governante do Deslocamento Radial e Condições de Contorno}
+\subsection{Equação Governante do Deslocamento Radial e Condições de Contorno} \label{subsec:equacao_governante}
 
 Substituindo a Lei de Hooke (\eqref{eq:voigt_hooke_radial}) de volta na equação de equilíbrio radial escalar (\eqref{eq:equilibrium_radial_1d}), obtém-se a equação diferencial ordinária de segunda ordem que governa o deslocamento radial $u^\varepsilon (r)$ \cite{Timoshenko_1951}:
 
@@ -219,9 +219,11 @@ Considere a espessura total do cilindro de parede grossa como a escala caracter�
 % ADD: Adicionei um esclarecimeento do que $l$ representaria geometricamente, que seria a espessura da célula unitária, na minha concepção. 
 
 \begin{equation}
-  \epsilon = \frac{l}{L} \ll 1
+  \epsilon = \frac{l}{L} \ll 1.
   \label{eq:epsilon_scale}
 \end{equation}
+
+% TODO: Remover repetição da definição de $\varepsilon$ e da SAF
 
 Com base nesta separação física de escalas, definem-se duas coordenadas espaciais independentes para mapear o cilindro de parede grossa \cite{bakhvalov1989}:
 1. \textbf{Variável Lenta ou Macroscópica ($r$):} Descreve o comportamento global, o carregamento de pressão externa e os gradientes suaves de deslocamento do vaso.
@@ -230,7 +232,7 @@ Com base nesta separação física de escalas, definem-se duas coordenadas espac
 Por consequência da introdução das variáveis independentes $r$ e $y$, o operador de derivada total em relação ao raio $r$ é modificado por meio da aplicação rigorosa da regra da cadeia, dividindo-se em duas parcelas de escalas distintas \cite{bakhvalov1989}:
 
 \begin{equation}
-  \frac{d}{d r} = \frac{\partial}{\partial r} + \frac{1}{\epsilon} \frac{\partial}{\partial y}
+  \frac{d}{d r} = \frac{\partial}{\partial r} + \frac{1}{\epsilon} \frac{\partial}{\partial y}.
   \label{eq:modified_derivative}
 \end{equation}
 
@@ -241,7 +243,7 @@ O operador dado pela \eqref{eq:modified_derivative} reflete que qualquer variaç
 O MHA postula que o campo real de deslocamento radial $u^\varepsilon(r)$ do cilindro multicamadas heterogêneo pode ser perfeitamente aproximado por uma série de potências do parâmetro pequeno $\epsilon$, conhecida como Solução Assintótica Formal (SAF) \cite{bakhvalov1989}:
 
 \begin{equation}
-  u^\varepsilon (r) = u_0(r, y) + \epsilon u_1(r, y) + \epsilon^2 u_2(r, y) + O(\epsilon^3)
+  u^\varepsilon (r) = u_0(r, y) + \epsilon u_1(r, y) + \epsilon^2 u_2(r, y) + O(\epsilon^3).
   \label{eq:saf_u}
 \end{equation}
 
@@ -250,7 +252,7 @@ onde os termos de perturbação elástica $u_i (r, y)$ são periódicos com resp
 Na teoria matemática de homogeneização de equações elípticas lineares, prova-se que o termo de ordem dominante $u_0(r, y)$ é estritamente independente da escala microscópica rápida $y$ \cite{bakhvalov1989}:
 
 \begin{equation}
-  \frac{\partial u_0}{\partial y} = 0 \quad \Longrightarrow \quad u_0(r, y) = u_0(r)
+  \frac{\partial u_0}{\partial y} = 0 \quad \Longrightarrow \quad u_0(r, y) = u_0(r).
   \label{eq:u0_macro}
 \end{equation}
 
@@ -261,31 +263,31 @@ A \eqref{eq:u0_macro} carrega um significado físico profundo: sob o limite assi
 Substituindo a SAF dada pela \eqref{eq:saf_u} e aplicando a regra da derivada dada pela \eqref{eq:modified_derivative}, os campos cinemáticos de deformação infinitesimal radial $\epsilon_r^\varepsilon$ e circunferencial $\epsilon_\theta^\varepsilon$ são expandidos como \cite{bakhvalov1989}:
 
 \begin{equation}
-  \epsilon_r^\varepsilon = \frac{d u^\varepsilon}{d r} = \frac{\partial u_0}{\partial r} + \frac{\partial u_1}{\partial y} + \epsilon \left( \frac{\partial u_1}{\partial r} + \frac{\partial u_2}{\partial y} \right) + O(\epsilon^2)
+  \epsilon_r^\varepsilon = \frac{d u^\varepsilon}{d r} = \frac{\partial u_0}{\partial r} + \frac{\partial u_1}{\partial y} + \epsilon \left( \frac{\partial u_1}{\partial r} + \frac{\partial u_2}{\partial y} \right) + O(\epsilon^2),
   \label{eq:deform_r}
 \end{equation}
 
 \begin{equation}
-  \epsilon_\theta^\varepsilon = \frac{u^\varepsilon}{r} = \frac{u_0}{r} + \epsilon \frac{u_1}{r} + O(\epsilon^2)
+  \epsilon_\theta^\varepsilon = \frac{u^\varepsilon}{r} = \frac{u_0}{r} + \epsilon \frac{u_1}{r} + O(\epsilon^2).
   \label{eq:deform_theta}
 \end{equation}
 
 Substituindo estas deformações na Lei de Hooke para o cilindro axissimétrico em coordenadas curvilíneas, o tensor de tensões oscilatório é decomposto em potências hierárquicas de $\epsilon$ \cite{bakhvalov1989}:
 
 \begin{equation}
-  \sigma_r^\varepsilon = \sigma_r^0 + \epsilon \sigma_r^1 + O(\epsilon^2)
+  \sigma_r^\varepsilon = \sigma_r^0 + \epsilon \sigma_r^1 + O(\epsilon^2).
   \label{eq:stress_r_exp}
 \end{equation}
 
 \begin{equation}
-  \sigma_\theta^\varepsilon = \sigma_\theta^0 + \epsilon \sigma_\theta^1 + O(\epsilon^2)
+  \sigma_\theta^\varepsilon = \sigma_\theta^0 + \epsilon \sigma_\theta^1 + O(\epsilon^2),
   \label{eq:stress_theta_exp}
 \end{equation}
 
 onde os termos dominantes de tensão de ordem zero ($\sigma^0$) são expressos em termos dos campos de deslocamento da SAF como \cite{bakhvalov1989}:
 
 \begin{equation}
-  \sigma_r^0 (r, y) = \mathcal{C}_{11}(y) \left( \frac{\partial u_0}{\partial r} + \frac{\partial u_1}{\partial y} \right) + \mathcal{C}_{12}(y) \frac{u_0}{r}
+  \sigma_r^0 (r, y) = \mathcal{C}_{11}(y) \left( \frac{\partial u_0}{\partial r} + \frac{\partial u_1}{\partial y} \right) + \mathcal{C}_{12}(y) \frac{u_0}{r}.
   \label{eq:stress_r_zero}
 \end{equation}
 
@@ -389,7 +391,7 @@ A condição de normalização dada na \eqref{eq:local_norm} é de fundamental i
 
 A determinação analítica dos coeficientes efetivos (homogeneizados) que regem o comportamento macroscópico do cilindro é um dos resultados mais elegantes do Método de Homogeneização Assintótica (MHA) \cite{bakhvalov1989}. Sob o princípio de que, para um elevado número de períodos ($\epsilon \to 0$), a curvatura local das camadas infinitesimais tende a zero, o problema local de célula pode ser resolvido com exatidão analítica \cite{Backus1962}. Esta seção apresenta a integração matemática das equações diferenciais locais de célula formuladas na seção anterior, deduzindo os coeficientes de rigidez radial efetiva ($\hat{\mathcal{C}}_{11}$), de acoplamento circunferencial-radial efetivo ($\hat{\mathcal{C}}_{12}$), de rigidez hoop/tangencial efetiva ($\hat{\mathcal{C}}_{22}$) e o módulo de cisalhamento transversal equivalente ($\hat{G}$), fundamentados nas clássicas Médias de Backus para meios estratificados \cite{Backus1962}. Os coeficientes apresentados nesta secao sao derivados do problema local (Secao 3.2, \eqref{eq:local_eq1} e \eqref{eq:local_eq2}) por meio da aplicacao do operador de media volumetrica $\langle \cdot \rangle$ sobre a celula unitaria.
 
-\subsection{Integração do Problema Local e Dedução de $\hat{\mathcal{C}}_{11}$ e $\hat{\mathcal{C}}_{12}$}
+\subsection{Integração do Problema Local e Dedução de $\hat{\mathcal{C}}_{11}$ e $\hat{\mathcal{C}}_{12}$} \label{subsec:deducao_hat_c}
 
 No capítulo anterior, estabelecemos as equações fortes ordinárias na variável rápida $y$ para as funções de perturbação $\chi^{(1)}(y)$ e $\chi^{(2)}(y)$ dentro da célula unitária periódica $Y = [0, 1]$:
 

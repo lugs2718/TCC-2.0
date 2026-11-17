@@ -246,11 +246,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 
 
 #### Coesão Inter-Capítulos
-- [ ] **COE-01:** **Coesão e Cross-Referências entre Capítulos**
-  - Cap. 1 (Introdução) e Cap. 2 (Revisão Bibliográfica) mencionam a SAF (Solução Assintótica Formal) de forma independente, sem cross-reference.
-  - Garantir que cada capítulo cite o outro onde apropriado (ex.: "conforme desenvolvido no Cap. 3" ou "conforme discutido na Seção 2.4").
-  - Eliminar redundâncias de definição (ex.: SAF definida em dois lugares).
-  - Verificar fluxo lógico: Cap. 1 (objetivos) → Cap. 2 (literatura) → Cap. 3 (formulação) → Cap. 4 (MEF) → Cap. 5 (resultados) → Cap. 6 (conclusão).
+- [~] **COE-01:** **Coesão e Cross-Referências entre Capítulos** [Em andamento — COE-01a concluída]
+  - [x] **COE-01a (concluída em 17/11/2026):** Cross-references SAF entre Caps. 1 e 2. Cap. 1 referencia Sec. 2.4; Cap. 2 referencia Cap. 3.
+  - [ ] **COE-01b:** Cross-references nos Caps. 3–6 (verificar fluxo lógico e eliminar redundâncias de definição).
+  - [ ] **COE-01c:** Verificar SAF definida em dois lugares (Caps. 1 e 2) — consolidar definição.
 
 #### Capítulo 2 — Revisão Bibliográfica (continuação)
 - [ ] **REV-02.5:** **Homogeneização na Revisão Bibliográfica — Citar Literatura em Vez de Cálculos Próprios (Seção 2.4)**
@@ -259,11 +258,11 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - Garantir que a revisão bibliográfica não apresente resultados do próprio trabalho como se fossem de terceiros.
 
 #### Capítulo 3 — Formulação Matemática e Homogeneização (continuação)
-- [ ] **TEC-05:** **Completude e Reordenação da Homogeneização no Cap. 3**
-  - A seção "Propriedades Efetivas Transversais" (L386) precede a seção "Método de Homogeneização Assintótica" (L670) — ordem invertida.
-  - O formalismo MHA (L670+) chega apenas até o problema local e normalização; faltam: (a) dedução do problema homogeneizado (equação macroscópica de equilíbrio), (b) expressão final dos coeficientes efetivos em função dos corretors.
-  - Reordenar: MHA formalism → local problem → effective coefficients → homogenized problem.
-  - Garantir que os coeficientes efetivos (§3.3) sejam derivados do formalismo (§3.2), não apresentados de forma independente.
+- [x] **TEC-05:** **Completude e Reordenação da Homogeneização no Cap. 3** [Concluída em 17/11/2026]
+  - Removida seção duplicada "Método de Homogeneização Assintótica" (§3.5, L670-751) — redundante com §3.2.
+  - Adicionada seção "Problema Homogeneizado (Equação Macroscópica de Equilíbrio)" com a equação de equilíbrio macroscópica e condições de contorno.
+  - Cross-reference adicionada em §3.3: coeficientes efetivos derivados do problema local (§3.2).
+  - Verificação de compilação: 0 erros, 0 refs indefinidas.
 
 #### Capítulo 4 — Metodologia e Simulação Numérica (continuação)
 - [ ] **CON/RED3:** **Limpeza e Coerência da Descrição de Implementação (Caps. 4 e 5)**
@@ -321,14 +320,14 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 {
   "versao_skill": "2.2",
   "versao_estado": "1.7",
-  "data_atualizacao": "2026-11-16",
+  "data_atualizacao": "2026-11-17",
   "autor_projeto": "Luiz Gustavo da Silva Pereira",
   "orientador": "Aguardando preenchimento formal",
   "sistema_unidades": "N-mm-MPa (Engenharia)",
   "objetivo": "Revisão integral de conteúdo, rigor técnico, citações e redação científica do TCC em LaTeX",
   "fase_atual": "plano_1_em_andamento",
   "tarefa_ativa": null,
-  "subetapa_ativa": "novas tarefas registradas: COE-01, REV-02.5, TEC-05, CON/RED3",
+  "subetapa_ativa": "TEC-05 concluida; COE-01 parcial (COE-01a concluida)",
   "tarefas_concluidas": [
     "DIA-01",
     "DIA-02",
@@ -355,7 +354,8 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "REF-01c",
     "CON-RED2",
     "REV-02.1",
-    "NOR-02"
+    "NOR-02",
+    "TEC-05"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -423,9 +423,11 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "REV-02.1 concluida (11/11/2026): Sec 2.1 revisada. D.1 (reorganizacao logica) concluida. D.2 (equacoes Typst->LaTeX) concluida: inline equations convertidas, ASME equations convertidas, itemize consolidado. D.3 (citacoes e quadros) concluida: 0 marcadores [nn], blocos Typst comentados removidos (conteudo ja apresentado em texto).",
     "NOR-02 (parte 1) concluida (11/11/2026): pre-textuais reordenados em main.tex — Sumario antes de Lista de Ilustracoes e Lista de Tabelas (EdUFF 2012). Parte 2 (inspecao visual final) pendente de compilacao no Overleaf.",
     "Compilacao local concluida (11/11/2026): MiKTeX instalado e configurado. 16 correcoes aplicadas (includeonly, caminhos relativos, quadro env, Typst residuais, Backus1962 duplicado, eq labels). Resultado: 0 erros, 0 refs indefinidas, 0 cites indefinidas. PDF 98 paginas.",
-    "Novas tarefas registradas (16/11/2026): COE-01 (coesao inter-capitulos), REV-02.5 (homogeneizacao na revisao bibliografica citar literatura), TEC-05 (completude/reordenacao homogeneizacao Cap. 3), CON/RED3 (limpeza descricao implementacao Caps. 4 e 5). Identificadas pelo usuario apos compilacao local."
+    "Novas tarefas registradas (16/11/2026): COE-01 (coesao inter-capitulos), REV-02.5 (homogeneizacao na revisao bibliografica citar literatura), TEC-05 (completude/reordenacao homogeneizacao Cap. 3), CON/RED3 (limpeza descricao implementacao Caps. 4 e 5). Identificadas pelo usuario apos compilacao local.",
+    "TEC-05 concluida (17/11/2026): Cap. 3 reestruturado. Secao duplicada 3.5 (MHA) removida. Problema Homogeneizado adicionado (eq. macroscopica de equilibrio + condicoes de contorno). Cross-reference: coeficientes efetivos derivados do problema local (Sec. 3.2). Compilacao: 0 erros, 0 refs indefinidas, 98 paginas.",
+    "COE-01a concluida (17/11/2026): cross-references SAF entre Caps. 1 e 2. Cap. 1 referencia Sec. 2.4; Cap. 2 referencia Cap. 3."
   ],
-  "proximo_passo": "Novas tarefas registradas: COE-01, REV-02.5, TEC-05, CON/RED3. Proxima tarefa autorizada a definir. NOR-02 parte 2 (inspecao visual) pendente de compilacao.",
+  "proximo_passo": "TEC-05 concluida. COE-01 parcial (COE-01a concluida). Pendentes: COE-01b/01c, REV-02.5, CON/RED3. Proxima tarefa autorizada a definir.",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```

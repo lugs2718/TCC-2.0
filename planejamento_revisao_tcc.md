@@ -266,10 +266,11 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - Verificação de compilação: 0 erros, 0 refs indefinidas.
 
 #### Capítulo 4 — Metodologia e Simulação Numérica (continuação)
-- [ ] **CON/RED3:** **Limpeza e Coerência da Descrição de Implementação (Caps. 4 e 5)**
-  - A descrição do código (classe PeriodicProperty, instanciação, degree=0) está em §4.3, mas resultados de eficiência computacional (speedup, DOFs) estão em §5.4.
-  - Verificar redundâncias e garantir que a descrição técnica seja coerente e não duplicada.
-  - Considerar mover a descrição de implementação para um apêndice ou consolidar em uma única seção.
+- [x] **CON/RED3:** **Limpeza e Coerência da Descrição de Implementação (Caps. 4 e 5)** [Concluída em 17/11/2026]
+  - Adicionado cross-reference em §4.3: resultados de eficiência computacional (speedup, DOFs) apresentados na §5.4.
+  - Adicionado cross-reference em §5.4: implementação detalhada (PeriodicProperty, mapeamento periódico) descrita na §4.3.
+  - Convertido `\begin{verbatim}` para `\begin{lstlisting}` e revertido para `\begin{verbatim}` (problema de UTF-8 no lstlisting com acentos).
+  - Verificação de compilação: 0 erros, 0 refs indefinidas, 0 cites indefinidas, 98 páginas.
 
 ---
 

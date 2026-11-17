@@ -354,6 +354,8 @@ Fisicamente, a \eqref{eq:convergencia_linear} confirma com rigor o teorema da re
 
 \subsection{Discussão sobre Eficiência Estrutural e Custo Computacional}
 
+
+A implementação computacional detalhada (classe \texttt{PeriodicProperty}, mapeamento periódico, instanciação dos campos) é descrita na Seção 4.3 do Capítulo 4. A presente seção apresenta os resultados de desempenho obtidos com essa implementação.
 Para além do rigor matemático, a análise de convergência traz à tona a enorme vantagem computacional que a homogeneização assintótica confere aos projetos de engenharia.
 
 Em termos práticos, para resolver numericamente o cilindro bimetálico com $N_{\text{cel}} = 200$ (composto por $400$ subcamadas elásticas ultrafinas de espessura de apenas $5,0 \, \mu\text{m}$), o Método dos Elementos Finitos Detalhado (MEF-D) exige uma malha radial extremamente fina para garantir o alinhamento de nós discutido no Capítulo 4. A discretização radial requerida de $4.000$ divisões gera um sistema linear com \textbf{$80.000$ triângulos discretos}, demandando um esforço computacional e de memória de CPU consideráveis para a montagem de matrizes de rigidez altamente oscilatórias.

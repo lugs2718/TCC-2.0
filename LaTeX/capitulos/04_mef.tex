@@ -225,13 +225,15 @@ class PeriodicProperty(UserExpression):
 
 Durante a execução do solver, as instâncias de \texttt{PeriodicProperty} são utilizadas para construir os campos escalares do Módulo de Young e do Coeficiente de Poisson no domínio discreto, escrevendo-se:
 
-\begin{lstlisting}[language=Python, caption={Instanciação dos campos de propriedades no script FEniCS.}]
+\begin{verbatim}[language=Python, caption={Instanciação dos campos de propriedades no script FEniCS.}]
 E_func = PeriodicProperty(E1, E2, interfaces, degree=0)
 nu_func = PeriodicProperty(nu1, nu2, interfaces, degree=0)
-\end{lstlisting}
+\end{verbatim}
 
 Adota-se o parâmetro \texttt{degree=0} (interpolação constante por trecho) para garantir que a propriedade mude de forma abrupta e descontínua exatamente nas coordenadas das interfaces físicas, simulando com fidelidade a transição bimetálica real sem suavizações artificiais indesejadas.
 
+
+Os resultados de eficiência computacional (tempo de execução, redução de DOFs e speedup) obtidos com esta implementação são apresentados na Seção 5.4 do Capítulo 5.
 \subsection{Transição Sem Costura entre o Modelo Detalhado e o Modelo Homogeneizado (MHA)}
 
 A grande elegância metodológica desta arquitetura de programação é a facilidade de transição entre o modelo microscópico detalhado (altamente heterogêneo e oscilatório) e o modelo macroscópico equivalente homogeneizado pelo MHA.

@@ -385,7 +385,7 @@ A condição de normalização dada na \eqref{eq:local_norm} é de fundamental i
 
 \section{Propriedades Efetivas Transversais (Objetivo B.4)}
 
-A determinação analítica dos coeficientes efetivos (homogeneizados) que regem o comportamento macroscópico do cilindro é um dos resultados mais elegantes do Método de Homogeneização Assintótica (MHA) \cite{bakhvalov1989}. Sob o princípio de que, para um elevado número de períodos ($\epsilon \to 0$), a curvatura local das camadas infinitesimais tende a zero, o problema local de célula pode ser resolvido com exatidão analítica \cite{Backus1962}. Esta seção apresenta a integração matemática das equações diferenciais locais de célula formuladas na seção anterior, deduzindo os coeficientes de rigidez radial efetiva ($\hat{\mathcal{C}}_{11}$), de acoplamento circunferencial-radial efetivo ($\hat{\mathcal{C}}_{12}$), de rigidez hoop/tangencial efetiva ($\hat{\mathcal{C}}_{22}$) e o módulo de cisalhamento transversal equivalente ($\hat{G}$), fundamentados nas clássicas Médias de Backus para meios estratificados \cite{Backus1962}.
+A determinação analítica dos coeficientes efetivos (homogeneizados) que regem o comportamento macroscópico do cilindro é um dos resultados mais elegantes do Método de Homogeneização Assintótica (MHA) \cite{bakhvalov1989}. Sob o princípio de que, para um elevado número de períodos ($\epsilon \to 0$), a curvatura local das camadas infinitesimais tende a zero, o problema local de célula pode ser resolvido com exatidão analítica \cite{Backus1962}. Esta seção apresenta a integração matemática das equações diferenciais locais de célula formuladas na seção anterior, deduzindo os coeficientes de rigidez radial efetiva ($\hat{\mathcal{C}}_{11}$), de acoplamento circunferencial-radial efetivo ($\hat{\mathcal{C}}_{12}$), de rigidez hoop/tangencial efetiva ($\hat{\mathcal{C}}_{22}$) e o módulo de cisalhamento transversal equivalente ($\hat{G}$), fundamentados nas clássicas Médias de Backus para meios estratificados \cite{Backus1962}. Os coeficientes apresentados nesta secao sao derivados do problema local (Secao 3.2, \eqref{eq:local_eq1} e \eqref{eq:local_eq2}) por meio da aplicacao do operador de media volumetrica $\langle \cdot \rangle$ sobre a celula unitaria.
 
 \subsection{Integração do Problema Local e Dedução de $\hat{\mathcal{C}}_{11}$ e $\hat{\mathcal{C}}_{12}$}
 
@@ -547,6 +547,26 @@ Este conjunto completo de coeficientes elásticos ($\hat{\mathcal{C}}_{11}$, $\h
 
 % CHECK: Trecho 529-549 verificado pelo autor.
 
+\section{Problema Homogeneizado (Equação Macroscópica de Equilíbrio)}
+
+Com os coeficientes efetivos $\hat{\mathcal{C}}_{11}$, $\hat{\mathcal{C}}_{12}$, $\hat{\mathcal{C}}_{22}$ e $\hat{G}$ deduzidos nas seções anteriores, o problema homogeneizado de ordem zero é obtido aplicando o operador de média volumétrica $\langle \cdot \rangle$ à equação de equilíbrio \eqref{eq:equilibrium_radial_1d}. O campo de deslocamento macroscópico $u_0(r)$ satisfaz:
+
+\begin{equation}
+  \hat{\mathcal{C}}_{11} \frac{d^2 u_0(r)}{dr^2} + \frac{\hat{\mathcal{C}}_{11}}{r} \frac{du_0(r)}{dr} - \frac{\hat{\mathcal{C}}_{22}}{r^2} u_0(r) = 0
+  \label{eq:homogenized_equilibrium}
+\end{equation}
+
+com as condições de contorno de Neumann:
+
+\begin{equation}
+  \hat{\mathcal{C}}_{11} \frac{du_0}{dr}\bigg|_{r=R_{\text{int}}} = -p, \quad \hat{\mathcal{C}}_{11} \frac{du_0}{dr}\bigg|_{r=R_{\text{ext}}} = 0.
+  \label{eq:homogenized_bc}
+\end{equation}
+
+A \eqref{eq:homogenized_equilibrium} é uma equação diferencial ordinária de segunda ordem com coeficientes constantes (os efetivos $\hat{\mathcal{C}}_{ij}$), cuja solução analítica é do tipo $u_0(r) = A \, r + B \, r^{-1}$, análoga à solução de Lamé para um material homogêneo ortotrópico equivalente. Os coeficientes $A$ e $B$ são determinados pelas condições de contorno \eqref{eq:homogenized_bc}.
+
+Esta formulação homogeneizada reduz o problema original (com $N$ camadas e $N$ interfaces) a um problema de um único material equivalente, eliminando a necessidade de resolver as equações de equilíbrio em cada subcamada individualmente.
+
 \section{Formulação Variacional Fraca Axissimétrica (Seção 3.4)}
 
 A resolução de problemas de elasticidade linear anisotrópica em domínios cilíndricos multicamadas por meio do Método dos Elementos Finitos (MEF) requer a transição da equação diferencial governante (forma forte) para a sua representação integral equivalente (forma fraca ou variacional). Esta seção apresenta a dedução matemática rigorosa da forma fraca axissimétrica baseada no Princípio dos Trabalhos Virtuais (PTV), detalhando a integração de volume no sistema de coordenadas cilíndricas e justificando a inclusão explícita do raio $r$ no domínio bidimensional de integração para simulação no solver FEniCS \cite{logg2012automated}.
@@ -666,86 +686,4 @@ L = inner(t, v) * r * ds(1)
 \end{lstlisting}
 
 % === IN?CIO DO CONTE?DO MERGED DE 03_2_HOMOGENEIZACAO ===
-
-\section{Método de Homogeneização Assintótica}
-
-\subsection{Aplicando o Método de Homogeneização}
-
-Assim como feito por \cite{PartonReport} e \cite{Guinovart2024}, será utilizada uma expansão assintótica de primeira ordem para tensões, deformações e deslocamentos. As expansões são expressas como:
-
-\begin{equation}
-  \begin{aligned}
-    % SAF para deslocamento
-    \mathbf{u}^{(\infty)}(r, \epsilon) &= \mathbf{u}^{(0)}(r) + \epsilon \mathbf{u}^{(1)}(r, y) + \epsilon^2 \mathbf{u}^{(2)}(r, y) + \dots, \\
-    % SAF para deformações
-    \boldsymbol{\varepsilon}^{(\infty)}(r, \epsilon) &= \boldsymbol{\varepsilon}^{(0)}(r, y) + \epsilon \boldsymbol{\varepsilon}^{(1)}(r, y) + \epsilon^2 \boldsymbol{\varepsilon}^{(2)}(r, y) + \dots, \\
-    % SAF para tensões
-    \boldsymbol{\sigma}^{(\infty)}(r, \epsilon) &= \boldsymbol{\sigma}^{(0)}(r, y) + \epsilon \boldsymbol{\sigma}^{(1)}(r, y) + \epsilon^2 \boldsymbol{\sigma}^{(2)}(r, y) + \dots
-  \end{aligned}
-  \label{eq:asymptotic_expansions}
-\end{equation}
-
-Truncando a expansão de tensões após o termo de primeira ordem ($\mathcal{O}(\epsilon)$) em \eqref{eq:asymptotic_expansions} e substituindo na lei constitutiva \cite{Sadd2009}, obtém-se a seguinte equação matricial:
-
-\begin{equation}
-  \begin{bmatrix}
-    \sigma_r^{(0)} + \epsilon \sigma_r^{(1)} \\
-    \sigma_\theta^{(0)} + \epsilon \sigma_\theta^{(1)} \\
-    \tau_{rz}^{(0)} + \epsilon \tau_{rz}^{(1)}
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-    \mathcal{C}_{11}(y) & \mathcal{C}_{12}(y) & \mathcal{C}_{13}(y) \\
-    \mathcal{C}_{21}(y) & \mathcal{C}_{22}(y) & \mathcal{C}_{23}(y) \\
-    \mathcal{C}_{31}(y) & \mathcal{C}_{32}(y) & \mathcal{C}_{33}(y)
-  \end{bmatrix}
-  \begin{bmatrix}
-    \partial_r (u_r^{(0)} + \epsilon u_r^{(1)}) \\
-    \frac{1}{r}(u_r^{(0)} + \epsilon u_r^{(1)}) \\
-    \frac{1}{2}(\partial_z (u_r^{(0)} + \epsilon u_r^{(1)}) + \partial_r u_z)
-  \end{bmatrix}
-  \label{eq:HookesLawWithSAF_MatrixForm}
-\end{equation}
-
-Aplicando a regra da cadeia à \eqref{eq:HookesLawWithSAF_MatrixForm} e separando os termos por potências de $\epsilon$, as seguintes condições devem ser satisfeitas:
-
-\begin{equation}
-  \begin{aligned}
-    \epsilon^{-1} &: \frac{\partial u_r^{(0)}}{\partial y} = 0, \\
-    \epsilon^0 &: \sigma_r^{(0)} = \mathcal{C}_{11}(y) \frac{\partial u_r^{(0)}}{\partial r} + \mathcal{C}_{11}(y) \frac{\partial u_r^{(1)}}{\partial y} + \mathcal{C}_{12}(y) \frac{u_r^{(0)}}{r}.
-  \end{aligned}
-  \label{eq:HookesLawWithSAFRdirection}
-\end{equation}
-
-Para o equilíbrio mecânico \eqref{eq:equilibrium_radial_1d}, a coleta de termos de ordem $\epsilon^{-1}$ e $\epsilon^0$ resulta em:
-
-\begin{equation}
-  \begin{aligned}
-    \epsilon^{-1} &: \frac{\partial \sigma_r^{(0)}}{\partial y} = 0, \\
-    \epsilon^0 &: \frac{\partial \sigma_r^{(0)}}{\partial r} + \frac{\partial \sigma_r^{(1)}}{\partial y} + \frac{1}{r} (\sigma_r^{(0)} - \sigma_\theta^{(0)}) = 0.
-  \end{aligned}
-  \label{eq:EquilibriumWithStressSAFs}
-\end{equation}
-
-Assume-se que a função de deslocamento de primeira ordem possui a forma separável $u_r^{(1)} = \chi^{(1)}(y) \frac{\partial u_r^{(0)}}{\partial r} + \chi^{(2)}(y) \frac{u_r^{(0)}}{r}$ do mesmo modo como feito por \cite{BrunaReport}. A substituição desta forma na equação de equilíbrio de ordem $\epsilon^{-1}$ define os \textbf{problemas locais}:
-
-\begin{equation}
-  \begin{aligned}
-    \frac{\partial}{\partial y} \left( \mathcal{C}_{11}(y) \frac{\partial \chi^{(1)}(y)}{\partial y} + \mathcal{C}_{11}(y) \right) &= 0, \\
-    \frac{\partial}{\partial y} \left( \mathcal{C}_{11}(y) \frac{\partial \chi^{(2)}(y)}{\partial y} + \mathcal{C}_{12}(y) \right) &= 0.
-  \end{aligned}
-  \label{eq:LocalProblems}
-\end{equation}
-
-Para garantir a existência e unicidade dessas soluções, impõe-se a condição de \textbf{contato perfeito} na interface entre as camadas:
-
-\begin{equation}
-  [[\chi(y)]] = 0, \quad \left[\left[ \mathcal{C}_{11}(y) \frac{\partial \chi(y)}{\partial y} + \mathcal{C}_{ij}(y) \right]\right] = 0,
-\end{equation}
-
-além da condição de normalização da média na célula unitária $Y$:
-
-\begin{equation}
-  \langle \chi^{(1)}(y) \rangle = \langle \chi^{(2)}(y) \rangle = 0.
-\end{equation}
 

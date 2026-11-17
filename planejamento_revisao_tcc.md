@@ -246,10 +246,11 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
 
 
 #### Coesão Inter-Capítulos
-- [~] **COE-01:** **Coesão e Cross-Referências entre Capítulos** [Em andamento — COE-01a concluída]
+- [x] **COE-01:** **Coesão e Cross-Referências entre Capítulos** [Concluída em 17/11/2026]
   - [x] **COE-01a (concluída em 17/11/2026):** Cross-references SAF entre Caps. 1 e 2. Cap. 1 referencia Sec. 2.4; Cap. 2 referencia Cap. 3.
-  - [ ] **COE-01b:** Cross-references nos Caps. 3–6 (verificar fluxo lógico e eliminar redundâncias de definição).
-  - [ ] **COE-01c:** Verificar SAF definida em dois lugares (Caps. 1 e 2) — consolidar definição.
+  - [x] **COE-01b (concluída em 17/11/2026):** Cross-references nos Caps. 3–6. Cap. 3 (Sec. 3.2 → Cap. 2; Sec. 3.4 → Cap. 4). Cap. 4 (Sec. 4.1 → Cap. 3). Cap. 5 (Sec. 5.1 → Caps. 3 e 4). Cap. 6 (objetivos → Caps. 3, 4, 5; considerações finais → Caps. 3, 4, 5).
+  - [x] **COE-01c (concluída em 17/11/2026):** Consolidar definição de SAF. Cap. 1 e Cap. 2 agora referenciam Cap. 3 (Sec. 3.2) para a definição completa. Eliminada redundância de definição.
+  - Verificação de compilação: 0 erros, 0 refs indefinidas, 0 cites indefinidas, 98 páginas.
 
 #### Capítulo 2 — Revisão Bibliográfica (continuação)
 - [x] **REV-02.5:** **Homogeneização na Revisão Bibliográfica — Citar Literatura em Vez de Cálculos Próprios (Seção 2.4)** [Concluída em 17/11/2026]

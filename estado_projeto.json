@@ -8,7 +8,7 @@
   "objetivo": "Revisão integral de conteúdo, rigor técnico, citações e redação científica do TCC em LaTeX",
   "fase_atual": "plano_1_em_andamento",
   "tarefa_ativa": null,
-  "subetapa_ativa": "CON/RED3 concluida",
+  "subetapa_ativa": "COE-01 concluida",
   "tarefas_concluidas": [
     "DIA-01",
     "DIA-02",
@@ -38,7 +38,8 @@
     "NOR-02",
     "TEC-05",
     "REV-02.5",
-    "CON/RED3"
+    "CON/RED3",
+    "COE-01"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -110,8 +111,9 @@
     "TEC-05 concluida (17/11/2026): Cap. 3 reestruturado. Secao duplicada 3.5 (MHA) removida. Problema Homogeneizado adicionado (eq. macroscopica de equilibrio + condicoes de contorno). Cross-reference: coeficientes efetivos derivados do problema local (Sec. 3.2). Compilacao: 0 erros, 0 refs indefinidas, 98 paginas.",
     "COE-01a concluida (17/11/2026): cross-references SAF entre Caps. 1 e 2. Cap. 1 referencia Sec. 2.4; Cap. 2 referencia Cap. 3.",
     "REV-02.5 concluida (17/11/2026): Sec 2.4 reformulada. Coeficientes efetivos referenciam Cap. 3. Cioranescu2010 citado. Compilacao: 0 erros, 0 refs indefinidas, 0 cites indefinidas, 98 paginas.",
-    "CON/RED3 concluida (17/11/2026): cross-references entre Caps. 4 e 5 (implementacao <-> resultados). verbatim->lstlisting revertido (UTF-8). Compilacao: 0 erros, 0 refs indefinidas, 0 cites indefinidas, 98 paginas."
+    "CON/RED3 concluida (17/11/2026): cross-references entre Caps. 4 e 5 (implementacao <-> resultados). verbatim->lstlisting revertido (UTF-8). Compilacao: 0 erros, 0 refs indefinidas, 0 cites indefinidas, 98 paginas.",
+    "COE-01 concluida (17/11/2026): cross-references adicionados nos Caps. 3, 4, 5, 6. SAF consolidada (Caps. 1 e 2 referenciam Cap. 3). Compilacao: 0 erros, 0 refs indefinidas, 0 cites indefinidas, 98 paginas."
   ],
-  "proximo_passo": "CON/RED3 concluida. Pendentes: COE-01b/01c (cross-references Caps. 3-6), NOR-02 parte 2 (inspecao visual). Proxima tarefa autorizada a definir.",
+  "proximo_passo": "COE-01 concluida. Pendentes: NOR-02 parte 2 (inspecao visual). Todas as tarefas de conteudo concluidas. Projeto pronto para inspecao visual final.",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }

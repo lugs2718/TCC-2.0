@@ -474,13 +474,10 @@ Como $u_0 = u_0(x)$, esta equação é identicamente nula, confirmando a indepen
   Esta EDO deve ser resolvida sob as condições de $1$-periodicidade de $N_1(y)$ e normalização de média nula para garantir a unicidade de solução ($\langle N_1(y) \rangle = 0$) \cite{bakhvalov1989}.
 
 3. \textbf{Termos de Ordem $O(\epsilon^0)$ (Problema Homogeneizado):}
-  Coletando os termos de ordem neutra e aplicando o operador valor médio volumétrico $\langle dot \rangle$ na célula unitária, as oscilações microscópicas rápidas se anulam por periodicidade, gerando a \textbf{Equação Homogeneizada Macroscópica} \cite{bakhvalov1989}:
-  $ C_{11} \frac{d^2 u_0(r)}{dr^2} + \frac{C_{11}}{r} \frac{du_0(r)}{dr} - \frac{C_{11}}{r^2} u_0(r) = 0 $ \label{eq:homog_eq}
-  onde os coeficientes efetivos homogeneizados equivalentes $C_{11}$ e $C_{12}$ do vaso de parede grossa s?o determinados analiticamente em termos das propriedades el?sticas locais atrav?s de \cite{bakhvalov1989}:
-  \begin{equation}
-  C_{11} = \langle C_{11}^{-1}(y) \rangle^{-1} , \quad C_{12} = \langle C_{11}^{-1}(y) \rangle^{-1} \langle C_{12}(y) C_{11}^{-1}(y) \rangle
-  \label{eq:effective_coeffs}
-\end{equation}
+  Coletando os termos de ordem neutra e aplicando o operador valor médio volumétrico $\langle \cdot \rangle$ na célula unitária, obtém-se a equação de equilíbrio macroscópica homogeneizada \cite{bakhvalov1989, Cioranescu2010}:
+  $ \hat{\mathcal{C}}_{11} \frac{d^2 u_0(r)}{dr^2} + \frac{\hat{\mathcal{C}}_{11}}{r} \frac{du_0(r)}{dr} - \frac{\hat{\mathcal{C}}_{22}}{r^2} u_0(r) = 0 $ \label{eq:homog_eq_review}
+  onde os coeficientes efetivos $\hat{\mathcal{C}}_{ij}$ são determinados a partir da resolução do problema local (funções corretoras $\chi^{(1)}$, $\chi^{(2)}$) e da média volumétrica. A dedução completa desses coeficientes para a configuração bilaminada aço--alumínio adotada neste trabalho é apresentada no Capítulo 3 (Seção 3.3).
+
 
 \subsection{Rigor Matemático: H-Convergência e Relação de Proximidade}
 

@@ -69,9 +69,5 @@ env/
 results/
 Códigos/Plotagem do cilindro com Paraview/ParaView*
 
-
-# PDFs compilados
-*.pdf
-
 # Arquivos zip
 *.zip

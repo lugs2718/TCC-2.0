@@ -252,10 +252,11 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   - [ ] **COE-01c:** Verificar SAF definida em dois lugares (Caps. 1 e 2) — consolidar definição.
 
 #### Capítulo 2 — Revisão Bibliográfica (continuação)
-- [ ] **REV-02.5:** **Homogeneização na Revisão Bibliográfica — Citar Literatura em Vez de Cálculos Próprios (Seção 2.4)**
-  - A §2.4 apresenta os coeficientes efetivos (Ĉ_11, Ĉ_12, etc.) como se fossem da literatura, mas são cálculos próprios do TCC.
-  - Reformular para citar a literatura (Bruna Leitzke 2017, Guinovart 2015, Bakhvalov & Panasenko 1989, Cioranescu & Donato 1999) e referenciar o Cap. 3 para os cálculos próprios.
-  - Garantir que a revisão bibliográfica não apresente resultados do próprio trabalho como se fossem de terceiros.
+- [x] **REV-02.5:** **Homogeneização na Revisão Bibliográfica — Citar Literatura em Vez de Cálculos Próprios (Seção 2.4)** [Concluída em 17/11/2026]
+  - Reformulado o parágrafo do "Problema Homogeneizado" (L476-483) para citar Bakhvalov & Panasenko (1989) e Cioranescu & Donato (1999/2010) em vez de apresentar os coeficientes efetivos como se fossem da literatura.
+  - Coeficientes efetivos ($\\hat{\\mathcal{C}}_{ij}$) agora referenciam o Cap. 3 (Seção 3.3) para a dedução completa.
+  - Corrigido cite key `cioranescu1999introduction` → `Cioranescu2010` (chave real no .bib).
+  - Verificação de compilação: 0 erros, 0 refs indefinidas, 0 cites indefinidas.
 
 #### Capítulo 3 — Formulação Matemática e Homogeneização (continuação)
 - [x] **TEC-05:** **Completude e Reordenação da Homogeneização no Cap. 3** [Concluída em 17/11/2026]
@@ -327,7 +328,7 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
   "objetivo": "Revisão integral de conteúdo, rigor técnico, citações e redação científica do TCC em LaTeX",
   "fase_atual": "plano_1_em_andamento",
   "tarefa_ativa": null,
-  "subetapa_ativa": "TEC-05 concluida; COE-01 parcial (COE-01a concluida)",
+  "subetapa_ativa": "REV-02.5 concluida",
   "tarefas_concluidas": [
     "DIA-01",
     "DIA-02",
@@ -355,7 +356,8 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "CON-RED2",
     "REV-02.1",
     "NOR-02",
-    "TEC-05"
+    "TEC-05",
+    "REV-02.5"
   ],
   "decisoes_consolidadas": [
     "Autor atualizado no main.tex: Luiz Gustavo da Silva Pereira.",
@@ -425,9 +427,10 @@ A revisão integral do arquivo [`LaTeX/capitulos/01_introducao.tex`](file:///g:/
     "Compilacao local concluida (11/11/2026): MiKTeX instalado e configurado. 16 correcoes aplicadas (includeonly, caminhos relativos, quadro env, Typst residuais, Backus1962 duplicado, eq labels). Resultado: 0 erros, 0 refs indefinidas, 0 cites indefinidas. PDF 98 paginas.",
     "Novas tarefas registradas (16/11/2026): COE-01 (coesao inter-capitulos), REV-02.5 (homogeneizacao na revisao bibliografica citar literatura), TEC-05 (completude/reordenacao homogeneizacao Cap. 3), CON/RED3 (limpeza descricao implementacao Caps. 4 e 5). Identificadas pelo usuario apos compilacao local.",
     "TEC-05 concluida (17/11/2026): Cap. 3 reestruturado. Secao duplicada 3.5 (MHA) removida. Problema Homogeneizado adicionado (eq. macroscopica de equilibrio + condicoes de contorno). Cross-reference: coeficientes efetivos derivados do problema local (Sec. 3.2). Compilacao: 0 erros, 0 refs indefinidas, 98 paginas.",
-    "COE-01a concluida (17/11/2026): cross-references SAF entre Caps. 1 e 2. Cap. 1 referencia Sec. 2.4; Cap. 2 referencia Cap. 3."
+    "COE-01a concluida (17/11/2026): cross-references SAF entre Caps. 1 e 2. Cap. 1 referencia Sec. 2.4; Cap. 2 referencia Cap. 3.",
+    "REV-02.5 concluida (17/11/2026): Sec 2.4 reformulada. Coeficientes efetivos referenciam Cap. 3. Cioranescu2010 citado. Compilacao: 0 erros, 0 refs indefinidas, 0 cites indefinidas, 98 paginas."
   ],
-  "proximo_passo": "TEC-05 concluida. COE-01 parcial (COE-01a concluida). Pendentes: COE-01b/01c, REV-02.5, CON/RED3. Proxima tarefa autorizada a definir.",
+  "proximo_passo": "REV-02.5 concluida. Pendentes: COE-01b/01c, CON/RED3, NOR-02 parte 2. Proxima tarefa autorizada a definir.",
   "prompt_de_continuidade": "TEC-04 commitada em d4a6de0. CIT-00 concluída (citacao_estrategia_CIT-00.md). CIT-01 executada em 04_mef.tex: 85 referências numéricas eliminadas (recontagem sobre HEAD; inventário inicial 87), 11 chamadas autor-data e 6 bloqueios B1–B6 registrados em citacao_CIT-01.md. Não há compilador LaTeX nem FEniCS: verificação estática (0 marcadores; ambientes 22/22; chaves existentes). Próxima ação: obter decisão do autor sobre B1–B6 antes de iniciar CIT-02. Não suavizar texto nem inventar referência."
 }
 ```
